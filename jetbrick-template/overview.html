@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+    <title>预览 jetbrick-template</title>
+
+    <link href="../static/css/application.css" rel="stylesheet" type="text/css"/>
+
+    <!--[if lt IE 9]>
+    <script src="../static/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../static/js/application.js"></script>
+</head>
+
+<body>
+<a href="https://github.com/subchen/jetbrick-template/">
+    <img src="../static/images/forkme_right_orange.png" alt="Fork me on GitHub" class="fork-me-on-github">
+</a>
+<img src="../static/images/top.png" title="回到顶部" api="scroll-to-top" />
+
+<div class="jb-topbar">
+    <div class="container">
+        <img src="../static/images/logo-mini.png"/>
+        <!--
+        <ul class="menubar">
+            <li><a href="">commons</a></li>
+            <li><a href="">webmvc</a></li>
+            <li><a href="">template</a></li>
+            <li><a href="">orm</a></li>
+            <li><a href="">widget</a></li>
+            <li><a href="">javadoc-chm</a></li>
+        </ul>
+        -->
+    </div>
+</div>
+
+<div class="container">
+    <div class="jb-banner">
+        <img src="../static/images/jetbrick-template-logo.png"/>
+        <ul class="description">
+            <li>1. 全新一代 Java 模板引擎</li>
+            <li>2. 具有高性能、高扩展性</li>
+            <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
+        </ul>
+        <a href="download/jetbrick-template-1.0.0.zip" class="download-button">
+            <img src="../static/images/download.png"/>
+            <span>jetbrick-template-1.0.0.zip<br/>2013-11-18</span>
+        </a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="jb-section">
+        <ul class="tabs">
+            <li><a href="overview.html" class="selected">简介</a</li>
+            <li><a href="download.html">下载</a</li>
+            <li><a href="userguide.html">开发指南</a</li>
+            <li><a href="config.html">配置指南</a</li>
+            <li><a href="syntax.html">语法指南</a</li>
+            <li><a href="integrate.html">框架集成</a</li>
+            <!--
+            <li><a href="example.html">例子</a</li>
+            -->
+            <li><a href="faq.html">FAQ</a</li>
+        </ul>
+    </div>
+</div>
+
+<div class="container">
+    <div class="announcement">
+        <a href="download.html#version">2013-11-18：jetbrick-template-1.0.0 版本已发布，欢迎使用和反馈。</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="markdown">
+
+<!-- markdown body begin -->
+<h1>概述 Overview</h1><p>jetbrick-template 是一个新一代 Java 模板引擎，具有高性能和高扩展性。 适合于动态 HTML 页面输出或者代码生成，可替代 JSP 页面或者 Velocity 等模板。 指令和 Velocity 相似，表达式和 Java 保持一致，易学易用。</p><h1>简单易用的指令</h1><p>jetbrick-template 指令集和老牌的模板引擎 Velocity 非常相似，易学易用。</p>
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+#define(List<UserInfo> userlist)
+<table>
+  <tr>
+    <td>序号</td>
+    <td>姓名</td>
+    <td>邮箱</td>
+  </tr>
+  #for (UserInfo user : userlist)
+  <tr>
+    <td>${for.index}</td>
+    <td>${user.name}</td>
+    <td>${user.email}</td>
+  </tr>
+  #end
+</table>
+]]></script><p>详细指令语法，请参考：<a href="syntax.html">语法指南</a>。或者<a href="syntax.html#velocity">和 Velocity 的比较</a>。</p><h1>卓越性能 Perfermance</h1><p>jetbrick-template 将模板编译成 Java ByteCode 运行，并采用强类型推导，无需反射和减少类型转换。渲染速度等价于 Java 硬编码。比 Velocity 等模板快一个数量级。 比 JSP 也快，因为 JSP 只有 Scriptlet 是编译的，Tag 和 EL 都是解释执行的。 而 jetbrick-template 是全编译的。</p><p><img src="../static/images/perfermance.png"  alt="perfermance"/></p><p>在 Stream 模式中(Webapp 采用 OutputStream 将文本输出到浏览器)，由于 Java 硬编码输出字符串需要进行一次编码的转换。 而 jetbrick-template 却在第一次运行期间就缓存了编码转换结果，使得 jetbrick-template 的性能甚至优于 Java 硬编码。</p><p>具体测试用例，请参考：<a href="#">jetbrick-template-benchmark</a> (platform: Window 7 x64, Intel i5, 16GB RAM, JDK 1.6.0_41 x64)</p><h1>易于集成 Integrate</h1><p>可以和市面上常见的 Web MVC framework 进行集成。</p>
+<ul>
+  <li><a href="#">HttpServlet</a></li>
+  <li><a href="http://subchen.github.com/jetbrick-webmvc/">JetBrick WebMVC</a></li>
+  <li><a href="http://struts.apache.org/">Struts 2.x</a></li>
+  <li><a href="http://spring.io/">Spring MVC</a></li>
+  <li><a href="https://code.google.com/p/jfinal/">JFinal</a></li>
+</ul><p>具体集成方法，请参考： <a href="integrate.html">框架集成</a></p><h1>友好的错误提示</h1><p>具有详细的模板解析和编译错误提示，出错提示可以定位到原始模板所在的行号。</p>
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+22:14:51.271 [main] INFO  (JetTemplate.java:68) - Loading template source file: D:\workspace\github\jetbrick-schema-app\bin\config\report\schema.html.jetx
+22:14:51.406 [main] ERROR (JetTemplateErrorListener.java:27) - Template parse failed:
+D:\workspace\github\jetbrick-schema-app\bin\config\report\schema.html.jetx:37
+message: The method getColumnNam() or isColumnNam() is undefined for the type jetbrick.schema.app.model.TableColumn.
+33:         </tr>
+34:     #for(TableColumn c: t.columns)
+35:         <tr style="background-color:white;">
+36:             <td>${c.displayName}</td>
+37:             <td>${c.columnNam}</td>
+                        ^^^^^^^^^
+ 
+Exception in thread "main" jetbrick.commons.exception.SystemException: java.lang.RuntimeException: The method getColumnNam() or isColumnNam() is undefined for the type jetbrick.schema.app.model.TableColumn.
+  at jetbrick.commons.exception.SystemException.unchecked(SystemException.java:23)
+  at jetbrick.commons.exception.SystemException.unchecked(SystemException.java:12)
+  at jetbrick.schema.app.TemplateEngine.apply(TemplateEngine.java:44)
+  at jetbrick.schema.app.Task.writeFile(Task.java:83)
+  at jetbrick.schema.app.task.SqlReportTask.execute(SqlReportTask.java:19)
+  at jetbrick.schema.app.SchemaGenerateApp.taskgen(SchemaGenerateApp.java:56)
+  at jetbrick.schema.app.SchemaGenerateApp.main(SchemaGenerateApp.java:74)
+Caused by: java.lang.RuntimeException: The method getColumnNam() or isColumnNam() is undefined for the type jetbrick.schema.app.model.TableColumn.
+  at jetbrick.template.parser.JetTemplateCodeVisitor.reportError(JetTemplateCodeVisitor.java:1388)
+  at jetbrick.template.parser.JetTemplateCodeVisitor.visitExpr_field_access(JetTemplateCodeVisitor.java:665)
+  at jetbrick.template.parser.JetTemplateCodeVisitor.visitExpr_field_access(JetTemplateCodeVisitor.java:1)
+...
+]]></script>
+<ul>
+  <li>出错模板：D:\workspace\github\jetbrick-schema-app\bin\config\report\schema.html.jetx</li>
+  <li>出错行号：37</li>
+  <li>错误原因：The method getColumnNam() or isColumnNam() is undefined for the type jetbrick.schema.app.model.TableColumn.</li>
+</ul>
+<!-- markdown body end -->
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="jb-footer">
+        Copyright 2011-2013 Guoqiang Chen<br/>subchen&#64;gmail.com
+    </div>
+</div>
+
+</body>
+</html>
