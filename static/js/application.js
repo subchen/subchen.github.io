@@ -6733,12 +6733,19 @@ jetbrick.scrolltop = function() {
         height: 'auto'
     });
     $('body').append(dom);
- 
+
+    var hidden = true;
     $(window).on('scroll resize', function() {
         if ($(window).scrollTop() > 40) {
-            if (dom.is(':hidden')) dom.fadeIn();
+            if (hidden) {
+                dom.fadeIn();
+                hidden = false;
+            }
         } else {
-            if (!dom.is(':hidden')) dom.fadeOut();
+            if (!hidden) {
+                dom.fadeOut();
+                hidden = true;
+            }
         }
     });
  
