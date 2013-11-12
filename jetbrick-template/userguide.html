@@ -120,6 +120,8 @@ public boolean lookupResource(String name);
 public Resource getResource(String name) throws ResourceNotFoundException;
 ]]></script><h2>JetTemplate</h2><p>对应于一个模板文件，通过 <code>JetEngine.getTemplate(name)</code> 获取。在第一次获取的时候，会先将模板生成对象的 <code>.java</code> 文件，然后在将 <code>.java</code> 文件编译成 <code>.class</code> 文件。</p><p>如果模板不存在，则抛出 <code>ResourceNotFoundException</code>。</p><p>然后通过下面两个方法可以对模板进行渲染：</p>
 <script type="syntaxhighlighter" class="brush: java"><![CDATA[
+public void render(Map<String, Object> context, Writer out);
+public void render(Map<String, Object> context, OutputStream out);
 public void render(JetContext context, Writer out);
 public void render(JetContext context, OutputStream out);
 ]]></script><h2>JetContext</h2><p>用来存储和获取模板关联的 data objects。可以通过 <code>new JetContext()</code> 或者 <code>new JetContext(map)</code> 创建。</p><p>使用 <code>JetContext</code> 就像使用 Java 的 <code>HashMap</code> 一样。常用的方法如下：</p>
@@ -127,7 +129,7 @@ public void render(JetContext context, OutputStream out);
 public Object get(String name);
 public void put(String name, Object value);
 public void putAll(Map<String, Object> context);
-]]></script><p><strong>注意：</strong></p><p><code>JetContext</code> 会被 <code>#put</code> 指令修改。<code>#set</code> 指令并不会影响 <code>JetContext</code> 中的内容。</p><p><code>JetContext</code> 会在父子模板调用的时候，形成一个 Context Chain，子模板可以自动获取父模板的变量，而父模板无法看到子模板的 <code>JetContext</code>。但是子模板可以通过 <code>#put(name, value)</code> 来修改父模板的 <code>JetContext</code>。具体查看：<a href="#embed_template">如何嵌入子模板？</a></p><h1>高级用法</h1><p>上面只是简单的介绍了一下 <code>jetbrick-template</code> 的基本用法，下面将介绍一些高级用法，也是 <code>jetbrick-template</code> 有别于其他模板引擎的特色。</p><p><a name="methods"></a></p><h2>方法扩展 Methods</h2><p>我们知道一个 Java Class 的 所有 methods 都是定义在同一个 class 文件中的，不能在其他地方进行动态扩展。但是一些其他动态语言却支持在 Class 外部为这个 Class 增加一些方法。比如：</p>
+]]></script><p><strong>注意：</strong></p><p><code>JetContext</code> 会被 <code>#put</code> 指令修改。<code>#set</code> 指令并不会影响 <code>JetContext</code> 中的内容。</p><p><code>JetContext</code> 会在父子模板调用的时候，形成一个 Context Chain，子模板可以自动获取父模板的变量，而父模板无法看到子模板的 <code>JetContext</code>。但是子模板可以通过 <code>#put(name, value)</code> 来修改父模板的 <code>JetContext</code>。具体查看：<a href="faq.html#fembed_template">如何嵌入子模板？</a></p><h1>高级用法</h1><p>上面只是简单的介绍了一下 <code>jetbrick-template</code> 的基本用法，下面将介绍一些高级用法，也是 <code>jetbrick-template</code> 有别于其他模板引擎的特色。</p><p><a name="methods"></a></p><h2>方法扩展 Methods</h2><p>我们知道一个 Java Class 的 所有 methods 都是定义在同一个 class 文件中的，不能在其他地方进行动态扩展。但是一些其他动态语言却支持在 Class 外部为这个 Class 增加一些方法。比如：</p>
 <ul>
   <li>JavaScript 的 prototype 机制</li>
   <li>Groovy 的 metaClass 机制</li>
@@ -135,7 +137,7 @@ public void putAll(Map<String, Object> context);
 </ul><p>jetbrick-template 也在这里带给大家强大的动态方法扩展机制。如：<code>&quot;123&quot;.asInt()</code>, <code>new Date().format(&quot;yyyy-MM-dd&quot;)</code>。</p><p><strong>注意</strong>：如果 Class 已经定义了同名方法，则优先使用 Class 定义的方法。但是扩展方法支持方法重载(Overrload)。</p><p>方法扩展支持 2 种模式：</p>
 <ul>
   <li>上下文无关方法：MethodTool.method(bean, &hellip;)</li>
-  <li>上下文相关方法：MethodTool.method(bean, JetRuntimeContext, &hellip;)</li>
+  <li>上下文相关方法：MethodTool.method(bean, JetPageContext, &hellip;)</li>
 </ul><h3>上下文无关方法 MethodTool.method(bean, &hellip;)</h3>
 <ul>
   <li>方法签名必须是 <code>public</code> 和 <code>static</code></li>
@@ -161,16 +163,16 @@ ${"BAIDU".link("http://www.baidu.com/")}
 ]]></script><p>输出结果：</p>
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 <a href="http://www.baidu.com/">BAIDU</a>
-]]></script><h3>上下文相关方法 MethodTool.method(bean, JetRuntimeContext, &hellip;)</h3><p>如果扩展的方法需要用到 template 相关联的运行时信息 <code>JetRuntimeContext</code>，那么我们就需要扩展一个上下文相关的 method。</p><p>和上下文无关的扩展方法相比，上下文相关的扩展方法多一个参数。</p>
+]]></script><h3>上下文相关方法 MethodTool.method(bean, JetPageContext, &hellip;)</h3><p>如果扩展的方法需要用到 template 相关联的运行时信息 <code>JetPageContext</code>，那么我们就需要扩展一个上下文相关的 method。</p><p>和上下文无关的扩展方法相比，上下文相关的扩展方法多一个参数。</p>
 <ul>
   <li>方法签名必须是 <code>public</code> 和 <code>static</code></li>
   <li>方法第一个参数类型是要扩展的 Class</li>
-  <li><strong>方法第二个参数类型必须是 JetRuntimeContext</strong></li>
+  <li><strong>方法第二个参数类型必须是 JetPageContext</strong></li>
   <li>方法其余参数自定义</li>
 </ul>
 <script type="syntaxhighlighter" class="brush: java"><![CDATA[
 public class UserInfoMethods {
-	public static String isOnline(UserInfo user, JetRuntimeContext ctx) {
+	public static String isOnline(UserInfo user, JetPageContext ctx) {
     	HttpSession session = (HttpSession) ctx.getContext().get(JetContext.SESSION_NAME);
     	return session.getAttribute("user_" - user.getName()) != null;
   	}
@@ -188,7 +190,7 @@ ${user.isOnline()}
 ]]></script><p><a name="functions"></a></p><h2>函数扩展 Functions</h2><p>jetbrick-template 还支持函数扩展，如 <code>${now()}</code>, <code>${include(&quot;tag.jetx&quot;)}</code>。</p>
 <ul>
   <li>上下文无关函数：任意参数</li>
-  <li>上下文相关函数：第一个参数必须是 JetRuntimeContext</li>
+  <li>上下文相关函数：第一个参数必须是 JetPageContext</li>
 </ul><p>示例：</p>
 <script type="syntaxhighlighter" class="brush: java"><![CDATA[
 public class Functions {
@@ -197,7 +199,7 @@ public class Functions {
     return new SimpleDateFormat(format).format(new Date());
   }
   // 上下文相关函数
-  public static String hello(JetRuntimeContext ctx) {
+  public static String hello(JetPageContext ctx) {
     return "Hello " - ctx.getContext().get("name");
 }
 }
