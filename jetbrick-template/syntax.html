@@ -291,7 +291,7 @@ ${user.name} ## This is a line comment.
   <li>查找 obj class 的 foo 静态属性</li>
   <li>查找 obj.getFoo() 方法</li>
   <li>查找 obj.isFoo() 方法</li>
-  <li>查找 obj.get(name) 方法</li>
+  <li>查找 obj.get(name) 方法 (如果是 Map 或者 JetConext)</li>
 </ol><p>以上查找过程会在第一次编译的时候完成，不影响性能。<br/>支持对属性返回值的类型推导。</p><p><strong>注意</strong>： <code>jetbrick-template</code> 支持属性的安全调用，和 Groovy 相同，你可以使用 <code>?.</code> 来代替 <code>.</code>，以避免出现 <code>NullPointerException</code>。</p><h2>Bean 方法调用 bean.method(&hellip;)</h2>
 <ul>
   <li>支持普通方法调用</li>
@@ -369,8 +369,8 @@ ${"Hello".substring(2, 3)}
   <li><p><code>UUID uuid()</code><br/> 获取一个 UUID</p></li>
 </ul><h2>循环计数生成器</h2><p>生成一个用于循环的数组</p>
 <ul>
-  <li><code>int[] step(int start, int stop)</code></li>
-  <li><code>int[] step(int start, int stop, int step)</code></li>
+  <li><code>int[] range(int start, int stop)</code></li>
+  <li><code>int[] range(int start, int stop, int step)</code></li>
 </ul><h2>嵌入子模板 ${include(&hellip;)}</h2><p>嵌入一个子模板。和 <code>#include</code> 指令的区别，此函数对子模板的输出进行了缓存，可以处理返回的内容，但是效率没有 <code>#include</code> 指令高。</p>
 <ul>
   <li><code>String include(String relativeName)</code></li>
