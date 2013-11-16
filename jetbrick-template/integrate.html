@@ -73,91 +73,136 @@
 </div>
 
 <div class="container">
+
+    <style type="text/css">
+        .affix-top {
+          float: left;
+          margin-top: 20px;
+        }
+        .affix {
+          position: left;
+          float: right;
+          top: 20px;
+          z-index: 100;
+        }
+        .markdown {
+          margin-left: 240px; 
+        }
+    </style>
+    <div class="jb-nav-list-container" data-spy="affix" data-offset-top="230">
+        <ul class="jb-nav-list">
+            <li><a href="#DrThOz">1 简述</a></li>
+            <li><a href="#mABxJC">2 Web 中的默认隐含对象</a></li>
+            <li><a href="#MSfjmx">3 JetEngine 自动加载方式</a></li>
+            <li><a href="#QbMYPt">4 各种集成方式介绍</a></li>
+            <li><a href="#YqYkxH">&nbsp&nbsp4.1 直接使用 HttpServlet</a></li>
+            <li><a href="#nPmbVw">&nbsp&nbsp4.2 直接使用 Filter 模式</a></li>
+            <li><a href="#vzwrEM">&nbsp&nbsp4.3 jetbrick webmvc</a></li>
+            <li><a href="#AKLWHI">&nbsp&nbsp4.4 Struts 2.x</a></li>
+            <li><a href="#JZtWXy">&nbsp&nbsp4.5 Spring MVC</a></li>
+            <li><a href="#pwVXCN">&nbsp&nbsp4.6 JFinal</a></li>
+        </ul>
+    </div>
+
     <div class="markdown">
 
 <!-- markdown body begin -->
-<h1>简述</h1><p>jetbrick-template 除了作为普通的模板引擎嵌入在 Application 中外，大部分情况下还会和各种 WebMVC 框架整合作为前端的 View，来代替过时的 JSP 或者 Velocity。</p><p>目前已近集成了几种流行的 Web 框架：</p>
-<ul>
-  <li><a href="#HttpServlet">HttpServlet</a></li>
-  <li><a href="#Filter">Filter</a></li>
-  <li><a href="http://subchen.github.com/jetbrick-webmvc/">JetBrick WebMVC</a></li>
-  <li><a href="#Struts">Struts 2.x</a></li>
-  <li><a href="#SpringMVC">Spring MVC</a></li>
-  <li><a href="#JFinal">JFinal</a></li>
-</ul><h1>Web 中的默认隐含对象</h1><p>当 jetbrick-template 被用作 Web 应用中时候，会自动引入下面的对象，这些对象在所有的模板中全局可访问。</p>
-<table>
-  <thead>
-    <tr>
-      <th>隐含对象 </th>
-      <th>类 型 </th>
-      <th>说 明 </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>context </td>
-      <td>JetConext </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>servletContext </td>
-      <td>ServletContext </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>session </td>
-      <td>HttpSession </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>request </td>
-      <td>HttpServletRequest </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>response </td>
-      <td>HttpServletResponse </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>applicationScope </td>
-      <td>Map&lt;String,Object&gt; </td>
-      <td>快捷访问 servletContext.getAttribute(name) </td>
-    </tr>
-    <tr>
-      <td>sessionScope </td>
-      <td>Map&lt;String,Object&gt; </td>
-      <td>快捷访问 session.getAttribute(name) </td>
-    </tr>
-    <tr>
-      <td>requestScope </td>
-      <td>Map&lt;String,Object&gt; </td>
-      <td>快捷访问 request.getAttribute(name) </td>
-    </tr>
-    <tr>
-      <td>parameter </td>
-      <td>Map&lt;String,String&gt; </td>
-      <td>快捷访问 request.getParameter(name) </td>
-    </tr>
-    <tr>
-      <td>parameterValues </td>
-      <td>Map&lt;String,String[]&gt; </td>
-      <td>快捷访问 request.getParameterValues(name) </td>
-    </tr>
-  </tbody>
-</table><p><strong>下面的例子演示了如何使用这些隐含变量：</strong></p><p>模板如下：</p>
+    <a name="DrThOz"></a>
+<h1>1 简述</h1>
+<p>jetbrick-template 除了作为普通的模板引擎嵌入在 Application 中外，大部分情况下还会和各种 WebMVC 框架整合作为前端的 View，来代替过时的 JSP 或者 Velocity。</p>
+<p>目前已近集成了几种流行的 Web 框架：</p> 
+<ul> 
+ <li><a href="#HttpServlet">HttpServlet</a></li> 
+ <li><a href="#Filter">Filter</a></li> 
+ <li><a href="http://subchen.github.com/jetbrick-webmvc/">JetBrick WebMVC</a></li> 
+ <li><a href="#Struts">Struts 2.x</a></li> 
+ <li><a href="#SpringMVC">Spring MVC</a></li> 
+ <li><a href="#JFinal">JFinal</a></li> 
+</ul>
+<a name="mABxJC"></a>
+<h1>2 Web 中的默认隐含对象</h1>
+<p>当 jetbrick-template 被用作 Web 应用中时候，会自动引入下面的对象，这些对象在所有的模板中全局可访问。</p> 
+<table> 
+ <thead> 
+  <tr> 
+   <th>隐含对象 </th> 
+   <th>类 型 </th> 
+   <th>说 明 </th> 
+  </tr> 
+ </thead> 
+ <tbody> 
+  <tr> 
+   <td>context </td> 
+   <td>JetConext </td> 
+   <td> </td> 
+  </tr> 
+  <tr> 
+   <td>servletContext </td> 
+   <td>ServletContext </td> 
+   <td> </td> 
+  </tr> 
+  <tr> 
+   <td>session </td> 
+   <td>HttpSession </td> 
+   <td> </td> 
+  </tr> 
+  <tr> 
+   <td>request </td> 
+   <td>HttpServletRequest </td> 
+   <td> </td> 
+  </tr> 
+  <tr> 
+   <td>response </td> 
+   <td>HttpServletResponse </td> 
+   <td> </td> 
+  </tr> 
+  <tr> 
+   <td>applicationScope </td> 
+   <td>Map&lt;String,Object&gt; </td> 
+   <td>快捷访问 servletContext.getAttribute(name) </td> 
+  </tr> 
+  <tr> 
+   <td>sessionScope </td> 
+   <td>Map&lt;String,Object&gt; </td> 
+   <td>快捷访问 session.getAttribute(name) </td> 
+  </tr> 
+  <tr> 
+   <td>requestScope </td> 
+   <td>Map&lt;String,Object&gt; </td> 
+   <td>快捷访问 request.getAttribute(name) </td> 
+  </tr> 
+  <tr> 
+   <td>parameter </td> 
+   <td>Map&lt;String,String&gt; </td> 
+   <td>快捷访问 request.getParameter(name) </td> 
+  </tr> 
+  <tr> 
+   <td>parameterValues </td> 
+   <td>Map&lt;String,String[]&gt; </td> 
+   <td>快捷访问 request.getParameterValues(name) </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p><strong>下面的例子演示了如何使用这些隐含变量：</strong></p>
+<p>模板如下：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 request.requestURI == ${request.requestURI}
 request.getParameter("name") == ${parameter.name}
 request.getAttribute("items") == ${requestScope.items}
 session.getAttribute("user") == ${sessionScope.user}
-]]></script><p>特别需要说明的一点是：模板中使用或者声明的全局变量不光会从 <code>JetConext context</code> 中获取，在 Web 应用中，还会从 <code>requestScope</code>，<code>sessionScope</code>，<code>applicationScope</code> 中查找对应的内容。</p><p>默认的查顺序如下：</p>
-<ol>
-  <li>context</li>
-  <li>requestScope</li>
-  <li>sessionScope</li>
-  <li>applicationScope</li>
-</ol><p>也就是说，如果存在 <code>request.getAttributes(&quot;user&quot;)</code> 的情况下 <code>${user}</code> 等价于 <code>${requestScope.user}</code>。</p><h1>JetEngine 自动加载方式</h1><p>需要在 web.xml 中进行配置，下面两个配置项都是可选项。</p>
+]]></script>
+<p>特别需要说明的一点是：模板中使用或者声明的全局变量不光会从 <code>JetConext context</code> 中获取，在 Web 应用中，还会从 <code>requestScope</code>，<code>sessionScope</code>，<code>applicationScope</code> 中查找对应的内容。</p>
+<p>默认的查顺序如下：</p> 
+<ol> 
+ <li>context</li> 
+ <li>requestScope</li> 
+ <li>sessionScope</li> 
+ <li>applicationScope</li> 
+</ol>
+<p>也就是说，如果存在 <code>request.getAttributes(&quot;user&quot;)</code> 的情况下 <code>${user}</code> 等价于 <code>${requestScope.user}</code>。</p>
+<a name="MSfjmx"></a>
+<h1>3 JetEngine 自动加载方式</h1>
+<p>需要在 web.xml 中进行配置，下面两个配置项都是可选项。</p> 
 <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
 <context-param>
   <param-name>jetbirck-template-config-location</param-name>
@@ -167,11 +212,22 @@ session.getAttribute("user") == ${sessionScope.user}
 <listener>
   <listener-class>jetbrick.template.web.JetWebEngineLoader</listener-class>
 </listener>
-]]></script><p>如果没有配置 <code>jetbirck-template-config-location</code> 参数，那么配置文件默认从 classpath 根目录下面查找 jetbrick-template.properties。</p><p>如果没有配置 JetWebEngineLoader 启动监听器，那么 JetEngine 也会在模板第一次请求的时候自动初始化。配置成 Listener，可以在 Webapp 启动的时候马上进行初始化。</p><p><strong>注意：</strong></p>
-<ol>
-  <li><p>系统配置参数 <code>template.path</code> 在 Web 应用中的路径将默认变成为 Webapp 的根目录 <code>servletContext.getRealPath(&quot;/&quot;)</code>，而不在是系统的当前目录。</p></li>
-  <li><p>如果需要修改默认的模板路径，也必须是在 Webapp 的根目录下面的路径。比如 <code>/</code> 代表根路径，或者用 <code>/WEB-INF/templates/</code> 来表示 <code>servletContext.getRealPath(&quot;/WEB-INF/templates/&quot;)</code> 的实际路径。（此规则只针对 Webapp 的 FileSystemResourceLoader 有效）</p></li>
-</ol><p><strong>好消息:</strong></p><p>jetbrick-template 内置和其他 Web 框架的集成方式都可以用这两个配置想进行全局初始化。</p><h1>各种集成方式介绍</h1><p><a name="HttpServlet"></a></p><h2>直接使用 HttpServlet</h2><p>jetbrick-template 可以直接作为 HttpServlet 使用。需要在 web.xml 中作如下配置。</p>
+]]></script>
+<p>如果没有配置 <code>jetbirck-template-config-location</code> 参数，那么配置文件默认从 classpath 根目录下面查找 jetbrick-template.properties。</p>
+<p>如果没有配置 JetWebEngineLoader 启动监听器，那么 JetEngine 也会在模板第一次请求的时候自动初始化。配置成 Listener，可以在 Webapp 启动的时候马上进行初始化。</p>
+<p><strong>注意：</strong></p> 
+<ol> 
+ <li><p>系统配置参数 <code>template.path</code> 在 Web 应用中的路径将默认变成为 Webapp 的根目录 <code>servletContext.getRealPath(&quot;/&quot;)</code>，而不在是系统的当前目录。</p></li> 
+ <li><p>如果需要修改默认的模板路径，也必须是在 Webapp 的根目录下面的路径。比如 <code>/</code> 代表根路径，或者用 <code>/WEB-INF/templates/</code> 来表示 <code>servletContext.getRealPath(&quot;/WEB-INF/templates/&quot;)</code> 的实际路径。（此规则只针对 Webapp 的 FileSystemResourceLoader 有效）</p></li> 
+</ol>
+<p><strong>好消息:</strong></p>
+<p>jetbrick-template 内置和其他 Web 框架的集成方式都可以用这两个配置想进行全局初始化。</p>
+<a name="QbMYPt"></a>
+<h1>4 各种集成方式介绍</h1>
+<p><a name="HttpServlet"></a></p>
+<a name="YqYkxH"></a>
+<h2>4.1 直接使用 HttpServlet</h2>
+<p>jetbrick-template 可以直接作为 HttpServlet 使用。需要在 web.xml 中作如下配置。</p> 
 <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
 <servlet>
   <servlet-name>jetbrick-template</servlet-name>
@@ -182,7 +238,12 @@ session.getAttribute("user") == ${sessionScope.user}
   <servlet-name>jetbrick-template</servlet-name>
   <url-pattern>*.jetx</url-pattern>
 </servlet-mapping>
-]]></script><p>最简单，也是最直接的方式。打开浏览器访问 <a href="http://127.0.0.1:8080/index.jetx">http://127.0.0.1:8080/index.jetx</a> 看看效果吧。</p><p><a name="Filter"></a></p><h2>直接使用 Filter 模式</h2><p>jetbrick-template 可以直接作为 Filter 使用。需要在 web.xml 中作如下配置。</p>
+]]></script>
+<p>最简单，也是最直接的方式。打开浏览器访问 <a href="http://127.0.0.1:8080/index.jetx">http://127.0.0.1:8080/index.jetx</a> 看看效果吧。</p>
+<p><a name="Filter"></a></p>
+<a name="nPmbVw"></a>
+<h2>4.2 直接使用 Filter 模式</h2>
+<p>jetbrick-template 可以直接作为 Filter 使用。需要在 web.xml 中作如下配置。</p> 
 <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
 <filter>
   <filter-name>jetbrick-template</filter-name>
@@ -192,29 +253,50 @@ session.getAttribute("user") == ${sessionScope.user}
   <filter-name>jetbrick-template</filter-name>
   <url-pattern>*.jetx</url-pattern>
 </filter-mapping>
-]]></script><h2>jetbrick webmvc</h2><p>jetbrick webmvc 自身已经集成了 jetbrick-template。请参考 jetbrick webmvc 自身的开发文档。</p><p><a name="Struts"></a></p><h2>Struts 2.x</h2><p>jetbrick-template 可以和 Struts 2.x 进行集成。</p><p>首先需要对 Struts 进行如下配置（<code>struts.xml</code>），这个配置是告诉 Struts 使用 <code>jetbrick.template.web.struts.JetTemplateResult</code> 这个类来处理采用 jetbrick-template 格式的模板：</p>
+]]></script>
+<a name="vzwrEM"></a>
+<h2>4.3 jetbrick webmvc</h2>
+<p>jetbrick webmvc 自身已经集成了 jetbrick-template。请参考 jetbrick webmvc 自身的开发文档。</p>
+<p><a name="Struts"></a></p>
+<a name="AKLWHI"></a>
+<h2>4.4 Struts 2.x</h2>
+<p>jetbrick-template 可以和 Struts 2.x 进行集成。</p>
+<p>首先需要对 Struts 进行如下配置（<code>struts.xml</code>），这个配置是告诉 Struts 使用 <code>jetbrick.template.web.struts.JetTemplateResult</code> 这个类来处理采用 jetbrick-template 格式的模板：</p> 
 <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
 <result-types>
   <result-type name="jetx" class="jetbrick.template.web.struts.JetTemplateResult" />
 </result-types>
-]]></script><p>接下来配置你的 action 如下：</p>
+]]></script>
+<p>接下来配置你的 action 如下：</p> 
 <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
 <action name="index">
   <result type="jetx">/index.jetx</result>
 </action>
-]]></script><p>打开浏览器访问 <a href="http://127.0.0.1:8080/index.do">http://127.0.0.1:8080/index.do</a> 看看效果吧。</p><p><a name="SpringMVC"></a></p><h2>Spring MVC</h2><p>jetbrick-template 可以和 Spring MVC 进行集成。</p><p>配置方式如下：</p>
+]]></script>
+<p>打开浏览器访问 <a href="http://127.0.0.1:8080/index.do">http://127.0.0.1:8080/index.do</a> 看看效果吧。</p>
+<p><a name="SpringMVC"></a></p>
+<a name="JZtWXy"></a>
+<h2>4.5 Spring MVC</h2>
+<p>jetbrick-template 可以和 Spring MVC 进行集成。</p>
+<p>配置方式如下：</p> 
 <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
 <bean id="viewResolver" class="jetbrick.template.web.springmvc.JetTemplateViewResolver">
   <property name="suffix" value=".jetx"/>
 </bean>
-]]></script><p><a name="JFinal"></a></p><h2>JFinal</h2><p>jetbrick-template 可以和 JFinal 进行集成。</p><p>修改 JFinal 主控制文件</p>
+]]></script>
+<p><a name="JFinal"></a></p>
+<a name="pwVXCN"></a>
+<h2>4.6 JFinal</h2>
+<p>jetbrick-template 可以和 JFinal 进行集成。</p>
+<p>修改 JFinal 主控制文件</p> 
 <script type="syntaxhighlighter" class="brush: java"><![CDATA[
 @Override
 public void configConstant(Constants me) {
     me.setMainRenderFactory(new JetTemplateRenderFactory());
     ...
 }
-]]></script><p>可以了，就这么简单!</p>
+]]></script>
+<p>可以了，就这么简单!</p>
 <!-- markdown body end -->
 
     </div>

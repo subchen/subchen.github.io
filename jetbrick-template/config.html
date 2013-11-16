@@ -73,137 +73,236 @@
 </div>
 
 <div class="container">
+
+    <style type="text/css">
+        .affix-top {
+          float: left;
+          margin-top: 20px;
+        }
+        .affix {
+          position: left;
+          float: right;
+          top: 20px;
+          z-index: 100;
+        }
+        .markdown {
+          margin-left: 240px; 
+        }
+    </style>
+    <div class="jb-nav-list-container" data-spy="affix" data-offset-top="230">
+        <ul class="jb-nav-list">
+            <li><a href="#zRpVWa">1 全局配置选项</a></li>
+            <li><a href="#tIHzbn">&nbsp&nbsp1.1 全局包/变量/方法/函数配置</a></li>
+            <li><a href="#vKVLAP">&nbsp&nbsp1.2 模板路径和编码格式配置</a></li>
+            <li><a href="#JPmZUc">&nbsp&nbsp1.3 编译配置</a></li>
+            <li><a href="#ebbewz">&nbsp&nbsp1.4 其他配置</a></li>
+        </ul>
+    </div>
+
     <div class="markdown">
 
 <!-- markdown body begin -->
-<h1>全局配置选项</h1>
-<table>
-  <thead>
-    <tr>
-      <th>名称 </th>
-      <th>说明 </th>
-      <th>默认值 </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>import.packages </td>
-      <td>默认导入的 java 包 </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>import.methods </td>
-      <td>默认导入的扩展方法 </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>import.functions </td>
-      <td>默认导入的扩展函数 </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>import.variables </td>
-      <td>默认导入的 java 对象 </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>input.encoding </td>
-      <td>模板源文件的编码格式 </td>
-      <td>utf-8 </td>
-    </tr>
-    <tr>
-      <td>output.encoding </td>
-      <td>模板输出编码格式 </td>
-      <td>utf-8 </td>
-    </tr>
-    <tr>
-      <td>template.loader </td>
-      <td>模板资源载入Class </td>
-      <td>jetbrick.template.resource.loader.FileSystemResourceLoader </td>
-    </tr>
-    <tr>
-      <td>template.path </td>
-      <td>模板资源的根目录 </td>
-      <td>当前目录 </td>
-    </tr>
-    <tr>
-      <td>template.suffix </td>
-      <td>默认模板文件扩展名 </td>
-      <td>.jetx </td>
-    </tr>
-    <tr>
-      <td>template.reloadable </td>
-      <td>是否允许热加载 </td>
-      <td>false </td>
-    </tr>
-    <tr>
-      <td>compile.debug </td>
-      <td>是否允许输出 debug 信息 </td>
-      <td>false </td>
-    </tr>
-    <tr>
-      <td>compile.path </td>
-      <td>默认编译输出路径 </td>
-      <td>系统TEMP目录 </td>
-    </tr>
-    <tr>
-      <td>trim.directive.line </td>
-      <td>是否要删除指令行两边的空白</td>
-      <td>true </td>
-    </tr>
-  </tbody>
-</table><p><strong>注意</strong>：所有配置选项都必须在 <code>JetEngine</code> 初始化的时候指定，不允许动态修改。</p><h2>全局包/变量/方法/函数配置</h2><h3><strong>import.packages</strong></h3><p>在模板中，如果要用到一些其他的 Class, 那么可以先 import 进来，这样就可以在模板中使用短名字，比如 <code>Date</code> 而不是 <code>java.util.Date</code>。</p><p>允许配置多个 java 包名，用逗号分隔。示例如下：</p>
+    <a name="zRpVWa"></a>
+<h1>1 全局配置选项</h1> 
+<table> 
+ <thead> 
+  <tr> 
+   <th>名称 </th> 
+   <th>说明 </th> 
+   <th>默认值 </th> 
+  </tr> 
+ </thead> 
+ <tbody> 
+  <tr> 
+   <td>import.packages </td> 
+   <td>默认导入的 java 包 </td> 
+   <td> </td> 
+  </tr> 
+  <tr> 
+   <td>import.methods </td> 
+   <td>默认导入的扩展方法 </td> 
+   <td> </td> 
+  </tr> 
+  <tr> 
+   <td>import.functions </td> 
+   <td>默认导入的扩展函数 </td> 
+   <td> </td> 
+  </tr> 
+  <tr> 
+   <td>import.variables </td> 
+   <td>默认导入的 java 对象 </td> 
+   <td> </td> 
+  </tr> 
+  <tr> 
+   <td>input.encoding </td> 
+   <td>模板源文件的编码格式 </td> 
+   <td>utf-8 </td> 
+  </tr> 
+  <tr> 
+   <td>output.encoding </td> 
+   <td>模板输出编码格式 </td> 
+   <td>utf-8 </td> 
+  </tr> 
+  <tr> 
+   <td>template.loader </td> 
+   <td>模板资源载入Class </td> 
+   <td>jetbrick.template.resource.loader.FileSystemResourceLoader </td> 
+  </tr> 
+  <tr> 
+   <td>template.path </td> 
+   <td>模板资源的根目录 </td> 
+   <td>当前目录 </td> 
+  </tr> 
+  <tr> 
+   <td>template.suffix </td> 
+   <td>默认模板文件扩展名 </td> 
+   <td>.jetx </td> 
+  </tr> 
+  <tr> 
+   <td>template.reloadable </td> 
+   <td>是否允许热加载 </td> 
+   <td>false </td> 
+  </tr> 
+  <tr> 
+   <td>compile.debug </td> 
+   <td>是否允许输出 debug 信息 </td> 
+   <td>false </td> 
+  </tr> 
+  <tr> 
+   <td>compile.path </td> 
+   <td>默认编译输出路径 </td> 
+   <td>系统TEMP目录 </td> 
+  </tr> 
+  <tr> 
+   <td>trim.directive.line </td> 
+   <td>是否要删除指令行两边的空白</td> 
+   <td>true </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p><strong>注意</strong>：所有配置选项都必须在 <code>JetEngine</code> 初始化的时候指定，不允许动态修改。</p>
+<a name="tIHzbn"></a>
+<h2>1.1 全局包/变量/方法/函数配置</h2>
+<a name="ecYaAg"></a>
+<h3>1.1.1 import.packages</h3>
+<p>在模板中，如果要用到一些其他的 Class, 那么可以先 import 进来，这样就可以在模板中使用短名字，比如 <code>Date</code> 而不是 <code>java.util.Date</code>。</p>
+<p>允许配置多个 java 包名，用逗号分隔。示例如下：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 import.packages = jetbrick.schema.app.model
 import.packages = jetbrick.schema.app.model.*
 import.packages = jetbrick.schema.app.model, jetbrick.schema.app.methods.*
-]]></script><p><code>jetbrick-template</code> 会自动引入 <code>java.lang.*</code> 和 <code>java.util.*</code>。</p><p><strong>注意</strong>：和 Java 不同，这里不支持 import 特定的 Class，只能 import 整个包。</p><h3>import.variables</h3><p>在一个 webapp 中，我们希望每个模板都自动引入一些变量，比如 <code>HttpServletRequest request</code>，那么我们就可以在这里定义。</p><p>允许配置多个变量定义，用逗号分隔。示例如下：</p>
+]]></script>
+<p><code>jetbrick-template</code> 会自动引入 <code>java.lang.*</code> 和 <code>java.util.*</code>。</p>
+<p><strong>注意</strong>：和 Java 不同，这里不支持 import 特定的 Class，只能 import 整个包。</p>
+<a name="oRrHDf"></a>
+<h3>1.1.2 import.variables</h3>
+<p>在一个 webapp 中，我们希望每个模板都自动引入一些变量，比如 <code>HttpServletRequest request</code>，那么我们就可以在这里定义。</p>
+<p>允许配置多个变量定义，用逗号分隔。示例如下：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 import.variables = HttpServletRequest request
 import.variables = jetbrick.orm.Pagelist pagelist, List<Entity> entites
-]]></script><p>变量的类型可以使用泛型定义，并且会自动在 <code>import.packages</code> 里面查找 Class。</p><p><strong>注意</strong>：全局定义的变量如果在模板中被重新定义成其他类型(<code>#define</code>, <code>#set</code>)，则以模板定义优先。</p><h3>import.methods</h3><p>我们知道一个 Java Class 的 所有 methods 都是定义在同一个 class 文件中的，不能在其他地方进行动态扩展。但是一些其他动态语言却支持在 Class 外部为这个 Class 增加一些方法。比如：</p>
-<ul>
-  <li>JavaScript 的 prototype 机制</li>
-  <li>Groovy 的 metaClass 机制</li>
-  <li>Kotlin</li>
-</ul><p>jetbrick-template 也在这里带给大家强大的动态方法扩展机制。具体参考： <a href="userguide.html#methods">jetbrick-template 动态方法扩展</a></p><p>这里就是把实现了动态扩展的 Method Class 注册到 JetEngine 中。允许配置多个 Class 定义，用逗号分隔。示例如下：</p>
+]]></script>
+<p>变量的类型可以使用泛型定义，并且会自动在 <code>import.packages</code> 里面查找 Class。</p>
+<p><strong>注意</strong>：全局定义的变量如果在模板中被重新定义成其他类型(<code>#define</code>, <code>#set</code>)，则以模板定义优先。</p>
+<a name="bKKpxW"></a>
+<h3>1.1.3 import.methods</h3>
+<p>我们知道一个 Java Class 的 所有 methods 都是定义在同一个 class 文件中的，不能在其他地方进行动态扩展。但是一些其他动态语言却支持在 Class 外部为这个 Class 增加一些方法。比如：</p> 
+<ul> 
+ <li>JavaScript 的 prototype 机制</li> 
+ <li>Groovy 的 metaClass 机制</li> 
+ <li>Kotlin</li> 
+</ul>
+<p>jetbrick-template 也在这里带给大家强大的动态方法扩展机制。具体参考： <a href="userguide.html#methods">jetbrick-template 动态方法扩展</a></p>
+<p>这里就是把实现了动态扩展的 Method Class 注册到 JetEngine 中。允许配置多个 Class 定义，用逗号分隔。示例如下：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 import.methods = StringMethods, app.project.methods.UserAuthMethods
-]]></script><p>定义的类名会自动在 <code>import.packages</code> 里面查找 Class。</p><p><code>jetbrick-template</code> 默认会注册 <code>jetbrick.template.runtime.JetMethods</code>，具体参考：<a href="syntax.html#default_methods">默认的方法扩展</a>。</p><h3>import.functions</h3><p>和 <code>import.methods</code> 类似，我们还支持在模板中使用函数。</p><p>允许配置多个 Function Class 定义，用逗号分隔。示例如下：</p>
+]]></script>
+<p>定义的类名会自动在 <code>import.packages</code> 里面查找 Class。</p>
+<p><code>jetbrick-template</code> 默认会注册 <code>jetbrick.template.runtime.JetMethods</code>，具体参考：<a href="syntax.html#default_methods">默认的方法扩展</a>。</p>
+<a name="qyTdlH"></a>
+<h3>1.1.4 import.functions</h3>
+<p>和 <code>import.methods</code> 类似，我们还支持在模板中使用函数。</p>
+<p>允许配置多个 Function Class 定义，用逗号分隔。示例如下：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 import.functions = app.project.methods.UserAuthFunctions
-]]></script><p><code>jetbrick-template</code> 默认会注册 <code>jetbrick.template.runtime.JetFunctions</code>，具体参考：<a href="syntax.html#default_functions">默认的函数扩展</a>。</p><h2>模板路径和编码格式配置</h2><h3>input.encoding</h3><p>模板源文件的编码格式，默认为 <code>utf-8</code>。</p><h3>output.encoding</h3><p>模板输出内容的编码格式，默认为 <code>utf-8</code>。</p><h3>template.loader</h3><p>如何找到我们自己的模板文件呢？这里就是定义我们要使用的查找类。我们支持下面几种 Class</p>
+]]></script>
+<p><code>jetbrick-template</code> 默认会注册 <code>jetbrick.template.runtime.JetFunctions</code>，具体参考：<a href="syntax.html#default_functions">默认的函数扩展</a>。</p>
+<a name="vKVLAP"></a>
+<h2>1.2 模板路径和编码格式配置</h2>
+<a name="vQuAMi"></a>
+<h3>1.2.1 input.encoding</h3>
+<p>模板源文件的编码格式，默认为 <code>utf-8</code>。</p>
+<a name="LgHaNV"></a>
+<h3>1.2.2 output.encoding</h3>
+<p>模板输出内容的编码格式，默认为 <code>utf-8</code>。</p>
+<a name="yGJCHY"></a>
+<h3>1.2.3 template.loader</h3>
+<p>如何找到我们自己的模板文件呢？这里就是定义我们要使用的查找类。我们支持下面几种 Class</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 template.loader = jetbrick.template.resource.loader.FileSystemResourceLoader
 template.loader = jetbrick.template.resource.loader.ClasspathResourceLoader
 template.loader = jetbrick.template.resource.loader.JarResourceLoader
-]]></script><p>默认为 <code>jetbrick.template.resource.loader.FileSystemResourceLoader</code>。</p><h3>template.path</h3><p>除了要定义 <code>template.loader</code>，我们还需要定义模板存放的根目录。</p><p>默认为系统当前目录：<code>System.getProperty(&quot;user.dir&quot;)</code>。</p>
-<ul>
-  <li>从文件系统加载</li>
-</ul>
+]]></script>
+<p>默认为 <code>jetbrick.template.resource.loader.FileSystemResourceLoader</code>。</p>
+<a name="reguVD"></a>
+<h3>1.2.4 template.path</h3>
+<p>除了要定义 <code>template.loader</code>，我们还需要定义模板存放的根目录。</p>
+<p>默认为系统当前目录：<code>System.getProperty(&quot;user.dir&quot;)</code>。</p> 
+<ul> 
+ <li>从文件系统加载</li> 
+</ul> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 template.loader = jetbrick.template.resource.loader.FileSystemResourceLoader
 template.path = /opt/app/templates/
-]]></script>
-<ul>
-  <li>从Classpath下加载</li>
-</ul>
+]]></script> 
+<ul> 
+ <li>从Classpath下加载</li> 
+</ul> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 template.loader = jetbrick.template.resource.loader.ClasspathResourceLoader
 template.path = /META-INF/templates/
-]]></script>
-<ul>
-  <li>从jar包中加载</li>
-</ul>
+]]></script> 
+<ul> 
+ <li>从jar包中加载</li> 
+</ul> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 template.loader = jetbrick.template.resource.loader.JarResourceLoader
 template.path = /opt/app/templates.jar
-]]></script><h3>template.suffix</h3><p>默认的模板文件扩展名，主要用于 Web 框架集成中，用于查找和过滤模板用。</p><h3>template.reloadable</h3><p>在开发模式下面，我们一般需要频繁的修改模板内容来进行调试。那么我们需要打开这个功能来支持模板的热部署。（类似于 <code>JSP</code>）</p><p>是否需要重新编译和加载模板，取决于模板源文件的最后修改时间。</p><p>默认为 <code>false</code>，建议只在开发模式中启用。</p><h2>编译配置</h2><p>jetbrick-template 采用编译成 Java ByteCode 来提高性能。</p><h3>compile.debug</h3><p>是否在日志中打印输出模板生成的 Java Source 源代码。</p><p>默认 <code>false</code>，建议在开发模式中启用。</p><p><strong>注意</strong>：同时需要 slf4j 的配合才能输出日志。</p><h3>compile.path</h3><p>在模板编译的时候，会先生成对应的 <code>.java</code> 文件，然后在把 <code>.java</code> 文件编译成 <code>.class</code> 文件。我们生成的这 2 种文件就放在这个目录下面。</p><p>在用 Eclipse 进行 debug 的时候，可以 link 这个目录为 sourcepath 来进行 debug。具体参考：<a href="userguide.html#debug">如何调试模板 debug？</a></p><p>默认为系统TEMP目录：<code>System.getProperty(&quot;java.io.tmpdir&quot;)</code>。</p><p><strong>注意</strong>：我们会在这个目录中生成一个 jetx_{version} 的子目录，这个才是真正的 sourcepath。</p><h2>其他配置</h2><h3>trim.directive.line</h3><p>由于指令之间存在很多的空白内容，而空白内容也会被作为原始文本原封不动的输出，这样会造成很多输出的内容参差不齐。这个就是优化输出格式的，对于用模板来进行代码生成时候特别有用。不建议关闭。</p><p>模板示例：</p>
+]]></script>
+<a name="WdzisW"></a>
+<h3>1.2.5 template.suffix</h3>
+<p>默认的模板文件扩展名，主要用于 Web 框架集成中，用于查找和过滤模板用。</p>
+<a name="SYtNyc"></a>
+<h3>1.2.6 template.reloadable</h3>
+<p>在开发模式下面，我们一般需要频繁的修改模板内容来进行调试。那么我们需要打开这个功能来支持模板的热部署。（类似于 <code>JSP</code>）</p>
+<p>是否需要重新编译和加载模板，取决于模板源文件的最后修改时间。</p>
+<p>默认为 <code>false</code>，建议只在开发模式中启用。</p>
+<a name="JPmZUc"></a>
+<h2>1.3 编译配置</h2>
+<p>jetbrick-template 采用编译成 Java ByteCode 来提高性能。</p>
+<a name="DuPrKw"></a>
+<h3>1.3.1 compile.debug</h3>
+<p>是否在日志中打印输出模板生成的 Java Source 源代码。</p>
+<p>默认 <code>false</code>，建议在开发模式中启用。</p>
+<p><strong>注意</strong>：同时需要 slf4j 的配合才能输出日志。</p>
+<a name="KTdKbw"></a>
+<h3>1.3.2 compile.path</h3>
+<p>在模板编译的时候，会先生成对应的 <code>.java</code> 文件，然后在把 <code>.java</code> 文件编译成 <code>.class</code> 文件。我们生成的这 2 种文件就放在这个目录下面。</p>
+<p>在用 Eclipse 进行 debug 的时候，可以 link 这个目录为 sourcepath 来进行 debug。具体参考：<a href="userguide.html#debug">如何调试模板 debug？</a></p>
+<p>默认为系统TEMP目录：<code>System.getProperty(&quot;java.io.tmpdir&quot;)</code>。</p>
+<p><strong>注意</strong>：我们会在这个目录中生成一个 jetx_{version} 的子目录，这个才是真正的 sourcepath。</p>
+<a name="ebbewz"></a>
+<h2>1.4 其他配置</h2>
+<a name="IWtjWL"></a>
+<h3>1.4.1 trim.directive.line</h3>
+<p>由于指令之间存在很多的空白内容，而空白内容也会被作为原始文本原封不动的输出，这样会造成很多输出的内容参差不齐。这个就是优化输出格式的，对于用模板来进行代码生成时候特别有用。不建议关闭。</p>
+<p>模板示例：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 #for (int n: [1,2,3])
 ${n}
 #end
-]]></script><p>禁用：<code>false</code></p>
+]]></script>
+<p>禁用：<code>false</code></p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 
 1
@@ -212,7 +311,8 @@ ${n}
 
 3
 
-]]></script><p>启用后的效果：<code>true</code> (默认启用)</p>
+]]></script>
+<p>启用后的效果：<code>true</code> (默认启用)</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 1
 2

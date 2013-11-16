@@ -73,15 +73,52 @@
 </div>
 
 <div class="container">
+
+    <style type="text/css">
+        .affix-top {
+          float: left;
+          margin-top: 20px;
+        }
+        .affix {
+          position: left;
+          float: right;
+          top: 20px;
+          z-index: 100;
+        }
+        .markdown {
+          margin-left: 240px; 
+        }
+    </style>
+    <div class="jb-nav-list-container" data-spy="affix" data-offset-top="230">
+        <ul class="jb-nav-list">
+            <li><a href="#fUhljp">1 开源许可 License</a></li>
+            <li><a href="#xaAbZJ">2 第三方依赖包 Dependences</a></li>
+            <li><a href="#tWiLHz">3 Maven 依赖 POM.xml</a></li>
+            <li><a href="#NLtMey">4 最新版本 Latest Version</a></li>
+            <li><a href="#EHJVfM">5 更新历史 Release Notes</a></li>
+        </ul>
+    </div>
+
     <div class="markdown">
 
 <!-- markdown body begin -->
-<h1>开源许可 License</h1><p>Copyright 2010-2013 Guoqiang Chen. All rights reserved.<br/>Email: <a href="mailto:&#115;u&#98;&#x63;&#x68;&#x65;&#x6e;&#64;&#x67;&#x6d;a&#105;&#x6c;&#46;c&#111;&#109;">&#115;u&#98;&#x63;&#x68;&#x65;&#x6e;&#64;&#x67;&#x6d;a&#105;&#x6c;&#46;c&#111;&#109;</a></p><p>Licensed under the Apache License, Version 2.0 (the &ldquo;License&rdquo;);<br/>you may not use this file except in compliance with the License.<br/>You may obtain a copy of the License at</p><p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p><p>Unless required by applicable law or agreed to in writing, software<br/>distributed under the License is distributed on an &ldquo;AS IS&rdquo; BASIS,<br/>WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<br/>See the License for the specific language governing permissions and<br/>limitations under the License.</p><h1>第三方依赖包 Dependences</h1>
-<ul>
-  <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK 1.6+</a></li>
-  <li><a href="http://www.antlr.org/download.html">ANTLR runtime 4.x</a></li>
-  <li><a href="http://www.slf4j.org/">Slf4j 1.7.x</a></li>
-</ul><p><strong>注意</strong>： jetbrick-template 需要使用 jdk6+ 里面的 tools.jar 来编译模板生成的 Java 源文件，所有需要完整的 jdk6+ 的运行环境，而不是 jre6+.</p><h1>Maven 依赖 POM.xml</h1><p>已发布到 Maven 中央库： <a href="http://central.maven.org/maven2/com/github/subchen/">http://central.maven.org/maven2/com/github/subchen/</a></p>
+    <a name="fUhljp"></a>
+<h1>1 开源许可 License</h1>
+<p>Copyright 2010-2013 Guoqiang Chen. All rights reserved.<br />Email: <a href="mailto:subchen@gmail.com">subchen@gmail.com</a></p>
+<p>Licensed under the Apache License, Version 2.0 (the “License”);<br />you may not use this file except in compliance with the License.<br />You may obtain a copy of the License at</p>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software<br />distributed under the License is distributed on an “AS IS” BASIS,<br />WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<br />See the License for the specific language governing permissions and<br />limitations under the License.</p>
+<a name="xaAbZJ"></a>
+<h1>2 第三方依赖包 Dependences</h1> 
+<ul> 
+ <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK 1.6+</a></li> 
+ <li><a href="http://www.antlr.org/download.html">ANTLR runtime 4.x</a></li> 
+ <li><a href="http://www.slf4j.org/">Slf4j 1.7.x</a></li> 
+</ul>
+<p><strong>注意</strong>： jetbrick-template 需要使用 jdk6+ 里面的 tools.jar 来编译模板生成的 Java 源文件，所有需要完整的 jdk6+ 的运行环境，而不是 jre6+.</p>
+<a name="tWiLHz"></a>
+<h1>3 Maven 依赖 POM.xml</h1>
+<p>已发布到 Maven 中央库： <a href="http://central.maven.org/maven2/com/github/subchen/">http://central.maven.org/maven2/com/github/subchen/</a></p> 
 <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
 <project>
   <dependencies>
@@ -102,39 +139,46 @@
     </dependency>
   </dependencies>
 <project>
-]]></script><p><a name="version"></a></p><h1>最新版本 Latest Version</h1><p>目前最新稳定版本为：1.0.0，发布于：2013-11-18，欢迎使用。</p>
-<table>
-  <thead>
-    <tr>
-      <th>时间 </th>
-      <th>版本 </th>
-      <th>二进制包 </th>
-      <th>完整包 </th>
-      <th>更新历史 </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>2013-11-18 </td>
-      <td>1.0.0 </td>
-      <td><a href="download/jetbrick-template-1.0.0.zip">jetbrick-template-1.0.0.zip</a> </td>
-      <td><a href="download/jetbrick-template-1.0.0-all.zip">jetbrick-template-1.0.0-all.zip</a> </td>
-      <td><a href="#release_notes_1_0_0">更新历史</a> </td>
-    </tr>
-  </tbody>
-</table><h1>更新历史 Release Notes</h1><p><a name="release_notes_1_0_0"></a><br/>Version 1.0.0 (2013-11-18)</p>
-<ul>
-  <li>支持类似与 Velocity 的多种指令</li>
-  <li>支持静态编译</li>
-  <li>支持编译缓存</li>
-  <li>支持热加载</li>
-  <li>支持类型推导</li>
-  <li>支持泛型</li>
-  <li>支持可变参数方法调用</li>
-  <li>支持方法重载</li>
-  <li>支持类似于 Groovy 的方法扩展</li>
-  <li>支持函数扩展</li>
-  <li>First public release</li>
+]]></script>
+<p><a name="version"></a></p>
+<a name="NLtMey"></a>
+<h1>4 最新版本 Latest Version</h1>
+<p>目前最新稳定版本为：1.0.0，发布于：2013-11-18，欢迎使用。</p> 
+<table> 
+ <thead> 
+  <tr> 
+   <th>时间 </th> 
+   <th>版本 </th> 
+   <th>二进制包 </th> 
+   <th>完整包 </th> 
+   <th>更新历史 </th> 
+  </tr> 
+ </thead> 
+ <tbody> 
+  <tr> 
+   <td>2013-11-18 </td> 
+   <td>1.0.0 </td> 
+   <td><a href="download/jetbrick-template-1.0.0.zip">jetbrick-template-1.0.0.zip</a> </td> 
+   <td><a href="download/jetbrick-template-1.0.0-all.zip">jetbrick-template-1.0.0-all.zip</a> </td> 
+   <td><a href="#release_notes_1_0_0">更新历史</a> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<a name="EHJVfM"></a>
+<h1>5 更新历史 Release Notes</h1>
+<p><a name="release_notes_1_0_0"></a><br />Version 1.0.0 (2013-11-18)</p> 
+<ul> 
+ <li>支持类似与 Velocity 的多种指令</li> 
+ <li>支持静态编译</li> 
+ <li>支持编译缓存</li> 
+ <li>支持热加载</li> 
+ <li>支持类型推导</li> 
+ <li>支持泛型</li> 
+ <li>支持可变参数方法调用</li> 
+ <li>支持方法重载</li> 
+ <li>支持类似于 Groovy 的方法扩展</li> 
+ <li>支持函数扩展</li> 
+ <li>First public release</li> 
 </ul>
 <!-- markdown body end -->
 

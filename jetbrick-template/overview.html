@@ -73,22 +73,53 @@
 </div>
 
 <div class="container">
+
+    <style type="text/css">
+        .affix-top {
+          float: left;
+          margin-top: 20px;
+        }
+        .affix {
+          position: left;
+          float: right;
+          top: 20px;
+          z-index: 100;
+        }
+        .markdown {
+          margin-left: 240px; 
+        }
+    </style>
+    <div class="jb-nav-list-container" data-spy="affix" data-offset-top="230">
+        <ul class="jb-nav-list">
+            <li><a href="#jljqIl">1 概述 Overview</a></li>
+            <li><a href="#pXAvUh">2 简单易用的指令</a></li>
+            <li><a href="#iFNwXM">3 卓越性能 Perfermance</a></li>
+            <li><a href="#VtQZOo">4 易于集成 Integrate</a></li>
+            <li><a href="#hWcHEM">5 友好的错误提示</a></li>
+        </ul>
+    </div>
+
     <div class="markdown">
 
 <!-- markdown body begin -->
-<h1>概述 Overview</h1><p>jetbrick-template 是一个新一代 Java 模板引擎，具有高性能和高扩展性。 适合于动态 HTML 页面输出或者代码生成，可替代 JSP 页面或者 Velocity 等模板。 指令和 Velocity 相似，表达式和 Java 保持一致，易学易用。</p>
-<ul>
-  <li>支持类似与 Velocity 的多种指令</li>
-  <li>支持静态编译</li>
-  <li>支持编译缓存</li>
-  <li>支持热加载</li>
-  <li>支持类型推导</li>
-  <li>支持泛型</li>
-  <li>支持可变参数方法调用</li>
-  <li>支持方法重载</li>
-  <li>支持类似于 Groovy 的方法扩展</li>
-  <li>支持函数扩展</li>
-</ul><h1>简单易用的指令</h1><p>jetbrick-template 指令集和老牌的模板引擎 Velocity 非常相似，易学易用。</p>
+    <a name="jljqIl"></a>
+<h1>1 概述 Overview</h1>
+<p>jetbrick-template 是一个新一代 Java 模板引擎，具有高性能和高扩展性。 适合于动态 HTML 页面输出或者代码生成，可替代 JSP 页面或者 Velocity 等模板。 指令和 Velocity 相似，表达式和 Java 保持一致，易学易用。</p> 
+<ul> 
+ <li>支持类似与 Velocity 的多种指令</li> 
+ <li>支持静态编译</li> 
+ <li>支持编译缓存</li> 
+ <li>支持热加载</li> 
+ <li>支持类型推导</li> 
+ <li>支持泛型</li> 
+ <li>支持可变参数方法调用</li> 
+ <li>支持方法重载</li> 
+ <li>支持类似于 Groovy 的方法扩展</li> 
+ <li>支持函数扩展</li> 
+</ul>
+<a name="pXAvUh"></a>
+<h1>2 简单易用的指令</h1>
+<p>jetbrick-template 指令集和老牌的模板引擎 Velocity 非常相似，易学易用。</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 #define(List<UserInfo> userlist)
 <table>
@@ -105,15 +136,29 @@
   </tr>
   #end
 </table>
-]]></script><p>详细指令语法，请参考：<a href="syntax.html">语法指南</a>。或者<a href="syntax.html#velocity">和 Velocity 的比较</a>。</p><h1>卓越性能 Perfermance</h1><p>jetbrick-template 将模板编译成 Java ByteCode 运行，并采用强类型推导，无需反射和减少类型转换。渲染速度等价于 Java 硬编码。比 Velocity 等模板快一个数量级。 比 JSP 也快，因为 JSP 只有 Scriptlet 是编译的，Tag 和 EL 都是解释执行的。 而 jetbrick-template 是全编译的。</p><p><img src="../static/images/perfermance.png"  alt="perfermance"/></p><p>在 Stream 模式中(Webapp 采用 OutputStream 将文本输出到浏览器)，由于 Java 硬编码输出字符串需要进行一次编码的转换。 而 jetbrick-template 却在第一次运行期间就缓存了编码转换结果，使得 jetbrick-template 的性能甚至优于 Java 硬编码。</p><p>具体测试用例，请参考：<a href="#">jetbrick-template-benchmark</a> (platform: Window 7 x64, Intel i5, 16GB RAM, JDK 1.6.0_41 x64)</p><h1>易于集成 Integrate</h1><p>可以和市面上常见的 Web MVC framework 进行集成。</p>
-<ul>
-  <li><a href="integrate.html#HttpServlet">HttpServlet</a></li>
-  <li><a href="integrate.html#Filter">Filter</a></li>
-  <li><a href="http://subchen.github.com/jetbrick-webmvc/">JetBrick WebMVC</a></li>
-  <li><a href="integrate.html#Struts">Struts 2.x</a></li>
-  <li><a href="integrate.html#SpringMVC">Spring MVC</a></li>
-  <li><a href="integrate.html#JFinal">JFinal</a></li>
-</ul><p>具体集成方法，请参考： <a href="integrate.html">框架集成</a></p><h1>友好的错误提示</h1><p>具有详细的模板解析和编译错误提示，出错提示可以定位到原始模板所在的行号。</p>
+]]></script>
+<p>详细指令语法，请参考：<a href="syntax.html">语法指南</a>。或者<a href="syntax.html#velocity">和 Velocity 的比较</a>。</p>
+<a name="iFNwXM"></a>
+<h1>3 卓越性能 Perfermance</h1>
+<p>jetbrick-template 将模板编译成 Java ByteCode 运行，并采用强类型推导，无需反射和减少类型转换。渲染速度等价于 Java 硬编码。比 Velocity 等模板快一个数量级。 比 JSP 也快，因为 JSP 只有 Scriptlet 是编译的，Tag 和 EL 都是解释执行的。 而 jetbrick-template 是全编译的。</p>
+<p><img src="../static/images/perfermance.png" alt="perfermance" /></p>
+<p>在 Stream 模式中(Webapp 采用 OutputStream 将文本输出到浏览器)，由于 Java 硬编码输出字符串需要进行一次编码的转换。 而 jetbrick-template 却在第一次运行期间就缓存了编码转换结果，使得 jetbrick-template 的性能甚至优于 Java 硬编码。</p>
+<p>具体测试用例，请参考：<a href="#">jetbrick-template-benchmark</a> (platform: Window 7 x64, Intel i5, 16GB RAM, JDK 1.6.0_41 x64)</p>
+<a name="VtQZOo"></a>
+<h1>4 易于集成 Integrate</h1>
+<p>可以和市面上常见的 Web MVC framework 进行集成。</p> 
+<ul> 
+ <li><a href="integrate.html#HttpServlet">HttpServlet</a></li> 
+ <li><a href="integrate.html#Filter">Filter</a></li> 
+ <li><a href="http://subchen.github.com/jetbrick-webmvc/">JetBrick WebMVC</a></li> 
+ <li><a href="integrate.html#Struts">Struts 2.x</a></li> 
+ <li><a href="integrate.html#SpringMVC">Spring MVC</a></li> 
+ <li><a href="integrate.html#JFinal">JFinal</a></li> 
+</ul>
+<p>具体集成方法，请参考： <a href="integrate.html">框架集成</a></p>
+<a name="hWcHEM"></a>
+<h1>5 友好的错误提示</h1>
+<p>具有详细的模板解析和编译错误提示，出错提示可以定位到原始模板所在的行号。</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 22:14:51.271 [main] INFO  (JetTemplate.java:68) - Loading template source file: D:\workspace\github\jetbrick-schema-app\bin\config\report\schema.html.jetx
 22:14:51.406 [main] ERROR (JetTemplateErrorListener.java:27) - Template parse failed:
@@ -139,11 +184,11 @@ Caused by: java.lang.RuntimeException: The method getColumnNam() or isColumnNam(
   at jetbrick.template.parser.JetTemplateCodeVisitor.visitExpr_field_access(JetTemplateCodeVisitor.java:665)
   at jetbrick.template.parser.JetTemplateCodeVisitor.visitExpr_field_access(JetTemplateCodeVisitor.java:1)
 ...
-]]></script>
-<ul>
-  <li>出错模板：D:\workspace\github\jetbrick-schema-app\bin\config\report\schema.html.jetx</li>
-  <li>出错行号：37</li>
-  <li>错误原因：The method getColumnNam() or isColumnNam() is undefined for the type jetbrick.schema.app.model.TableColumn.</li>
+]]></script> 
+<ul> 
+ <li>出错模板：D:\workspace\github\jetbrick-schema-app\bin\config\report\schema.html.jetx</li> 
+ <li>出错行号：37</li> 
+ <li>错误原因：The method getColumnNam() or isColumnNam() is undefined for the type jetbrick.schema.app.model.TableColumn.</li> 
 </ul>
 <!-- markdown body end -->
 
