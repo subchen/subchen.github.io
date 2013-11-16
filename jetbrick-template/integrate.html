@@ -91,23 +91,23 @@
     </style>
     <div class="jb-nav-list-container" data-spy="affix" data-offset-top="230">
         <ul class="jb-nav-list">
-            <li><a href="#rugGVX">1 简述</a></li>
-            <li><a href="#PjxiNZ">2 Web 中的默认隐含对象</a></li>
-            <li><a href="#glFzJk">3 JetEngine 自动加载方式</a></li>
-            <li><a href="#nZhXyo">4 各种集成方式介绍</a></li>
-            <li><a href="#PaioZF">&nbsp&nbsp4.1 直接使用 HttpServlet</a></li>
-            <li><a href="#PXWHgD">&nbsp&nbsp4.2 直接使用 Filter 模式</a></li>
-            <li><a href="#tZuQYg">&nbsp&nbsp4.3 jetbrick webmvc</a></li>
-            <li><a href="#fPUUYK">&nbsp&nbsp4.4 Struts 2.x</a></li>
-            <li><a href="#akAcjc">&nbsp&nbsp4.5 Spring MVC</a></li>
-            <li><a href="#egkCti">&nbsp&nbsp4.6 JFinal</a></li>
+            <li><a href="#x1016944">1 简述</a></li>
+            <li><a href="#x1336408494">2 Web 中的默认隐含对象</a></li>
+            <li><a href="#x1694283446">3 JetEngine 自动加载方式</a></li>
+            <li><a href="#x1896411413">4 各种集成方式介绍</a></li>
+            <li><a href="#x1487897129">&nbsp&nbsp4.1 直接使用 HttpServlet</a></li>
+            <li><a href="#x554032752">&nbsp&nbsp4.2 直接使用 Filter 模式</a></li>
+            <li><a href="#x98307550">&nbsp&nbsp4.3 jetbrick webmvc</a></li>
+            <li><a href="#x1633219041">&nbsp&nbsp4.4 Struts 2.x</a></li>
+            <li><a href="#x941308089">&nbsp&nbsp4.5 Spring MVC</a></li>
+            <li><a href="#x2108526772">&nbsp&nbsp4.6 JFinal</a></li>
         </ul>
     </div>
 
     <div class="markdown">
 
 <!-- markdown body begin -->
-    <a name="rugGVX"></a>
+    <a name="x1016944"></a>
 <h1>1 简述</h1>
 <p>jetbrick-template 除了作为普通的模板引擎嵌入在 Application 中外，大部分情况下还会和各种 WebMVC 框架整合作为前端的 View，来代替过时的 JSP 或者 Velocity。</p>
 <p>目前已近集成了几种流行的 Web 框架：</p> 
@@ -119,7 +119,7 @@
  <li><a href="#SpringMVC">Spring MVC</a></li> 
  <li><a href="#JFinal">JFinal</a></li> 
 </ul>
-<a name="PjxiNZ"></a>
+<a name="x1336408494"></a>
 <h1>2 Web 中的默认隐含对象</h1>
 <p>当 jetbrick-template 被用作 Web 应用中时候，会自动引入下面的对象，这些对象在所有的模板中全局可访问。</p> 
 <table> 
@@ -200,7 +200,7 @@ session.getAttribute("user") == ${sessionScope.user}
  <li>applicationScope</li> 
 </ol>
 <p>也就是说，如果存在 <code>request.getAttributes(&quot;user&quot;)</code> 的情况下 <code>${user}</code> 等价于 <code>${requestScope.user}</code>。</p>
-<a name="glFzJk"></a>
+<a name="x1694283446"></a>
 <h1>3 JetEngine 自动加载方式</h1>
 <p>需要在 web.xml 中进行配置，下面两个配置项都是可选项。</p> 
 <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
@@ -222,10 +222,10 @@ session.getAttribute("user") == ${sessionScope.user}
 </ol>
 <p><strong>好消息:</strong></p>
 <p>jetbrick-template 内置和其他 Web 框架的集成方式都可以用这两个配置想进行全局初始化。</p>
-<a name="nZhXyo"></a>
+<a name="x1896411413"></a>
 <h1>4 各种集成方式介绍</h1>
 <p><a name="HttpServlet"></a></p>
-<a name="PaioZF"></a>
+<a name="x1487897129"></a>
 <h2>4.1 直接使用 HttpServlet</h2>
 <p>jetbrick-template 可以直接作为 HttpServlet 使用。需要在 web.xml 中作如下配置。</p> 
 <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
@@ -241,7 +241,7 @@ session.getAttribute("user") == ${sessionScope.user}
 ]]></script>
 <p>最简单，也是最直接的方式。打开浏览器访问 <a href="http://127.0.0.1:8080/index.jetx">http://127.0.0.1:8080/index.jetx</a> 看看效果吧。</p>
 <p><a name="Filter"></a></p>
-<a name="PXWHgD"></a>
+<a name="x554032752"></a>
 <h2>4.2 直接使用 Filter 模式</h2>
 <p>jetbrick-template 可以直接作为 Filter 使用。需要在 web.xml 中作如下配置。</p> 
 <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
@@ -254,11 +254,11 @@ session.getAttribute("user") == ${sessionScope.user}
   <url-pattern>*.jetx</url-pattern>
 </filter-mapping>
 ]]></script>
-<a name="tZuQYg"></a>
+<a name="x98307550"></a>
 <h2>4.3 jetbrick webmvc</h2>
 <p>jetbrick webmvc 自身已经集成了 jetbrick-template。请参考 jetbrick webmvc 自身的开发文档。</p>
 <p><a name="Struts"></a></p>
-<a name="fPUUYK"></a>
+<a name="x1633219041"></a>
 <h2>4.4 Struts 2.x</h2>
 <p>jetbrick-template 可以和 Struts 2.x 进行集成。</p>
 <p>首先需要对 Struts 进行如下配置（<code>struts.xml</code>），这个配置是告诉 Struts 使用 <code>jetbrick.template.web.struts.JetTemplateResult</code> 这个类来处理采用 jetbrick-template 格式的模板：</p> 
@@ -275,7 +275,7 @@ session.getAttribute("user") == ${sessionScope.user}
 ]]></script>
 <p>打开浏览器访问 <a href="http://127.0.0.1:8080/index.do">http://127.0.0.1:8080/index.do</a> 看看效果吧。</p>
 <p><a name="SpringMVC"></a></p>
-<a name="akAcjc"></a>
+<a name="x941308089"></a>
 <h2>4.5 Spring MVC</h2>
 <p>jetbrick-template 可以和 Spring MVC 进行集成。</p>
 <p>配置方式如下：</p> 
@@ -285,7 +285,7 @@ session.getAttribute("user") == ${sessionScope.user}
 </bean>
 ]]></script>
 <p><a name="JFinal"></a></p>
-<a name="egkCti"></a>
+<a name="x2108526772"></a>
 <h2>4.6 JFinal</h2>
 <p>jetbrick-template 可以和 JFinal 进行集成。</p>
 <p>修改 JFinal 主控制文件</p> 
