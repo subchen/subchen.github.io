@@ -6574,11 +6574,11 @@ $(function() {
     if (path.endsWith("/js")) {
       path = path.beforeLast("/js");
     }
-    if (path.endsWith("/share")) {
-      path = path.beforeLast(path, "/share");
-    }
     if (path.endsWith("/static")) {
       path = path.beforeLast(path, "/static");
+    }
+    if (path.endsWith("/assets")) {
+      path = path.beforeLast(path, "/assets");
     }
     return jetbrick.webroot.cache = path;
   };
@@ -6712,14 +6712,17 @@ $(function() {
 
 
 /******************************************
- *  jetbrick.scrolltop.js
+ *  jetbrick.widget.scrolltop.js
  ******************************************/
+// namespace
+jetbrick.widget = jetbrick.widget || {};
+
 /**
- * 返回到顶部效果
+ * 单击此处，返回到顶部
  */
-jetbrick.scrolltop = function() {
-    var dom = $('<img src="../static/images/scrolltop.png" />');
-    dom.css({
+jetbrick.widget.scrolltop = function() {
+    var $dom = $('<img src="../assets/images/scrolltop.png" />');
+    $dom.css({
         display: 'none',
         cursor: 'pointer',
         position: 'fixed',
@@ -6731,31 +6734,31 @@ jetbrick.scrolltop = function() {
         width: 'auto',
         height: 'auto'
     });
-    $('body').append(dom);
+    $('body').append($dom);
 
     var hidden = true;
     $(window).on('scroll resize', function() {
         if ($(window).scrollTop() > 40) {
             if (hidden) {
-                dom.fadeIn();
+                $dom.fadeIn();
                 hidden = false;
             }
         } else {
             if (!hidden) {
-                dom.fadeOut();
+                $dom.fadeOut();
                 hidden = true;
             }
         }
     });
  
-    dom.click(function() {
+    $dom.click(function() {
         $('body,html').animate({scrollTop:0}, 400);
         return false;
     });
 };
 
 $(function() {
-    jetbrick.scrolltop();
+    jetbrick.widget.scrolltop();
 });
 
 
