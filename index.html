@@ -1,21 +1,99 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>subchen.github.com</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <title>jetbrick 系列项目主页</title>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <link href="assets/css/application.min.css" rel="stylesheet" type="text/css"/>
+
     <!--[if lt IE 9]>
-      <script src="https://raw.github.com/aFarkas/html5shiv/master/dist/html5shiv.js"></script>
-    <![endif]-->
+    <script src="assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="assets/js/application.min.js"></script>
+</head>
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  </head>
+<body>
 
-  <body>
+<div class="jb-topbar">
+    <div class="container">
+        <img src="assets/images/logo-mini.png"/>
+    </div>
+</div>
 
-    http://subchen.github.com/
+<div class="container">
+    <br/>
+    <h1>jetbrick 系列开源项目</h1>
+    <p>
+        jetbrick 致力于解决在 Java 开发过程中面临的多种问题。
+        从前端的 Java 模板引擎，CSS/JS 的 Widget UI 库，
+        再到后端的 Web MVC，O/R Mapping 等。包含了全生命周期的开发框架。
+        其中每一个框架都可以单独使用，目前全部项目已经开源，文档正在完善中...
+    </p>
+</div>
+<style>
+    .project-link:hover {
+        text-decoration: none;
+        box-shadow: 0 0 5px #b37f14;
+        border-color: #b37f14;
+    }
+    .project-link {
+        color: #34302d;
+        transition: all 0.2s;
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -ms-transition: all 0.2s;
+        -o-transition: all 0.2s;
 
-  </body>
+        border: 1px solid #ccc;
+        display: inline-block;
+        width: 275px;
+        height: 330px;
+        vertical-align: top;
+        padding: 30px;
+        cursor: pointer;
+    }
+</style>
+<div class="container">
+    <a class="project-link" href="jetbrick-template/index.html">
+        <img src="assets/images/jetbrick-template-logo.png">
+        <p>新一代 Java 模板引擎，具有高性能和高扩展性。 适合于动态 HTML 页面输出或者代码生成，可替代 JSP 页面或者 Velocity 等模板。</p>
+        <ul style="margin-left: 30px;">
+            <li>支持类似与 Velocity 的多种指令</li>
+            <li>支持静态编译</li>
+            <li>支持编译缓存</li>
+            <li>支持热加载</li>
+            <li>支持类型推导</li>
+            <li>支持泛型</li>
+            <li>支持可变参数方法调用</li>
+            <li>支持方法重载</li>
+            <li>支持类似于 Groovy 的方法扩展</li>
+            <li>支持函数扩展</li>
+        </ul>
+    </a>
+    <a class="project-link" style="margin-left: 19px;" href="#">
+        <img src="assets/images/jetbrick-framework-logo.png">
+        <p>融合了多个项目，文档完善中...</p>
+        <ul style="margin-left: 30px;">
+            <li>jetbrick-commons</li>
+            <li>jetbrick-webmvc</li>
+            <li>jetbrick-orm</li>
+            <li>jetbrick-dbupgrade</li>
+        </ul>
+    </a>
+    <a class="project-link pull-right" href="#">
+        <img src="assets/images/jetbrick-widget-logo.png">
+        <p>1个 CSS 框架 + 1个 JS 框架 (Core + UI)</p>
+        <p>文档完善中...</p>
+    </a>
+</div>
+
+<div class="container">
+    <div class="jb-footer">
+        Copyright 2010-2013 Guoqiang Chen. All rights reserved.
+        <br/>subchen&#64;gmail.com
+    </div>
+</div>
+
+</body>
 </html>
