@@ -8,19 +8,18 @@
 
     <link href="../assets/css/application.min.css" rel="stylesheet" type="text/css"/>
 
-    <!--[if lt IE 9]>
-    <script src="../assets/js/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="../assets/js/html5shiv.js"></script><![endif]-->
     <script type="text/javascript" src="../assets/js/application.min.js"></script>
 </head>
 
 <body>
-<a href="https://github.com/subchen/jetbrick-template/">
+<a href="https://github.com/subchen/jetbrick-template/" target="_blank">
     <img src="../assets/images/forkme_right_orange.png" alt="Fork me on GitHub" class="fork-me-on-github">
 </a>
 
 <div class="jb-topbar">
     <div class="container">
-        <img src="../assets/images/logo-mini.png"/>
+        <a href="http://subchen.github.io/"><img src="../assets/images/logo-mini.png"/></a>
         <!--
         <ul class="menubar">
             <li><a href="">commons</a></li>
@@ -141,7 +140,7 @@
 <a name="x1988995187"></a>
 <h1>3 卓越性能 Perfermance</h1>
 <p>jetbrick-template 将模板编译成 Java ByteCode 运行，并采用强类型推导，无需反射和减少类型转换。渲染速度等价于 Java 硬编码。比 Velocity 等模板快一个数量级。 比 JSP 也快，因为 JSP 只有 Scriptlet 是编译的，Tag 和 EL 都是解释执行的。 而 jetbrick-template 是全编译的。</p>
-<p><img src="../assets/images/perfermance.png" alt="perfermance" /></p>
+<p><img src="../static/images/perfermance.png" alt="perfermance" /></p>
 <p>在 Stream 模式中(Webapp 采用 OutputStream 将文本输出到浏览器)，由于 Java 硬编码输出字符串需要进行一次编码的转换。 而 jetbrick-template 却在第一次运行期间就缓存了编码转换结果，使得 jetbrick-template 的性能甚至优于 Java 硬编码。</p>
 <p>具体测试用例，请参考：<a href="#">jetbrick-template-benchmark</a> (platform: Window 7 x64, Intel i5, 16GB RAM, JDK 1.6.0_41 x64)</p>
 <a name="x1568210646"></a>
@@ -197,7 +196,8 @@ Caused by: java.lang.RuntimeException: The method getColumnNam() or isColumnNam(
 
 <div class="container">
     <div class="jb-footer">
-        Copyright 2011-2013 Guoqiang Chen<br/>subchen&#64;gmail.com
+        Copyright 2010-2013 Guoqiang Chen. All rights reserved.
+        <br/>subchen&#64;gmail.com
     </div>
 </div>
 
