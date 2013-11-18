@@ -204,15 +204,15 @@ session.getAttribute("user") == ${sessionScope.user}
 <p>需要在 web.xml 中进行配置，下面两个配置项都是可选项。</p> 
 <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
 <context-param>
-  <param-name>jetbirck-template-config-location</param-name>
-  <param-value>/WEB-INF/jetbirck-template.properties</param-value>
+  <param-name>jetbrick-template-config-location</param-name>
+  <param-value>/WEB-INF/jetbrick-template.properties</param-value>
 </context-param>
 
 <listener>
   <listener-class>jetbrick.template.web.JetWebEngineLoader</listener-class>
 </listener>
 ]]></script>
-<p>如果没有配置 <code>jetbirck-template-config-location</code> 参数，那么配置文件默认从 classpath 根目录下面查找 jetbrick-template.properties。</p>
+<p>如果没有配置 <code>jetbrick-template-config-location</code> 参数，那么配置文件默认从 classpath 根目录下面查找 jetbrick-template.properties。</p>
 <p>如果没有配置 JetWebEngineLoader 启动监听器，那么 JetEngine 也会在模板第一次请求的时候自动初始化。配置成 Listener，可以在 Webapp 启动的时候马上进行初始化。</p>
 <p><strong>注意：</strong></p> 
 <ol> 
