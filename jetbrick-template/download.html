@@ -41,9 +41,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.0.0.zip" class="download-button">
+        <a href="download/jetbrick-template-1.0.1.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.0.0.zip<br/>2013-11-18</span>
+            <span>jetbrick-template-1.0.1.zip<br/>2013-11-20</span>
         </a>
     </div>
 </div>
@@ -67,7 +67,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-11-18：jetbrick-template-1.0.0 版本已发布，欢迎使用和反馈。</a>
+        <a href="download.html#version">2013-11-20：jetbrick-template-1.0.1 版本已发布，欢迎使用和反馈。</a>
     </div>
 </div>
 
@@ -124,7 +124,7 @@
     <dependency>
       <groupId>com.github.subchen</groupId>
       <artifactId>jetbrick-template</artifactId>
-      <version>1.0.0</version>
+      <version>1.0.1</version>
     </dependency>
     <dependency>
       <groupId>org.antlr</groupId>
@@ -155,6 +155,13 @@
  </thead> 
  <tbody> 
   <tr> 
+   <td>2013-11-20 </td> 
+   <td>1.0.1 </td> 
+   <td><a href="#release_notes_1_0_0">jetbrick-template-1.0.1.zip</a> </td> 
+   <td><a href="download/jetbrick-template-1.0.1-all.zip">jetbrick-template-1.0.1-all.zip</a> </td> 
+   <td><a href="#release_notes_1_0_1">更新历史</a> </td> 
+  </tr> 
+  <tr> 
    <td>2013-11-18 </td> 
    <td>1.0.0 </td> 
    <td><a href="download/jetbrick-template-1.0.0.zip">jetbrick-template-1.0.0.zip</a> </td> 
@@ -165,7 +172,17 @@
 </table>
 <a name="x887846512"></a>
 <h1>5 更新历史 Release Notes</h1>
-<p><a name="release_notes_1_0_0"></a><br />Version 1.0.0 (2013-11-18)</p> 
+<p><a name="release_notes_1_0_1"></a><br /><strong>Version 1.0.1 (2013-11-20)</strong></p> 
+<ul> 
+ <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/1">#1 支持 Servlet 2.x</a></li> 
+ <li>[修复] <a href="https://github.com/subchen/jetbrick-template/issues/2">#2 trim.directive.line 选项，如果指令两边为非空格，也会被 trim</a></li> 
+ <li>[修复] <a href="https://github.com/subchen/jetbrick-template/issues/3">#3 compile.debug 默认应该为 false</a></li> 
+ <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/4">#4 增加指令注释支持，如： 
+   <!-- #if (...) --> 增强对可视化编辑器的友好度</a></li> 
+ <li>[修复] <a href="https://github.com/subchen/jetbrick-template/issues/6">#6 JDK 6 can’t load the template class compiled using JDK 7.</a></li> 
+ <li>[修复] <a href="https://github.com/subchen/jetbrick-template/issues/7">#7 JetTemplateServlet 和 JetTemplateFilter 默认可能输出错误的 contentType.</a></li> 
+</ul>
+<p><a name="release_notes_1_0_0"></a><br /><strong>Version 1.0.0 (2013-11-18)</strong></p> 
 <ul> 
  <li>支持类似与 Velocity 的多种指令</li> 
  <li>支持静态编译</li> 
