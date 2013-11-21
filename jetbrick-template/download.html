@@ -41,9 +41,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.0.1.zip" class="download-button">
+        <a href="download/jetbrick-template-1.0.2.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.0.1.zip<br/>2013-11-20</span>
+            <span>jetbrick-template-1.0.2.zip<br/>2013-11-22</span>
         </a>
     </div>
 </div>
@@ -67,7 +67,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-11-20：jetbrick-template-1.0.1 版本已发布，欢迎使用和反馈。</a>
+        <a href="download.html#version">2013-11-22：jetbrick-template-1.0.2 版本已发布，欢迎使用和反馈。</a>
     </div>
 </div>
 
@@ -82,10 +82,15 @@
           position: left;
           float: right;
           top: 20px;
+          margin-top: 0 !important;
           z-index: 100;
         }
+        .jb-nav-list-container {
+            width: 220px !important;
+            margin-top: 20px;
+        }
         .markdown {
-          margin-left: 240px; 
+          margin-left: 260px; 
         }
     </style>
     <div class="jb-nav-list-container" data-spy="affix" data-offset-top="230">
@@ -101,22 +106,21 @@
     <div class="markdown">
 
 <!-- markdown body begin -->
-    <a name="x1815514056"></a>
-<h1>1 开源许可 License</h1>
+    <h1><a name="x1815514056"></a><span>1 开源许可 License</span></h1>
 <p>Copyright 2010-2013 Guoqiang Chen. All rights reserved.<br />Email: <a href="mailto:subchen@gmail.com">subchen@gmail.com</a></p>
 <p>Licensed under the Apache License, Version 2.0 (the “License”);<br />you may not use this file except in compliance with the License.<br />You may obtain a copy of the License at</p>
 <p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
 <p>Unless required by applicable law or agreed to in writing, software<br />distributed under the License is distributed on an “AS IS” BASIS,<br />WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<br />See the License for the specific language governing permissions and<br />limitations under the License.</p>
-<a name="x769954348"></a>
-<h1>2 第三方依赖包 Dependences</h1> 
+<h1><a name="x769954348"></a><span>2 第三方依赖包 Dependences</span></h1> 
 <ul> 
  <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK 1.6+</a></li> 
  <li><a href="http://www.antlr.org/download.html">ANTLR runtime 4.x</a></li> 
  <li><a href="http://www.slf4j.org/">Slf4j 1.7.x</a></li> 
-</ul>
-<p><strong>注意</strong>： jetbrick-template 需要使用 jdk6+ 里面的 tools.jar 来编译模板生成的 Java 源文件，所有需要完整的 jdk6+ 的运行环境，而不是 jre6+.</p>
-<a name="x271151717"></a>
-<h1>3 Maven 依赖 POM.xml</h1>
+</ul> 
+<blockquote>
+ <p><strong>注意</strong>： jetbrick-template 需要使用 jdk6+ 里面的 tools.jar 来编译模板生成的 Java 源文件，所有需要完整的 jdk6+ 的运行环境，而不是 jre6+.</p> 
+</blockquote>
+<h1><a name="x271151717"></a><span>3 Maven 依赖 POM.xml</span></h1>
 <p>已发布到 Maven 中央库： <a href="http://central.maven.org/maven2/com/github/subchen/">http://central.maven.org/maven2/com/github/subchen/</a></p> 
 <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
 <project>
@@ -124,7 +128,7 @@
     <dependency>
       <groupId>com.github.subchen</groupId>
       <artifactId>jetbrick-template</artifactId>
-      <version>1.0.1</version>
+      <version>1.0.2</version>
     </dependency>
     <dependency>
       <groupId>org.antlr</groupId>
@@ -140,9 +144,8 @@
 <project>
 ]]></script>
 <p><a name="version"></a></p>
-<a name="x1304924747"></a>
-<h1>4 最新版本 Latest Version</h1>
-<p>目前最新稳定版本为：1.0.0，发布于：2013-11-18，欢迎使用。</p> 
+<h1><a name="x1304924747"></a><span>4 最新版本 Latest Version</span></h1>
+<p>目前最新稳定版本为：1.0.2，发布于：2013-11-22，欢迎使用。</p> 
 <table> 
  <thead> 
   <tr> 
@@ -155,9 +158,16 @@
  </thead> 
  <tbody> 
   <tr> 
+   <td>2013-11-22 </td> 
+   <td>1.0.2 </td> 
+   <td><a href="download/jetbrick-template-1.0.2.zip">jetbrick-template-1.0.2.zip</a> </td> 
+   <td><a href="download/jetbrick-template-1.0.2-all.zip">jetbrick-template-1.0.2-all.zip</a> </td> 
+   <td><a href="#release_notes_1_0_2">更新历史</a> </td> 
+  </tr> 
+  <tr> 
    <td>2013-11-20 </td> 
    <td>1.0.1 </td> 
-   <td><a href="#release_notes_1_0_0">jetbrick-template-1.0.1.zip</a> </td> 
+   <td><a href="download/jetbrick-template-1.0.1.zip">jetbrick-template-1.0.1.zip</a> </td> 
    <td><a href="download/jetbrick-template-1.0.1-all.zip">jetbrick-template-1.0.1-all.zip</a> </td> 
    <td><a href="#release_notes_1_0_1">更新历史</a> </td> 
   </tr> 
@@ -170,8 +180,16 @@
   </tr> 
  </tbody> 
 </table>
-<a name="x887846512"></a>
-<h1>5 更新历史 Release Notes</h1>
+<h1><a name="x887846512"></a><span>5 更新历史 Release Notes</span></h1>
+<p><a name="release_notes_1_0_2"></a><br /><strong>Version 1.0.2 (2013-11-22)</strong></p> 
+<ul> 
+ <li>[修复] <a href="https://github.com/subchen/jetbrick-template/issues/8">#8 jetx 模板生成的 java 文件名可能会产生冲突</a></li> 
+ <li>[增强] <a href="https://github.com/subchen/jetbrick-template/issues/9">#9 如果 compile.path 对应的目录非法或者没有权限不可写, 应该启动Engine时就报错</a></li> 
+ <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/10">#10 增加选项：compile.always 第一次访问模板强制编译</a></li> 
+ <li>[修复] <a href="https://github.com/subchen/jetbrick-template/issues/11">#11 模板的路径如有使用 “../../file.jetx” 那么就会访问到 template.path 路径的外面</a></li> 
+ <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/16">#16 允许 import 一个单独的 Class, 避免出现冲突</a></li> 
+ <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/17">#17 增加 iterator(start,stop,step) 代替 range(…) 函数</a></li> 
+</ul>
 <p><a name="release_notes_1_0_1"></a><br /><strong>Version 1.0.1 (2013-11-20)</strong></p> 
 <ul> 
  <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/1">#1 支持 Servlet 2.x</a></li> 

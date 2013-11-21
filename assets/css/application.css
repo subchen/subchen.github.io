@@ -2070,10 +2070,10 @@ ul.jb-nav-list li.selected a {
   word-wrap: break-word;
 }
 .markdown > *:first-child {
-  margin-top: 20px !important;
+  margin-top: 0 !important;
 }
 .markdown > *:last-child {
-  margin-bottom: 20px !important;
+  margin-bottom: 0 !important;
 }
 .markdown a.absent {
   color: #c00;
@@ -2311,6 +2311,7 @@ ul.jb-nav-list li.selected a {
   border: 1px solid #dddddd;
   background-color: #f8f8f8;
   border-radius: 3px;
+  color: #d41;
 }
 .markdown code {
   white-space: nowrap;
@@ -2397,6 +2398,9 @@ ul.jb-nav-list li.selected a {
   text-decoration: none;
   line-height: 20px;
   white-space: nowrap;
+}
+.jb-banner .download-button:hover {
+  background-color: #d39727 !important;
 }
 .jb-banner .download-button img {
   float: left;

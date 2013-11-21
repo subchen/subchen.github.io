@@ -41,9 +41,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.0.1.zip" class="download-button">
+        <a href="download/jetbrick-template-1.0.2.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.0.1.zip<br/>2013-11-20</span>
+            <span>jetbrick-template-1.0.2.zip<br/>2013-11-22</span>
         </a>
     </div>
 </div>
@@ -67,7 +67,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-11-20：jetbrick-template-1.0.1 版本已发布，欢迎使用和反馈。</a>
+        <a href="download.html#version">2013-11-22：jetbrick-template-1.0.2 版本已发布，欢迎使用和反馈。</a>
     </div>
 </div>
 
@@ -82,10 +82,15 @@
           position: left;
           float: right;
           top: 20px;
+          margin-top: 0 !important;
           z-index: 100;
         }
+        .jb-nav-list-container {
+            width: 220px !important;
+            margin-top: 20px;
+        }
         .markdown {
-          margin-left: 240px; 
+          margin-left: 260px; 
         }
     </style>
     <div class="jb-nav-list-container" data-spy="affix" data-offset-top="230">
@@ -105,8 +110,7 @@
 
 <!-- markdown body begin -->
     <p>这个是 <code>jetbrick-template</code> 模板语法参考手册。我们推荐的模板文件扩展名为 <code>.jetx</code>，嵌入式子模板的扩展名为 <code>.inc.jetx</code>。</p>
-<a name="x1812010899"></a>
-<h1>1 值 Value</h1>
+<h1><a name="x1812010899"></a><span>1 值 Value</span></h1>
 <p>格式：</p> 
 <ul> 
  <li><code>${expression}</code>：输出表达式的计算结果。</li> 
@@ -118,16 +122,16 @@
 ${user.name}
 ${user.book.available()}
 $!{user.description}
-]]></script>
-<p><strong>注意</strong>：</p> 
-<ul> 
- <li>如果 <code>expression</code> 为 <code>null</code>，则不会输出任何东西，如果需要输出 <code>null</code>，可以使用如下的方法扩展：<code>${expression.asString()}</code>。</li> 
- <li>如果 <code>expression</code> 的返回类型为 <code>void</code>，那么也不会做任何输出动作。</li> 
-</ul>
-<a name="x97152884"></a>
-<h1>2 指令 Directive</h1>
-<a name="x1765529987"></a>
-<h2>2.1 变量类型声明 #define</h2>
+]]></script> 
+<blockquote>
+ <p><strong>注意</strong>：</p> 
+ <ul> 
+  <li>如果 <code>expression</code> 为 <code>null</code>，则不会输出任何东西，如果需要输出 <code>null</code>，可以使用如下的方法扩展：<code>${expression.asString()}</code>。</li> 
+  <li>如果 <code>expression</code> 的返回类型为 <code>void</code>，那么也不会做任何输出动作。</li> 
+ </ul> 
+</blockquote>
+<h1><a name="x97152884"></a><span>2 指令 Directive</span></h1>
+<h2><a name="x1765529987"></a><span>2.1 变量类型声明 #define</span></h2>
 <p>jetbrick-template 为了提高性能，采用了强类型来编译模板，所以需要为每一个用到的变量定义变量类型。如下：</p>
 <p>格式：</p> 
 <ul> 
@@ -137,15 +141,16 @@ $!{user.description}
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 #define(String name)
 #define(UserInfo user, List<UserInfo> userlist)
-]]></script>
-<p>注意：</p> 
-<ul> 
- <li>在相同作用域下面，不允许重复定义变量类型，变量只在当前作用域有效。</li> 
- <li>对于没有定义变量类型，默认作用域为全局有效(Global)。</li> 
- <li>对于没有定义变量类型，那么优先从上下文表达式中进行类型推导, 否则默认类型为 <code>Object</code>。</li> 
-</ul>
-<a name="x31238794"></a>
-<h2>2.2 赋值语句 #set</h2>
+]]></script> 
+<blockquote>
+ <p><strong>注意</strong>：</p> 
+ <ul> 
+  <li>在相同作用域下面，不允许重复定义变量类型，变量只在当前作用域有效。</li> 
+  <li>对于没有定义变量类型，默认作用域为全局有效(Global)。</li> 
+  <li>对于没有定义变量类型，那么优先从上下文表达式中进行类型推导, 否则默认类型为 <code>Object</code>。</li> 
+ </ul> 
+</blockquote>
+<h2><a name="x31238794"></a><span>2.2 赋值语句 #set</span></h2>
 <p>格式：</p> 
 <ul> 
  <li><code>#set(type name = value, ...)</code></li> 
@@ -155,14 +160,16 @@ $!{user.description}
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 #set(int num = 1+2*3)
 #set(color1 = "#ff0000", color2 = "#00ff00")
-]]></script>
-<p>注意：</p> 
-<ul> 
- <li>在相同作用域下面，不允许重复定义变量类型，变量只在当前作用域有效。</li> 
- <li>不影响当前模板以及父模板 <code>JetContext</code> 变量。</li> 
-</ul>
-<a name="x31241181"></a>
-<h2>2.3 赋值语句 #put</h2>
+]]></script> 
+<blockquote>
+ <p><strong>注意</strong>：</p> 
+ <ul> 
+  <li>在相同作用域下面，不允许重复定义变量类型，变量只在当前作用域有效。</li> 
+  <li>不影响父模板的 <code>JetContext</code> 变量。</li> 
+  <li>不影响当前模板的 <code>JetContext</code> 变量。</li> 
+ </ul> 
+</blockquote>
+<h2><a name="x31241181"></a><span>2.3 赋值语句 #put</span></h2>
 <p>将变量内容保存到当前模板以及所有父模板的 <code>JetContext</code> 中，方便父子模板间进行变量传递。</p>
 <p>格式：</p> 
 <ul> 
@@ -172,13 +179,14 @@ $!{user.description}
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 #put("num", 1 + 2 * 3)
 #put("user", user)
-]]></script>
-<p>注意：</p> 
-<ul> 
- <li>第一个参数 <code>name</code> 必须是 <code>String</code> 类型</li> 
-</ul>
-<a name="x1615167792"></a>
-<h2>2.4 条件语句 #if, #elseif, #else</h2>
+]]></script> 
+<blockquote>
+ <p><strong>注意</strong>：</p> 
+ <ul> 
+  <li>第一个参数 <code>name</code> 必须是 <code>String</code> 类型</li> 
+ </ul> 
+</blockquote>
+<h2><a name="x1615167792"></a><span>2.4 条件语句 #if, #elseif, #else</span></h2>
 <p>如果 <code>#if</code> 条件表达式计算结果为 <code>true</code> 或非空，则输出指令所包含的块, 否则输出 <code>#else</code> 指令块。</p>
 <p>格式：</p> 
 <ul> 
@@ -197,15 +205,16 @@ $!{user.description}
 #else
 	...
 #end
-]]></script>
-<p><strong>注意：</strong></p> 
-<ul> 
- <li>对于 <code>expression</code> 为非 <code>Boolean</code> 值：非零数字，非空字串，非空集合，非 <code>null</code> 对象，即为 <code>true</code>。</li> 
- <li><code>#elseif</code> 允许出现多次。</li> 
- <li>如果 <code>#else</code> 后面紧跟着其他文本，比如 <code>#elseABC</code>，那么可以通过添加一对空括号来分割，修改成 <code>#else()ABC</code>。这样可读性就能加强，模板解析也不会出现问题。所有的无参数指令，比如 <code>#end</code>，<code>#break</code>，<code>#stop</code> 都支持这样操作。<code>()</code> 前面和之间请不要插入任何空格。</li> 
-</ul>
-<a name="x719310441"></a>
-<h2>2.5 循环语句 #for</h2>
+]]></script> 
+<blockquote>
+ <p><strong>注意</strong>：</p> 
+ <ul> 
+  <li>对于 <code>expression</code> 为非 <code>Boolean</code> 值：非零数字，非空字串，非空集合，非 <code>null</code> 对象，即为 <code>true</code>。</li> 
+  <li><code>#elseif</code> 允许出现多次。</li> 
+  <li>如果 <code>#else</code> 后面紧跟着其他文本，比如 <code>#elseABC</code>，那么可以通过添加一对空括号来分割，修改成 <code>#else()ABC</code>。这样可读性就能加强，模板解析也不会出现问题。所有的无参数指令，比如 <code>#end</code>，<code>#break</code>，<code>#stop</code> 都支持这样操作。<code>()</code> 前面和之间请不要插入任何空格。</li> 
+ </ul> 
+</blockquote>
+<h2><a name="x719310441"></a><span>2.5 循环语句 #for</span></h2>
 <p>循环重复输出指令所包含的块，如果是空的集合对象，那么输出 <code>#else</code> 块。</p>
 <p>格式：</p> 
 <ul> 
@@ -213,6 +222,16 @@ $!{user.description}
  <li><code>#for(id: expression)</code> … <code>#else</code> … <code>#end</code></li> 
  <li><code>#for(type id: expression)</code> … <code>#end</code></li> 
  <li><code>#for(type id: expression)</code> … <code>#else</code> … <code>#end</code></li> 
+</ul>
+<p><code>#for</code> 支持以下类型的 <code>expression</code></p> 
+<ul> 
+ <li>Iterator</li> 
+ <li>Iterable (Collection, …)</li> 
+ <li>Map</li> 
+ <li>Enumeration</li> 
+ <li>Array</li> 
+ <li>null (空循环)</li> 
+ <li>Object (只循环一次)</li> 
 </ul>
 <p>示例：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
@@ -234,13 +253,14 @@ $!{user.description}
 #else
 	No books are found in here.
 #end
-]]></script>
-<p><strong>注意：</strong></p> 
-<ul> 
- <li><code>for.index</code> 可用于内部循环计数，从 1 开始计数。</li> 
-</ul>
-<a name="x520315191"></a>
-<h2>2.6 循环中断或继续语句 #break, #continue</h2>
+]]></script> 
+<blockquote>
+ <p><strong>注意</strong>：</p> 
+ <ul> 
+  <li><code>for.index</code> 可用于内部循环计数，从 1 开始计数。</li> 
+ </ul> 
+</blockquote>
+<h2><a name="x520315191"></a><span>2.6 循环中断或继续语句 #break, #continue</span></h2>
 <p>当 <code>expression</code> 为 <code>true</code>，<code>#break</code> 中断当前循环，而 <code>#continue</code> 跳过余下的内容，跳到下一个循环。</p>
 <p>格式：</p> 
 <ul> 
@@ -263,13 +283,14 @@ $!{user.description}
 	#continue(book.price > 100)
 	...
 #end
-]]></script>
-<p>注意：</p> 
-<ul> 
- <li>无参数格式代表 <code>expression</code> 永远为 <code>true</code>。</li> 
-</ul>
-<a name="x1448344112"></a>
-<h2>2.7 停止解析语句 #stop</h2>
+]]></script> 
+<blockquote>
+ <p><strong>注意</strong>：</p> 
+ <ul> 
+  <li>无参数格式代表 <code>expression</code> 永远为 <code>true</code>。</li> 
+ </ul> 
+</blockquote>
+<h2><a name="x1448344112"></a><span>2.7 停止解析语句 #stop</span></h2>
 <p>当 <code>expression</code> 为真或非空时，停止模板运行。</p>
 <p>格式：</p> 
 <ul> 
@@ -279,13 +300,14 @@ $!{user.description}
 <p>示例：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 #stop(error != null)
-]]></script>
-<p><strong>注意：</strong></p> 
-<ul> 
- <li>无参数格式代表 <code>expression</code> 永远为 <code>true</code>。</li> 
-</ul>
-<a name="x347886788"></a>
-<h2>2.8 嵌套模板语句 #include</h2>
+]]></script> 
+<blockquote>
+ <p><strong>注意</strong>：</p> 
+ <ul> 
+  <li>无参数格式代表 <code>expression</code> 永远为 <code>true</code>。</li> 
+ </ul> 
+</blockquote>
+<h2><a name="x347886788"></a><span>2.8 嵌套模板语句 #include</span></h2>
 <p>嵌入一个子模板，将子模板内容输出到当前位置。</p>
 <p>格式：</p> 
 <ul> 
@@ -298,17 +320,17 @@ $!{user.description}
 #include("../userinfo.jetx") // 相对路径
 #include(file) // 动态路径
 #include("/include/header.jetx", {role: "admin"}) // 传递参数
-]]></script>
-<p><strong>注意：</strong></p> 
-<ul> 
- <li>子模板自动共享父模板 <code>JetContext</code> 变量，同时还可以另外传递一些参数给子模板。</li> 
- <li>子模板可以用 <code>#put</code> 指令修改父模板的 <code>JetContext</code>，然后在父模板中用 <code>context[&quot;name&quot;]</code> 获取变量值。</li> 
-</ul>
-<a name="x890125816"></a>
-<h1>3 文本 Text</h1>
+]]></script> 
+<blockquote>
+ <p><strong>注意</strong>：</p> 
+ <ul> 
+  <li>子模板自动共享父模板 <code>JetContext</code> 变量，同时还可以另外传递一些参数给子模板。</li> 
+  <li>子模板可以用 <code>#put</code> 指令修改父模板的 <code>JetContext</code>，然后在父模板中用 <code>context[&quot;name&quot;]</code> 获取变量值。</li> 
+ </ul> 
+</blockquote>
+<h1><a name="x890125816"></a><span>3 文本 Text</span></h1>
 <p>普通文本内容将会被直接进行输出。</p>
-<a name="x136317352"></a>
-<h2>3.1 不解析文本块</h2>
+<h2><a name="x136317352"></a><span>3.1 不解析文本块</span></h2>
 <p>原样输出模板内容，用于输出纯文本内容，或批量转义块中的特殊字符。类似于 XML 中的 CDATA。</p>
 <p>格式：</p> 
 <ul> 
@@ -321,8 +343,7 @@ $!{user.description}
 	Hello ${user.name}	
 ]]#
 ]]></script>
-<a name="x1841434365"></a>
-<h2>3.2 特殊字符转义</h2>
+<h2><a name="x1841434365"></a><span>3.2 特殊字符转义</span></h2>
 <p>原样输出指令特殊字符，转义字符由 <code>\</code> 进行转义。</p>
 <p>格式：</p> 
 <ul> 
@@ -335,16 +356,16 @@ $!{user.description}
 \#if
 \${user.name}
 \\${user.name}
-]]></script>
-<p><strong>注意：</strong></p> 
-<ul> 
- <li>如果遇到类似 <code>#ff0000</code> 类似于指令的内容，但又不是系统定义的指令，那么也会原样输出，并不需要进行转义。</li> 
- <li><code>\</code> 后面跟的字符不是 <code>#</code> 和 <code>$</code>，也不需要进行转义，直接输出。</li> 
-</ul>
-<a name="x1221926399"></a>
-<h1>4 注释 Comment</h1>
-<a name="x34432814"></a>
-<h2>4.1 行注释</h2>
+]]></script> 
+<blockquote>
+ <p><strong>注意</strong>：</p> 
+ <ul> 
+  <li>如果遇到类似 <code>#ff0000</code> 类似于指令的内容，但又不是系统定义的指令，那么也会原样输出，并不需要进行转义。</li> 
+  <li><code>\</code> 后面跟的字符不是 <code>#</code> 和 <code>$</code>，也不需要进行转义，直接输出。</li> 
+ </ul> 
+</blockquote>
+<h1><a name="x1221926399"></a><span>4 注释 Comment</span></h1>
+<h2><a name="x34432814"></a><span>4.1 行注释</span></h2>
 <p>隐藏行注释的内容，以换行符结束，用于注解过程，或屏蔽指令内容。</p>
 <p>格式：</p> 
 <ul> 
@@ -354,8 +375,7 @@ $!{user.description}
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 ${user.name} ## This is a line comment.
 ]]></script>
-<a name="x22388601"></a>
-<h2>4.2 块注释</h2>
+<h2><a name="x22388601"></a><span>4.2 块注释</span></h2>
 <p>隐藏块注释内容，可包含换行符，用于注解过程，或屏蔽指令内容。</p>
 <p>格式：</p> 
 <ul> 
@@ -368,8 +388,7 @@ ${user.name} ## This is a line comment.
 --#
 ]]></script>
 <p><a name="expression"></a></p>
-<a name="x750650433"></a>
-<h1>5 表达式 Expression</h1>
+<h1><a name="x750650433"></a><span>5 表达式 Expression</span></h1>
 <p>支持所有 Java 表达式，并对其进行了一些有用的扩展。下面只列出与 Java 不同的地方。</p> 
 <ul> 
  <li>双等号 <code>==</code> 会被解析成 <code>equals()</code> 方法比较，而不是比内存地址。</li> 
@@ -380,8 +399,7 @@ ${user.name} ## This is a line comment.
  <li><code>List</code> 和 <code>Map</code> 可以方括号取值，比如：<code>list[0]</code> 等价于 <code>list.get(0)</code>，<code>map[&quot;abc&quot;]</code> 等价于 <code>map.get(&quot;abc&quot;)</code>。</li> 
  <li>支持 Groovy 的 <code>?.</code> 安全调用，以避免 <code>NullPointerException</code>。</li> 
 </ul>
-<a name="x948751994"></a>
-<h2>5.1 变量名 Variable</h2>
+<h2><a name="x948751994"></a><span>5.1 变量名 Variable</span></h2>
 <p>可以是任意合法的 Java 变量名：</p> 
 <ul> 
  <li>其中 <code>$</code> 开头的变量为模板内部变量，不允许直接使用。</li> 
@@ -393,8 +411,7 @@ ${user.name} ## This is a line comment.
  <li><code>context</code>： 当前模板的 <code>JetContext</code> 对象。</li> 
  <li><code>for</code>： 用于 <code>#for</code> 指令内部状态对象。</li> 
 </ul>
-<a name="x1847340345"></a>
-<h2>5.2 List 常量</h2>
+<h2><a name="x1847340345"></a><span>5.2 List 常量</span></h2>
 <p>格式：</p> 
 <ul> 
  <li><code>[item, ...]</code></li> 
@@ -405,8 +422,7 @@ ${user.name} ## This is a line comment.
 [1, 2, 3, 4, 5]
 ["abc", 123, new Date(), 1+2*3]
 ]]></script>
-<a name="x1996788741"></a>
-<h2>5.3 Map 常量</h2>
+<h2><a name="x1996788741"></a><span>5.3 Map 常量</span></h2>
 <p>格式：</p> 
 <ul> 
  <li><code>{key: value, ...}</code></li> 
@@ -416,20 +432,20 @@ ${user.name} ## This is a line comment.
 {} // empty Map
 {"name" : "Jason", "statue" : 0}
 ]]></script>
-<a name="x394735919"></a>
-<h2>5.4 Bean 属性调用 bean.property</h2>
+<h2><a name="x394735919"></a><span>5.4 Bean 属性调用 bean.property</span></h2>
 <p>Bean 属性会解析成 getter 方法调用。</p>
 <p>属性查找顺序，以 <code>${obj.foo}</code> 为例：</p> 
 <ol> 
  <li>查找 obj class 的 foo 静态属性</li> 
  <li>查找 obj.getFoo() 方法</li> 
  <li>查找 obj.isFoo() 方法</li> 
- <li>查找 obj.get(name) 方法 (如果是 Map 或者 JetConext)</li> 
+ <li>查找 obj.get(name) 方法 (如果是 <code>Map</code> 或者 <code>JetContext</code>)</li> 
 </ol>
-<p>以上查找过程会在第一次编译的时候完成，不影响性能。<br />支持对属性返回值的类型推导。</p>
-<p><strong>注意</strong>： <code>jetbrick-template</code> 支持属性的安全调用，和 Groovy 相同，你可以使用 <code>?.</code> 来代替 <code>.</code>，以避免出现 <code>NullPointerException</code>。</p>
-<a name="x1450717541"></a>
-<h2>5.5 Bean 方法调用 bean.method(…)</h2> 
+<p>以上查找过程会在第一次编译的时候完成，不影响性能。<br />支持对属性返回值的类型推导。</p> 
+<blockquote>
+ <p><strong>注意</strong>： <code>jetbrick-template</code> 支持属性的安全调用，和 Groovy 相同，你可以使用 <code>?.</code> 来代替 <code>.</code>，以避免出现 <code>NullPointerException</code>。</p> 
+</blockquote>
+<h2><a name="x1450717541"></a><span>5.5 Bean 方法调用 bean.method(…)</span></h2> 
 <ul> 
  <li>支持普通方法调用</li> 
  <li>支持不定长参数方法调用 Varargs</li> 
@@ -442,18 +458,17 @@ ${user.name} ## This is a line comment.
 ## 方法重载 Overload
 ${"Hello".substring(2)}
 ${"Hello".substring(2, 3)}
-]]></script>
-<p><strong>注意</strong>： <code>jetbrick-template</code> 支持方法的安全调用，和 Groovy 相同，你可以使用 <code>?.</code> 来代替 <code>.</code>，以避免出现 <code>NullPointerException</code>。</p>
-<a name="x134013728"></a>
-<h2>5.6 函数调用 function</h2>
+]]></script> 
+<blockquote>
+ <p><strong>注意</strong>： <code>jetbrick-template</code> 支持方法的安全调用，和 Groovy 相同，你可以使用 <code>?.</code> 来代替 <code>.</code>，以避免出现 <code>NullPointerException</code>。</p> 
+</blockquote>
+<h2><a name="x134013728"></a><span>5.6 函数调用 function</span></h2>
 <p>jetbrick-template 还支持函数调用，如 <code>${now()}</code>, <code>${include(&quot;tag.jetx&quot;)}</code>。</p>
 <p>具体参考：<a href="userguide.html#functions">扩展函数调用</a></p>
 <p><a name="default_methods"></a></p>
-<a name="x2038510066"></a>
-<h1>6 默认的方法扩展 Methods</h1>
+<h1><a name="x2038510066"></a><span>6 默认的方法扩展 Methods</span></h1>
 <p>所有方法扩展定义在 <code>jetbrick.template.runtime.JetMethods</code></p>
-<a name="x781953175"></a>
-<h2>6.1 基本数据类型转换 Cast</h2> 
+<h2><a name="x781953175"></a><span>6.1 基本数据类型转换 Cast</span></h2> 
 <ul> 
  <li>String.asBoolean()</li> 
  <li>String.asChar()</li> 
@@ -467,8 +482,7 @@ ${"Hello".substring(2, 3)}
  <li>String.asDate(String format)</li> 
  <li>Object.asString()</li> 
 </ul>
-<a name="x1169187945"></a>
-<h2>6.2 集合类型转换 Cast</h2> 
+<h2><a name="x1169187945"></a><span>6.2 集合类型转换 Cast</span></h2> 
 <ul> 
  <li>Collection.asList()</li> 
  <li>boolean[].asList()</li> 
@@ -481,16 +495,14 @@ ${"Hello".substring(2, 3)}
  <li>doubl[].asList()</li> 
  <li>Object[].asList()</li> 
 </ul>
-<a name="x355317298"></a>
-<h2>6.3 数据格式化 Format</h2> 
+<h2><a name="x355317298"></a><span>6.3 数据格式化 Format</span></h2> 
 <ul> 
  <li>Number.format()</li> 
  <li>Number.format(String format)</li> 
  <li>Date.format()</li> 
  <li>Date.format(String format)</li> 
 </ul>
-<a name="x1727847930"></a>
-<h2>6.4 数据 Escape/Unescape</h2> 
+<h2><a name="x1727847930"></a><span>6.4 数据 Escape/Unescape</span></h2> 
 <ul> 
  <li>String.escapeJava()</li> 
  <li>String.unescapeJava()</li> 
@@ -503,21 +515,18 @@ ${"Hello".substring(2, 3)}
  <li>String.unescapeUrl()</li> 
  <li>String.unescapeUrl(String encoding)</li> 
 </ul>
-<a name="x591511809"></a>
-<h2>6.5 JSON 输出</h2> 
+<h2><a name="x591511809"></a><span>6.5 JSON 输出</span></h2> 
 <ul> 
  <li>Object.asJSON()</li> 
 </ul>
-<a name="x1079447065"></a>
-<h2>6.6 字符串转换</h2> 
+<h2><a name="x1079447065"></a><span>6.6 字符串转换</span></h2> 
 <ul> 
  <li>String.toUnderlineName()</li> 
  <li>String.toCamelCase()</li> 
  <li>String.toCapitalizeCamelCase()</li> 
  <li>String.repeat(int count)</li> 
 </ul>
-<a name="x969081998"></a>
-<h2>6.7 算术计算</h2> 
+<h2><a name="x969081998"></a><span>6.7 算术计算</span></h2> 
 <ul> 
  <li>int[].sum()</li> 
  <li>int[].avg()</li> 
@@ -525,57 +534,60 @@ ${"Hello".substring(2, 3)}
  <li>int[].min()</li> 
 </ul>
 <p><a name="default_functions"></a></p>
-<a name="x1154836530"></a>
-<h1>7 默认的函数扩展 Functions</h1>
+<h1><a name="x1154836530"></a><span>7 默认的函数扩展 Functions</span></h1>
 <p>所有函数扩展定义在 <code>jetbrick.template.runtime.JetFunctions</code></p>
-<a name="x748057859"></a>
-<h2>7.1 常用函数</h2> 
+<h2><a name="x748057859"></a><span>7.1 常用函数</span></h2> 
 <ul> 
  <li><p><code>Date now()</code><br /> 获取当前时间</p></li> 
  <li><p><code>int random()</code><br /> 获取一个随机数</p></li> 
  <li><p><code>UUID uuid()</code><br /> 获取一个 UUID</p></li> 
 </ul>
-<a name="x665841341"></a>
-<h2>7.2 循环计数生成器</h2>
-<p>生成一个用于循环的数组</p> 
+<h2><a name="x665841341"></a><span>7.2 循环计数生成器</span></h2>
+<p>生成一个用于循环的数组，主要用于 <code>#for</code> 的循环迭代。</p>
+<p>@Deprecated from 1.0.2</p> 
 <ul> 
  <li><code>int[] range(int start, int stop)</code></li> 
  <li><code>int[] range(int start, int stop, int step)</code></li> 
 </ul>
-<a name="x532801048"></a>
-<h2>7.3 嵌入子模板 ${include(…)}</h2>
+<p>New added from 1.0.2</p> 
+<ul> 
+ <li><code>Iterator&lt;Integer&gt; iterator(int start, int stop)</code></li> 
+ <li><code>Iterator&lt;Integer&gt; iterator(int start, int stop, int step)</code></li> 
+</ul>
+<p>范例：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+#for (int i : iterator(1,100))
+	${i}
+#end
+]]></script>
+<h2><a name="x1509868974"></a><span>7.3 嵌入子模板 include(…)</span></h2>
 <p>嵌入一个子模板。和 <code>#include</code> 指令的区别，此函数对子模板的输出进行了缓存，可以处理返回的内容，但是效率没有 <code>#include</code> 指令高。</p> 
 <ul> 
  <li><code>String include(String relativeName)</code></li> 
  <li><code>String include(String relativeName, Map&lt;String, Object&gt; parameters)</code></li> 
 </ul>
-<a name="x356889483"></a>
-<h2>7.4 嵌入纯文本文件 ${read(…)}</h2> 
+<h2><a name="x1366567999"></a><span>7.4 嵌入纯文本文件 read(…)</span></h2> 
 <ul> 
  <li><code>String read(String relativeName)</code></li> 
  <li><code>String read(String relativeName, String encoding)</code></li> 
 </ul>
-<a name="x2103294000"></a>
-<h2>7.5 Debug 专用 ${debug(…)}</h2> 
+<h2><a name="x1867062942"></a><span>7.5 调试专用函数 debug(…)</span></h2> 
 <ul> 
  <li><code>void debug(String format, Object... args)</code><br /> 输出调试信息，需要配合 Slf4j 使用。</li> 
 </ul>
 <p><a name="velocity"></a></p>
-<a name="x1968843044"></a>
-<h1>8 和 Velocity 的比较</h1>
-<a name="x1094687580"></a>
-<h2>8.1 语法差异</h2> 
+<h1><a name="x1968843044"></a><span>8 和 Velocity 的比较</span></h1>
+<h2><a name="x1094687580"></a><span>8.1 语法差异</span></h2> 
 <ul> 
  <li>jetbrick-template 指令中的变量不加 <code>$</code> 符，只支持 <code>#if(x == y)</code>，不支持 <code>#if($x == $y)</code>，因为指令中没有加引号的字符串就是变量，和常规语言的语法一样，加$有点废话，而且容易忘写。</li> 
  <li>jetbrick-template 占位符必需加大括号，只支持 <code>${foo}</code>，不支持 <code>$foo</code>，因为 <code>$</code> 在 JavaScript 中也是合法变量名符号，而 <code>${}</code> 不是，减少混淆，也防止多人开发时，有人加大括号，有人不加，干脆没得选，都加，保持一致。</li> 
- <li>jetbrick-template 占位符当变量为 null 时输出空白串，而不像 Velocity 那样原样输出指令原文，即 <code>${foo}</code>，等价于 Velocity 的 <code>$!{foo}</code>，以免开发人员忘写感叹号，泄漏表达式源码，如需原样输出，可使用转义 <code>\${foo}</code>， 在 jetbrick-template 中，<code>$!{foo}</code> 表示对内容进行 HTML 过滤，用于原样输出 HTML 片段。</li> 
+ <li>jetbrick-template 占位符当变量为 <code>null</code> 时输出空白串，而不像 Velocity 那样原样输出指令原文，即 <code>${foo}</code>，等价于 Velocity 的 <code>$!{foo}</code>，以免开发人员忘写感叹号，泄漏表达式源码，如需原样输出，可使用转义 <code>\${foo}</code>， 在 jetbrick-template 中，<code>$!{foo}</code> 表示对内容进行 HTML 过滤，用于原样输出 HTML 片段。</li> 
  <li>jetbrick-template 支持在所有使用变量的地方，进行表达式计算，也就是你不需要像 Velocity 那样，先 <code>#set($j = $i + 1)</code> 到一个临时变量，再输出临时变量 <code>${j}</code>，jetbrick-template 可以直接输出 <code>${i + 1}</code>，其它指令也一样，比如：<code>#if(i + 1 == n)</code>。</li> 
  <li>jetbrick-template 采用扩展 Class 原生方法的方式，如：<code>${&quot;str&quot;.toChar()}</code>，而不像 Velocity 的 Tool 工具方法那样：<code>$(StringTool.toChar(&quot;a&quot;))</code>，这样的调用方式更直观，更符合代码书写习惯。</li> 
  <li>jetbrick-template 支持属性和方法的安全调用。如 <code>${user?.name}</code>，<code>${user?.hasRole(&quot;vip&quot;)}</code>。</li> 
  <li>jetbrick-template 还支持静态字段/方法调用，函数扩展，上下文相关的方法/函数扩展。</li> 
 </ul>
-<a name="x775409745"></a>
-<h2>8.2 指令差异</h2>
+<h2><a name="x775409745"></a><span>8.2 指令差异</span></h2>
     <table>
     <tr>
         <th width="140px">velocity</th>

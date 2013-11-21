@@ -41,9 +41,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.0.1.zip" class="download-button">
+        <a href="download/jetbrick-template-1.0.2.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.0.1.zip<br/>2013-11-20</span>
+            <span>jetbrick-template-1.0.2.zip<br/>2013-11-22</span>
         </a>
     </div>
 </div>
@@ -67,7 +67,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-11-20：jetbrick-template-1.0.1 版本已发布，欢迎使用和反馈。</a>
+        <a href="download.html#version">2013-11-22：jetbrick-template-1.0.2 版本已发布，欢迎使用和反馈。</a>
     </div>
 </div>
 
@@ -82,16 +82,21 @@
           position: left;
           float: right;
           top: 20px;
+          margin-top: 0 !important;
           z-index: 100;
         }
+        .jb-nav-list-container {
+            width: 220px !important;
+            margin-top: 20px;
+        }
         .markdown {
-          margin-left: 240px; 
+          margin-left: 260px; 
         }
     </style>
     <div class="jb-nav-list-container" data-spy="affix" data-offset-top="230">
         <ul class="jb-nav-list">
-            <li><a href="#x1710024980">1 从这里开始</a></li>
-            <li><a href="#x139256681">&nbsp&nbsp1.1 基本步骤：</a></li>
+            <li><a href="#x1217142286">1 从这里开始 Start</a></li>
+            <li><a href="#x1102343160">&nbsp&nbsp1.1 基本步骤 Steps</a></li>
             <li><a href="#x987989908">2 核心对象 Core</a></li>
             <li><a href="#x1273924123">&nbsp&nbsp2.1 JetEngine</a></li>
             <li><a href="#x1328335379">&nbsp&nbsp2.2 JetTemplate</a></li>
@@ -110,10 +115,8 @@
     <div class="markdown">
 
 <!-- markdown body begin -->
-    <a name="x1710024980"></a>
-<h1>1 从这里开始</h1>
-<a name="x139256681"></a>
-<h2>1.1 基本步骤：</h2> 
+    <h1><a name="x1217142286"></a><span>1 从这里开始 Start</span></h1>
+<h2><a name="x1102343160"></a><span>1.1 基本步骤 Steps</span></h2> 
 <ol> 
  <li>创建自定义配置的 <code>JetEngine</code> 对象。推荐使用单例模式创建。</li> 
  <li>根据模板路径，获取一个模板对象 <code>JetTemplate</code>。</li> 
@@ -143,13 +146,10 @@ System.out.println(writer.toString());
 ]]></script>
 <p>这是一个基本的用法，是不是非常简单？</p>
 <p>整个过程，我们就看到了几个核心对象：<code>JetEngine</code>，<code>JetTemplate</code>，<code>JetContext</code>。没错，就这3个。下面就分别介绍他们。</p>
-<a name="x987989908"></a>
-<h1>2 核心对象 Core</h1>
-<a name="x1273924123"></a>
-<h2>2.1 JetEngine</h2>
+<h1><a name="x987989908"></a><span>2 核心对象 Core</span></h1>
+<h2><a name="x1273924123"></a><span>2.1 JetEngine</span></h2>
 <p>整个模板引擎的由 <code>JetEngine</code> 驱动，不同的 <code>JetEngine</code> 对象可以使用不同的配置。一般在一个 Application 或者 Webapp 中，我们只需要一个 <code>JetEngine</code> 对象就可以了，我们推荐使用单例模式创建。</p>
-<a name="x97387442"></a>
-<h3>2.1.1 如何创建 JetEngine？</h3> 
+<h3><a name="x97387442"></a><span>2.1.1 如何创建 JetEngine？</span></h3> 
 <ol> 
  <li><code>JetEngine.create()</code></li> 
 </ol>
@@ -163,8 +163,7 @@ System.out.println(writer.toString());
 </ol>
 <p>从用户指定的 <code>Properties</code> 对象中加载系统配置。</p>
 <p>有哪些配置？ <a href="config.html">看这里所有的配置</a></p>
-<a name="x1502610422"></a>
-<h3>2.1.2 获取 JetTemplate 对象</h3>
+<h3><a name="x1502610422"></a><span>2.1.2 获取 JetTemplate 对象</span></h3>
 <p>通过下面的方法获取 <code>JetTemplate</code> 对象。</p> 
 <script type="syntaxhighlighter" class="brush: java"><![CDATA[
 public JetTemplate getTemplate(String name) throws ResourceNotFoundException;
@@ -173,9 +172,11 @@ public JetTemplate getTemplate(String name) throws ResourceNotFoundException;
 <script type="syntaxhighlighter" class="brush: java"><![CDATA[
 public boolean lookupResource(String name);
 public Resource getResource(String name) throws ResourceNotFoundException;
-]]></script>
-<a name="x1328335379"></a>
-<h2>2.2 JetTemplate</h2>
+]]></script> 
+<blockquote>
+ <p><strong>注意</strong>：对于一个 resource 或者 template 的 name，应该以 <code>/</code> 开头，并且以 <code>/</code> 作为分隔符，如：<code>/templates/index.jetx</code>。</p> 
+</blockquote>
+<h2><a name="x1328335379"></a><span>2.2 JetTemplate</span></h2>
 <p>对应于一个模板文件，通过 <code>JetEngine.getTemplate(name)</code> 获取。在第一次获取的时候，会先将模板生成对象的 <code>.java</code> 文件，然后在将 <code>.java</code> 文件编译成 <code>.class</code> 文件。</p>
 <p>如果模板不存在，则抛出 <code>ResourceNotFoundException</code>。</p>
 <p>然后通过下面两个方法可以对模板进行渲染：</p> 
@@ -185,39 +186,41 @@ public void render(Map<String, Object> context, OutputStream out);
 public void render(JetContext context, Writer out);
 public void render(JetContext context, OutputStream out);
 ]]></script>
-<a name="x902651658"></a>
-<h2>2.3 JetContext</h2>
+<h2><a name="x902651658"></a><span>2.3 JetContext</span></h2>
 <p>用来存储和获取模板关联的 data objects。可以通过 <code>new JetContext()</code> 或者 <code>new JetContext(map)</code> 创建。</p>
 <p>使用 <code>JetContext</code> 就像使用 Java 的 <code>HashMap</code> 一样。常用的方法如下：</p> 
 <script type="syntaxhighlighter" class="brush: java"><![CDATA[
 public Object get(String name);
 public void put(String name, Object value);
 public void putAll(Map<String, Object> context);
-]]></script>
-<p><strong>注意：</strong></p>
-<p><code>JetContext</code> 会被 <code>#put</code> 指令修改。<code>#set</code> 指令并不会影响 <code>JetContext</code> 中的内容。</p>
-<p><code>JetContext</code> 会在父子模板调用的时候，形成一个 Context Chain，子模板可以自动获取父模板的变量，而父模板无法看到子模板的 <code>JetContext</code>。但是子模板可以通过 <code>#put(name, value)</code> 来修改父模板的 <code>JetContext</code>。具体查看：<a href="faq.html#fembed_template">如何嵌入子模板？</a></p>
-<a name="x1213031356"></a>
-<h1>3 高级用法</h1>
+]]></script> 
+<blockquote>
+ <p><strong>注意</strong>：</p> 
+ <ul> 
+  <li><code>JetContext</code> 会被 <code>#put</code> 指令修改。<code>#set</code> 指令并不会影响 <code>JetContext</code> 中的内容。</li> 
+  <li><code>JetContext</code> 会在父子模板调用的时候，形成一个 Context Chain，子模板可以自动获取父模板的变量，而父模板无法看到子模板的 <code>JetContext</code>。但是子模板可以通过 <code>#put(name, value)</code> 来修改父模板的 <code>JetContext</code>。具体查看：<a href="faq.html#fembed_template">如何嵌入子模板？</a></li> 
+ </ul> 
+</blockquote>
+<h1><a name="x1213031356"></a><span>3 高级用法</span></h1>
 <p>上面只是简单的介绍了一下 <code>jetbrick-template</code> 的基本用法，下面将介绍一些高级用法，也是 <code>jetbrick-template</code> 有别于其他模板引擎的特色。</p>
 <p><a name="methods"></a></p>
-<a name="x1112662598"></a>
-<h2>3.1 方法扩展 Methods</h2>
+<h2><a name="x1112662598"></a><span>3.1 方法扩展 Methods</span></h2>
 <p>我们知道一个 Java Class 的 所有 methods 都是定义在同一个 class 文件中的，不能在其他地方进行动态扩展。但是一些其他动态语言却支持在 Class 外部为这个 Class 增加一些方法。比如：</p> 
 <ul> 
  <li>JavaScript 的 prototype 机制</li> 
  <li>Groovy 的 metaClass 机制</li> 
  <li>Kotlin</li> 
 </ul>
-<p>jetbrick-template 也在这里带给大家强大的动态方法扩展机制。如：<code>&quot;123&quot;.asInt()</code>, <code>new Date().format(&quot;yyyy-MM-dd&quot;)</code>。</p>
-<p><strong>注意</strong>：如果 Class 已经定义了同名方法，则优先使用 Class 定义的方法。但是扩展方法支持方法重载(Overrload)。</p>
+<p>jetbrick-template 也在这里带给大家强大的动态方法扩展机制。如：<code>&quot;123&quot;.asInt()</code>, <code>new Date().format(&quot;yyyy-MM-dd&quot;)</code>。</p> 
+<blockquote>
+ <p><strong>注意</strong>：如果 Class 已经定义了同名方法，则优先使用 Class 定义的方法。但是扩展方法支持方法重载(Overrload)。</p> 
+</blockquote>
 <p>方法扩展支持 2 种模式：</p> 
 <ul> 
  <li>上下文无关方法：MethodTool.method(bean, …)</li> 
  <li>上下文相关方法：MethodTool.method(bean, JetPageContext, …)</li> 
 </ul>
-<a name="x2086515676"></a>
-<h3>3.1.1 上下文无关方法 MethodTool.method(bean, …)</h3> 
+<h3><a name="x2086515676"></a><span>3.1.1 上下文无关方法 MethodTool.method(bean, …)</span></h3> 
 <ul> 
  <li>方法签名必须是 <code>public</code> 和 <code>static</code></li> 
  <li>方法的第一个参数类型必须是要扩展的 Class</li> 
@@ -247,8 +250,7 @@ ${"BAIDU".link("http://www.baidu.com/")}
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 <a href="http://www.baidu.com/">BAIDU</a>
 ]]></script>
-<a name="x1916086807"></a>
-<h3>3.1.2 上下文相关方法 MethodTool.method(bean, JetPageContext, …)</h3>
+<h3><a name="x1916086807"></a><span>3.1.2 上下文相关方法 MethodTool.method(bean, JetPageContext, …)</span></h3>
 <p>如果扩展的方法需要用到 template 相关联的运行时信息 <code>JetPageContext</code>，那么我们就需要扩展一个上下文相关的 method。</p>
 <p>和上下文无关的扩展方法相比，上下文相关的扩展方法多一个参数。</p> 
 <ul> 
@@ -277,8 +279,7 @@ JetEngine engine = JetEngine.create(config);
 ${user.isOnline()}
 ]]></script>
 <p><a name="functions"></a></p>
-<a name="x829850106"></a>
-<h2>3.2 函数扩展 Functions</h2>
+<h2><a name="x829850106"></a><span>3.2 函数扩展 Functions</span></h2>
 <p>jetbrick-template 还支持函数扩展，如 <code>${now()}</code>, <code>${include(&quot;tag.jetx&quot;)}</code>。</p> 
 <ul> 
  <li>上下文无关函数：任意参数</li> 
@@ -308,13 +309,13 @@ JetEngine engine = JetEngine.create(config);
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 ${today("yyyy-MM-dd")}
 ${hello()}
-]]></script>
-<p>注意：函数和扩展方法的唯一区别是少了第一个扩展类型的参数，其他的都一样。</p>
-<a name="x1633230618"></a>
-<h1>4 错误处理 Finding Issue</h1>
+]]></script> 
+<blockquote>
+ <p><strong>注意</strong>：函数和扩展方法的唯一区别是少了第一个扩展类型的参数，其他的都一样。</p> 
+</blockquote>
+<h1><a name="x1633230618"></a><span>4 错误处理 Finding Issue</span></h1>
 <p><code>jetbrick-template</code> 提供了强大的错误定位功能，你再也不用担心找不到错误原因了。</p>
-<a name="x521147885"></a>
-<h2>4.1 语法错误 Syntax Error</h2>
+<h2><a name="x521147885"></a><span>4.1 语法错误 Syntax Error</span></h2>
 <p>模板示例：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 #for (user in userlist)
@@ -337,8 +338,7 @@ message: The method asHTML() is undefined for the type List.
 5.     <td>${user.roles.asHTML()}</td>
                         ^^^^^^
 ]]></script>
-<a name="x1307151980"></a>
-<h2>4.2 编译错误 Compile Error</h2>
+<h2><a name="x1307151980"></a><span>4.2 编译错误 Compile Error</span></h2>
 <p>这种错误正常情况下是不会发生的，如果发生这种情况，<a href="https://github.com/subchen/jetbrick-template/issues/">请到这里 open issues</a>。</p>
 <p>但是如果发生这样的错误，也可以得到下面的类似错误提示。</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
@@ -359,8 +359,7 @@ C:\Users\Sub\AppData\Local\Temp\jetx_1_0_0\template\debug_jetx.java:13: 'void' t
 <script type="syntaxhighlighter" class="brush: java"><![CDATA[
 $out.print(("1"+JetFunctions.debug("aaa"))); // line: 1
 ]]></script>
-<a name="x689633529"></a>
-<h2>4.3 运行期错误 Runtime Error</h2>
+<h2><a name="x689633529"></a><span>4.3 运行期错误 Runtime Error</span></h2>
 <p>如果在模板运行期间发生错误，那么就可以得到类似下面的错误 Java Exception Stack。</p>
 <p>错误例子模板如下：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
@@ -390,12 +389,14 @@ Exception in thread "main" java.lang.ClassCastException: java.lang.String cannot
 <p>然后根据 Java Source 中对应的行数，知道这个是一个 <code>#for</code> 指令，查看生成的注释(<code>// line: 2</code>)，就能找到对应的原始模板所在的错误行号是第二行：<code>#for (int x : arraylist)</code>。</p>
 <p>至此，我们就能知道错误的原因是 <code>arraylist</code> 是一个 <code>List&lt;Object&gt;</code>，里面的每个元素是 <code>String</code>，强制类型转换成 <code>int</code> 失败导致的。正确的模板语句应该是 <code>#for (String x : arraylist)</code>。</p>
 <p><a name="debug"></a></p>
-<a name="x545437655"></a>
-<h2>4.4 如何调试模板 debug？</h2> 
+<h2><a name="x545437655"></a><span>4.4 如何调试模板 debug？</span></h2> 
 <ul> 
  <li><p>使用 <code>debug(format, args...)</code> 函数 (需要打开 slf4j 相应的 debug 日志)</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
   ${debug("name = {}", name)}
-]]></script><p><strong>注意：</strong> 参数格式请查看 <a href="http://www.slf4j.org/apidocs/org/slf4j/Logger.html">Slf4j Logger</a>。</p></li> 
+]]></script> 
+  <blockquote>
+   <p><strong>注意：</strong> 参数格式请查看 <a href="http://www.slf4j.org/apidocs/org/slf4j/Logger.html">Slf4j Logger</a>。</p> 
+  </blockquote></li> 
  <li><p>用 Eclipse 进行调试</p></li> 
 </ul> 
 <ol> 
