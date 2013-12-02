@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
-    <title>FAQ jetbrick-template</title>
+    <title>在 jetbrick-template 中如何实现 layout 功能 jetbrick-template</title>
 
     <link href="../assets/css/application.min.css" rel="stylesheet" type="text/css"/>
 
@@ -79,8 +79,7 @@
     <div class="markdown">
 
 <!-- markdown body begin -->
-
-    <ul> 
+	<ul> 
  <li><a href="faq-compile.html">jetbrick-template 将模板编译成 Java Class 有什么好处？</a></li> 
  <li><a href="faq-define.html">jetbrick-template 中为什么需要 #define 声明变量类型？</a></li> 
  <li><a href="faq-error.html">jetbrick-template 常见错误分析</a></li> 
@@ -88,6 +87,87 @@
  <li><a href="faq-tag.html">jetbrick-template 中如何自定义 Tag？</a></li> 
  <li><a href="faq-layout.html">jetbrick-template 中如何实现 layout 功能？</a></li> 
 </ul>
+
+    <h1><a name="x1867624595"></a><span>1 在 jetbrick-template 中如何实现 layout 功能</span></h1>
+<p>通常页面都有一个布局，大体上有页面头部，尾部，以及正文三部分。头部和尾部内容基本上固定，只有正文是变化的。</p>
+<p>jetbrick-template 可以使用 2 种方法实现模板的 layout 功能。</p> 
+<ol> 
+ <li><code>#include(file, ...)</code> 指令</li> 
+ <li><code>#tag layout(file, ...)</code> 标签</li> 
+</ol>
+<h2><a name="x753318042"></a><span>1.1 常规模式</span></h2>
+<p>我们将页面公共部分放在 include 文件中，然后在每个页面中应用 include 文件来实现内容共享。</p>
+<p>main.jetx</p> 
+<script type="syntaxhighlighter" class="brush: html"><![CDATA[
+#include("/include/header.jetx")
+<table>  
+  这是正文内容  
+</table>  
+#include("/include/footer.jetx")
+]]></script>
+<p>这个不算 layout?<br />呵呵，继续放下看。</p>
+<h2><a name="x670265539"></a><span>1.2 变种模式</span></h2>
+<p>常规模式中，只是共享了一些公共内容，但是并没有实现真正的 layout，因为 layout 一变，include 的方式可能就会发生变化，这样所有文件都要重新 include，不是很方便。</p>
+<p>下面就是 #include 模式的变种（动态 include），来实现真正的 layout。</p>
+<p>layout.jetx</p> 
+<script type="syntaxhighlighter" class="brush: html"><![CDATA[
+<html>
+  <head>
+    <title>${title}</title>
+  </head>
+  <body>
+    <div class="header">This is a logo image.</div>
+
+    #include(parameters.pageUrl)
+
+    <div class="footer">Copyright @2000-2010, All Rights Reserved.</div>
+  </body>
+</html>
+]]></script>
+<p>main.jetx</p> 
+<script type="syntaxhighlighter" class="brush: html"><![CDATA[
+<table>  
+  这是正文内容  
+</table>
+]]></script>
+<p>Action.java</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+String url = "/layout.jetx?pageUrl=" + URLEncoder.encode("/main.jetx", "utf-8);
+RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+rd.forward(request, response);
+]]></script>
+<p>怎么样？通过一个 pageUrl 参数来达到动态 layout 的目的，这样我们以后只要修要 layout.jetx 文件就能达到修改所有页面布局了。</p>
+<h2><a name="x38438688"></a><span>1.3 #tag layout(file, ...)</span></h2>
+<p>这里再介绍一种采用 layout 自定义标签来实现。</p>
+<p>layout.jetx</p> 
+<script type="syntaxhighlighter" class="brush: html"><![CDATA[
+<html>
+  <head>
+    <title>${title}</title>
+  </head>
+  <body>
+    <div class="header">This is a logo image.</div>
+
+    ${bodyContent}
+
+    <div class="footer">Copyright @2000-2010, All Rights Reserved.</div>
+  </body>
+</html>
+]]></script>
+<p>main.jetx</p> 
+<script type="syntaxhighlighter" class="brush: html"><![CDATA[
+#tag layout("layout.jetx") 
+<table>  
+  这是正文内容  
+</table>
+#end
+]]></script>
+<p>layout 标签允许指定一个 layout 模板文件，在渲染页面的时候，会将layout标签体的渲染内容作为一个 bodyContent 变量插入到 layout 指定模板文件里。</p>
+<p>这样，我们就可以直接访问 main.jetx。</p>
+<h2><a name="x796152"></a><span>1.4 总结</span></h2>
+<p>不管采用哪种方式，jetbrick-template 都提供很大的灵活性来实现页面布局功能。</p>
+<p>其中自定义 #tag 标签机制提供了非常强大功能，很容易实现其他模板引擎难以实现的功能，比如像 JSP Taglib 一样实现自定义标签，如 Cache Tag 将内容缓存到 memecached/redis 的标签等等。</p>
+<p>如果想了解更多关于 jetbrick-template 及其标签的概念，可以访问http://subchen.github.io/jetbrick-template/</p>
 
 <!-- markdown body end -->
 

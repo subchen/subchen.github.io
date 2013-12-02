@@ -30,6 +30,7 @@
             <li><a href="">javadoc-chm</a></li>
         </ul>
         -->
+        <div class="pull-right" style="color:#fff;line-height:40px;font-size:16px;padding-right:20px">QQ 交流圈：310491655</div>
     </div>
 </div>
 
@@ -41,9 +42,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.0.2.zip" class="download-button">
+        <a href="download/jetbrick-template-1.1.0.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.0.2.zip<br/>2013-11-22</span>
+            <span>jetbrick-template-1.1.0.zip<br/>2013-12-02</span>
         </a>
     </div>
 </div>
@@ -61,13 +62,14 @@
             <li><a href="example.html">例子</a></li>
             -->
             <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html">关于</a></li>
         </ul>
     </div>
 </div>
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-11-22：jetbrick-template-1.0.2 版本已发布，欢迎使用和反馈。</a>
+        <a href="download.html#version">2013-12-02：jetbrick-template-1.1.0 版本已发布，欢迎使用和反馈。</a>
     </div>
 </div>
 
@@ -102,16 +104,18 @@
             <li><a href="#x750650433">5 表达式 Expression</a></li>
             <li><a href="#x2038510066">6 默认的方法扩展 Methods</a></li>
             <li><a href="#x1154836530">7 默认的函数扩展 Functions</a></li>
-            <li><a href="#x1968843044">8 和 Velocity 的比较</a></li>
+            <li><a href="#x1937656097">8 默认的自定义标签 Tags</a></li>
+            <li><a href="#x1968843044">9 和 Velocity 的比较</a></li>
         </ul>
     </div>
 
     <div class="markdown">
 
 <!-- markdown body begin -->
+
     <p>这个是 <code>jetbrick-template</code> 模板语法参考手册。我们推荐的模板文件扩展名为 <code>.jetx</code>，嵌入式子模板的扩展名为 <code>.inc.jetx</code>。</p>
 <h1><a name="x1812010899"></a><span>1 值 Value</span></h1>
-<p>格式：</p> 
+<p>语法：</p> 
 <ul> 
  <li><code>${expression}</code>：输出表达式的计算结果。</li> 
  <li><code>$!{expression}</code>：输出表达式的计算结果，并 escape 其中的 HTML 标签。</li> 
@@ -133,7 +137,7 @@ $!{user.description}
 <h1><a name="x97152884"></a><span>2 指令 Directive</span></h1>
 <h2><a name="x1765529987"></a><span>2.1 变量类型声明 #define</span></h2>
 <p>jetbrick-template 为了提高性能，采用了强类型来编译模板，所以需要为每一个用到的变量定义变量类型。如下：</p>
-<p>格式：</p> 
+<p>语法：</p> 
 <ul> 
  <li><code>#define(type name, ...)</code></li> 
 </ul>
@@ -151,7 +155,7 @@ $!{user.description}
  </ul> 
 </blockquote>
 <h2><a name="x31238794"></a><span>2.2 赋值语句 #set</span></h2>
-<p>格式：</p> 
+<p>语法：</p> 
 <ul> 
  <li><code>#set(type name = value, ...)</code></li> 
  <li><code>#set(name = value, ...)</code></li> 
@@ -165,13 +169,13 @@ $!{user.description}
  <p><strong>注意</strong>：</p> 
  <ul> 
   <li>在相同作用域下面，不允许重复定义变量类型，变量只在当前作用域有效。</li> 
-  <li>不影响父模板的 <code>JetContext</code> 变量。</li> 
   <li>不影响当前模板的 <code>JetContext</code> 变量。</li> 
+  <li>不影响父模板的 <code>JetContext</code> 变量。</li> 
  </ul> 
 </blockquote>
 <h2><a name="x31241181"></a><span>2.3 赋值语句 #put</span></h2>
 <p>将变量内容保存到当前模板以及所有父模板的 <code>JetContext</code> 中，方便父子模板间进行变量传递。</p>
-<p>格式：</p> 
+<p>语法：</p> 
 <ul> 
  <li><code>#put(name, value)</code></li> 
 </ul>
@@ -188,11 +192,11 @@ $!{user.description}
 </blockquote>
 <h2><a name="x1615167792"></a><span>2.4 条件语句 #if, #elseif, #else</span></h2>
 <p>如果 <code>#if</code> 条件表达式计算结果为 <code>true</code> 或非空，则输出指令所包含的块, 否则输出 <code>#else</code> 指令块。</p>
-<p>格式：</p> 
+<p>语法：</p> 
 <ul> 
- <li><code>#if(expression)</code> … <code>#end</code></li> 
- <li><code>#if(expression)</code> … <code>#else</code> … <code>#end</code></li> 
- <li><code>#if(expression)</code> … <code>#elseif(expression)</code> … <code>#else</code> … <code>#end</code></li> 
+ <li><code>#if(expression)</code> ... <code>#end</code></li> 
+ <li><code>#if(expression)</code> ... <code>#else</code> ... <code>#end</code></li> 
+ <li><code>#if(expression)</code> ... <code>#elseif(expression)</code> ... <code>#else</code> ... <code>#end</code></li> 
 </ul>
 <p>示例：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
@@ -216,17 +220,17 @@ $!{user.description}
 </blockquote>
 <h2><a name="x719310441"></a><span>2.5 循环语句 #for</span></h2>
 <p>循环重复输出指令所包含的块，如果是空的集合对象，那么输出 <code>#else</code> 块。</p>
-<p>格式：</p> 
+<p>语法：</p> 
 <ul> 
- <li><code>#for(id: expression)</code> … <code>#end</code></li> 
- <li><code>#for(id: expression)</code> … <code>#else</code> … <code>#end</code></li> 
- <li><code>#for(type id: expression)</code> … <code>#end</code></li> 
- <li><code>#for(type id: expression)</code> … <code>#else</code> … <code>#end</code></li> 
+ <li><code>#for(id: expression)</code> ... <code>#end</code></li> 
+ <li><code>#for(id: expression)</code> ... <code>#else</code> ... <code>#end</code></li> 
+ <li><code>#for(type id: expression)</code> ... <code>#end</code></li> 
+ <li><code>#for(type id: expression)</code> ... <code>#else</code> ... <code>#end</code></li> 
 </ul>
 <p><code>#for</code> 支持以下类型的 <code>expression</code></p> 
 <ul> 
  <li>Iterator</li> 
- <li>Iterable (Collection, …)</li> 
+ <li>Iterable (Collection, ...)</li> 
  <li>Map</li> 
  <li>Enumeration</li> 
  <li>Array</li> 
@@ -262,7 +266,7 @@ $!{user.description}
 </blockquote>
 <h2><a name="x520315191"></a><span>2.6 循环中断或继续语句 #break, #continue</span></h2>
 <p>当 <code>expression</code> 为 <code>true</code>，<code>#break</code> 中断当前循环，而 <code>#continue</code> 跳过余下的内容，跳到下一个循环。</p>
-<p>格式：</p> 
+<p>语法：</p> 
 <ul> 
  <li><code>#break</code></li> 
  <li><code>#break(expression)</code></li> 
@@ -292,7 +296,7 @@ $!{user.description}
 </blockquote>
 <h2><a name="x1448344112"></a><span>2.7 停止解析语句 #stop</span></h2>
 <p>当 <code>expression</code> 为真或非空时，停止模板运行。</p>
-<p>格式：</p> 
+<p>语法：</p> 
 <ul> 
  <li><code>#stop</code></li> 
  <li><code>#stop(expression)</code></li> 
@@ -309,7 +313,7 @@ $!{user.description}
 </blockquote>
 <h2><a name="x347886788"></a><span>2.8 嵌套模板语句 #include</span></h2>
 <p>嵌入一个子模板，将子模板内容输出到当前位置。</p>
-<p>格式：</p> 
+<p>语法：</p> 
 <ul> 
  <li><code>#include(file)</code></li> 
  <li><code>#include(file, parameters)</code></li> 
@@ -328,13 +332,56 @@ $!{user.description}
   <li>子模板可以用 <code>#put</code> 指令修改父模板的 <code>JetContext</code>，然后在父模板中用 <code>context[&quot;name&quot;]</code> 获取变量值。</li> 
  </ul> 
 </blockquote>
+<p>具体用法请查考： <a href="faq-include.html">在 jetbrick-template 中如何使用 #include？</a></p>
+<h2><a name="x778876459"></a><span>2.9 宏定义 #macro</span></h2>
+<p>定义一个代码片段，然后可以重复使用。(New from 1.1.0)</p>
+<p>语法：</p> 
+<ul> 
+ <li><code>#macro name(type name, ...)</code> ... <code>#end</code></li> 
+</ul> 
+<blockquote>
+ <p><strong>注意</strong>： 每个宏可以定义 0~N 个参数。</p> 
+</blockquote>
+<p>示例：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+#macro header(String name)
+    Hello ${name}!
+#end
+
+${header("张三")}
+${header("李四")}
+]]></script>
+<p>输出结果：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+    Hello 张三!
+    Hello 李四!
+]]></script> 
+<blockquote>
+ <p><strong>注意</strong>：<br />* 宏的调用就和函数调用一样。(如果和函数存在名称冲突，那么宏定义优先)<br />* 宏的调用返回值是 Void，所以不支持对返回值进行计算。</p> 
+</blockquote>
+<h2><a name="x1007843513"></a><span>2.10 自定义标签 #tag</span></h2>
+<p>jetbrick-template 支持自定义 Tag，类似于 JSP Taglib，但是要比 JSP Taglib 更简单更好用。(New from 1.1.0)</p>
+<p>语法：</p> 
+<ul> 
+ <li><code>#tag name(args ...)</code> ... <code>#end</code></li> 
+</ul> 
+<blockquote>
+ <p><strong>注意</strong>：<br />* 需要在 Java 端先定义 Tag 标签的实现。<br />* Tag 调用的参数必须金额定义的一致。</p> 
+</blockquote>
+<p>示例：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+#tag layout("layout.jetx")
+    Hello ${name}!
+#end
+]]></script>
+<p>具体用法请查考： <a href="faq-tag.html">在 jetbrick-template 中如何自定义 Tag？</a></p>
 <h1><a name="x890125816"></a><span>3 文本 Text</span></h1>
 <p>普通文本内容将会被直接进行输出。</p>
 <h2><a name="x136317352"></a><span>3.1 不解析文本块</span></h2>
 <p>原样输出模板内容，用于输出纯文本内容，或批量转义块中的特殊字符。类似于 XML 中的 CDATA。</p>
-<p>格式：</p> 
+<p>语法：</p> 
 <ul> 
- <li><code>#[[</code> … <code>]]#</code></li> 
+ <li><code>#[[</code> ... <code>]]#</code></li> 
 </ul>
 <p>示例：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
@@ -345,7 +392,7 @@ $!{user.description}
 ]]></script>
 <h2><a name="x1841434365"></a><span>3.2 特殊字符转义</span></h2>
 <p>原样输出指令特殊字符，转义字符由 <code>\</code> 进行转义。</p>
-<p>格式：</p> 
+<p>语法：</p> 
 <ul> 
  <li><code>\\</code></li> 
  <li><code>\#</code></li> 
@@ -367,9 +414,9 @@ $!{user.description}
 <h1><a name="x1221926399"></a><span>4 注释 Comment</span></h1>
 <h2><a name="x34432814"></a><span>4.1 行注释</span></h2>
 <p>隐藏行注释的内容，以换行符结束，用于注解过程，或屏蔽指令内容。</p>
-<p>格式：</p> 
+<p>语法：</p> 
 <ul> 
- <li><code>##</code> …</li> 
+ <li><code>##</code> ...</li> 
 </ul>
 <p>示例：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
@@ -377,9 +424,9 @@ ${user.name} ## This is a line comment.
 ]]></script>
 <h2><a name="x22388601"></a><span>4.2 块注释</span></h2>
 <p>隐藏块注释内容，可包含换行符，用于注解过程，或屏蔽指令内容。</p>
-<p>格式：</p> 
+<p>语法：</p> 
 <ul> 
- <li><code>#--</code> … <code>--#</code></li> 
+ <li><code>#--</code> ... <code>--#</code></li> 
 </ul>
 <p>示例：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
@@ -412,7 +459,7 @@ ${user.name} ## This is a line comment.
  <li><code>for</code>： 用于 <code>#for</code> 指令内部状态对象。</li> 
 </ul>
 <h2><a name="x1847340345"></a><span>5.2 List 常量</span></h2>
-<p>格式：</p> 
+<p>语法：</p> 
 <ul> 
  <li><code>[item, ...]</code></li> 
 </ul>
@@ -423,7 +470,7 @@ ${user.name} ## This is a line comment.
 ["abc", 123, new Date(), 1+2*3]
 ]]></script>
 <h2><a name="x1996788741"></a><span>5.3 Map 常量</span></h2>
-<p>格式：</p> 
+<p>语法：</p> 
 <ul> 
  <li><code>{key: value, ...}</code></li> 
 </ul>
@@ -436,16 +483,16 @@ ${user.name} ## This is a line comment.
 <p>Bean 属性会解析成 getter 方法调用。</p>
 <p>属性查找顺序，以 <code>${obj.foo}</code> 为例：</p> 
 <ol> 
- <li>查找 obj class 的 foo 静态属性</li> 
  <li>查找 obj.getFoo() 方法</li> 
  <li>查找 obj.isFoo() 方法</li> 
+ <li>查找 obj class 的 foo 字段</li> 
  <li>查找 obj.get(name) 方法 (如果是 <code>Map</code> 或者 <code>JetContext</code>)</li> 
 </ol>
 <p>以上查找过程会在第一次编译的时候完成，不影响性能。<br />支持对属性返回值的类型推导。</p> 
 <blockquote>
  <p><strong>注意</strong>： <code>jetbrick-template</code> 支持属性的安全调用，和 Groovy 相同，你可以使用 <code>?.</code> 来代替 <code>.</code>，以避免出现 <code>NullPointerException</code>。</p> 
 </blockquote>
-<h2><a name="x1450717541"></a><span>5.5 Bean 方法调用 bean.method(…)</span></h2> 
+<h2><a name="x1481011027"></a><span>5.5 Bean 方法调用 bean.method(...)</span></h2> 
 <ul> 
  <li>支持普通方法调用</li> 
  <li>支持不定长参数方法调用 Varargs</li> 
@@ -465,6 +512,30 @@ ${"Hello".substring(2, 3)}
 <h2><a name="x134013728"></a><span>5.6 函数调用 function</span></h2>
 <p>jetbrick-template 还支持函数调用，如 <code>${now()}</code>, <code>${include(&quot;tag.jetx&quot;)}</code>。</p>
 <p>具体参考：<a href="userguide.html#functions">扩展函数调用</a></p>
+<h2><a name="x502090105"></a><span>5.7 静态字段调用 @Class.Field</span></h2>
+<p>(New from 1.1.0)</p>
+<p>语法：</p> 
+<ul> 
+ <li><code>@Class.Field</code></li> 
+ <li><code>@(package.Class).Field</code></li> 
+</ul>
+<p>示例：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+${@Long.MAX_VALUE}
+${@(java.lang.Long).MAX_VALUE}
+]]></script>
+<h2><a name="x1814113504"></a><span>5.8 静态方法调用 @Class.method</span></h2>
+<p>(New from 1.1.0)</p>
+<p>语法：</p> 
+<ul> 
+ <li><code>@Class.method(...)</code></li> 
+ <li><code>@(package.Class).method(...)</code></li> 
+</ul>
+<p>示例：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+${@Collections.emptyList()}
+${@(java.lang.Long).valueOf("123")}
+]]></script>
 <p><a name="default_methods"></a></p>
 <h1><a name="x2038510066"></a><span>6 默认的方法扩展 Methods</span></h1>
 <p>所有方法扩展定义在 <code>jetbrick.template.runtime.JetMethods</code></p>
@@ -560,24 +631,30 @@ ${"Hello".substring(2, 3)}
 	${i}
 #end
 ]]></script>
-<h2><a name="x1509868974"></a><span>7.3 嵌入子模板 include(…)</span></h2>
+<h2><a name="x958665306"></a><span>7.3 嵌入子模板 include(...)</span></h2>
 <p>嵌入一个子模板。和 <code>#include</code> 指令的区别，此函数对子模板的输出进行了缓存，可以处理返回的内容，但是效率没有 <code>#include</code> 指令高。</p> 
 <ul> 
  <li><code>String include(String relativeName)</code></li> 
  <li><code>String include(String relativeName, Map&lt;String, Object&gt; parameters)</code></li> 
 </ul>
-<h2><a name="x1366567999"></a><span>7.4 嵌入纯文本文件 read(…)</span></h2> 
+<h2><a name="x1231948809"></a><span>7.4 嵌入纯文本文件 read(...)</span></h2> 
 <ul> 
  <li><code>String read(String relativeName)</code></li> 
  <li><code>String read(String relativeName, String encoding)</code></li> 
 </ul>
-<h2><a name="x1867062942"></a><span>7.5 调试专用函数 debug(…)</span></h2> 
+<h2><a name="x1292645738"></a><span>7.5 调试专用函数 debug(...)</span></h2> 
 <ul> 
  <li><code>void debug(String format, Object... args)</code><br /> 输出调试信息，需要配合 Slf4j 使用。</li> 
 </ul>
+<p><a name="default_tags"></a></p>
+<h1><a name="x1937656097"></a><span>8 默认的自定义标签 Tags</span></h1>
+<p>所有 Tags 定义在 <code>jetbrick.template.runtime.JetTags</code></p> 
+<ul> 
+ <li><code>#tag layout(name)</code><br /> 应用页面布局， 参考：<a href="faq-layout.html">jetbrick-template 中如何实现 layout 功能？</a></li> 
+</ul>
 <p><a name="velocity"></a></p>
-<h1><a name="x1968843044"></a><span>8 和 Velocity 的比较</span></h1>
-<h2><a name="x1094687580"></a><span>8.1 语法差异</span></h2> 
+<h1><a name="x1968843044"></a><span>9 和 Velocity 的比较</span></h1>
+<h2><a name="x1094687580"></a><span>9.1 语法差异</span></h2> 
 <ul> 
  <li>jetbrick-template 指令中的变量不加 <code>$</code> 符，只支持 <code>#if(x == y)</code>，不支持 <code>#if($x == $y)</code>，因为指令中没有加引号的字符串就是变量，和常规语言的语法一样，加$有点废话，而且容易忘写。</li> 
  <li>jetbrick-template 占位符必需加大括号，只支持 <code>${foo}</code>，不支持 <code>$foo</code>，因为 <code>$</code> 在 JavaScript 中也是合法变量名符号，而 <code>${}</code> 不是，减少混淆，也防止多人开发时，有人加大括号，有人不加，干脆没得选，都加，保持一致。</li> 
@@ -587,7 +664,8 @@ ${"Hello".substring(2, 3)}
  <li>jetbrick-template 支持属性和方法的安全调用。如 <code>${user?.name}</code>，<code>${user?.hasRole(&quot;vip&quot;)}</code>。</li> 
  <li>jetbrick-template 还支持静态字段/方法调用，函数扩展，上下文相关的方法/函数扩展。</li> 
 </ul>
-<h2><a name="x775409745"></a><span>8.2 指令差异</span></h2>
+<h2><a name="x775409745"></a><span>9.2 指令差异</span></h2>
+
     <table>
     <tr>
         <th width="140px">velocity</th>
@@ -708,28 +786,26 @@ ${"Hello".substring(2, 3)}
         <td>停止模板解析</td>
         <td>可以直接带条件</td>
     </tr>
-    <!--
     <tr>
         <td>#macro($foo)</td>
-        <td>#mixin foo(...)</td>
-        <td><font color="red">不同</font></td>
+        <td>#macro foo(...)</td>
+        <td>相似</td>
         <td>可复用模板片段宏</td>
         <td>velocity 将宏作为指令执行<br> jetbrick-template 作为函数执行</td>
     </tr>
     <tr>
-        <td>#define($foo)</td>
-        <td>#mixin $foo(...)</td>
-        <td>相似</td>
-        <td>捕获块输出到变量中</td>
-        <td>jetbrick-template 重用 #mixin</td>
+        <td>n/a</td>
+        <td>#tag foo(...)</td>
+        <td><font color="red">新增</font></td>
+        <td>自定义标签</td>
+        <td>jetbrick-template 允许自定义标签</td>
     </tr>
-    -->
     <tr>
         <td>#include("foo.txt")</td>
-        <td>#include("foo.txt")</td>
-        <td><font color="green">相同</font></td>
+        <td>read("foo.txt")</td>
+        <td>相似</td>
         <td>读取文本文件内容</td>
-        <td>jetbrick-template 可以缓存文本文件</td>
+        <td>jetbrick-template 用扩展函数实现</td>
     </tr>
     <tr>
         <td>#parse("foo.vm")</td>
@@ -754,7 +830,7 @@ ${"Hello".substring(2, 3)}
 <div class="container">
     <div class="jb-footer">
         Copyright 2010-2013 Guoqiang Chen. All rights reserved.
-        <br/>subchen&#64;gmail.com
+        <br/>subchen&#64;gmail.com, QQ 交流圈：310491655
     </div>
 </div>
 

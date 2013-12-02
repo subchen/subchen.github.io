@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
-    <title>FAQ jetbrick-template</title>
+    <title>jetbrick-template 将模板编译成 Java Class 有什么好处？ jetbrick-template</title>
 
     <link href="../assets/css/application.min.css" rel="stylesheet" type="text/css"/>
 
@@ -79,8 +79,7 @@
     <div class="markdown">
 
 <!-- markdown body begin -->
-
-    <ul> 
+	<ul> 
  <li><a href="faq-compile.html">jetbrick-template 将模板编译成 Java Class 有什么好处？</a></li> 
  <li><a href="faq-define.html">jetbrick-template 中为什么需要 #define 声明变量类型？</a></li> 
  <li><a href="faq-error.html">jetbrick-template 常见错误分析</a></li> 
@@ -88,6 +87,17 @@
  <li><a href="faq-tag.html">jetbrick-template 中如何自定义 Tag？</a></li> 
  <li><a href="faq-layout.html">jetbrick-template 中如何实现 layout 功能？</a></li> 
 </ul>
+
+    <h1><a name="x953575809"></a><span>1 jetbrick-template 将模板编译成 Java Class 有什么好处？</span></h1> 
+<ol> 
+ <li><p>性能卓越</p><p>消除反射，极少类型转换，减少内存消耗，比解释性的模板性能高一个数量级。</p></li> 
+ <li><p>方便调试</p><p>解释性的模板无法调试，先生存 Java 源代码，在编译成 Class 文件，就可以方便进行调试。</p></li> 
+ <li><p>支持代码重构时的预先提示</p><p>如果需要重构 Java 源代码，那么在重构的时候，立即知道哪些模板会受到影响。</p> 
+  <ul> 
+   <li>将模板生成的 Java Source 连接到项目的 sourcepath，然后借助于 Eclipse 等 IDE 的重构预览模式就可以发现哪些模板受到重构影响）。</li> 
+   <li>将模板全部重新编译一下，就能知道那些模板存在编译错误，可以提前发现问题，而不是等到模板实际运行的时候才发现问题。</li> 
+  </ul></li> 
+</ol>
 
 <!-- markdown body end -->
 

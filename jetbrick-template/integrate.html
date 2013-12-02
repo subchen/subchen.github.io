@@ -30,6 +30,7 @@
             <li><a href="">javadoc-chm</a></li>
         </ul>
         -->
+        <div class="pull-right" style="color:#fff;line-height:40px;font-size:16px;padding-right:20px">QQ 交流圈：310491655</div>
     </div>
 </div>
 
@@ -41,9 +42,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.0.2.zip" class="download-button">
+        <a href="download/jetbrick-template-1.1.0.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.0.2.zip<br/>2013-11-22</span>
+            <span>jetbrick-template-1.1.0.zip<br/>2013-12-02</span>
         </a>
     </div>
 </div>
@@ -61,13 +62,14 @@
             <li><a href="example.html">例子</a></li>
             -->
             <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html">关于</a></li>
         </ul>
     </div>
 </div>
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-11-22：jetbrick-template-1.0.2 版本已发布，欢迎使用和反馈。</a>
+        <a href="download.html#version">2013-12-02：jetbrick-template-1.1.0 版本已发布，欢迎使用和反馈。</a>
     </div>
 </div>
 
@@ -105,12 +107,14 @@
             <li><a href="#x1633219041">&nbsp&nbsp4.4 Struts 2.x</a></li>
             <li><a href="#x941308089">&nbsp&nbsp4.5 Spring MVC</a></li>
             <li><a href="#x2108526772">&nbsp&nbsp4.6 JFinal</a></li>
+            <li><a href="#x2439853">&nbsp&nbsp4.7 Nutz</a></li>
         </ul>
     </div>
 
     <div class="markdown">
 
 <!-- markdown body begin -->
+
     <h1><a name="x1016944"></a><span>1 简述</span></h1>
 <p>jetbrick-template 除了作为普通的模板引擎嵌入在 Application 中外，大部分情况下还会和各种 WebMVC 框架整合作为前端的 View，来代替过时的 JSP 或者 Velocity。</p>
 <p>目前已近集成了几种流行的 Web 框架：</p> 
@@ -121,6 +125,7 @@
  <li><a href="#Struts">Struts 2.x</a></li> 
  <li><a href="#SpringMVC">Spring MVC</a></li> 
  <li><a href="#JFinal">JFinal</a></li> 
+ <li><a href="#Nutz">Nutz</a></li> 
 </ul>
 <h1><a name="x1336408494"></a><span>2 Web 中的默认隐含对象</span></h1>
 <p>当 jetbrick-template 被用作 Web 应用中时候，会自动引入下面的对象，这些对象在所有的模板中全局可访问。</p> 
@@ -292,6 +297,26 @@ public void configConstant(Constants me) {
 }
 ]]></script>
 <p>可以了，就这么简单!</p>
+<p><a name="Nutz"></a></p>
+<h2><a name="x2439853"></a><span>4.7 Nutz</span></h2>
+<p>View： <code>jetbrick.template.web.nutz.JetTemplateView</code><br />ViewMaker：<code>jetbrick.template.web.nutz.JetTemplateViewMaker</code></p> 
+<ol> 
+ <li><p>将视图工厂整合进应用中：</p><p>在主模块上，加：@Views({JetTemplateViewMaker.class}) 注解</p> <script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Views({JetTemplateViewMaker.class})
+@...
+public class MainModule {
+}
+]]></script></li> 
+ <li><p>使用 jetx 视图：</p> <script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@At
+@Ok("jetx:/WEB-INF/html/user_info.jetx")
+public String list(@Param("name") String name, HttpServletRequest request){
+  if (name != null) return name;
+  return "测试";
+}
+]]></script></li> 
+</ol>
+
 <!-- markdown body end -->
 
     </div>
@@ -300,7 +325,7 @@ public void configConstant(Constants me) {
 <div class="container">
     <div class="jb-footer">
         Copyright 2010-2013 Guoqiang Chen. All rights reserved.
-        <br/>subchen&#64;gmail.com
+        <br/>subchen&#64;gmail.com, QQ 交流圈：310491655
     </div>
 </div>
 

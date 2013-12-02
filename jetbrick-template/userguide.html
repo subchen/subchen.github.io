@@ -30,6 +30,7 @@
             <li><a href="">javadoc-chm</a></li>
         </ul>
         -->
+        <div class="pull-right" style="color:#fff;line-height:40px;font-size:16px;padding-right:20px">QQ 交流圈：310491655</div>
     </div>
 </div>
 
@@ -41,9 +42,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.0.2.zip" class="download-button">
+        <a href="download/jetbrick-template-1.1.0.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.0.2.zip<br/>2013-11-22</span>
+            <span>jetbrick-template-1.1.0.zip<br/>2013-12-02</span>
         </a>
     </div>
 </div>
@@ -61,13 +62,14 @@
             <li><a href="example.html">例子</a></li>
             -->
             <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html">关于</a></li>
         </ul>
     </div>
 </div>
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-11-22：jetbrick-template-1.0.2 版本已发布，欢迎使用和反馈。</a>
+        <a href="download.html#version">2013-12-02：jetbrick-template-1.1.0 版本已发布，欢迎使用和反馈。</a>
     </div>
 </div>
 
@@ -104,6 +106,7 @@
             <li><a href="#x1213031356">3 高级用法</a></li>
             <li><a href="#x1112662598">&nbsp&nbsp3.1 方法扩展 Methods</a></li>
             <li><a href="#x829850106">&nbsp&nbsp3.2 函数扩展 Functions</a></li>
+            <li><a href="#x1006401815">&nbsp&nbsp3.3 自定义标签 Tags</a></li>
             <li><a href="#x1633230618">4 错误处理 Finding Issue</a></li>
             <li><a href="#x521147885">&nbsp&nbsp4.1 语法错误 Syntax Error</a></li>
             <li><a href="#x1307151980">&nbsp&nbsp4.2 编译错误 Compile Error</a></li>
@@ -115,12 +118,13 @@
     <div class="markdown">
 
 <!-- markdown body begin -->
+
     <h1><a name="x1217142286"></a><span>1 从这里开始 Start</span></h1>
 <h2><a name="x1102343160"></a><span>1.1 基本步骤 Steps</span></h2> 
 <ol> 
  <li>创建自定义配置的 <code>JetEngine</code> 对象。推荐使用单例模式创建。</li> 
  <li>根据模板路径，获取一个模板对象 <code>JetTemplate</code>。</li> 
- <li>创建一个 <code>JetContext</code> 对象，并加入你的 data objects。</li> 
+ <li>创建一个 <code>Map&lt;String, Object&gt;</code> 对象，并加入你的 data objects。</li> 
  <li>准备一个待输出的对象，<code>OutputStream</code> 或者 <code>Writer</code>。</li> 
  <li>根据你的 data objects 来渲染模板，并获得输出结果。</li> 
 </ol>
@@ -133,7 +137,7 @@ JetEngine engine = JetEngine.create();
 JetTemplate template = engine.getTemplate("/sample.jetx");
 
 // 创建 context 对象
-JetContext context = new JetContext();
+Map<String, Object> context = new HashMap<String, Object>();
 context.put("user", user);
 context.put("books", books);
 
@@ -144,8 +148,8 @@ template.render(context, writer);
 // 打印结果
 System.out.println(writer.toString());
 ]]></script>
-<p>这是一个基本的用法，是不是非常简单？</p>
-<p>整个过程，我们就看到了几个核心对象：<code>JetEngine</code>，<code>JetTemplate</code>，<code>JetContext</code>。没错，就这3个。下面就分别介绍他们。</p>
+<p>整个过程，是不是非常简单？</p>
+<p>下面将介绍几个 API 的核心对象：<code>JetEngine</code>，<code>JetTemplate</code>，<code>JetContext</code> </p>
 <h1><a name="x987989908"></a><span>2 核心对象 Core</span></h1>
 <h2><a name="x1273924123"></a><span>2.1 JetEngine</span></h2>
 <p>整个模板引擎的由 <code>JetEngine</code> 驱动，不同的 <code>JetEngine</code> 对象可以使用不同的配置。一般在一个 Application 或者 Webapp 中，我们只需要一个 <code>JetEngine</code> 对象就可以了，我们推荐使用单例模式创建。</p>
@@ -179,13 +183,20 @@ public Resource getResource(String name) throws ResourceNotFoundException;
 <h2><a name="x1328335379"></a><span>2.2 JetTemplate</span></h2>
 <p>对应于一个模板文件，通过 <code>JetEngine.getTemplate(name)</code> 获取。在第一次获取的时候，会先将模板生成对象的 <code>.java</code> 文件，然后在将 <code>.java</code> 文件编译成 <code>.class</code> 文件。</p>
 <p>如果模板不存在，则抛出 <code>ResourceNotFoundException</code>。</p>
-<p>然后通过下面两个方法可以对模板进行渲染：</p> 
+<p>然后通过下面几个方法可以对模板进行渲染：</p> 
 <script type="syntaxhighlighter" class="brush: java"><![CDATA[
 public void render(Map<String, Object> context, Writer out);
 public void render(Map<String, Object> context, OutputStream out);
 public void render(JetContext context, Writer out);
 public void render(JetContext context, OutputStream out);
 ]]></script>
+<p>我们可以使用 <code>Map&lt;String, Object&gt;</code> 或者 <code>JetContext</code> 存储我们的 data objects。<code>JetContext</code> 是对 <code>Map&lt;String, Object&gt;</code> 的简单封装。</p> 
+<blockquote>
+ <p><strong>注意</strong>： </p> 
+ <ul> 
+  <li><code>context</code> 对象在模板运行期间，并不会受到模板污染，即数据不会被改变（保证数据的无侵入性）。</li> 
+ </ul> 
+</blockquote>
 <h2><a name="x902651658"></a><span>2.3 JetContext</span></h2>
 <p>用来存储和获取模板关联的 data objects。可以通过 <code>new JetContext()</code> 或者 <code>new JetContext(map)</code> 创建。</p>
 <p>使用 <code>JetContext</code> 就像使用 Java 的 <code>HashMap</code> 一样。常用的方法如下：</p> 
@@ -197,8 +208,9 @@ public void putAll(Map<String, Object> context);
 <blockquote>
  <p><strong>注意</strong>：</p> 
  <ul> 
-  <li><code>JetContext</code> 会被 <code>#put</code> 指令修改。<code>#set</code> 指令并不会影响 <code>JetContext</code> 中的内容。</li> 
-  <li><code>JetContext</code> 会在父子模板调用的时候，形成一个 Context Chain，子模板可以自动获取父模板的变量，而父模板无法看到子模板的 <code>JetContext</code>。但是子模板可以通过 <code>#put(name, value)</code> 来修改父模板的 <code>JetContext</code>。具体查看：<a href="faq.html#fembed_template">如何嵌入子模板？</a></li> 
+  <li><code>JetContext</code> 会被 <code>#put</code> 指令修改</li> 
+  <li>用户提供的 <code>JetContext</code> 不会受到 '#set' 的影响，但是内部的使用的 <code>JetContext</code> 对象会受到 <code>#set</code> 指令的影响。</li> 
+  <li><code>JetContext</code> 会在父子模板调用的时候，形成一个 Context Chain，子模板可以自动获取父模板的变量，而父模板无法看到子模板的 <code>JetContext</code>。但是子模板可以通过 <code>#put(name, value)</code> 来修改父模板的 <code>JetContext</code>。具体查看：<a href="faq-include.html">如何嵌入子模板？</a></li> 
  </ul> 
 </blockquote>
 <h1><a name="x1213031356"></a><span>3 高级用法</span></h1>
@@ -217,10 +229,10 @@ public void putAll(Map<String, Object> context);
 </blockquote>
 <p>方法扩展支持 2 种模式：</p> 
 <ul> 
- <li>上下文无关方法：MethodTool.method(bean, …)</li> 
- <li>上下文相关方法：MethodTool.method(bean, JetPageContext, …)</li> 
+ <li>上下文无关方法：MethodTool.method(bean, ...)</li> 
+ <li>上下文相关方法：MethodTool.method(bean, JetPageContext, ...)</li> 
 </ul>
-<h3><a name="x2086515676"></a><span>3.1.1 上下文无关方法 MethodTool.method(bean, …)</span></h3> 
+<h3><a name="x364359324"></a><span>3.1.1 上下文无关方法 MethodTool.method(bean, ...)</span></h3> 
 <ul> 
  <li>方法签名必须是 <code>public</code> 和 <code>static</code></li> 
  <li>方法的第一个参数类型必须是要扩展的 Class</li> 
@@ -250,7 +262,7 @@ ${"BAIDU".link("http://www.baidu.com/")}
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 <a href="http://www.baidu.com/">BAIDU</a>
 ]]></script>
-<h3><a name="x1916086807"></a><span>3.1.2 上下文相关方法 MethodTool.method(bean, JetPageContext, …)</span></h3>
+<h3><a name="x1425351729"></a><span>3.1.2 上下文相关方法 MethodTool.method(bean, JetPageContext, ...)</span></h3>
 <p>如果扩展的方法需要用到 template 相关联的运行时信息 <code>JetPageContext</code>，那么我们就需要扩展一个上下文相关的 method。</p>
 <p>和上下文无关的扩展方法相比，上下文相关的扩展方法多一个参数。</p> 
 <ul> 
@@ -313,6 +325,47 @@ ${hello()}
 <blockquote>
  <p><strong>注意</strong>：函数和扩展方法的唯一区别是少了第一个扩展类型的参数，其他的都一样。</p> 
 </blockquote>
+<p><a name="tags"></a></p>
+<h2><a name="x1006401815"></a><span>3.3 自定义标签 Tags</span></h2>
+<p>jetbrick-template 自定义标签 Tag，类似于 JSP Taglib，但是要比 JSP Taglib 更简单更好用。</p>
+<p>示例：</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+public class Tags {
+  public static void cache(JetTagContext ctx, String name, int timeout) throws IOException {
+    Cache cache = CacheManager.getCache(); // 请用自己的 Cache 代替
+    Object value = cache.get(name);
+    if (value == null) {
+      value = ctx.getBodyContext();
+      cache.put(name, value, timeout);
+    }
+    ctx.getWriter().print(value);
+  }
+}
+]]></script>
+<p>对于每一个 Tag 的方法声明，有如下要求：</p> 
+<ul> 
+ <li>方法签名必须是 public static</li> 
+ <li>方法返回值必须是 void</li> 
+ <li>方法第一个参数必须是 JetTagContext， 其余参数自定义</li> 
+ <li>允许 throws 任意的 Throwable</li> 
+ <li>允许定义相同名字的 Tag，但是方法参数不一样 （Overload）</li> 
+ <li>支持可变参数 (VarArgs)</li> 
+</ul>
+<p>然后需要把自定义的 Tags 注册到 JetEngine。</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+// 把 Tags 加入到 engine 中
+Properties config = new Properties();
+config.put(JetConfig.IMPORT_TAGS, Tags.class.getName());
+JetEngine engine = JetEngine.create(config);
+...
+]]></script>
+<p>模板：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+#tag cache("sum", 10)
+    计算结果将被缓存10秒： ${1+2+3+4+5+6+7+8+9}
+#end
+]]></script>
+<p>具体可以参考：<a href="faq-tag.html">jetbrick-template 中如何自定义 Tag？</a></p>
 <h1><a name="x1633230618"></a><span>4 错误处理 Finding Issue</span></h1>
 <p><code>jetbrick-template</code> 提供了强大的错误定位功能，你再也不用担心找不到错误原因了。</p>
 <h2><a name="x521147885"></a><span>4.1 语法错误 Syntax Error</span></h2>
@@ -392,7 +445,7 @@ Exception in thread "main" java.lang.ClassCastException: java.lang.String cannot
 <h2><a name="x545437655"></a><span>4.4 如何调试模板 debug？</span></h2> 
 <ul> 
  <li><p>使用 <code>debug(format, args...)</code> 函数 (需要打开 slf4j 相应的 debug 日志)</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
-  ${debug("name = {}", name)}
+${debug("name = {}", name)}
 ]]></script> 
   <blockquote>
    <p><strong>注意：</strong> 参数格式请查看 <a href="http://www.slf4j.org/apidocs/org/slf4j/Logger.html">Slf4j Logger</a>。</p> 
@@ -404,6 +457,7 @@ Exception in thread "main" java.lang.ClassCastException: java.lang.String cannot
  <li><p>设置断点 </p><p><img src="../assets/images/screen_set_breakpoint.png" alt="png" /></p></li> 
  <li><p>开始 debug</p><p><img src="../assets/images/screen_debug.png" alt="png" /></p></li> 
 </ol>
+
 <!-- markdown body end -->
 
     </div>
@@ -412,7 +466,7 @@ Exception in thread "main" java.lang.ClassCastException: java.lang.String cannot
 <div class="container">
     <div class="jb-footer">
         Copyright 2010-2013 Guoqiang Chen. All rights reserved.
-        <br/>subchen&#64;gmail.com
+        <br/>subchen&#64;gmail.com, QQ 交流圈：310491655
     </div>
 </div>
 
