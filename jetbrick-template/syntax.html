@@ -357,7 +357,11 @@ ${header("李四")}
     Hello 李四!
 ]]></script> 
 <blockquote>
- <p><strong>注意</strong>：<br />* 宏的调用就和函数调用一样。(如果和函数存在名称冲突，那么宏定义优先)<br />* 宏的调用返回值是 Void，所以不支持对返回值进行计算。</p> 
+ <p><strong>注意</strong>：</p> 
+ <ul> 
+  <li>宏的调用就和函数调用一样。(如果和函数存在名称冲突，那么宏定义优先)</li> 
+  <li>宏的调用返回值是 Void，所以不支持对返回值进行计算。</li> 
+ </ul> 
 </blockquote>
 <h2><a name="x1007843513"></a><span>2.10 自定义标签 #tag</span></h2>
 <p>jetbrick-template 支持自定义 Tag，类似于 JSP Taglib，但是要比 JSP Taglib 更简单更好用。(New from 1.1.0)</p>
@@ -366,7 +370,11 @@ ${header("李四")}
  <li><code>#tag name(args ...)</code> ... <code>#end</code></li> 
 </ul> 
 <blockquote>
- <p><strong>注意</strong>：<br />* 需要在 Java 端先定义 Tag 标签的实现。<br />* Tag 调用的参数必须和定义的一致。</p> 
+ <p><strong>注意</strong>： </p> 
+ <ul> 
+  <li>需要在 Java 端先定义 Tag 标签的实现。</li> 
+  <li>Tag 调用的参数必须和定义的一致。</li> 
+ </ul> 
 </blockquote>
 <p>示例：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
