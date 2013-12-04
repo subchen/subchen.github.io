@@ -141,6 +141,11 @@
    <td> </td> 
   </tr> 
   <tr> 
+   <td>import.tags </td> 
+   <td>默认导入的自定义标签 tags </td> 
+   <td> </td> 
+  </tr> 
+  <tr> 
    <td>import.variables </td> 
    <td>默认导入的 java 对象 </td> 
    <td> </td> 
@@ -261,6 +266,13 @@ import.methods = StringMethods, app.project.methods.UserAuthMethods
 import.functions = app.project.methods.UserAuthFunctions
 ]]></script>
 <p><code>jetbrick-template</code> 默认会注册 <code>jetbrick.template.runtime.JetFunctions</code>，具体参考：<a href="syntax.html#default_functions">默认的函数扩展</a>。</p>
+<h3><a name="x1423734978"></a><span>1.1.6 import.tags</span></h3>
+<p>我们支持在模板中自定义标签 #tag。</p>
+<p>允许配置多个 Tag Class 定义，用逗号分隔。示例如下：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+import.tags = app.project.tags.UserTags
+]]></script>
+<p><code>jetbrick-template</code> 默认会注册 <code>jetbrick.template.runtime.JetTags</code>，具体参考：<a href="syntax.html#default_tags">默认的自定义标签</a>。</p>
 <h2><a name="x1497214921"></a><span>1.2 模板路径和编码格式</span></h2>
 <h3><a name="x1175775991"></a><span>1.2.1 input.encoding</span></h3>
 <p>模板源文件的编码格式，默认为 <code>utf-8</code>。</p>
