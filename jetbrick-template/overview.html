@@ -36,15 +36,17 @@
 
 <div class="jb-banner">
     <div class="container">
-        <img src="../assets/images/jetbrick-template-logo.png" class="pull-left" />
+        <a href="http://subchen.github.io/jetbrick-template/">
+            <img src="../assets/images/jetbrick-template-logo.png" class="pull-left" />
+        </a>
         <ul class="description">
             <li>1. 全新一代 Java 模板引擎</li>
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.1.0.zip" class="download-button">
+        <a href="download/jetbrick-template-1.1.1.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.1.0.zip<br/>2013-12-02</span>
+            <span>jetbrick-template-1.1.1.zip<br/>2013-12-08</span>
         </a>
     </div>
 </div>
@@ -69,7 +71,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-12-02：jetbrick-template-1.1.0 版本已发布，支持自定义 #tag 和 宏 #macro，欢迎使用和反馈。</a>
+        <a href="download.html#version">2013-12-08：jetbrick-template-1.1.1 正式版已发布，欢迎使用和反馈。</a>
     </div>
 </div>
 
@@ -128,7 +130,7 @@
 </ul>
 <h1><a name="x441533943"></a><span>2 简单易用的指令</span></h1>
 <p>jetbrick-template 指令集和老牌的模板引擎 Velocity 非常相似，易学易用。</p> 
-<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+<script type="syntaxhighlighter" class="brush: html"><![CDATA[
 #define(List<UserInfo> userlist)
 <table>
   <tr>
@@ -162,7 +164,8 @@
  <li><a href="integrate.html#JFinal">JFinal</a></li> 
  <li><a href="integrate.html#Nutz">Nutz</a></li> 
 </ul>
-<p>具体集成方法，请参考： <a href="integrate.html">框架集成</a></p>
+<p>具体集成方法，请参考： <a href="integrate.html">Web 框架集成</a></p>
+<p>也可以和 Spring Ioc 进行集成，请参考：<a href="faq-spring.html">如何在 Spring 中使用 JetEngine</a></p>
 <h1><a name="x408827026"></a><span>5 友好的错误提示</span></h1>
 <p>具有详细的模板解析和编译错误提示，出错提示可以定位到原始模板所在的行号。</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
@@ -212,12 +215,12 @@ Caused by: java.lang.RuntimeException: The method getColumnNam() or isColumnNam(
 
 <script type="text/javascript">
 var _hmt = _hmt || [];
-(function() {
+setTimeout(function() {
   var hm = document.createElement("script");
   hm.src = "//hm.baidu.com/hm.js?4cd7ebfba4427db2d448141e54dd358c";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
-})();
+}, 1000);
 </script>
 
 </body>

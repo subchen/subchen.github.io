@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+    <title>Spring 中的集成方法 jetbrick-template</title>
+
+    <link href="../assets/css/application.min.css" rel="stylesheet" type="text/css"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../assets/js/application.min.js"></script>
+</head>
+
+<body>
+<a href="https://github.com/subchen/jetbrick-template/" target="_blank">
+    <img src="../assets/images/forkme_right_orange.png" alt="Fork me on GitHub" class="fork-me-on-github">
+</a>
+
+<div class="jb-topbar">
+    <div class="container">
+        <a href="http://subchen.github.io/"><img src="../assets/images/logo-mini.png"/></a>
+        <!--
+        <ul class="menubar">
+            <li><a href="">commons</a></li>
+            <li><a href="">webmvc</a></li>
+            <li><a href="">template</a></li>
+            <li><a href="">orm</a></li>
+            <li><a href="">widget</a></li>
+            <li><a href="">javadoc-chm</a></li>
+        </ul>
+        -->
+        <div class="pull-right" style="color:#fff;line-height:40px;font-size:16px;padding-right:20px">QQ 交流圈：310491655</div>
+    </div>
+</div>
+
+<div class="jb-banner">
+    <div class="container">
+        <a href="http://subchen.github.io/jetbrick-template/">
+            <img src="../assets/images/jetbrick-template-logo.png" class="pull-left" />
+        </a>
+        <ul class="description">
+            <li>1. 全新一代 Java 模板引擎</li>
+            <li>2. 具有高性能、高扩展性</li>
+            <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
+        </ul>
+        <a href="download/jetbrick-template-1.1.1.zip" class="download-button">
+            <img src="../assets/images/download.png"/>
+            <span>jetbrick-template-1.1.1.zip<br/>2013-12-08</span>
+        </a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="jb-section">
+        <ul class="tabs">
+            <li><a href="overview.html">简介</a></li>
+            <li><a href="download.html">下载</a></li>
+            <li><a href="userguide.html">开发指南</a></li>
+            <li><a href="config.html">配置指南</a></li>
+            <li><a href="syntax.html">语法指南</a></li>
+            <li><a href="integrate.html">框架集成</a></li>
+            <!--
+            <li><a href="example.html">例子</a></li>
+            -->
+            <li><a href="faq.html" class="selected">FAQ</a></li>
+            <li><a href="about.html">关于</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="container">
+    <div class="announcement">
+        <a href="download.html#version">2013-12-08：jetbrick-template-1.1.1 正式版已发布，欢迎使用和反馈。</a>
+    </div>
+</div>
+
+<div class="container">
+
+
+    <div class="markdown">
+
+<!-- markdown body begin -->
+	<ul> 
+ <li><a href="faq-compile.html">jetbrick-template 将模板编译成 Java Class 有什么好处？</a></li> 
+ <li><a href="faq-define.html">jetbrick-template 中为什么需要 #define 声明变量类型？</a></li> 
+ <li><a href="faq-error.html">jetbrick-template 常见错误分析</a></li> 
+ <li><a href="faq-include.html">jetbrick-template 中如何嵌入子模板？（父子间参数传递）</a></li> 
+ <li><a href="faq-tag.html">jetbrick-template 中如何自定义 Tag？</a></li> 
+ <li><a href="faq-layout.html">jetbrick-template 中如何实现 layout 功能？</a></li> 
+ <li><a href="faq-spring.html">jetbrick-template 在 Spring 中的集成方法</a></li> 
+</ul>
+
+    <h1><a name="x1094417879"></a><span>1 jetbrick-template 在 Spring 中的集成方法</span></h1>
+<p>你可以按照以下几种方式之一来置 <code>JetEngine</code> 在 <code>Spring</code> 上下文的实例 (单例模式)。 </p> 
+<blockquote>
+ <p><strong>注意</strong>：当同时指定 <code>configFile</code> 和 <code>configProperties</code> 时，<code>configProperties</code> 中的配置会覆盖 <code>configFile</code> 中的配置。</p> 
+</blockquote> 
+<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+<!-- 使用 classpath 下面的默认配置文件 -->
+<bean id="jetEngine" class="jetbrick.template.JetEngineFactoryBean" />
+
+<!-- 指定配置文件 -->
+<bean id="jetEngine" class="jetbrick.template.JetEngineFactoryBean">
+  <property name="configFile" value="classpath:META-INF/jetbrick-template.properties" />
+</bean>
+
+<!-- 指定配置文件 -->
+<bean id="jetEngine" class="jetbrick.template.JetEngineFactoryBean">
+  <property name="configFile" value="file:/path/to/jetbrick-template.properties" />
+</bean>
+
+<!-- 直接配置属性 -->
+<bean id="jetEngine" class="jetbrick.template.JetEngineFactoryBean">
+  <property name="configProperties">
+    <props>
+      <prop key="compile.debug">true</prop>
+      ...
+    </props>
+ </property>
+</bean>
+]]></script>
+<p>感谢应卓 (<a href="mailto:yingzhor@gmail.com">yingzhor@gmail.com</a>) 提供相关代码</p>
+
+<!-- markdown body end -->
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="jb-footer">
+        Copyright 2010-2013 Guoqiang Chen. All rights reserved.
+        <br/>subchen&#64;gmail.com, QQ 交流圈：310491655
+    </div>
+</div>
+
+<script type="text/javascript">
+var _hmt = _hmt || [];
+setTimeout(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?4cd7ebfba4427db2d448141e54dd358c";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+}, 1000);
+</script>
+
+</body>
+</html>

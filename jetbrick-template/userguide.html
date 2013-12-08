@@ -36,15 +36,17 @@
 
 <div class="jb-banner">
     <div class="container">
-        <img src="../assets/images/jetbrick-template-logo.png" class="pull-left" />
+        <a href="http://subchen.github.io/jetbrick-template/">
+            <img src="../assets/images/jetbrick-template-logo.png" class="pull-left" />
+        </a>
         <ul class="description">
             <li>1. 全新一代 Java 模板引擎</li>
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.1.0.zip" class="download-button">
+        <a href="download/jetbrick-template-1.1.1.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.1.0.zip<br/>2013-12-02</span>
+            <span>jetbrick-template-1.1.1.zip<br/>2013-12-08</span>
         </a>
     </div>
 </div>
@@ -69,7 +71,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-12-02：jetbrick-template-1.1.0 版本已发布，支持自定义 #tag 和 宏 #macro，欢迎使用和反馈。</a>
+        <a href="download.html#version">2013-12-08：jetbrick-template-1.1.1 正式版已发布，欢迎使用和反馈。</a>
     </div>
 </div>
 
@@ -209,7 +211,7 @@ public void putAll(Map<String, Object> context);
  <p><strong>注意</strong>：</p> 
  <ul> 
   <li><code>JetContext</code> 会被 <code>#put</code> 指令修改</li> 
-  <li>用户提供的 <code>JetContext</code> 不会受到 '#set' 的影响，但是内部的使用的 <code>JetContext</code> 对象会受到 <code>#set</code> 指令的影响。</li> 
+  <li>用户提供的 <code>JetContext</code> 不会受到 <code>#set</code> 的影响，但是内部的使用的 <code>JetContext</code> 对象会受到 <code>#set</code> 指令的影响。</li> 
   <li><code>JetContext</code> 会在父子模板调用的时候，形成一个 Context Chain，子模板可以自动获取父模板的变量，而父模板无法看到子模板的 <code>JetContext</code>。但是子模板可以通过 <code>#put(name, value)</code> 来修改父模板的 <code>JetContext</code>。具体查看：<a href="faq-include.html">如何嵌入子模板？</a></li> 
  </ul> 
 </blockquote>
@@ -221,7 +223,7 @@ public void putAll(Map<String, Object> context);
 <ul> 
  <li>JavaScript 的 prototype 机制</li> 
  <li>Groovy 的 metaClass 机制</li> 
- <li>Kotlin</li> 
+ <li>JetBrains 的 Kotlin</li> 
 </ul>
 <p>jetbrick-template 也在这里带给大家强大的动态方法扩展机制。如：<code>&quot;123&quot;.asInt()</code>, <code>new Date().format(&quot;yyyy-MM-dd&quot;)</code>。</p> 
 <blockquote>
@@ -344,14 +346,14 @@ public class Tags {
 ]]></script>
 <p>对于每一个 Tag 的方法声明，有如下要求：</p> 
 <ul> 
- <li>方法签名必须是 public static</li> 
- <li>方法返回值必须是 void</li> 
- <li>方法第一个参数必须是 JetTagContext， 其余参数自定义</li> 
- <li>允许 throws 任意的 Throwable</li> 
+ <li>方法签名必须是 <code>public</code> <code>static</code></li> 
+ <li>方法返回值必须是 <code>void</code></li> 
+ <li>方法第一个参数必须是 <code>JetTagContext</code>， 其余参数自定义</li> 
+ <li>允许 throws 任意的 <code>Throwable</code></li> 
  <li>允许定义相同名字的 Tag，但是方法参数不一样 （Overload）</li> 
  <li>支持可变参数 (VarArgs)</li> 
 </ul>
-<p>然后需要把自定义的 Tags 注册到 JetEngine。</p> 
+<p>然后需要把自定义的 Tags 注册到 <code>JetEngine</code>。</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 // 把 Tags 加入到 engine 中
 Properties config = new Properties();
@@ -472,12 +474,12 @@ ${debug("name = {}", name)}
 
 <script type="text/javascript">
 var _hmt = _hmt || [];
-(function() {
+setTimeout(function() {
   var hm = document.createElement("script");
   hm.src = "//hm.baidu.com/hm.js?4cd7ebfba4427db2d448141e54dd358c";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
-})();
+}, 1000);
 </script>
 
 </body>

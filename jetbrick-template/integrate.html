@@ -36,15 +36,17 @@
 
 <div class="jb-banner">
     <div class="container">
-        <img src="../assets/images/jetbrick-template-logo.png" class="pull-left" />
+        <a href="http://subchen.github.io/jetbrick-template/">
+            <img src="../assets/images/jetbrick-template-logo.png" class="pull-left" />
+        </a>
         <ul class="description">
             <li>1. 全新一代 Java 模板引擎</li>
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.1.0.zip" class="download-button">
+        <a href="download/jetbrick-template-1.1.1.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.1.0.zip<br/>2013-12-02</span>
+            <span>jetbrick-template-1.1.1.zip<br/>2013-12-08</span>
         </a>
     </div>
 </div>
@@ -69,7 +71,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-12-02：jetbrick-template-1.1.0 版本已发布，支持自定义 #tag 和 宏 #macro，欢迎使用和反馈。</a>
+        <a href="download.html#version">2013-12-08：jetbrick-template-1.1.1 正式版已发布，欢迎使用和反馈。</a>
     </div>
 </div>
 
@@ -206,7 +208,7 @@ session.getAttribute("user") == ${sessionScope.user}
  <li>sessionScope</li> 
  <li>applicationScope</li> 
 </ol>
-<p>也就是说，如果存在 <code>request.getAttributes(&quot;user&quot;)</code> 的情况下 <code>${user}</code> 等价于 <code>${requestScope.user}</code>。</p>
+<p>也就是说，如果存在 <code>request.getAttribute(&quot;user&quot;)</code> 的情况下 <code>${user}</code> 等价于 <code>${requestScope.user}</code>。</p>
 <h1><a name="x1694283446"></a><span>3 JetEngine 自动加载方式</span></h1>
 <p>需要在 web.xml 中进行配置，下面两个配置项都是可选项。</p> 
 <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
@@ -302,7 +304,7 @@ public void configConstant(Constants me) {
 <p>感谢 wendal (<a href="mailto:wendal1985@gmail.com">wendal1985@gmail.com</a>) 提供相关代码。</p>
 <p>View： <code>jetbrick.template.web.nutz.JetTemplateView</code><br />ViewMaker：<code>jetbrick.template.web.nutz.JetTemplateViewMaker</code></p> 
 <ol> 
- <li><p>将视图工厂整合进应用中：</p><p>在主模块上，加：@Views({JetTemplateViewMaker.class}) 注解</p> <script type="syntaxhighlighter" class="brush: java"><![CDATA[
+ <li><p>将视图工厂整合进应用中：</p><p>在主模块上，加：<code>@Views({JetTemplateViewMaker.class})</code> 注解</p> <script type="syntaxhighlighter" class="brush: java"><![CDATA[
 @Views({JetTemplateViewMaker.class})
 @...
 public class MainModule {
@@ -332,12 +334,12 @@ public String list(@Param("name") String name, HttpServletRequest request){
 
 <script type="text/javascript">
 var _hmt = _hmt || [];
-(function() {
+setTimeout(function() {
   var hm = document.createElement("script");
   hm.src = "//hm.baidu.com/hm.js?4cd7ebfba4427db2d448141e54dd358c";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
-})();
+}, 1000);
 </script>
 
 </body>

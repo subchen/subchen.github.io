@@ -36,15 +36,17 @@
 
 <div class="jb-banner">
     <div class="container">
-        <img src="../assets/images/jetbrick-template-logo.png" class="pull-left" />
+        <a href="http://subchen.github.io/jetbrick-template/">
+            <img src="../assets/images/jetbrick-template-logo.png" class="pull-left" />
+        </a>
         <ul class="description">
             <li>1. 全新一代 Java 模板引擎</li>
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.1.0.zip" class="download-button">
+        <a href="download/jetbrick-template-1.1.1.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.1.0.zip<br/>2013-12-02</span>
+            <span>jetbrick-template-1.1.1.zip<br/>2013-12-08</span>
         </a>
     </div>
 </div>
@@ -69,7 +71,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-12-02：jetbrick-template-1.1.0 版本已发布，支持自定义 #tag 和 宏 #macro，欢迎使用和反馈。</a>
+        <a href="download.html#version">2013-12-08：jetbrick-template-1.1.1 正式版已发布，欢迎使用和反馈。</a>
     </div>
 </div>
 
@@ -178,16 +180,18 @@ $!{user.description}
 <p>语法：</p> 
 <ul> 
  <li><code>#put(name, value)</code></li> 
+ <li><code>#put(name1, value1, name2, value2, ...)</code></li> 
 </ul>
 <p>示例：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 #put("num", 1 + 2 * 3)
-#put("user", user)
+#put("user", user, "name", "jetbrick")
 ]]></script> 
 <blockquote>
  <p><strong>注意</strong>：</p> 
  <ul> 
-  <li>第一个参数 <code>name</code> 必须是 <code>String</code> 类型</li> 
+  <li>可以传递多个 key-value 对</li> 
+  <li>参数 <code>name</code> 必须是 <code>String</code> 类型</li> 
  </ul> 
 </blockquote>
 <h2><a name="x1615167792"></a><span>2.4 条件语句 #if, #elseif, #else</span></h2>
@@ -444,7 +448,33 @@ ${user.name} ## This is a line comment.
 ]]></script>
 <p><a name="expression"></a></p>
 <h1><a name="x750650433"></a><span>5 表达式 Expression</span></h1>
-<p>支持所有 Java 表达式，并对其进行了一些有用的扩展。下面只列出与 Java 不同的地方。</p> 
+<p>支持所有 Java 表达式，并对其进行了一些有用的扩展。</p>
+<h3><a name="x82363453"></a><span>5.0.1 与 Java 相同的地方 (运算符优先级和 Java 保存一致)</span></h3> 
+<ul> 
+ <li>数字常量： <code>123</code> <code>123L</code> <code>0.01D</code> <code>99.99E-10D</code></li> 
+ <li>字符串常量： <code>&quot;abc\r\n&quot;</code> <code>'abc\u00A0\r\n'</code></li> 
+ <li>BOOLEAN 常量：<code>true</code> <code>false</code></li> 
+ <li>NULL 常量: <code>null</code></li> 
+ <li>算术运行： <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>%</code></li> 
+ <li>自增/自减： <code>++</code> <code>--</code></li> 
+ <li>位运算： <code>~</code> <code>&amp;</code> <code>|</code></li> 
+ <li>移位运算： <code>&gt;&gt;</code> <code>&gt;&gt;&gt;</code> <code>&lt;&lt;</code></li> 
+ <li>比较运算： <code>==</code> <code>!=</code> <code>&gt;</code> <code>&gt;=</code> <code>&lt;</code> <code>&lt;=</code></li> 
+ <li>逻辑运算： <code>!</code> <code>&amp;&amp;</code> <code>||</code></li> 
+ <li>三元表达式： <code>? :</code></li> 
+ <li>实例对象判断： <code>instanceof</code></li> 
+ <li>NEW 对象：<code>new Object(...)</code></li> 
+ <li>强制类型转换：<code>(java.lang.String)obj</code></li> 
+ <li>数组存取：<code>array[i]</code></li> 
+ <li>字段访问：<code>obj.field</code></li> 
+ <li>方法调用：<code>obj.method(...)</code></li> 
+ <li>方法调用：支持可变参数方法(Varargs)和重载方法(Overload)</li> 
+ <li>静态字段调用：<code>@Long.MAX_VALUE</code></li> 
+ <li>静态方法调用：<code>@Long.valueOf(&quot;123&quot;)</code></li> 
+ <li>支持数组定义：<code>String[]</code></li> 
+ <li>支持泛型定义：<code>List&lt;String&gt;</code> <code>Map&lt;String[], List&lt;?&gt;&gt;</code></li> 
+</ul>
+<h3><a name="x1957148670"></a><span>5.0.2 与 Java 不同的地方</span></h3> 
 <ul> 
  <li>双等号 <code>==</code> 会被解析成 <code>equals()</code> 方法比较，而不是比内存地址。</li> 
  <li>单双引号都将生成字符串：<code>'a'</code> 或 <code>&quot;a&quot;</code> 都是<code>String</code> 类型。</li> 
@@ -453,6 +483,7 @@ ${user.name} ## This is a line comment.
  <li>所有对象都条件测试，并返回 <code>true</code> 或者 <code>false</code>。对于非 <code>Boolean</code> 对象，所有非零数字，非空字串，非空集合，非 <code>null</code> 对象，即为 <code>true</code>。</li> 
  <li><code>List</code> 和 <code>Map</code> 可以方括号取值，比如：<code>list[0]</code> 等价于 <code>list.get(0)</code>，<code>map[&quot;abc&quot;]</code> 等价于 <code>map.get(&quot;abc&quot;)</code>。</li> 
  <li>支持 Groovy 的 <code>?.</code> 安全调用，以避免 <code>NullPointerException</code>。</li> 
+ <li>静态字段/方法调用，需要用 <code>@</code> 前缀，比如： <code>@Long.MAX_VALUE</code>，如果类带包名，需要这么用： <code>@(java.lang.Long).valueOf(&quot;123&quot;)</code></li> 
 </ul>
 <h2><a name="x948751994"></a><span>5.1 变量名 Variable</span></h2>
 <p>可以是任意合法的 Java 变量名：</p> 
@@ -594,18 +625,22 @@ ${@(java.lang.Long).valueOf("123")}
  <li>String.unescapeUrl()</li> 
  <li>String.unescapeUrl(String encoding)</li> 
 </ul>
-<h2><a name="x591511809"></a><span>6.5 JSON 输出</span></h2> 
+<h2><a name="x14779721"></a><span>6.5 默认值输出</span></h2> 
+<ul> 
+ <li>Object.asDefault(Object defaultValue)</li> 
+</ul>
+<h2><a name="x591511809"></a><span>6.6 JSON 输出</span></h2> 
 <ul> 
  <li>Object.asJSON()</li> 
 </ul>
-<h2><a name="x1079447065"></a><span>6.6 字符串转换</span></h2> 
+<h2><a name="x1079447065"></a><span>6.7 字符串转换</span></h2> 
 <ul> 
  <li>String.toUnderlineName()</li> 
  <li>String.toCamelCase()</li> 
  <li>String.toCapitalizeCamelCase()</li> 
  <li>String.repeat(int count)</li> 
 </ul>
-<h2><a name="x969081998"></a><span>6.7 算术计算</span></h2> 
+<h2><a name="x969081998"></a><span>6.8 算术计算</span></h2> 
 <ul> 
  <li>int[].sum()</li> 
  <li>int[].avg()</li> 
@@ -652,13 +687,15 @@ ${@(java.lang.Long).valueOf("123")}
 </ul>
 <h2><a name="x1292645738"></a><span>7.5 调试专用函数 debug(...)</span></h2> 
 <ul> 
- <li><code>void debug(String format, Object... args)</code><br /> 输出调试信息，需要配合 Slf4j 使用。</li> 
+ <li><code>void debug(String format, Object... args)</code><br /> 输出调试信息，需要配合 Slf4j 使用。 参数格式请查看 <a href="http://www.slf4j.org/apidocs/org/slf4j/Logger.html">Slf4j Logger</a>。</li> 
 </ul>
 <p><a name="default_tags"></a></p>
 <h1><a name="x1937656097"></a><span>8 默认的自定义标签 Tags</span></h1>
 <p>所有 Tags 定义在 <code>jetbrick.template.runtime.JetTags</code></p> 
 <ul> 
- <li><code>#tag layout(name)</code><br /> 应用页面布局， 参考：<a href="faq-layout.html">jetbrick-template 中如何实现 layout 功能？</a></li> 
+ <li><p><code>#tag layout(String file)</code> ... <code>#end</code><br /> 应用页面布局。<br /> 参考：<a href="faq-layout.html">jetbrick-template 中如何实现 layout 功能？</a></p></li> 
+ <li><p><code>#tag layout(String file, Map&lt;String, Object&gt; parameters)</code> ... <code>#end</code><br /> 应用页面布局(支持传递传输)。<br /> 参考：<a href="faq-layout.html">jetbrick-template 中如何实现 layout 功能？</a></p></li> 
+ <li><p><code>#tag block(String name)</code> ... <code>#end</code><br /> 将块内容保存到变量名为 name 的 context 中。<br /> 参考：<a href="faq-layout.html">jetbrick-template 中如何实现 layout 功能？</a></p></li> 
 </ul>
 <p><a name="velocity"></a></p>
 <h1><a name="x1968843044"></a><span>9 和 Velocity 的比较</span></h1>
@@ -669,7 +706,7 @@ ${@(java.lang.Long).valueOf("123")}
  <li>jetbrick-template 占位符当变量为 <code>null</code> 时输出空白串，而不像 Velocity 那样原样输出指令原文，即 <code>${foo}</code>，等价于 Velocity 的 <code>$!{foo}</code>，以免开发人员忘写感叹号，泄漏表达式源码，如需原样输出，可使用转义 <code>\${foo}</code>， 在 jetbrick-template 中，<code>$!{foo}</code> 表示对内容进行 HTML 过滤，用于原样输出 HTML 片段。</li> 
  <li>jetbrick-template 支持在所有使用变量的地方，进行表达式计算，也就是你不需要像 Velocity 那样，先 <code>#set($j = $i + 1)</code> 到一个临时变量，再输出临时变量 <code>${j}</code>，jetbrick-template 可以直接输出 <code>${i + 1}</code>，其它指令也一样，比如：<code>#if(i + 1 == n)</code>。</li> 
  <li>jetbrick-template 采用扩展 Class 原生方法的方式，如：<code>${&quot;str&quot;.toChar()}</code>，而不像 Velocity 的 Tool 工具方法那样：<code>$(StringTool.toChar(&quot;a&quot;))</code>，这样的调用方式更直观，更符合代码书写习惯。</li> 
- <li>jetbrick-template 支持属性和方法的安全调用。如 <code>${user?.name}</code>，<code>${user?.hasRole(&quot;vip&quot;)}</code>。</li> 
+ <li>jetbrick-template 支持属性和方法的安全调用。如 <code>${user?.name}</code>，<code>${user?.hasRole(&quot;vip&quot;)}</code>。如果 <code>user</code> 对象为 <code>null</code>，那么返回结果就是 <code>null</code>，不会出现烦人的 <code>NullPointerException</code>。</li> 
  <li>jetbrick-template 还支持静态字段/方法调用，函数扩展，上下文相关的方法/函数扩展。</li> 
 </ul>
 <h2><a name="x775409745"></a><span>9.2 指令差异</span></h2>
@@ -844,12 +881,12 @@ ${@(java.lang.Long).valueOf("123")}
 
 <script type="text/javascript">
 var _hmt = _hmt || [];
-(function() {
+setTimeout(function() {
   var hm = document.createElement("script");
   hm.src = "//hm.baidu.com/hm.js?4cd7ebfba4427db2d448141e54dd358c";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
-})();
+}, 1000);
 </script>
 
 </body>
