@@ -312,11 +312,18 @@ public class MainModule {
 ]]></script></li> 
  <li><p>使用 jetx 视图：</p> <script type="syntaxhighlighter" class="brush: java"><![CDATA[
 @At
-@Ok("jetx:/WEB-INF/html/user_info.jetx")
+@Ok(".jetx:/WEB-INF/html/user_info.jetx")
 public String list(@Param("name") String name, HttpServletRequest request){
   if (name != null) return name;
   return "测试";
 }
+]]></script></li> 
+ <li><p>模板中使用:</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
+#define(String obj)
+${obj}
+]]></script></li> 
+ <li><p>获得输出：</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
+测试
 ]]></script></li> 
 </ol>
 
