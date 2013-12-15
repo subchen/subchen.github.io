@@ -44,9 +44,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.1.1.zip" class="download-button">
+        <a href="download/jetbrick-template-1.1.2.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.1.1.zip<br/>2013-12-08</span>
+            <span>jetbrick-template-1.1.2.zip<br/>2013-12-15</span>
         </a>
     </div>
 </div>
@@ -71,7 +71,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-12-08：jetbrick-template-1.1.1 正式版已发布，欢迎使用和反馈。</a>
+        <a href="download.html#version">2013-12-15：jetbrick-template-1.1.2 正式版已发布，欢迎使用和反馈。</a>
     </div>
 </div>
 
@@ -695,7 +695,8 @@ ${@(java.lang.Long).valueOf("123")}
 <ul> 
  <li><p><code>#tag layout(String file)</code> ... <code>#end</code><br /> 应用页面布局。<br /> 参考：<a href="faq-layout.html">jetbrick-template 中如何实现 layout 功能？</a></p></li> 
  <li><p><code>#tag layout(String file, Map&lt;String, Object&gt; parameters)</code> ... <code>#end</code><br /> 应用页面布局(支持传递传输)。<br /> 参考：<a href="faq-layout.html">jetbrick-template 中如何实现 layout 功能？</a></p></li> 
- <li><p><code>#tag block(String name)</code> ... <code>#end</code><br /> 将块内容保存到变量名为 name 的 context 中。<br /> 参考：<a href="faq-layout.html">jetbrick-template 中如何实现 layout 功能？</a></p></li> 
+ <li><p><code>#tag block(String name)</code> ... <code>#end</code><br /> 将块内容保存到变量名为 name 的 JetContext 中。<br /> 参考：<a href="faq-layout.html">jetbrick-template 中如何实现 layout 功能？</a></p></li> 
+ <li><p><code>#tag default_block(String name)</code> ... <code>#end</code><br /> 如果不存在指定的 JetContext 变量，那么输出 default_block 块内容，否则输出指定的 JetContext 变量。<br /> 参考：<a href="faq-layout.html">jetbrick-template 中如何实现 layout 功能？</a></p></li> 
 </ul>
 <p><a name="velocity"></a></p>
 <h1><a name="x1968843044"></a><span>9 和 Velocity 的比较</span></h1>

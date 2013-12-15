@@ -44,9 +44,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.1.1.zip" class="download-button">
+        <a href="download/jetbrick-template-1.1.2.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.1.1.zip<br/>2013-12-08</span>
+            <span>jetbrick-template-1.1.2.zip<br/>2013-12-15</span>
         </a>
     </div>
 </div>
@@ -71,7 +71,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-12-08：jetbrick-template-1.1.1 正式版已发布，欢迎使用和反馈。</a>
+        <a href="download.html#version">2013-12-15：jetbrick-template-1.1.2 正式版已发布，欢迎使用和反馈。</a>
     </div>
 </div>
 
@@ -157,17 +157,10 @@ System.out.println(writer.toString());
 <p>整个模板引擎的由 <code>JetEngine</code> 驱动，不同的 <code>JetEngine</code> 对象可以使用不同的配置。一般在一个 Application 或者 Webapp 中，我们只需要一个 <code>JetEngine</code> 对象就可以了，我们推荐使用单例模式创建。</p>
 <h3><a name="x97387442"></a><span>2.1.1 如何创建 JetEngine？</span></h3> 
 <ol> 
- <li><code>JetEngine.create()</code></li> 
+ <li><p><code>JetEngine.create()</code></p><p>在 classpath 根目录下面自动查找 <code>jetbrick-template.properties</code> 文件。如果文件不存在，则使用默认配置。</p></li> 
+ <li><p><code>JetEngine.create(File)</code></p><p>从用户指定的 <code>File</code> 文件中加载系统配置，该文件必须是一个 <code>.properties</code> 文件。</p></li> 
+ <li><p><code>JetEngine.create(Properties)</code></p><p>从用户指定的 <code>Properties</code> 对象中加载系统配置。</p></li> 
 </ol>
-<p>在 classpath 根目录下面自动查找 <code>jetbrick-template.properties</code> 文件。如果文件不存在，则使用默认配置。</p> 
-<ol> 
- <li><code>JetEngine.create(File)</code></li> 
-</ol>
-<p>从用户指定的 <code>File</code> 文件中加载系统配置，该文件必须是一个 <code>.properties</code> 文件。</p> 
-<ol> 
- <li><code>JetEngine.create(Properties)</code></li> 
-</ol>
-<p>从用户指定的 <code>Properties</code> 对象中加载系统配置。</p>
 <p>有哪些配置？ <a href="config.html">看这里所有的配置</a></p>
 <h3><a name="x1502610422"></a><span>2.1.2 获取 JetTemplate 对象</span></h3>
 <p>通过下面的方法获取 <code>JetTemplate</code> 对象。</p> 

@@ -44,9 +44,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.1.1.zip" class="download-button">
+        <a href="download/jetbrick-template-1.1.2.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.1.1.zip<br/>2013-12-08</span>
+            <span>jetbrick-template-1.1.2.zip<br/>2013-12-15</span>
         </a>
     </div>
 </div>
@@ -71,7 +71,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-12-08：jetbrick-template-1.1.1 正式版已发布，欢迎使用和反馈。</a>
+        <a href="download.html#version">2013-12-15：jetbrick-template-1.1.2 正式版已发布，欢迎使用和反馈。</a>
     </div>
 </div>
 
@@ -209,6 +209,7 @@ session.getAttribute("user") == ${sessionScope.user}
  <li>applicationScope</li> 
 </ol>
 <p>也就是说，如果存在 <code>request.getAttribute(&quot;user&quot;)</code> 的情况下 <code>${user}</code> 等价于 <code>${requestScope.user}</code>。</p>
+<p><a name="JetEngine"></a></p>
 <h1><a name="x1694283446"></a><span>3 JetEngine 自动加载方式</span></h1>
 <p>需要在 web.xml 中进行配置，下面两个配置项都是可选项。</p> 
 <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
@@ -229,6 +230,7 @@ session.getAttribute("user") == ${sessionScope.user}
   <li><p>系统配置参数 <code>template.path</code> 在 Web 应用中的路径将默认变成为 Webapp 的根目录 <code>servletContext.getRealPath(&quot;/&quot;)</code>，而不在是系统的当前目录。</p></li> 
   <li><p>如果需要修改默认的模板路径，也必须是在 Webapp 的根目录下面的路径。比如 <code>/</code> 代表根路径，或者用 <code>/WEB-INF/templates/</code> 来表示 <code>servletContext.getRealPath(&quot;/WEB-INF/templates/&quot;)</code> 的实际路径。（此规则只针对 Webapp 的 FileSystemResourceLoader 有效）</p></li> 
   <li><p>jetbrick-template 内置和其他 Web 框架的集成方式都可以用这两个配置想进行全局初始化。</p></li> 
+  <li>在 web 集成模式中，<code>JetEngine</code> 是单例的，可以通过 <code>JetWebEngineLoader.getJetEngine()</code> 获取。</li> 
  </ol> 
 </blockquote>
 <h1><a name="x1896411413"></a><span>4 各种集成方式介绍</span></h1>
@@ -284,7 +286,9 @@ session.getAttribute("user") == ${sessionScope.user}
 <p>配置方式如下：</p> 
 <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
 <bean id="viewResolver" class="jetbrick.template.web.springmvc.JetTemplateViewResolver">
-  <property name="suffix" value=".jetx"/>
+  <property name="suffix" value=".jetx" />
+  <property name="contentType" value="text/html; charset=utf-8" />
+  <property name="order" value="9" />
 </bean>
 ]]></script>
 <p><a name="JFinal"></a></p>

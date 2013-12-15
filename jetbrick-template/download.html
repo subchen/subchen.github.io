@@ -44,9 +44,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.1.1.zip" class="download-button">
+        <a href="download/jetbrick-template-1.1.2.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.1.1.zip<br/>2013-12-08</span>
+            <span>jetbrick-template-1.1.2.zip<br/>2013-12-15</span>
         </a>
     </div>
 </div>
@@ -71,7 +71,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-12-08：jetbrick-template-1.1.1 正式版已发布，欢迎使用和反馈。</a>
+        <a href="download.html#version">2013-12-15：jetbrick-template-1.1.2 正式版已发布，欢迎使用和反馈。</a>
     </div>
 </div>
 
@@ -103,8 +103,9 @@
             <li><a href="#x769954348">2 第三方依赖包 Dependences</a></li>
             <li><a href="#x271151717">3 Maven 依赖 POM.xml</a></li>
             <li><a href="#x2081807827">4 从源码安装 Sources</a></li>
-            <li><a href="#x1304924747">5 最新版本 Latest Version</a></li>
-            <li><a href="#x887846512">6 更新历史 Release Notes</a></li>
+            <li><a href="#x1214533757">5 范例下载 Samples</a></li>
+            <li><a href="#x1304924747">6 最新版本 Latest Version</a></li>
+            <li><a href="#x887846512">7 更新历史 Release Notes</a></li>
         </ul>
     </div>
 
@@ -124,7 +125,8 @@
  <li><a href="http://www.slf4j.org/">Slf4j 1.7.x</a></li> 
 </ul> 
 <blockquote>
- <p><strong>注意</strong>： jetbrick-template 需要使用 jdk6+ 里面的 tools.jar 来编译模板生成的 Java 源文件，所有需要完整的 jdk6+ 的运行环境，而不是 jre6+.</p> 
+ <p><strong>注意</strong>： </p>
+ <p>jetbrick-template 需要使用 jdk6+ 里面的 tools.jar 来编译模板生成的 Java 源文件。如果只有 jre6+，那么可以 copy 一个对应的 tools.jar 到 classpath 下面。<br />从 1.1.2 开始，也支持 JDT （Eclipse Java Compiler） 编译 java。只需要把 org.eclipse.jdt.core_xxx.xxx.jar (又名 ecj.jar) 放在 classpath 下面就可。（无需配置，在 jdk 自带的 Compiler 没法使用的情况下，会自动搜索 JDT）</p> 
 </blockquote>
 <h1><a name="x271151717"></a><span>3 Maven 依赖 POM.xml</span></h1>
 <p>已发布到 Maven 中央库： <a href="http://central.maven.org/maven2/com/github/subchen/">http://central.maven.org/maven2/com/github/subchen/</a></p> 
@@ -134,7 +136,7 @@
     <dependency>
       <groupId>com.github.subchen</groupId>
       <artifactId>jetbrick-template</artifactId>
-      <version>1.1.1</version>
+      <version>1.1.2</version>
     </dependency>
     <dependency>
       <groupId>org.antlr</groupId>
@@ -148,6 +150,14 @@
     </dependency>
   </dependencies>
 <project>
+]]></script>
+<p>pom.xml for JDT.</p> 
+<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+<dependency>
+  <groupId>org.eclipse.tycho</groupId>
+  <artifactId>org.eclipse.jdt.core</artifactId>
+  <version>3.9.1.v20130905-0837</version>
+</dependency>
 ]]></script>
 <h1><a name="x2081807827"></a><span>4 从源码安装 Sources</span></h1>
 <p>github: <a href="https://github.com/subchen/jetbrick-template">https://github.com/subchen/jetbrick-template</a></p>
@@ -172,8 +182,12 @@ jetbrick-template-x.x.x.zip
 jetbrick-template-x.x.x-all.zip
 ]]></script></li> 
 </ol>
+<h1><a name="x1214533757"></a><span>5 范例下载 Samples</span></h1> 
+<ul> 
+ <li><a href="demo/jetbrick-template-servlet-samples.war">jetbrick-template-servlet-samples.war</a></li> 
+</ul>
 <p><a name="version"></a></p>
-<h1><a name="x1304924747"></a><span>5 最新版本 Latest Version</span></h1> 
+<h1><a name="x1304924747"></a><span>6 最新版本 Latest Version</span></h1> 
 <table> 
  <thead> 
   <tr> 
@@ -185,6 +199,13 @@ jetbrick-template-x.x.x-all.zip
   </tr> 
  </thead> 
  <tbody> 
+  <tr> 
+   <td>2013-12-15 </td> 
+   <td>1.1.2 </td> 
+   <td><a href="download/jetbrick-template-1.1.2.zip">jetbrick-template-1.1.2.zip</a></td> 
+   <td><a href="download/jetbrick-template-1.1.2-all.zip">jetbrick-template-1.1.2-all.zip</a></td> 
+   <td><a href="#release_notes_1_1_2">更新历史</a></td> 
+  </tr> 
   <tr> 
    <td>2013-12-08 </td> 
    <td>1.1.1 </td> 
@@ -222,10 +243,21 @@ jetbrick-template-x.x.x-all.zip
   </tr> 
  </tbody> 
 </table>
-<h1><a name="x887846512"></a><span>6 更新历史 Release Notes</span></h1>
+<h1><a name="x887846512"></a><span>7 更新历史 Release Notes</span></h1>
+<p><a name="release_notes_1_1_2"></a><br /><strong>Version 1.1.2 (2013-12-15)</strong></p> 
+<ul> 
+ <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/32">#32 增加 annotation 自动扫描查找 Methods / Functions / Tags</a></li> 
+ <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/43">#43 新增 JDT 编译方法，以应对没有 JDK 的环境</a></li> 
+ <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/51">#51 增加 #tag default_block(name) 默认 layout block 的实现</a></li> 
+ <li>[改进] <a href="https://github.com/subchen/jetbrick-template/issues/48">#48 compile.path 配置路径移除 jetx_x_x_x 的路径后缀</a></li> 
+ <li>[修复] <a href="https://github.com/subchen/jetbrick-template/issues/44">#44 启用 trim.directive.comments 的时候，出现 NullPointerException</a></li> 
+ <li>[修复] <a href="https://github.com/subchen/jetbrick-template/issues/45">#45 #tag 中的 #include 输出的内容位置不正确</a></li> 
+ <li>[修复] <a href="https://github.com/subchen/jetbrick-template/issues/46">#46 通过 classpath 加载 jar 中模板，出现 ResourceNotFoundException</a></li> 
+ <li>[修复] <a href="https://github.com/subchen/jetbrick-template/issues/47">#47 tomcat 目录中带空格，template 编译失败</a></li> 
+</ul>
 <p><a name="release_notes_1_1_1"></a><br /><strong>Version 1.1.1 (2013-12-08)</strong></p> 
 <ul> 
- <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/28">#28 增强 asDefault() 方法扩展，支持设置默认值</a></li> 
+ <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/28">#28 增加 asDefault() 方法扩展，支持设置默认值</a></li> 
  <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/30">#30 增强 #put，一次支持多个变量的传递</a></li> 
  <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/31">#31 增加 Spring FactoryBean 的集成支持</a></li> 
  <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/35">#35 增加 #tag block(name) 默认实现，配合 #include 实现多个内容块的 layout</a></li> 
@@ -276,7 +308,7 @@ jetbrick-template-x.x.x-all.zip
 </ul>
 <p><a name="release_notes_1_0_0"></a><br /><strong>Version 1.0.0 (2013-11-18)</strong></p> 
 <ul> 
- <li>支持类似与 Velocity 的多种指令</li> 
+ <li>支持类似于 Velocity 的多种指令</li> 
  <li>支持静态编译</li> 
  <li>支持编译缓存</li> 
  <li>支持热加载</li> 
