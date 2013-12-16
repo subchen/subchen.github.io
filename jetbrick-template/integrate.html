@@ -294,12 +294,24 @@ session.getAttribute("user") == ${sessionScope.user}
 <p><a name="JFinal"></a></p>
 <h2><a name="x2108526772"></a><span>4.6 JFinal</span></h2>
 <p>jetbrick-template 可以和 JFinal 进行集成。</p>
-<p>修改 JFinal 主控制文件</p> 
+<p>修改 JFinal 主配置文件</p> 
 <script type="syntaxhighlighter" class="brush: java"><![CDATA[
-@Override
-public void configConstant(Constants me) {
-    me.setMainRenderFactory(new JetTemplateRenderFactory());
+public class JetxConfig extends JFinalConfig {
+    @Override
+    public void configConstant(Constants me) {
+        me.setMainRenderFactory(new JetTemplateRenderFactory());
+        ...
+    }
     ...
+}
+]]></script>
+<p>新建一个 Controller</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+public class UsersController extends Controller {
+    public void index() {
+        setAttr("userlist", DaoUtils.getUserList());
+        render("/users.jetx");
+    }
 }
 ]]></script>
 <p>可以了，就这么简单!</p>
