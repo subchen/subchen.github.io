@@ -44,9 +44,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.1.2.zip" class="download-button">
+        <a href="download/jetbrick-template-1.1.3.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.1.2.zip<br/>2013-12-15</span>
+            <span>jetbrick-template-1.1.3.zip<br/>2013-12-22</span>
         </a>
     </div>
 </div>
@@ -59,7 +59,7 @@
             <li><a href="userguide.html">开发指南</a></li>
             <li><a href="config.html" class="selected">配置指南</a></li>
             <li><a href="syntax.html">语法指南</a></li>
-            <li><a href="integrate.html">框架集成</a></li>
+            <li><a href="integrate.html">Web 框架集成</a></li>
             <!--
             <li><a href="example.html">例子</a></li>
             -->
@@ -71,7 +71,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-12-15：jetbrick-template-1.1.2 正式版已发布，欢迎使用和反馈。</a>
+        <a href="download.html#version">2013-12-22：jetbrick-template-1.1.3 正式版已发布，欢迎使用和反馈。</a>
     </div>
 </div>
 
@@ -232,7 +232,11 @@
  </tbody> 
 </table> 
 <blockquote>
- <p><strong>注意</strong>：所有配置选项都必须在 <code>JetEngine</code> 初始化的时候指定，不允许动态修改。</p> 
+ <p><strong>注意</strong>：</p> 
+ <ol> 
+  <li>所有配置选项都必须在 <code>JetEngine</code> 初始化的时候指定，不允许动态修改。</li> 
+  <li>所有配置选项都支持变量啦，具体参考 <a href="#template.path"><code>template.path</code></a> 或者 <a href="#compile.path"><code>compile.path</code></a> 中的例子。</li> 
+ </ol> 
 </blockquote>
 <h2><a name="x1333945773"></a><span>1.1 全局包/类/变量</span></h2>
 <p>在模板中，如果要用到一些其他的 Class, 那么可以先 import 进来，这样就可以在模板中使用短名字，比如 <code>Date</code> 而不是 <code>java.util.Date</code>。</p>
@@ -330,13 +334,16 @@ import.autoscan.packages = app.methods, app.functions, app.tags
 template.loader = jetbrick.template.resource.loader.FileSystemResourceLoader
 template.loader = jetbrick.template.resource.loader.ClasspathResourceLoader
 template.loader = jetbrick.template.resource.loader.JarResourceLoader
+template.loader = jetbrick.template.web.WebResourceLoader
+template.loader = jetbrick.template.resource.loader.MultipathResourceLoader
 ]]></script>
 <p>默认为 <code>jetbrick.template.resource.loader.FileSystemResourceLoader</code>。</p>
+<p>注意：如果是 Web 集成模式，默认值为 <code>jetbrick.template.web.WebResourceLoader</code>。</p>
 <p><a name="template.path"></a></p>
 <h3><a name="x225407719"></a><span>1.3.4 template.path</span></h3>
 <p>除了要定义 <code>template.loader</code>，我们还需要定义模板存放的根目录。</p>
 <p>默认为系统当前目录：<code>System.getProperty(&quot;user.dir&quot;)</code>。</p>
-<p>注意：在 web 集成模式中，默认为 webapp 的根目录。具体请参考：<a href="integrate.html#JetEngine">JetEngine 自动加载方式</a> 中注意事项。</p> 
+<p>注意：如果是 web 集成模式，默认为 webapp 的根目录。具体请参考：<a href="integrate.html#JetEngine">JetEngine 自动加载方式</a> 中注意事项。</p> 
 <ul> 
  <li>从文件系统加载</li> 
 </ul> 
@@ -357,7 +364,58 @@ template.path = /META-INF/templates/
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 template.loader = jetbrick.template.resource.loader.JarResourceLoader
 template.path = /opt/app/templates.jar
+]]></script> 
+<ul> 
+ <li>从webapp目录中加载(仅在Web框架集成中有效，并且已经被设置为默认项)</li> 
+</ul> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+template.loader = jetbrick.template.web.WebResourceLoader
+template.path = /WEB-INF/templates
+]]></script> 
+<ul> 
+ <li>从多个目录中加载</li> 
+</ul> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+template.loader = jetbrick.template.resource.loader.MultipathResourceLoader
+template.path = file:/path/to, classpath:/, jar:/path/to/sample.jar, webapp:/WEB-INF/templates
 ]]></script>
+<p>注意：<code>template.path</code> 支持多种路径，由逗号分隔。每个路径由一个前缀开头，代表相应的 ResouceLoader。具体如下：</p> 
+<table> 
+ <thead> 
+  <tr> 
+   <th>前缀 </th> 
+   <th>代表的 ResourceLoader </th> 
+  </tr> 
+ </thead> 
+ <tbody> 
+  <tr> 
+   <td>file: </td> 
+   <td>FileSystemResourceLoader </td> 
+  </tr> 
+  <tr> 
+   <td>classpath: </td> 
+   <td>ClasspathResourceLoader </td> 
+  </tr> 
+  <tr> 
+   <td>jar: </td> 
+   <td>JarResourceLoader </td> 
+  </tr> 
+  <tr> 
+   <td>webapp: </td> 
+   <td>WebResourceLoader </td> 
+  </tr> 
+  <tr> 
+   <td>&lt;MyClassLoader&gt;:</td> 
+   <td>用户自定义的 ResourceLoader (完整类名) </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p><font color="red"><br />现在 <code>template.path</code> 支持变量了，如：<br /></font></p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+template.path = ${user.dir}/templates
+template.path = ${webapp.dir}/WEB-INF/templates
+]]></script>
+<p>那么我们支持哪些变量呢？其实这些变量都来自于 <code>System.getProperty(name)</code>，只要 <code>System</code> 里有的，都支持。<br />其中 <code>webapp.dir</code> 是个特殊变量，由 Web 集成框架在系统启动的时候，通过 <code>System.setProperty(&quot;webapp.dir&quot;, servletContext.getRealPath(&quot;/&quot;))</code> 设置的。</p>
 <p><a name="template.suffix"></a></p>
 <h3><a name="x1764510907"></a><span>1.3.5 template.suffix</span></h3>
 <p>默认的模板文件扩展名 <code>.jetx</code>，主要用于 Web 框架集成中，用于查找和过滤模板用。</p>
@@ -393,6 +451,12 @@ template.path = /opt/app/templates.jar
   <li>如果一个应用中使用多个 <code>JetEngine</code> 实例，请配置不同的 <code>compile.path</code> 防止出现冲突。我们建议用户每次都重定义这个路径。</li> 
  </ul> 
 </blockquote>
+<p><font color="red"><br />现在 <code>compile.path</code> 支持变量了，如：<br /></font></p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+compile.path = ${java.io.tmp}/jetx
+compile.path = ${webapp.dir}/WEB-INF/jetx_classes
+]]></script>
+<p>那么我们支持哪些变量呢？其实这些变量都来自于 <code>System.getProperty(name)</code>，只要 <code>System</code> 里有的，都支持。<br />其中 <code>webapp.dir</code> 是个特殊变量，由 Web 集成框架在系统启动的时候，通过 <code>System.setProperty(&quot;webapp.dir&quot;, servletContext.getRealPath(&quot;/&quot;))</code> 设置的。</p>
 <h2><a name="x867245599"></a><span>1.5 注释指令</span></h2>
 <p>由于目前的指令一般直接嵌入在 HTML，对于一些使用可视化编辑器的用户来说，可能会造成一些干扰。<br />模板从 1.0.1 开始增加对指令注释支持，如：<code>&lt;!-- #if (...) --&gt;</code>; 增强对可视化编辑器的友好度。</p>
 <p><a name="trim.directive.comments"></a></p>
