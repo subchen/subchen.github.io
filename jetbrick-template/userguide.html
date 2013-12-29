@@ -437,16 +437,29 @@ Exception in thread "main" java.lang.ClassCastException: java.lang.String cannot
 <p>然后根据 Java Source 中对应的行数，知道这个是一个 <code>#for</code> 指令，查看生成的注释(<code>// line: 2</code>)，就能找到对应的原始模板所在的错误行号是第二行：<code>#for (int x : arraylist)</code>。</p>
 <p>至此，我们就能知道错误的原因是 <code>arraylist</code> 是一个 <code>List&lt;Object&gt;</code>，里面的每个元素是 <code>String</code>，强制类型转换成 <code>int</code> 失败导致的。正确的模板语句应该是 <code>#for (String x : arraylist)</code>。</p>
 <p><a name="debug"></a></p>
-<h2><a name="x545437655"></a><span>4.4 如何调试模板 debug？</span></h2> 
-<ul> 
- <li><p>使用 <code>debug(format, args...)</code> 函数 (需要打开 slf4j 相应的 debug 日志)</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
-${debug("name = {}", name)}
+<h2><a name="x545437655"></a><span>4.4 如何调试模板 debug？</span></h2>
+<h3><a name="x1051770788"></a><span>4.4.1 使用 debug(format, args...) 函数</span></h3>
+<p>范例：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+${debug("id = {}, users.size = {}.", id, users.size()}
 ]]></script> 
-  <blockquote>
-   <p><strong>注意：</strong> 参数格式请查看 <a href="http://www.slf4j.org/apidocs/org/slf4j/Logger.html">Slf4j Logger</a>。</p> 
-  </blockquote></li> 
- <li><p>用 Eclipse 进行调试</p></li> 
-</ul> 
+<blockquote>
+ <p>注意： </p> 
+ <ol> 
+  <li><p>要使用 debug 函数，需要 Slf4j 配合，在对应的 log 实现中打开 debug.</p></li> 
+  <li><p>具体的 format 参数格式请查看 <a href="http://www.slf4j.org/apidocs/org/slf4j/Logger.html">Slf4j Logger</a>。</p></li> 
+ </ol> 
+</blockquote>
+<p>开启 debug 日志：</p> 
+<ul> 
+ <li><p>Log4j:</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
+log4j.logger.jetbrick.template.runtime.JetUtils = DEBUG
+]]></script></li> 
+ <li><p>Logback</p> <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+<logger name="jetbrick.template.runtime.JetUtils" level="DEBUG" />
+]]></script></li> 
+</ul>
+<h3><a name="x638605844"></a><span>4.4.2 用 Eclipse 进行调试</span></h3> 
 <ol> 
  <li><p>将模板编译路径连接到 Project 的 source path</p><p><img src="../assets/images/screen_link_source.png" alt="png" /></p></li> 
  <li><p>设置断点 </p><p><img src="../assets/images/screen_set_breakpoint.png" alt="png" /></p></li> 

@@ -508,6 +508,12 @@ ${user.name} ## This is a line comment.
 [1, 2, 3, 4, 5]
 ["abc", 123, new Date(), 1+2*3]
 ]]></script>
+<p>取值：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+${list[index]}
+${list.get(index)}
+${list?.get(index)}
+]]></script>
 <h2><a name="x1996788741"></a><span>5.3 Map 常量</span></h2>
 <p>语法：</p> 
 <ul> 
@@ -517,6 +523,12 @@ ${user.name} ## This is a line comment.
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 {} // empty Map
 {"name" : "Jason", "statue" : 0}
+]]></script>
+<p>取值：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+${map.key}
+${map["key"]}
+${map.get("key")}
 ]]></script>
 <h2><a name="x394735919"></a><span>5.4 Bean 属性调用 bean.property</span></h2>
 <p>Bean 属性会解析成 getter 方法调用。</p>
