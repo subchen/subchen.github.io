@@ -44,9 +44,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.1.3.zip" class="download-button">
+        <a href="download/jetbrick-template-1.2.0.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.1.3.zip<br/>2013-12-22</span>
+            <span>jetbrick-template-1.2.0.zip<br/>2014-01-05</span>
         </a>
     </div>
 </div>
@@ -71,7 +71,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-12-22：jetbrick-template-1.1.3 正式版已发布，欢迎使用和反馈。</a>
+        <a href="download.html#version">2014-01-05：jetbrick-template-1.2.0 正式版已发布，新增预编译功能。</a>
     </div>
 </div>
 
@@ -104,9 +104,10 @@
             <li><a href="#x817993292">&nbsp&nbsp1.2 扩展方法/函数/标签</a></li>
             <li><a href="#x1497214921">&nbsp&nbsp1.3 模板路径和编码格式</a></li>
             <li><a href="#x1004799563">&nbsp&nbsp1.4 编译选项</a></li>
-            <li><a href="#x867245599">&nbsp&nbsp1.5 注释指令</a></li>
-            <li><a href="#x641838512">&nbsp&nbsp1.6 其他选项</a></li>
-            <li><a href="#x793518697">&nbsp&nbsp1.7 推荐配置</a></li>
+            <li><a href="#x818233124">&nbsp&nbsp1.5 安全管理器</a></li>
+            <li><a href="#x867245599">&nbsp&nbsp1.6 注释指令</a></li>
+            <li><a href="#x641838512">&nbsp&nbsp1.7 其他选项</a></li>
+            <li><a href="#x793518697">&nbsp&nbsp1.8 推荐配置</a></li>
         </ul>
     </div>
 
@@ -195,7 +196,12 @@
    <td>false </td> 
   </tr> 
   <tr> 
-   <td><a href="#compile.always">compile.always</a> </td> 
+   <td><a href="#compile.strategy">compile.strategy</a> </td> 
+   <td>编译策略 </td> 
+   <td>always </td> 
+  </tr> 
+  <tr> 
+   <td><a href="#compile.always">compile.always</a> (已过时) </td> 
    <td>是否总是重新编译 </td> 
    <td>true </td> 
   </tr> 
@@ -208,6 +214,21 @@
    <td><a href="#compile.path">compile.path</a> </td> 
    <td>默认编译输出路径 </td> 
    <td>系统TEMP目录下面的 jetx 目录 </td> 
+  </tr> 
+  <tr> 
+   <td><a href="#security.manager">security.manager</a> </td> 
+   <td>安全管理器实现类 </td> 
+   <td> </td> 
+  </tr> 
+  <tr> 
+   <td><a href="#security.manager.file">security.manager.file</a> </td> 
+   <td>安全管理器黑白名单文件 </td> 
+   <td> </td> 
+  </tr> 
+  <tr> 
+   <td><a href="#security.manager.namelist">security.manager.namelist</a> </td> 
+   <td>安全管理器黑白名单列表 </td> 
+   <td> </td> 
   </tr> 
   <tr> 
    <td><a href="#trim.directive.line">trim.directive.line</a> </td> 
@@ -235,7 +256,7 @@
  <p><strong>注意</strong>：</p> 
  <ol> 
   <li>所有配置选项都必须在 <code>JetEngine</code> 初始化的时候指定，不允许动态修改。</li> 
-  <li>所有配置选项都支持变量啦，具体参考 <a href="#template.path"><code>template.path</code></a> 或者 <a href="#compile.path"><code>compile.path</code></a> 中的例子。</li> 
+  <li>所有配置选项都支持变量啦，具体参考 <a href="#output.encoding"><code>template.path</code></a> 或者 [<code>compile.path</code>][17] 中的例子。</li> 
  </ol> 
 </blockquote>
 <h2><a name="x1333945773"></a><span>1.1 全局包/类/变量</span></h2>
@@ -426,22 +447,36 @@ template.path = ${webapp.dir}/WEB-INF/templates
 <p>默认为 <code>false</code>，建议只在开发模式中启用。</p>
 <h2><a name="x1004799563"></a><span>1.4 编译选项</span></h2>
 <p>jetbrick-template 采用编译成 Java ByteCode 来提高性能。</p>
-<p><a name="compile.always"></a></p>
-<h3><a name="x371822122"></a><span>1.4.1 compile.always</span></h3>
-<p>是否总是在第一次访问模板的时候，重新编译模板，而不是从磁盘中读取已经编译好的 Class 文件。(1.0.2 开始支持)</p>
-<p>默认 <code>true</code>，建议只在生产模式中关闭。</p> 
+<p><a name="compile.strategy"></a></p>
+<h3><a name="x511378638"></a><span>1.4.1 compile.strategy</span></h3>
+<p>模板从 1.2.0 开始，提供更加灵活的编译策略。由下面 4 中情况</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+compile.strategy = precompile
+compile.strategy = always
+compile.strategy = auto
+compile.strategy = none
+]]></script> 
+<ul> 
+ <li><p><code>precompile</code><br />在 JetEngine 初始化的时候，自动获取所有的模板(根据 <code>template.suffix</code> 过滤)，然后启动一个独立的线程进行编译。<br />这样虽然启动时间会增加，但是后面的模板访问将会非常的快。并且在预编译没有完成期间，应用可以正常访问，不冲突。</p></li> 
+ <li><p><code>always</code> （默认值）<br />和原先的 <code>compile.always = true</code> 等价。<br />就是在模板被首次访问的时候，进行编译。</p></li> 
+ <li><p><code>auto</code><br />和原先的 <code>compile.always = false</code> 等价。<br />就是在模板被首次访问的时候，如果磁盘中已经存在编译好的 Class 文件（并且源文件没有改变），那么直接加载该 Class 文件，否则进行编译。</p></li> 
+ <li><p><code>none</code><br />改模式下，将不在对模板进行编译。（发布的时候，用户无需发布任何模板源文件）<br />用户必须通过 <code>JetxGenerateApp</code> 预编译工具，事先将模板全部编译成 class 文件，并将所有的 class 文件放在 classpath 下面。<br />注意： class 文件放在 classpath 下面，而不是 <code>compile.path</code> 对应的目录。</p></li> 
+</ul> 
 <blockquote>
- <p><strong>注意</strong>：默认开启的原因是：模板内使用的用户类或者接口可能已经发生了变化，这时候就能通过重新编译来连接到新的接口或者提前产生编译错误。而不会因为使用旧的版本而引发的一些莫名奇妙的问题。编译也只在第一次访问的时候执行，以后的访问就不需要重新编译了。基本不影响性能。</p> 
+ <p>注意：<br />不管采用什么模式，对于使用 <code>JetEngine.createTemplate(source)</code> 直接由源码创建的模板，仍然需要进行编译。 </p> 
 </blockquote>
+<p><a name="compile.always"></a></p>
+<h3><a name="x371822122"></a><span>1.4.2 compile.always</span></h3>
+<p>已过时，已经被 <code>compile.strategy</code> 代替。</p>
 <p><a name="compile.debug"></a></p>
-<h3><a name="x1370936616"></a><span>1.4.2 compile.debug</span></h3>
+<h3><a name="x1370936616"></a><span>1.4.3 compile.debug</span></h3>
 <p>是否在日志中打印输出模板生成的 Java Source 源代码。</p>
 <p>默认 <code>false</code>，建议在开发模式中启用。</p> 
 <blockquote>
  <p><strong>注意</strong>：同时需要 slf4j 的配合才能输出日志。默认已经开启了 <code>INFO</code> 级别的日志。</p> 
 </blockquote>
 <p><a name="compile.path"></a></p>
-<h3><a name="x94677760"></a><span>1.4.3 compile.path</span></h3>
+<h3><a name="x94677760"></a><span>1.4.4 compile.path</span></h3>
 <p>在模板编译的时候，会先生成对应的 <code>.java</code> 文件，然后在把 <code>.java</code> 文件编译成 <code>.class</code> 文件。我们生成的这 2 种文件就放在这个目录下面。</p>
 <p>在用 Eclipse 进行 debug 的时候，可以 link 这个目录为 sourcepath 来进行 debug。<br />具体参考：<a href="userguide.html#debug">如何调试模板 debug？</a></p>
 <p>默认会在系统TEMP目录 <code>System.getProperty(&quot;java.io.tmpdir&quot;)</code> 下面新建一个 <code>jetx</code> 目录。如果这个目录非法或者没有写的权限，那么就会抛出 Exception。</p> 
@@ -457,16 +492,69 @@ compile.path = ${java.io.tmp}/jetx
 compile.path = ${webapp.dir}/WEB-INF/jetx_classes
 ]]></script>
 <p>那么我们支持哪些变量呢？其实这些变量都来自于 <code>System.getProperty(name)</code>，只要 <code>System</code> 里有的，都支持。<br />其中 <code>webapp.dir</code> 是个特殊变量，由 Web 集成框架在系统启动的时候，通过 <code>System.setProperty(&quot;webapp.dir&quot;, servletContext.getRealPath(&quot;/&quot;))</code> 设置的。</p>
-<h2><a name="x867245599"></a><span>1.5 注释指令</span></h2>
+<h2><a name="x818233124"></a><span>1.5 安全管理器</span></h2>
+<p>从 1.2.0 开始，模块新增了安全管理器，特别适合于 CMS 软件，允许用户自定义模板的场景。</p>
+<p><a name="security.manager"></a></p>
+<h3><a name="x1132877567"></a><span>1.5.1 security.manager</span></h3>
+<p>配置安全管理器的实现类，默认为空，表示禁用安全管理器。</p>
+<p>启用方式(使用默认的安全管理器)：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+security.manager = jetbrick.template.parser.JetSecurityManagerImpl
+]]></script>
+<p>用户也可以实现自己的安全管理器，只要实现接口： <code>jetbrick.template.JetSecurityManager</code> 即可。</p>
+<p>安全管理器只在对模板进行解析编译的时候进行，运行期不会影响任何性能。</p>
+<p><a name="security.manager.file"></a></p>
+<h3><a name="x1994088203"></a><span>1.5.2 security.manager.file</span></h3>
+<p>给默认的安全管理器，配置黑白名单，将该名单放在独立的外部文件中。（每行一个名单）</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+security.manager.file = ${webapp.dir}/WEB-INF/jetx-white-black-list.txt
+]]></script>
+<p><a name="security.manager.namelist"></a></p>
+<h3><a name="x1718482872"></a><span>1.5.3 security.manager.namelist</span></h3>
+<p>给默认的安全管理器，配置黑白名单，多个名单以逗号分隔。</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+security.manager.namelist = -java.lang.System.exit \
+                            -java.lang.reflect \
+                            -java.sql \
+                            -javax.tools \
+                            -java.io \
+                            +java.io.File.getName \
+                            +java.io.File.getPath \
+                            -sun \
+]]></script>
+<p><code>security.manager.file</code> 和 <code>security.manager.namelist</code> 二选一配置即可。</p>
+<p>黑白名单的格式如下：</p> 
+<ol> 
+ <li><p>前缀符号：</p> 
+  <ul> 
+   <li><code>+</code> 开头代表白名单</li> 
+   <li><code>-</code> 开头代表黑名单</li> 
+   <li>没有开始符号，则默认为白名单</li> 
+  </ul></li> 
+ <li><p>名单格式：</p> 
+  <ul> 
+   <li>包名： <code>pkg</code></li> 
+   <li>类名名： <code>pkg.class</code></li> 
+   <li>方法名： <code>pkg.class.method</code></li> 
+   <li>字段名： <code>pkg.class.field</code></li> 
+  </ul></li> 
+</ol>
+<p>实例：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+-java.sql                           // 禁止访问 java.sql 下面的任何 Class，包括所有孙子包下面的 Class
+-java.lang.System.exit              // 禁止调用 System.exit() 方法
++java.util.Collections.EMPTY_LIST   // 允许访问 Collections.EMPTY_LIST 字段
+]]></script>
+<h2><a name="x867245599"></a><span>1.6 注释指令</span></h2>
 <p>由于目前的指令一般直接嵌入在 HTML，对于一些使用可视化编辑器的用户来说，可能会造成一些干扰。<br />模板从 1.0.1 开始增加对指令注释支持，如：<code>&lt;!-- #if (...) --&gt;</code>; 增强对可视化编辑器的友好度。</p>
 <p><a name="trim.directive.comments"></a></p>
-<h3><a name="x557827583"></a><span>1.5.1 trim.directive.comments</span></h3>
+<h3><a name="x557827583"></a><span>1.6.1 trim.directive.comments</span></h3>
 <p>是否开启对注释指令的支持，默认为 <code>false</code>，表示不启用。</p>
 <p><a name="trim.directive.comments.prefix"></a></p>
-<h3><a name="x777542303"></a><span>1.5.2 trim.directive.comments.prefix</span></h3>
+<h3><a name="x777542303"></a><span>1.6.2 trim.directive.comments.prefix</span></h3>
 <p>设置注释开始格式，默认为 <code>&lt;!--</code></p>
 <p><a name="trim.directive.comments.suffix"></a></p>
-<h3><a name="x688854496"></a><span>1.5.3 trim.directive.comments.suffix</span></h3>
+<h3><a name="x688854496"></a><span>1.6.3 trim.directive.comments.suffix</span></h3>
 <p>设置注释开始格式，默认为 <code>--&gt;</code></p> 
 <blockquote>
  <p><strong>注意</strong>： 如果开启注释指令的支持，系统并没有强制要求 <code>trim.directive.comments.prefix</code> 和 <code>trim.directive.comments.suffix</code> 必须配对出现。也就是说如果使用 <code>&lt;!-- #end</code> 也是可以的。当然我们还是建议你配对使用。</p> 
@@ -482,9 +570,9 @@ compile.path = ${webapp.dir}/WEB-INF/jetx_classes
 <!-- #end -->
 </table>
 ]]></script>
-<h2><a name="x641838512"></a><span>1.6 其他选项</span></h2>
+<h2><a name="x641838512"></a><span>1.7 其他选项</span></h2>
 <p><a name="trim.directive.line"></a></p>
-<h3><a name="x1911663233"></a><span>1.6.1 trim.directive.line</span></h3>
+<h3><a name="x1911663233"></a><span>1.7.1 trim.directive.line</span></h3>
 <p>由于指令之间存在很多的空白内容，而空白内容也会被作为原始文本原封不动的输出，这样会造成很多输出的内容参差不齐。这个就是用来优化输出格式的，对于用模板来进行代码生成时候特别有用。不建议关闭。</p>
 <p>模板示例：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
@@ -508,18 +596,32 @@ ${n}
 2
 3
 ]]></script>
-<h2><a name="x793518697"></a><span>1.7 推荐配置</span></h2>
-<h3><a name="x746078021"></a><span>1.7.1 开发环境</span></h3> 
+<h2><a name="x793518697"></a><span>1.8 推荐配置</span></h2>
+<h3><a name="x746078021"></a><span>1.8.1 开发环境</span></h3> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
+import.packages = pkg1, pkg2
+import.autoscan = true
+import.autoscan.packages = pkg1, pgk2
+
 template.path = /path/to/templates/
 template.reloadable = true
+
+compile.strategy = always
+compile.path = /path/to/temp/
 compile.debug = true
-compile.path = /path/to/temp/
 ]]></script>
-<h3><a name="x918289221"></a><span>1.7.2 生成环境</span></h3> 
+<h3><a name="x913514012"></a><span>1.8.2 生产环境</span></h3> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
+import.packages = pkg1, pkg2
+import.autoscan = true
+import.autoscan.packages = pkg1, pgk2
+
 template.path = /path/to/templates/
+template.reloadable = false
+
+compile.strategy = precompile
 compile.path = /path/to/temp/
+compile.debug = false
 ]]></script>
 
 <!-- markdown body end -->

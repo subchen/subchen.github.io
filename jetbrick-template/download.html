@@ -44,9 +44,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.1.3.zip" class="download-button">
+        <a href="download/jetbrick-template-1.2.0.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.1.3.zip<br/>2013-12-22</span>
+            <span>jetbrick-template-1.2.0.zip<br/>2014-01-05</span>
         </a>
     </div>
 </div>
@@ -71,7 +71,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-12-22：jetbrick-template-1.1.3 正式版已发布，欢迎使用和反馈。</a>
+        <a href="download.html#version">2014-01-05：jetbrick-template-1.2.0 正式版已发布，新增预编译功能。</a>
     </div>
 </div>
 
@@ -137,7 +137,7 @@
     <dependency>
       <groupId>com.github.subchen</groupId>
       <artifactId>jetbrick-template</artifactId>
-      <version>1.1.3</version>
+      <version>1.2.0</version>
     </dependency>
     <dependency>
       <groupId>org.antlr</groupId>
@@ -164,12 +164,12 @@
 <p>github: <a href="https://github.com/subchen/jetbrick-template">https://github.com/subchen/jetbrick-template</a></p>
 <p>编译方法：</p> 
 <ol> 
- <li><p>先安装 apache-ant 1.8.x</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
+ <li><p>先安装 apache-ant 1.9.x</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 wget http://mirrors.cnnic.cn/apache//ant/binaries/apache-ant-1.9.2-bin.zip
 ]]></script></li> 
  <li><p>设置好 JDK, ANT 环境变量</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 set JAVA_HOME=/path/jdk_1.6.x
-set ANT_HOME=/path/apache-ant_1.8.x
+set ANT_HOME=/path/apache-ant_1.9.x
 set PATH=%JAVA_HOME%/bin;%ANT_HOME%/bin;%PATH%
 ]]></script></li> 
  <li><p>编译</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
@@ -204,10 +204,11 @@ jetbrick-template-x.x.x-all.zip
  <li>自定义标签 <a href="demo/SpringSecurityTags.java">Tags for Spring Security</a></li> 
  <li>自定义标签 <a href="demo/ShiroTags.java">Tags for Shiro</a></li> 
 </ul>
+<p>感谢网友 应卓 提供相关 Tag 实现。</p>
 <p><a name="documents"></a></p>
 <h1><a name="x173772310"></a><span>6 离线文档下载 Documents</span></h1>
 <p><a href="download/jetbrick-template-1.1.3-documents.pdf">jetbrick-template-1.1.3-documents.pdf</a></p>
-<p>感谢网友 laughing 提供PDF文档。</p>
+<p>感谢网友 laughing 提供离线 PDF 文档。</p>
 <p><a name="version"></a></p>
 <h1><a name="x1304924747"></a><span>7 最新版本 Latest Version</span></h1> 
 <table> 
@@ -221,6 +222,13 @@ jetbrick-template-x.x.x-all.zip
   </tr> 
  </thead> 
  <tbody> 
+  <tr> 
+   <td>2014-01-05 </td> 
+   <td>1.2.0 </td> 
+   <td><a href="download/jetbrick-template-1.2.0.zip">jetbrick-template-1.2.0.zip</a></td> 
+   <td><a href="download/jetbrick-template-1.2.0-all.zip">jetbrick-template-1.2.0-all.zip</a></td> 
+   <td><a href="#release_notes_1_2_0">更新历史</a></td> 
+  </tr> 
   <tr> 
    <td>2013-12-22 </td> 
    <td>1.1.3 </td> 
@@ -273,6 +281,16 @@ jetbrick-template-x.x.x-all.zip
  </tbody> 
 </table>
 <h1><a name="x887846512"></a><span>8 更新历史 Release Notes</span></h1>
+<p><a name="release_notes_1_2_0"></a><br /><strong>Version 1.2.0 (2014-01-05)</strong></p> 
+<ul> 
+ <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/38">#38 增加默认的 #tag cache() 实现模板局部缓存功能</a></li> 
+ <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/49">#49 增加模板预编译工具/选项</a></li> 
+ <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/54">#54 增加安全管理器：黑白名单</a></li> 
+ <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/62">#62 在 Web 环境中使用 jetx 时候，建议增加一个隐藏变量</a></li> 
+ <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/63">#63 对 Array/List/Map 的 [] 访问，增加安全调用</a></li> 
+ <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/64">#64 Spell error in JetAnnoations Class name, Should be JetAnnotations.</a></li> 
+ <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/65">#65 给 #for 指令内部对象增加 for.odd 和 for.even 支持.</a></li> 
+</ul>
 <p><a name="release_notes_1_1_3"></a><br /><strong>Version 1.1.3 (2013-12-22)</strong></p> 
 <ul> 
  <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/50">#50 增加 Jodd Madvoc 的集成支持</a></li> 

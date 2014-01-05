@@ -44,9 +44,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.1.3.zip" class="download-button">
+        <a href="download/jetbrick-template-1.2.0.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.1.3.zip<br/>2013-12-22</span>
+            <span>jetbrick-template-1.2.0.zip<br/>2014-01-05</span>
         </a>
     </div>
 </div>
@@ -71,7 +71,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-12-22：jetbrick-template-1.1.3 正式版已发布，欢迎使用和反馈。</a>
+        <a href="download.html#version">2014-01-05：jetbrick-template-1.2.0 正式版已发布，新增预编译功能。</a>
     </div>
 </div>
 
@@ -175,6 +175,18 @@ public Resource getResource(String name) throws ResourceNotFoundException;
 <blockquote>
  <p><strong>注意</strong>：对于一个 resource 或者 template 的 name，应该以 <code>/</code> 开头，并且以 <code>/</code> 作为分隔符，如：<code>/templates/index.jetx</code>。</p> 
 </blockquote>
+<h3><a name="x933655172"></a><span>2.1.3 从源码中直接创建模板</span></h3> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+public JetTemplate createTemplate(String source);
+]]></script>
+<p>比如：</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+JetTemplate template = engine.createTemplate("${1+2*3}");
+UnsafeCharArrayWriter out = new UnsafeCharArrayWriter();
+template.render(new JetContext(), out);
+Assert.assertEquals("7", out.toString());
+]]></script>
+<p>注意： createTemplate() 每次都会编译生成新的 JetTemplate 对象，如果需要缓存，请自行维护。</p>
 <h2><a name="x1328335379"></a><span>2.2 JetTemplate</span></h2>
 <p>对应于一个模板文件，通过 <code>JetEngine.getTemplate(name)</code> 获取。在第一次获取的时候，会先将模板生成对象的 <code>.java</code> 文件，然后在将 <code>.java</code> 文件编译成 <code>.class</code> 文件。</p>
 <p>如果模板不存在，则抛出 <code>ResourceNotFoundException</code>。</p>

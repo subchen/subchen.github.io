@@ -44,9 +44,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.1.3.zip" class="download-button">
+        <a href="download/jetbrick-template-1.2.0.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.1.3.zip<br/>2013-12-22</span>
+            <span>jetbrick-template-1.2.0.zip<br/>2014-01-05</span>
         </a>
     </div>
 </div>
@@ -71,7 +71,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2013-12-22：jetbrick-template-1.1.3 正式版已发布，欢迎使用和反馈。</a>
+        <a href="download.html#version">2014-01-05：jetbrick-template-1.2.0 正式版已发布，新增预编译功能。</a>
     </div>
 </div>
 
@@ -261,13 +261,16 @@ $!{user.description}
 #else
 	No books are found in here.
 #end
-]]></script> 
-<blockquote>
- <p><strong>注意</strong>：</p> 
- <ul> 
-  <li><code>for.index</code> 可用于内部循环计数，从 1 开始计数。</li> 
- </ul> 
-</blockquote>
+]]></script>
+<h3><a name="x1058087874"></a><span>2.5.1 for 内部对象</span></h3> 
+<ul> 
+ <li><code>for.index</code> 可用于内部循环计数，从 1 开始计数。</li> 
+ <li><code>for.size</code> 获取循环总数。如果对 Iterator 进行循环，或者对非 Collection 的 Iterable 进行循环，则返回 -1。</li> 
+ <li><code>for.first</code> 是否第一个元素。</li> 
+ <li><code>for.last</code> 是否最后一个元素。</li> 
+ <li><code>for.odd</code> 是否第奇数个元素。</li> 
+ <li><code>for.even</code> 是否第偶数个元素。</li> 
+</ul>
 <h2><a name="x520315191"></a><span>2.6 循环中断或继续语句 #break, #continue</span></h2>
 <p>当 <code>expression</code> 为 <code>true</code>，<code>#break</code> 中断当前循环，而 <code>#continue</code> 跳过余下的内容，跳到下一个循环。</p>
 <p>语法：</p> 
@@ -482,6 +485,7 @@ ${user.name} ## This is a line comment.
  <li>所有实现 <code>Comparable</code> 的对象都支持比较运算符，比如：<code>#if(date1 &lt; date2)</code>，可以比较日期的先后。</li> 
  <li>所有对象都条件测试，并返回 <code>true</code> 或者 <code>false</code>。对于非 <code>Boolean</code> 对象，所有非零数字，非空字串，非空集合，非 <code>null</code> 对象，即为 <code>true</code>。</li> 
  <li><code>List</code> 和 <code>Map</code> 可以方括号取值，比如：<code>list[0]</code> 等价于 <code>list.get(0)</code>，<code>map[&quot;abc&quot;]</code> 等价于 <code>map.get(&quot;abc&quot;)</code>。</li> 
+ <li><code>Map</code> 和 <code>JetContext</code> 对象支持 <code>.</code> 访问内部的对象（属性调用），如： <code>map.key</code>, <code>context.key</code>。</li> 
  <li>支持 Groovy 的 <code>?.</code> 安全调用，以避免 <code>NullPointerException</code>。</li> 
  <li>静态字段/方法调用，需要用 <code>@</code> 前缀，比如： <code>@Long.MAX_VALUE</code>，如果类带包名，需要这么用： <code>@(java.lang.Long).valueOf(&quot;123&quot;)</code></li> 
 </ul>
@@ -495,7 +499,7 @@ ${user.name} ## This is a line comment.
 <p>2 个内置的特殊变量：</p> 
 <ul> 
  <li><code>context</code>： 当前模板的 <code>JetContext</code> 对象。</li> 
- <li><code>for</code>： 用于 <code>#for</code> 指令内部状态对象。</li> 
+ <li><code>for</code>： 用于 <code>#for</code> 指令内部状态对象。具体参考 <code>#for</code> 指令用法。</li> 
 </ul>
 <h2><a name="x1847340345"></a><span>5.2 List 常量</span></h2>
 <p>语法：</p> 
@@ -512,6 +516,9 @@ ${user.name} ## This is a line comment.
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 ${list[index]}
 ${list.get(index)}
+
+// 安全调用
+${list?[index]}
 ${list?.get(index)}
 ]]></script>
 <h2><a name="x1996788741"></a><span>5.3 Map 常量</span></h2>
@@ -529,6 +536,11 @@ ${list?.get(index)}
 ${map.key}
 ${map["key"]}
 ${map.get("key")}
+
+// 安全调用
+${map?.key}
+${map?["key"]}
+${map?.get("key")}
 ]]></script>
 <h2><a name="x394735919"></a><span>5.4 Bean 属性调用 bean.property</span></h2>
 <p>Bean 属性会解析成 getter 方法调用。</p>
@@ -701,6 +713,13 @@ ${@(java.lang.Long).valueOf("123")}
 <ul> 
  <li><code>void debug(String format, Object... args)</code><br /> 输出调试信息，需要配合 Slf4j 使用。 参数格式请查看 <a href="http://www.slf4j.org/apidocs/org/slf4j/Logger.html">Slf4j Logger</a>。</li> 
 </ul>
+<h2><a name="x117672627"></a><span>7.6 Web 路径获取 ctxpath() / webroot()</span></h2> 
+<ul> 
+ <li><p><code>String ctxpath()</code><br /> 返回相对于 web 根目录的绝对路径，如 /myapp</p></li> 
+ <li><p><code>String ctxpath(String url)</code><br /> 将 url 转换为相对于 web 根目录的绝对路径，如 /myapp/path/file</p></li> 
+ <li><p><code>String webroot()</code><br /> 返回完整的 web 站点路径，如 <a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a></p></li> 
+ <li><p><code>String webroot(String url)</code><br /> 将 url 转换为完整的 web 站点路径，如 <a href="http://127.0.0.1:8080/path/file">http://127.0.0.1:8080/path/file</a></p></li> 
+</ul>
 <p><a name="default_tags"></a></p>
 <h1><a name="x1937656097"></a><span>8 默认的自定义标签 Tags</span></h1>
 <p>所有 Tags 定义在 <code>jetbrick.template.runtime.JetTags</code></p> 
@@ -709,6 +728,8 @@ ${@(java.lang.Long).valueOf("123")}
  <li><p><code>#tag layout(String file, Map&lt;String, Object&gt; parameters)</code> ... <code>#end</code><br /> 应用页面布局(支持传递传输)。<br /> 参考：<a href="faq-layout.html">jetbrick-template 中如何实现 layout 功能？</a></p></li> 
  <li><p><code>#tag block(String name)</code> ... <code>#end</code><br /> 将块内容保存到变量名为 name 的 JetContext 中。<br /> 参考：<a href="faq-layout.html">jetbrick-template 中如何实现 layout 功能？</a></p></li> 
  <li><p><code>#tag default_block(String name)</code> ... <code>#end</code><br /> 如果不存在指定的 JetContext 变量，那么输出 default_block 块内容，否则输出指定的 JetContext 变量。<br /> 参考：<a href="faq-layout.html">jetbrick-template 中如何实现 layout 功能？</a></p></li> 
+ <li><p><code>#tag application_cache(String name, long timeout)</code> ... <code>#end</code><br /> 将内存缓存到 ServletContext 中，在 timeout 秒之后自动超时。</p></li> 
+ <li><p><code>#tag session_cache(String name, long timeout)</code> ... <code>#end</code><br /> 将内存缓存到 HttpSession 中，在 timeout 秒之后自动超时。</p></li> 
 </ul>
 <p><a name="velocity"></a></p>
 <h1><a name="x1968843044"></a><span>9 和 Velocity 的比较</span></h1>
