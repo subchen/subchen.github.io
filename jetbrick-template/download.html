@@ -44,9 +44,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.2.0.zip" class="download-button">
+        <a href="download/jetbrick-template-1.2.1.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.2.0.zip<br/>2014-01-05</span>
+            <span>jetbrick-template-1.2.1.zip<br/>2014-01-26</span>
         </a>
     </div>
 </div>
@@ -71,7 +71,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2014-01-05：jetbrick-template-1.2.0 正式版已发布，新增预编译功能。</a>
+        <a href="download.html#version">2014-01-26：jetbrick-template-1.2.1 正式版已发布，欢迎下载。</a>
     </div>
 </div>
 
@@ -137,7 +137,7 @@
     <dependency>
       <groupId>com.github.subchen</groupId>
       <artifactId>jetbrick-template</artifactId>
-      <version>1.2.0</version>
+      <version>1.2.1</version>
     </dependency>
     <dependency>
       <groupId>org.antlr</groupId>
@@ -201,9 +201,7 @@ jetbrick-template-x.x.x-all.zip
 </ul>
 <h3><a name="x1941967230"></a><span>5.0.3 自定义标签 Tags/Methods/Functions：</span></h3> 
 <ul> 
- <li>自定义标签扩展 <a href="demo/SpringSecurityTags.java">Tags for Spring Security</a></li> 
- <li>自定义标签扩展 <a href="demo/ShiroTags.java">Tags for Shiro</a></li> 
- <li>自定义方法扩展 <a href="demo/jetbrick-template-extend-1.0.6.zip">jetbrick-template-extend-1.0.6</a></li> 
+ <li><a href="demo/jetbrick-template-extend-1.0.8.zip">jetbrick-template-extend-1.0.8</a></li> 
 </ul>
 <p>更多信息，前往： <a href="https://github.com/yingzhuo/jetbrick-template-extend">https://github.com/yingzhuo/jetbrick-template-extend</a></p>
 <p>感谢网友 应卓 提供相关的实现。</p>
@@ -224,6 +222,13 @@ jetbrick-template-x.x.x-all.zip
   </tr> 
  </thead> 
  <tbody> 
+  <tr> 
+   <td>2014-01-26 </td> 
+   <td>1.2.1 </td> 
+   <td><a href="download/jetbrick-template-1.2.1.zip">jetbrick-template-1.2.1.zip</a></td> 
+   <td><a href="download/jetbrick-template-1.2.1-all.zip">jetbrick-template-1.2.1-all.zip</a></td> 
+   <td><a href="#release_notes_1_2_1">更新历史</a></td> 
+  </tr> 
   <tr> 
    <td>2014-01-05 </td> 
    <td>1.2.0 </td> 
@@ -283,6 +288,14 @@ jetbrick-template-x.x.x-all.zip
  </tbody> 
 </table>
 <h1><a name="x887846512"></a><span>8 更新历史 Release Notes</span></h1>
+<p><a name="release_notes_1_2_1"></a><br /><strong>Version 1.2.1 (2014-01-26)</strong></p> 
+<ul> 
+ <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/72">#72 JetTagContext/JetPageContext 请添加一个接口</a></li> 
+ <li>[增强] <a href="https://github.com/subchen/jetbrick-template/issues/73">#73 关于扩展方法/函数/标签 加载失败时的处理方式</a></li> 
+ <li>[修复] <a href="https://github.com/subchen/jetbrick-template/issues/75">#75 ${query?.pageNum.asDefault(1)} 出错</a></li> 
+ <li>[修复] <a href="https://github.com/subchen/jetbrick-template/issues/74">#74 ClassLoaderUtils.loadClass() 如果 Class 不存在，提示信息不正确</a></li> 
+ <li>[修复] <a href="https://github.com/subchen/jetbrick-template/issues/70">#70 关于https协议默认端口的问题</a></li> 
+</ul>
 <p><a name="release_notes_1_2_0"></a><br /><strong>Version 1.2.0 (2014-01-05)</strong></p> 
 <ul> 
  <li>[新增] <a href="https://github.com/subchen/jetbrick-template/issues/38">#38 增加默认的 #tag cache() 实现模板局部缓存功能</a></li> 
