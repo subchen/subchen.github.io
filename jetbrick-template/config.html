@@ -44,9 +44,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.2.1.zip" class="download-button">
+        <a href="download/jetbrick-template-1.2.2.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.2.1.zip<br/>2014-01-26</span>
+            <span>jetbrick-template-1.2.2.zip<br/>2014-02-23</span>
         </a>
     </div>
 </div>
@@ -71,7 +71,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2014-01-26：jetbrick-template-1.2.1 正式版已发布，欢迎下载。</a>
+        <a href="download.html#version">2014-02-23：jetbrick-template-1.2.2 正式版已发布，欢迎下载。</a>
     </div>
 </div>
 
@@ -176,6 +176,11 @@
    <td>utf-8 </td> 
   </tr> 
   <tr> 
+   <td><a href="#syntax.safecall">syntax.safecall</a> </td> 
+   <td>是否默认启用全局的安全调用 </td> 
+   <td>false </td> 
+  </tr> 
+  <tr> 
    <td><a href="#template.loader">template.loader</a> </td> 
    <td>模板资源载入Class </td> 
    <td>jetbrick.template.resource.loader.FileSystemResourceLoader </td> 
@@ -264,12 +269,14 @@
 <p><a name="import.packages"></a></p>
 <h3><a name="x2047664874"></a><span>1.1.1 import.packages</span></h3>
 <p>用来配置包名，会自动导入包下面的所有类。允许配置多个包名，用逗号分隔。</p>
+<p>支持三种方式，如下：<br />1. <code>jetbrick.schema.app.model</code><br />2. <code>jetbrick.schema.app.methods.*</code><br />3. <code>jetbrick.schema.**</code></p>
+<p>其中 <code>1</code> 和 <code>2</code> 是一样的，会自动导入包下面的所有 Class 文件，但是不包含子包。<br />而方式 <code>3</code> 会自动将子包下面的 Class 也一起导入进来。</p>
 <p><a name="import.classes"></a></p>
 <h3><a name="x206485795"></a><span>1.1.2 import.classes</span></h3>
 <p>用来配置单个类名，优先级比 <code>import.packages</code> 高。允许配置多个类名，用逗号分隔。</p>
 <p>示例如下：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
-import.packages = jetbrick.schema.app.model, jetbrick.schema.app.methods.*
+import.packages = jetbrick.schema.app.model, jetbrick.schema.app.methods.*, jetbrick.schema.**
 import.classes = java.io.File, java.util.List
 ]]></script> 
 <blockquote>
@@ -348,8 +355,19 @@ import.autoscan.packages = app.methods, app.functions, app.tags
 <blockquote>
  <p><strong>注意</strong>：一般在 web 中，<code>output.encoding</code> 应该和 html 页面的 <code>contentType</code> 中的编码，以及 <code>response</code> 的 <code>characterEncoding</code> 完全一致。</p> 
 </blockquote>
+<p><a name="syntax.safecall"></a></p>
+<h3><a name="x314646806"></a><span>1.3.3 syntax.safecall</span></h3>
+<p>jetbrick-template 支持 4 种方法的安全调用（类似于 Groovy），以避免出现 <code>NullPointerException</code></p> 
+<ol> 
+ <li>属性调用 <code>bean?.property</code></li> 
+ <li>方法调用 <code>bean?.method(...)</code></li> 
+ <li>数组访问 <code>array?[index]</code></li> 
+ <li>Map访问 <code>map?[key]</code></li> 
+</ol>
+<p>如果 <code>syntax.safecall = true</code>，那么将会把全局默认的语法变成安全调用语法。如 <code>bean.property</code> 将等价于 <code>bean?.property</code>。 </p>
+<p>默认为 <code>false</code>，不启用。</p>
 <p><a name="template.loader"></a></p>
-<h3><a name="x1970607097"></a><span>1.3.3 template.loader</span></h3>
+<h3><a name="x1970607097"></a><span>1.3.4 template.loader</span></h3>
 <p>如何找到我们自己的模板文件呢？这里就是定义我们要使用的查找类。我们支持下面几种 Class</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 template.loader = jetbrick.template.resource.loader.FileSystemResourceLoader
@@ -361,7 +379,7 @@ template.loader = jetbrick.template.resource.loader.MultipathResourceLoader
 <p>默认为 <code>jetbrick.template.resource.loader.FileSystemResourceLoader</code>。</p>
 <p>注意：如果是 Web 集成模式，默认值为 <code>jetbrick.template.web.WebResourceLoader</code>。</p>
 <p><a name="template.path"></a></p>
-<h3><a name="x225407719"></a><span>1.3.4 template.path</span></h3>
+<h3><a name="x225407719"></a><span>1.3.5 template.path</span></h3>
 <p>除了要定义 <code>template.loader</code>，我们还需要定义模板存放的根目录。</p>
 <p>默认为系统当前目录：<code>System.getProperty(&quot;user.dir&quot;)</code>。</p>
 <p>注意：如果是 web 集成模式，默认为 webapp 的根目录。具体请参考：<a href="integrate.html#JetEngine">JetEngine 自动加载方式</a> 中注意事项。</p> 
@@ -438,10 +456,10 @@ template.path = ${webapp.dir}/WEB-INF/templates
 ]]></script>
 <p>那么我们支持哪些变量呢？其实这些变量都来自于 <code>System.getProperty(name)</code>，只要 <code>System</code> 里有的，都支持。<br />其中 <code>webapp.dir</code> 是个特殊变量，由 Web 集成框架在系统启动的时候，通过 <code>System.setProperty(&quot;webapp.dir&quot;, servletContext.getRealPath(&quot;/&quot;))</code> 设置的。</p>
 <p><a name="template.suffix"></a></p>
-<h3><a name="x1764510907"></a><span>1.3.5 template.suffix</span></h3>
+<h3><a name="x1764510907"></a><span>1.3.6 template.suffix</span></h3>
 <p>默认的模板文件扩展名 <code>.jetx</code>，主要用于 Web 框架集成中，用于查找和过滤模板用。</p>
 <p><a name="template.reloadable"></a></p>
-<h3><a name="x674610073"></a><span>1.3.6 template.reloadable</span></h3>
+<h3><a name="x674610073"></a><span>1.3.7 template.reloadable</span></h3>
 <p>在开发模式下面，我们一般需要频繁的修改模板内容来进行调试。那么我们需要打开这个功能来支持模板的热部署。（类似于 <code>JSP</code>）</p>
 <p>是否需要重新编译和加载模板，取决于模板源文件的最后修改时间。</p>
 <p>默认为 <code>false</code>，建议只在开发模式中启用。</p>
