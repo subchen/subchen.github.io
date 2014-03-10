@@ -44,9 +44,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.2.2.zip" class="download-button">
+        <a href="download/jetbrick-template-1.2.3.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.2.2.zip<br/>2014-02-23</span>
+            <span>jetbrick-template-1.2.3.zip<br/>2014-03-10</span>
         </a>
     </div>
 </div>
@@ -71,7 +71,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2014-02-23：jetbrick-template-1.2.2 正式版已发布，欢迎下载。</a>
+        <a href="download.html#version">2014-03-10：jetbrick-template-1.2.3 正式版已发布，欢迎下载。</a>
     </div>
 </div>
 
@@ -100,7 +100,7 @@
     <div class="jb-nav-list-container" data-spy="affix" data-offset-top="230">
         <ul class="jb-nav-list">
             <li><a href="#x1106755817">1 全局配置选项</a></li>
-            <li><a href="#x1333945773">&nbsp&nbsp1.1 全局包/类/变量</a></li>
+            <li><a href="#x71556755">&nbsp&nbsp1.1 全局定义(包/类/变量)</a></li>
             <li><a href="#x817993292">&nbsp&nbsp1.2 扩展方法/函数/标签</a></li>
             <li><a href="#x1497214921">&nbsp&nbsp1.3 模板路径和编码格式</a></li>
             <li><a href="#x1095099928">&nbsp&nbsp1.4 语法选项</a></li>
@@ -167,6 +167,11 @@
    <td> </td> 
   </tr> 
   <tr> 
+   <td><a href="#global.variables">global.variables</a> </td> 
+   <td>配置全局变量 </td> 
+   <td> </td> 
+  </tr> 
+  <tr> 
    <td><a href="#input.encoding">input.encoding</a> </td> 
    <td>模板源文件的编码格式 </td> 
    <td>utf-8 </td> 
@@ -202,14 +207,14 @@
    <td>false </td> 
   </tr> 
   <tr> 
+   <td><a href="#compile.tool">compile.tool</a> </td> 
+   <td>编译器 </td> 
+   <td>jetbrick.template.compiler.JdkCompiler </td> 
+  </tr> 
+  <tr> 
    <td><a href="#compile.strategy">compile.strategy</a> </td> 
    <td>编译策略 </td> 
    <td>always </td> 
-  </tr> 
-  <tr> 
-   <td><a href="#compile.always">compile.always</a> (已过时) </td> 
-   <td>是否总是重新编译 </td> 
-   <td>true </td> 
   </tr> 
   <tr> 
    <td><a href="#compile.debug">compile.debug</a> </td> 
@@ -262,27 +267,30 @@
  <p><strong>注意</strong>：</p> 
  <ol> 
   <li>所有配置选项都必须在 <code>JetEngine</code> 初始化的时候指定，不允许动态修改。</li> 
-  <li>所有配置选项都支持变量啦，具体参考 <a href="#output.encoding"><code>template.path</code></a> 或者 [<code>compile.path</code>][17] 中的例子。</li> 
+  <li>所有配置选项都支持变量啦，具体参考 <a href="#output.encoding"><code>template.path</code></a> 或者 <a href="#compile.path"><code>compile.path</code></a> 中的例子。</li> 
  </ol> 
 </blockquote>
-<h2><a name="x1333945773"></a><span>1.1 全局包/类/变量</span></h2>
+<h2><a name="x71556755"></a><span>1.1 全局定义(包/类/变量)</span></h2>
 <p>在模板中，如果要用到一些其他的 Class, 那么可以先 import 进来，这样就可以在模板中使用短名字，比如 <code>Date</code> 而不是 <code>java.util.Date</code>。</p>
 <p><a name="import.packages"></a></p>
 <h3><a name="x2047664874"></a><span>1.1.1 import.packages</span></h3>
 <p>用来配置包名，会自动导入包下面的所有类。允许配置多个包名，用逗号分隔。</p>
 <p>支持三种方式，如下：<br />1. <code>jetbrick.schema.app.model</code><br />2. <code>jetbrick.schema.app.methods.*</code><br />3. <code>jetbrick.schema.**</code></p>
 <p>其中 <code>1</code> 和 <code>2</code> 是一样的，会自动导入包下面的所有 Class 文件，但是不包含子包。<br />而方式 <code>3</code> 会自动将子包下面的 Class 也一起导入进来。</p>
+<p>示例如下：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+import.packages = jetbrick.schema.app.model, jetbrick.schema.app.methods.*, jetbrick.schema.**
+]]></script> 
+<blockquote>
+ <p><strong>注意</strong>：<code>jetbrick-template</code> 会自动引入 <code>java.lang.*</code> 和 <code>java.util.*</code>。</p> 
+</blockquote>
 <p><a name="import.classes"></a></p>
 <h3><a name="x206485795"></a><span>1.1.2 import.classes</span></h3>
 <p>用来配置单个类名，优先级比 <code>import.packages</code> 高。允许配置多个类名，用逗号分隔。</p>
 <p>示例如下：</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
-import.packages = jetbrick.schema.app.model, jetbrick.schema.app.methods.*, jetbrick.schema.**
 import.classes = java.io.File, java.util.List
-]]></script> 
-<blockquote>
- <p><strong>注意</strong>：<code>jetbrick-template</code> 会自动引入 <code>java.lang.*</code> 和 <code>java.util.*</code>。</p> 
-</blockquote>
+]]></script>
 <p><a name="import.variables"></a></p>
 <h3><a name="x937641362"></a><span>1.1.3 import.variables</span></h3>
 <p>在一个 webapp 中，我们希望每个模板都自动引入一些变量，比如 <code>HttpServletRequest request</code>，那么我们就可以在这里定义。</p>
@@ -329,7 +337,7 @@ import.tags = app.project.tags.UserTags
 <p><code>jetbrick-template</code> 默认会注册 <code>jetbrick.template.runtime.JetTags</code>，<br />具体参考：<a href="syntax.html#default_tags">默认的自定义标签 Tags</a>。</p>
 <p><a name="import.autoscan"></a></p>
 <h3><a name="x1358889771"></a><span>1.2.4 import.autoscan</span></h3>
-<p>是否自动扫描用户自定义的扩展 Class，扫描的内容是： 扩展方法，扩展函数，自定义标签。</p>
+<p>是否自动扫描用户自定义的扩展 Class，扫描的内容是： <strong>扩展方法，扩展函数，自定义标签</strong></p>
 <p>默认 <code>false</code>，不启用。</p>
 <p><a name="import.autoscan.packages"></a></p>
 <h3><a name="x1904023066"></a><span>1.2.5 import.autoscan.packages</span></h3>
@@ -467,8 +475,31 @@ template.path = ${webapp.dir}/WEB-INF/templates
 <p>默认为 <code>false</code>，建议只在开发模式中启用。</p>
 <h2><a name="x1004799563"></a><span>1.5 编译选项</span></h2>
 <p>jetbrick-template 采用编译成 Java ByteCode 来提高性能。</p>
+<p><a name="compile.tool"></a></p>
+<h3><a name="x94810227"></a><span>1.5.1 compile.tool</span></h3>
+<p>模板编译器的配置，默认使用 JDK 自带的编译器 （需要使用 JDK，而不是 JRE），也支持 Eclipse Java Compiler。</p>
+<p>目前可选的配置如下：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+# 使用 JDK Compiler (默认值)
+compile.tool = jetbrick.template.compiler.JdkCompiler
+
+# 使用 Eclipse Java Compiler 
+compile.tool = jetbrick.template.compiler.JdtCompiler
+]]></script>
+<p>Eclipse Java Compiler 需要引入第三方 jar (Tomcat 等 WebServer 一般都自带该 jar)</p> 
+<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+<dependency>
+    <groupId>org.eclipse.jdt.core.compiler</groupId>
+    <artifactId>ecj</artifactId>
+    <version>4.3.1</version>
+</dependency>
+]]></script> 
+<ol> 
+ <li>对于不支持 <code>javax.tools.JavaCompiler</code> 接口的 BAE (Baidu App Engine), 可以切换到改编译器。</li> 
+ <li>对于出现未知的编译错误的时候，可以尝试切换到该编译器。</li> 
+</ol>
 <p><a name="compile.strategy"></a></p>
-<h3><a name="x511378638"></a><span>1.5.1 compile.strategy</span></h3>
+<h3><a name="x511378638"></a><span>1.5.2 compile.strategy</span></h3>
 <p>模板从 1.2.0 开始，提供更加灵活的编译策略。由下面 4 中情况</p> 
 <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 compile.strategy = precompile
@@ -478,16 +509,13 @@ compile.strategy = none
 ]]></script> 
 <ul> 
  <li><p><code>precompile</code><br />在 JetEngine 初始化的时候，自动获取所有的模板(根据 <code>template.suffix</code> 过滤)，然后启动一个独立的线程进行编译。<br />这样虽然启动时间会增加，但是后面的模板访问将会非常的快。并且在预编译没有完成期间，应用可以正常访问，不冲突。</p></li> 
- <li><p><code>always</code> （默认值）<br />和原先的 <code>compile.always = true</code> 等价。<br />就是在模板被首次访问的时候，进行编译。</p></li> 
- <li><p><code>auto</code><br />和原先的 <code>compile.always = false</code> 等价。<br />就是在模板被首次访问的时候，如果磁盘中已经存在编译好的 Class 文件（并且源文件没有改变），那么直接加载该 Class 文件，否则进行编译。</p></li> 
+ <li><p><code>always</code> （默认值）<br />就是在模板被首次访问的时候，进行编译。</p></li> 
+ <li><p><code>auto</code><br />就是在模板被首次访问的时候，如果磁盘中已经存在编译好的 Class 文件（并且源文件没有改变），那么直接加载该 Class 文件，否则进行编译。</p></li> 
  <li><p><code>none</code><br />改模式下，将不在对模板进行编译。（发布的时候，用户无需发布任何模板源文件）<br />用户必须通过 <code>JetxGenerateApp</code> 预编译工具，事先将模板全部编译成 class 文件，并将所有的 class 文件放在 classpath 下面。<br />注意： class 文件放在 classpath 下面，而不是 <code>compile.path</code> 对应的目录。</p></li> 
 </ul> 
 <blockquote>
  <p>注意：<br />不管采用什么模式，对于使用 <code>JetEngine.createTemplate(source)</code> 直接由源码创建的模板，仍然需要进行编译。 </p> 
 </blockquote>
-<p><a name="compile.always"></a></p>
-<h3><a name="x371822122"></a><span>1.5.2 compile.always</span></h3>
-<p>已过时，已经被 <code>compile.strategy</code> 代替。</p>
 <p><a name="compile.debug"></a></p>
 <h3><a name="x1370936616"></a><span>1.5.3 compile.debug</span></h3>
 <p>是否在日志中打印输出模板生成的 Java Source 源代码。</p>
@@ -651,7 +679,7 @@ compile.debug = false
 
 <div class="container">
     <div class="jb-footer">
-        Copyright 2010-2013 Guoqiang Chen. All rights reserved.
+        Copyright 2010-2014 Guoqiang Chen. All rights reserved.
         <br/>subchen&#64;gmail.com, QQ 交流圈：310491655
     </div>
 </div>
