@@ -303,6 +303,39 @@ import.variables = jetbrick.orm.Pagelist pagelist, List<Entity> entites
 <blockquote>
  <p><strong>注意</strong>：全局定义的变量如果在模板中被重新定义成其他类型(<code>#define</code>, <code>#set</code>)，则以模板定义优先。</p> 
 </blockquote>
+<p><a name="global.variables"></a></p>
+<h3><a name="x2102991636"></a><span>1.1.4 global.variables</span></h3>
+<p>该配置主要用来设置用户自定义的全局变量。如下：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+global.variables = webapp.GlobalVariables
+]]></script>
+<p>然后用户的实现 <code>webapp.GlobalVariables</code> 如下：</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+public class GlobalVariables implements JetGlobalVariables  {
+    @Override
+    public Object get(JetContext context, String name) {
+        if ("copyright".equals(name)) {
+            return "copyright@2000-2010";
+        } else if ("today".equals(name)) {
+            return new Date();           
+        } else if ("contextPath".equals(name)) {
+            HttpServletRequest request = (HttpServletRequest) context.get(JetWebConfig.REQUEST);
+            return request.getContextPath();
+        }
+        return null;
+    }
+}
+]]></script>
+<p>注意： 用户提供的全局变量，还需要在 <code>import.variables</code> 中声明变量的类型。</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+import.variables = String copyright, Date today, String contextPath
+]]></script>
+<p>然后就可以在模板中使用了</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+${copyright}
+${today.format("yyyy-MM-dd")}
+${contextPath}
+]]></script>
 <h2><a name="x817993292"></a><span>1.2 扩展方法/函数/标签</span></h2>
 <p><a name="import.methods"></a></p>
 <h3><a name="x104572311"></a><span>1.2.1 import.methods</span></h3>
@@ -354,39 +387,6 @@ import.autoscan.packages = app.methods, app.functions, app.tags
  </ol> 
 </blockquote>
 <p>更多详细内容请参考： <a href="faq-autoscan.html">如何让自动扫描发现用户自定义的扩展方法/函数/标签 Class</a></p>
-<p><a name="global.variables"></a></p>
-<h3><a name="x2102991636"></a><span>1.2.6 global.variables</span></h3>
-<p>该配置主要用来设置用户自定义的全局变量。如下：</p> 
-<script type="syntaxhighlighter" class="brush: text"><![CDATA[
-global.variables = webapp.GlobalVariables
-]]></script>
-<p>然后用户的实现 <code>webapp.GlobalVariables</code> 如下：</p> 
-<script type="syntaxhighlighter" class="brush: java"><![CDATA[
-public class GlobalVariables implements JetGlobalVariables  {
-    @Override
-    public Object get(JetContext context, String name) {
-        if ("copyright".equals(name)) {
-            return "copyright@2000-2010";
-        } else if ("today".equals(name)) {
-            return new Date();           
-        } else if ("contextPath".equals(name)) {
-            HttpServletRequest request = (HttpServletRequest) context.get(JetWebConfig.REQUEST);
-            return request.getContextPath();
-        }
-        return null;
-    }
-}
-]]></script>
-<p>注意： 用户提供的全局变量，还需要在 <code>import.variables</code> 中声明变量的类型。</p> 
-<script type="syntaxhighlighter" class="brush: text"><![CDATA[
-import.variables = String copyright, Date today, String contextPath
-]]></script>
-<p>然后就可以在模板中使用了</p> 
-<script type="syntaxhighlighter" class="brush: text"><![CDATA[
-${copyright}
-${today.format("yyyy-MM-dd")}
-${contextPath}
-]]></script>
 <h2><a name="x1497214921"></a><span>1.3 模板路径和编码格式</span></h2>
 <p><a name="input.encoding"></a></p>
 <h3><a name="x1175775991"></a><span>1.3.1 input.encoding</span></h3>
