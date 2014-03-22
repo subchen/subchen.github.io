@@ -188,7 +188,7 @@ Assert.assertEquals("7", out.toString());
 ]]></script>
 <p>注意： createTemplate() 每次都会编译生成新的 JetTemplate 对象，如果需要缓存，请自行维护。</p>
 <h2><a name="x1328335379"></a><span>2.2 JetTemplate</span></h2>
-<p>对应于一个模板文件，通过 <code>JetEngine.getTemplate(name)</code> 获取。在第一次获取的时候，会先将模板生成对象的 <code>.java</code> 文件，然后在将 <code>.java</code> 文件编译成 <code>.class</code> 文件。</p>
+<p>对应于一个模板文件，通过 <code>JetEngine.getTemplate(name)</code> 获取。在第一次获取的时候，会先将模板生成对应的 <code>.java</code> 文件，然后在将 <code>.java</code> 文件编译成 <code>.class</code> 文件。</p>
 <p>如果模板不存在，则抛出 <code>ResourceNotFoundException</code>。</p>
 <p>然后通过下面几个方法可以对模板进行渲染：</p> 
 <script type="syntaxhighlighter" class="brush: java"><![CDATA[
