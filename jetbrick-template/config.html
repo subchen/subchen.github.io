@@ -138,7 +138,12 @@
   </tr> 
   <tr> 
    <td><a href="#import.variables">import.variables</a> </td> 
-   <td>默认导入的 java 对象 </td> 
+   <td>默认定义的 java 变量类型 </td> 
+   <td> </td> 
+  </tr> 
+  <tr> 
+   <td><a href="#global.variables">global.variables</a> </td> 
+   <td>全局变量工厂类 </td> 
    <td> </td> 
   </tr> 
   <tr> 
@@ -164,11 +169,6 @@
   <tr> 
    <td><a href="#import.autoscan.packages">import.autoscan.packages</a> </td> 
    <td>在指定的包中进行自动扫描 </td> 
-   <td> </td> 
-  </tr> 
-  <tr> 
-   <td><a href="#global.variables">global.variables</a> </td> 
-   <td>配置全局变量 </td> 
    <td> </td> 
   </tr> 
   <tr> 
@@ -319,7 +319,7 @@ public class GlobalVariables implements JetGlobalVariables  {
         } else if ("today".equals(name)) {
             return new Date();           
         } else if ("contextPath".equals(name)) {
-            HttpServletRequest request = (HttpServletRequest) context.get(JetWebConfig.REQUEST);
+            HttpServletRequest request = (HttpServletRequest) context.get(JetWebContext.REQUEST);
             return request.getContextPath();
         }
         return null;
