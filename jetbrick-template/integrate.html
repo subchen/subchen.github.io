@@ -19,18 +19,8 @@
 
 <div class="jb-topbar">
     <div class="container">
-        <a href="http://subchen.github.io/"><img src="../assets/images/logo-mini.png"/></a>
-        <!--
-        <ul class="menubar">
-            <li><a href="">commons</a></li>
-            <li><a href="">webmvc</a></li>
-            <li><a href="">template</a></li>
-            <li><a href="">orm</a></li>
-            <li><a href="">widget</a></li>
-            <li><a href="">javadoc-chm</a></li>
-        </ul>
-        -->
         <div class="pull-right" style="color:#fff;line-height:40px;font-size:16px;padding-right:20px">QQ 交流圈：310491655</div>
+        <a href="http://subchen.github.io/"><img src="../assets/images/logo-mini.png"/></a>
     </div>
 </div>
 
@@ -44,9 +34,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="download/jetbrick-template-1.2.4.zip" class="download-button">
+        <a href="download/jetbrick-template-1.2.5.zip" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.2.4.zip<br/>2014-03-22</span>
+            <span>jetbrick-template-1.2.5.zip<br/>2014-03-28</span>
         </a>
     </div>
 </div>
@@ -71,7 +61,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2014-03-22：jetbrick-template-1.2.4 正式版已发布，欢迎下载。</a>
+        <a href="download.html#version">2014-03-28：jetbrick-template-1.2.5 正式版已发布，欢迎下载。</a>
     </div>
 </div>
 
@@ -108,8 +98,8 @@
             <li><a href="#x1633219041">&nbsp&nbsp4.3 Struts 2.x</a></li>
             <li><a href="#x941308089">&nbsp&nbsp4.4 Spring MVC</a></li>
             <li><a href="#x2108526772">&nbsp&nbsp4.5 JFinal</a></li>
-            <li><a href="#x2439853">&nbsp&nbsp4.6 Nutz</a></li>
-            <li><a href="#x2314405">&nbsp&nbsp4.7 Jodd</a></li>
+            <li><a href="#x1796484905">&nbsp&nbsp4.6 Jodd 3.5.1+</a></li>
+            <li><a href="#x2439853">&nbsp&nbsp4.7 Nutz</a></li>
         </ul>
     </div>
 
@@ -125,9 +115,9 @@
  <li><a href="#Filter">Filter</a></li> 
  <li><a href="#Struts">Struts 2.x</a></li> 
  <li><a href="#SpringMVC">Spring MVC</a></li> 
+ <li><a href="#Jodd">Jodd 3.5.1+</a></li> 
  <li><a href="#JFinal">JFinal</a></li> 
  <li><a href="#Nutz">Nutz</a></li> 
- <li><a href="#Jodd">Jodd</a></li> 
 </ul>
 <p><a href="download.html#samples">点击这里下载各种集成方式的演示 demo</a></p>
 <h1><a name="x1336408494"></a><span>2 Web 中的默认隐含对象</span></h1>
@@ -332,36 +322,9 @@ public class UsersController extends Controller {
 </ol>
 <p>可以了，就这么简单!</p>
 <p>具体例子代码参考： <a href="https://github.com/subchen/jetbrick-template-webmvc-samples/">https://github.com/subchen/jetbrick-template-webmvc-samples/</a></p>
-<p><a name="Nutz"></a></p>
-<h2><a name="x2439853"></a><span>4.6 Nutz</span></h2>
-<p>感谢 wendal (<a href="mailto:wendal1985@gmail.com">wendal1985@gmail.com</a>) 提供相关代码。</p>
-<p>View： <code>jetbrick.template.web.nutz.JetTemplateView</code><br />ViewMaker：<code>jetbrick.template.web.nutz.JetTemplateViewMaker</code></p> 
-<ol> 
- <li><p>将视图工厂整合进应用中：</p><p>在主模块上，加：<code>@Views({JetTemplateViewMaker.class})</code> 注解</p> <script type="syntaxhighlighter" class="brush: java"><![CDATA[
-@Views({JetTemplateViewMaker.class})
-@...
-public class MainModule {
-}
-]]></script></li> 
- <li><p>使用 jetx 视图：</p> <script type="syntaxhighlighter" class="brush: java"><![CDATA[
-@At
-@Ok(".jetx:/WEB-INF/html/user_info.jetx")
-public String list(@Param("name") String name, HttpServletRequest request){
-  if (name != null) return name;
-  return "测试";
-}
-]]></script></li> 
- <li><p>模板中使用:</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
-#define(String obj)
-${obj}
-]]></script></li> 
- <li><p>获得输出：</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
-测试
-]]></script></li> 
-</ol>
-<p>具体例子代码参考： <a href="https://github.com/subchen/jetbrick-template-webmvc-samples/">https://github.com/subchen/jetbrick-template-webmvc-samples/</a></p>
 <p><a name="Jodd"></a></p>
-<h2><a name="x2314405"></a><span>4.7 Jodd</span></h2> 
+<h2><a name="x1796484905"></a><span>4.6 Jodd 3.5.1+</span></h2>
+<p>注意，由于 Jodd 3.5 更改了 Result 的集成接口，所以 <code>jetbrick-template</code> 从 <code>1.2.5</code> 版本开始，只支持 <code>Jodd 3.5.1+</code>，如果需要 <code>Jodd 3.5</code> 之前的版本，请使用 <code>jetbrick-template 1.2.4</code>。 </p> 
 <ol> 
  <li><p>首先需要配置 Jodd 的配置文件：madvoc.props</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 [jetbrick.template.web.jodd.JetTemplateResult]
@@ -400,6 +363,34 @@ public class UsersAction {
   </tr>
   #end
 </table>
+]]></script></li> 
+</ol>
+<p>具体例子代码参考： <a href="https://github.com/subchen/jetbrick-template-webmvc-samples/">https://github.com/subchen/jetbrick-template-webmvc-samples/</a></p>
+<p><a name="Nutz"></a></p>
+<h2><a name="x2439853"></a><span>4.7 Nutz</span></h2>
+<p>感谢 wendal (<a href="mailto:wendal1985@gmail.com">wendal1985@gmail.com</a>) 提供相关代码。</p>
+<p>View： <code>jetbrick.template.web.nutz.JetTemplateView</code><br />ViewMaker：<code>jetbrick.template.web.nutz.JetTemplateViewMaker</code></p> 
+<ol> 
+ <li><p>将视图工厂整合进应用中：</p><p>在主模块上，加：<code>@Views({JetTemplateViewMaker.class})</code> 注解</p> <script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Views({JetTemplateViewMaker.class})
+@...
+public class MainModule {
+}
+]]></script></li> 
+ <li><p>使用 jetx 视图：</p> <script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@At
+@Ok(".jetx:/WEB-INF/html/user_info.jetx")
+public String list(@Param("name") String name, HttpServletRequest request){
+  if (name != null) return name;
+  return "测试";
+}
+]]></script></li> 
+ <li><p>模板中使用:</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
+#define(String obj)
+${obj}
+]]></script></li> 
+ <li><p>获得输出：</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
+测试
 ]]></script></li> 
 </ol>
 <p>具体例子代码参考： <a href="https://github.com/subchen/jetbrick-template-webmvc-samples/">https://github.com/subchen/jetbrick-template-webmvc-samples/</a></p>
