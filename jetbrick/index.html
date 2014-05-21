@@ -96,7 +96,7 @@
 <h2><a name="x1111660346"></a><span>1.1 jetbrick 介绍</span></h2>
 <h3><a name="x974010400"></a><span>1.1.1 jetbrick 是什么？</span></h3>
 <p>jetbrick 是一个用 Java 开发的轻量级框架。追求快速上手和高效开发。用少量的代码来实现强大的功能。极大的提高用户的开发效率，节约宝贵的时间。</p>
-<h3><a name="x196525426"></a><span>1.1.2 jetbrick 的组合部分</span></h3> 
+<h3><a name="x193073514"></a><span>1.1.2 jetbrick 的组成部分</span></h3> 
 <table> 
  <thead> 
   <tr> 
@@ -285,7 +285,7 @@
         <filter-name>jetbrick-webmvc</filter-name>
         <filter-class>jetbrick.web.mvc.DispatcherFilter</filter-class>
         <init-param>
-            <param-name>contextLocation</param-name>
+            <param-name>configLocation</param-name>
             <param-value>/WEB-INF/jetbrick-webmvc.properties</param-value>
         </init-param>
     </filter>
@@ -377,15 +377,15 @@ public class PassportService {
 <h3><a name="x566409176"></a><span>1.2.8 放在 Tomcat 里面运行</span></h3>
 <p>好了，尝试将你的 Web 项目部署到 Tomcat 中去吧，然后运行。</p>
 <h4><a name="x325330520"></a><span>1.2.8.1 打开 Servers View</span></h4>
-<p>![](images/new_server_0.png)</p>
+<p><img src="images/new_server_0.png" alt="打开 Servers View" "="" /></p>
 <h4><a name="x76273523"></a><span>1.2.8.2 新建一个 Tomcat Server</span></h4>
-<p>![](images/new_server_1.png)</p>
+<p><img src="images/new_server_1.png" alt="新建一个 Tomcat Server" "="" /></p>
 <h4><a name="x2124311525"></a><span>1.2.8.3 选择本地 Tomcat 服务器安装路径</span></h4>
-<p>![](images/new_server_2.png)</p>
+<p><img src="images/new_server_2.png" alt="选择本地 Tomcat 服务器安装路径" "="" /></p>
 <h4><a name="x1061546776"></a><span>1.2.8.4 选择要部署的 Web 项目</span></h4>
-<p>![](images/new_server_3.png)</p>
+<p><img src="images/new_server_3.png" alt="选择要部署的 Web 项目" "="" /></p>
 <h4><a name="x730812171"></a><span>1.2.8.5 启动 Tomcat</span></h4>
-<p>![](images/new_server_4.png)</p>
+<p><img src="images/new_server_4.png" alt="启动 Tomcat" "="" /></p>
 <h4><a name="x70525282"></a><span>1.2.8.6 打开你的浏览器</span></h4>
 <p>输入：http://127.0.0.1:8080/jetbrick_docs_samples/passport/login</p>
 <h3><a name="x987282807"></a><span>1.2.9 完整 demo 下载</span></h3>
@@ -921,7 +921,7 @@ public class XXXParameterInjector implements ParameterInjector {
         <filter-name>jetbrick-webmvc</filter-name>
         <filter-class>jetbrick.web.mvc.DispatcherFilter</filter-class>
         <init-param>
-            <param-name>contextLocation</param-name>
+            <param-name>configLocation</param-name>
             <param-value>/WEB-INF/jetbrick-webmvc.properties</param-value>
         </init-param>
     </filter>
@@ -978,7 +978,7 @@ Hello ${name}!
     <filter-name>jetbrick-webmvc</filter-name>
     <filter-class>jetbrick.web.mvc.DispatcherFilter</filter-class>
     <init-param>
-        <param-name>contextLocation</param-name>
+        <param-name>configLocation</param-name>
         <param-value>/WEB-INF/jetbrick-webmvc.properties</param-value>
     </init-param>
 </filter>
@@ -997,7 +997,7 @@ Hello ${name}!
     <filter-name>jetbrick-webmvc</filter-name>
     <filter-class>jetbrick.web.mvc.DispatcherFilter</filter-class>
     <init-param>
-        <param-name>contextLocation</param-name>
+        <param-name>configLocation</param-name>
         <param-value>/WEB-INF/jetbrick-webmvc.properties</param-value>
     </init-param>
 </filter>
@@ -1705,7 +1705,7 @@ $DbTransactionInterceptor = jetbrick.docs.samples.DbTransactionInterceptor
 web.interceptors = $LogInterceptor, $DbTransactionInterceptor
 ]]></script>
 <h4><a name="x1477042017"></a><span>3.10.3.2 Controller 级别 (当前版本暂未实现)</span></h4>
-<p>在 Controller 类上面添加 @InterceptedBy 标注</p> 
+<p>在 Controller 类上面添加 @InterceptedWith 标注</p> 
 <script type="syntaxhighlighter" class="brush: java"><![CDATA[
 @InterceptedWith(AuthInterceptor.class)
 @Controller
@@ -1714,7 +1714,7 @@ public class UserController {
 }
 ]]></script>
 <h4><a name="x1446671483"></a><span>3.10.3.3 Action 级别 (当前版本暂未实现)</span></h4>
-<p>在 Action 方法上面添加 @InterceptedBy 标注</p> 
+<p>在 Action 方法上面添加 @InterceptedWith 标注</p> 
 <script type="syntaxhighlighter" class="brush: java"><![CDATA[
 @Controller
 public class UserController {
