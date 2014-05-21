@@ -1,0 +1,2170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+    <title> jetbrick</title>
+
+    <link href="../assets/css/application.min.css" rel="stylesheet" type="text/css"/>
+
+    <!--[if lt IE 9]><script src="../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../assets/js/application.min.js"></script>
+</head>
+
+<body>
+
+<style type="text/css">
+.jb-topbar {
+    padding: 0 12px;
+}
+.menulist {
+    margin: 0;
+}
+.menulist a {
+    margin-top: 26px;
+    padding: 10px;
+    margin-left: 20px;
+    color: #fff;
+    font-size: 16px;
+}
+.menulist a:hover {
+    text-decoration: none;
+}
+
+.toc {
+    width: 300px;
+    padding: 15px;
+}
+.toc li {
+    list-style: none;
+}
+.main {
+    margin-left: 300px;
+    padding: 15px;
+}
+</style>
+
+<div class="jb-topbar">
+    <div class="pull-right" style="color:#fff;line-height:40px;font-size:16px;">QQ 群：310491655</div>
+    <div class="menulist">
+        <img src="../assets/images/logo-mini.png"/>
+        <a href="index.html">文档</a>
+        <a href="download.html">下载</a>
+        <a href="https://github.com/subchen/jetbrick/">源码</a>
+    </div>
+</div>
+
+<div>
+    <div class="pull-left toc">
+            <li><a href="#x951828694">1 jetbrick 框架总揽</a></li>
+            <li><a href="#x1111660346">&nbsp&nbsp1.1 jetbrick 介绍</a></li>
+            <li><a href="#x1045113670">&nbsp&nbsp1.2 快速入门 Quick Start</a></li>
+            <li><a href="#x2099700764">2 IoC 手册</a></li>
+            <li><a href="#x127598532">&nbsp&nbsp2.1 什么是 IoC</a></li>
+            <li><a href="#x727924782">&nbsp&nbsp3.2 一个简单的例子 Hello World</a></li>
+            <li><a href="#x789665555">&nbsp&nbsp2.3 @IocBean</a></li>
+            <li><a href="#x1134533135">&nbsp&nbsp2.4 @Inject</a></li>
+            <li><a href="#x1578008384">&nbsp&nbsp2.5 IoC 对象生命周期</a></li>
+            <li><a href="#x1305264222">&nbsp&nbsp2.6 @Config</a></li>
+            <li><a href="#x18958269">&nbsp&nbsp2.7 @SpringBean</a></li>
+            <li><a href="#x862969767">&nbsp&nbsp2.8 自定义注入 Annotation，牛！</a></li>
+            <li><a href="#x1734291474">&nbsp&nbsp2.9 IoC Annotation 一览表</a></li>
+            <li><a href="#x394150149">3 webmvc 手册</a></li>
+            <li><a href="#x127601601">&nbsp&nbsp3.1 什么是 MVC</a></li>
+            <li><a href="#x10689822">&nbsp&nbsp3.3 配置 web.xml</a></li>
+            <li><a href="#x653823178">&nbsp&nbsp3.4 资源过滤器 BypassRequestUrls</a></li>
+            <li><a href="#x1849877426">&nbsp&nbsp3.5 Controller 和 Action</a></li>
+            <li><a href="#x712183564">&nbsp&nbsp3.6 Controller/Action 注入</a></li>
+            <li><a href="#x55675397">&nbsp&nbsp3.7 Result/ResultHandler</a></li>
+            <li><a href="#x1826089861">&nbsp&nbsp3.8 View/ViewHandler</a></li>
+            <li><a href="#x154900175">&nbsp&nbsp3.9 全局异常处理器 Exception Handler</a></li>
+            <li><a href="#x1080953936">&nbsp&nbsp3.10 自定义拦截器 Interceptor</a></li>
+            <li><a href="#x600712278">&nbsp&nbsp3.11 自定义插件 Plugin</a></li>
+            <li><a href="#x572842111">&nbsp&nbsp3.12 自定义 Action 参数注入 Annotation</a></li>
+            <li><a href="#x2079234266">&nbsp&nbsp3.13 文件上传支持 FileUpload</a></li>
+            <li><a href="#x795173590">&nbsp&nbsp3.14 jetbrick-webmvc.properties</a></li>
+            <li><a href="#x1182451560">&nbsp&nbsp3.15 RequestContext 对象</a></li>
+            <li><a href="#x877997601">&nbsp&nbsp3.16 MVC 注解一览表</a></li>
+            <li><a href="#x69366">4 FAQ</a></li>
+            <li><a href="#x897631760">5 版本历史</a></li>
+            <li><a href="#x514129784">&nbsp&nbsp5.1 Version 1.0.0 (2014-05-11)</a></li>
+    </div>
+    <div class="main">
+        <div class="markdown">
+            <h1><a name="x951828694"></a><span>1 jetbrick 框架总揽</span></h1>
+<h2><a name="x1111660346"></a><span>1.1 jetbrick 介绍</span></h2>
+<h3><a name="x974010400"></a><span>1.1.1 jetbrick 是什么？</span></h3>
+<p>jetbrick 是一个用 Java 开发的轻量级框架。追求快速上手和高效开发。用少量的代码来实现强大的功能。极大的提高用户的开发效率，节约宝贵的时间。</p>
+<h3><a name="x196525426"></a><span>1.1.2 jetbrick 的组合部分</span></h3> 
+<table> 
+ <thead> 
+  <tr> 
+   <th>组件 </th> 
+   <th>说明 </th> 
+  </tr> 
+ </thead> 
+ <tbody> 
+  <tr> 
+   <td><a href="#jetbrick-commons">jetbrick-commons</a> </td> 
+   <td>常用 Utils 类库 </td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetbrick-webmvc">jetbrick-webmvc</a> </td> 
+   <td>灵活的 MVC 框架 </td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetbrick-template">jetbrick-template</a> </td> 
+   <td>高性能的 Java 模板引擎 </td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetbrick-ioc">jetbrick-ioc</a> </td> 
+   <td>小巧的 IoC 容器 </td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetbrick-orm">jetbrick-orm</a> </td> 
+   <td>一个 轻量级的 O/R Mapping 框架 </td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetbrick-schema-app">jetbrick-schema-app</a> </td> 
+   <td>基于 Schema 的自动代码生成器 </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p><a name="jetbrick-commons"></a></p>
+<h3><a name="x339495837"></a><span>1.1.3 jetbrick-commons</span></h3>
+<p>jetbrick-commons 提供了常用的 utils 类库，类似于 apache-commons 类库。无第三方 jars 依赖，其中部分源代码来源于第三方开源类库。</p> 
+<ul> 
+ <li>StringUtils, ArrayUtils, ...</li> 
+ <li>ClassDescriptor, MethodDescriptor, ...</li> 
+ <li>ClassLoaderUtils, ClassUtils, ...</li> 
+ <li>FileResource, ClasspathResource, ...</li> 
+ <li>FastByteArrayOutputStream, ...</li> 
+ <li>FileFinder, ClassFinder, ...</li> 
+ <li>ConfigLoader, Configuration, ...</li> 
+ <li>Logger, LoggerFactory, ...</li> 
+ <li>TypeCast</li> 
+ <li>...</li> 
+</ul>
+<p><a name="jetbrick-webmvc"></a></p>
+<h3><a name="x213696879"></a><span>1.1.4 jetbrick-webmvc 的特点</span></h3>
+<p>类似于 Struts, Spring MVC 等经典 MVC 框架，jetbrick-webmvc 通过大量的经验总结，提供小巧、强大，更灵活的 webmvc。</p> 
+<ul> 
+ <li>小巧，轻量，易上手</li> 
+ <li>支持 Restful</li> 
+ <li>IoC 注入，易管理，易测试</li> 
+ <li>Interceptor 机制，功能强大</li> 
+ <li>Plugin 机制，易扩展</li> 
+ <li>完全自定义的 Annotation，灵活定制</li> 
+ <li>内置文件上传，下载支持</li> 
+ <li>内置 JSON 支持</li> 
+ <li>内置多种 Result</li> 
+ <li>内置多种 View</li> 
+</ul>
+<p><a name="jetbrick-template"></a></p>
+<h3><a name="x1473262243"></a><span>1.1.5 jetbrick-template 的特点</span></h3>
+<p>jetbrick-template 是一个新一代 Java 模板引擎，具有高性能和高扩展性。 适合于动态 HTML 页面输出或者代码生成，可替代 JSP 页面或者 Velocity 等模板。 指令和 Velocity 相似，表达式和 Java 保持一致，易学易用。</p> 
+<ul> 
+ <li>支持类似于 Velocity 的多种指令</li> 
+ <li>支持静态编译</li> 
+ <li>支持编译缓存</li> 
+ <li>支持热加载</li> 
+ <li>支持类型推导</li> 
+ <li>支持泛型</li> 
+ <li>支持可变参数方法调用</li> 
+ <li>支持方法重载</li> 
+ <li>支持类似于 Groovy 的方法扩展</li> 
+ <li>支持函数扩展</li> 
+ <li>支持自定义标签 #tag</li> 
+ <li>支持宏定义 #macro</li> 
+ <li>支持布局 Layout</li> 
+</ul>
+<p><a name="jetbrick-ioc"></a></p>
+<h3><a name="x709013692"></a><span>1.1.6 jetbrick-ioc 的特点</span></h3>
+<p>简单，小巧的 IoC 容器，Bean 自动发现，自动注册。</p> 
+<ul> 
+ <li>小巧，轻量，易上手</li> 
+ <li>Properties 配置文件配置 Bean</li> 
+ <li>Annotation 自动扫描获取 Bean</li> 
+ <li>支持字段注入</li> 
+ <li>支持构造函数注入</li> 
+ <li>支持 Bean 工厂模式</li> 
+ <li>支持 Bean 初始化方法</li> 
+ <li>支持自定义的 Annotation 注入</li> 
+</ul>
+<p><a name="jetbrick-orm"></a></p>
+<h3><a name="x1834191145"></a><span>1.1.7 jetbrick-orm 的特点</span></h3>
+<p>JDBC 的轻量级封装，面向对象的 API 接口。简单，高效。</p> 
+<ul> 
+ <li>无反射，高性能</li> 
+ <li>API 接口易使用</li> 
+ <li>支持 one-to-one, one-to-many</li> 
+ <li>支持 CRUD Cache</li> 
+ <li>支持编程事务+声明事务</li> 
+ <li>支持嵌入式事务</li> 
+ <li>支持数据库方言 Dialect</li> 
+ <li>支持 JSR303 Validator</li> 
+ <li>支持运行期自动升降级数据库</li> 
+ <li>配合 <a href="#jetbrick-schema-app">jetbrick-schema-app</a> 自动生成 pojo, dao</li> 
+</ul>
+<p><a name="jetbrick-schema-app"></a></p>
+<h3><a name="x2136545118"></a><span>1.1.8 jetbrick-schema-app 的特点</span></h3>
+<p>借助于 XML Schema 文件，自动为 jetbrick-orm 生成相应的 POJO, DAO 等相关代码。</p> 
+<ul> 
+ <li>自动生成 <a href="#jetbrick-orm">jetbrick-orm</a> 用的 pojo, dao</li> 
+ <li>独立的数据类型（和数据库产品无关）</li> 
+ <li>支持多种数据库</li> 
+ <li>支持 one-to-one, one-to-many</li> 
+ <li>支持不同类型的主键（String, int, Long)</li> 
+</ul>
+<h2><a name="x1045113670"></a><span>1.2 快速入门 Quick Start</span></h2>
+<p>jetbrick 推荐使用 Eclipse IDE for Java EE Developers 做为开发环境。最新版下载地址：http://www.eclipse.org/downloads/</p>
+<p>下面，我们以一个用户登录的例子来简单的学习一下如何使用 jetbrick 来进行快速开发。</p>
+<h3><a name="x1076974123"></a><span>1.2.1 创建 Dynamic Web Project</span></h3>
+<p>请用你的 Eclipse IDE 根据下面的向导，快速新建一个动态 Web 项目。</p>
+<h4><a name="x1178374856"></a><span>1.2.1.1 新建 Web 工程</span></h4>
+<p><img src="images/new_web_project.png" alt="新建 Web 工程" "="" /></p>
+<h4><a name="x1509885807"></a><span>1.2.1.2 填写项目信息</span></h4>
+<p><img src="images/new_web_project_info.png" alt="项目信息" "="" /></p>
+<p>推荐使用 Servlet API 3.0 以上的标准。</p>
+<h4><a name="x1929635449"></a><span>1.2.1.3 设置 Build Path</span></h4>
+<p><img src="images/new_web_project_path.png" alt="BuildPath" "="" /></p>
+<p>推荐使用例子中的 source 文件结构 (Maven 标准) ，以及使用对应的 Output folder 路径。</p>
+<h4><a name="x1537422424"></a><span>1.2.1.4 设置 Web Module</span></h4>
+<p><img src="images/new_web_project_root.png" alt="WebModule" "="" /></p>
+<h4><a name="x1424605409"></a><span>1.2.1.5 新建项目信息汇总</span></h4>
+<p>根据上面新建的 Web 项目，将会具有如下的目录结构：</p> 
+<ul> 
+ <li>/src/main/java/</li> 
+ <li>/src/main/resources/</li> 
+ <li>/src/test/java/</li> 
+ <li>/src/test/resources/</li> 
+ <li>/WebContent/WEB-INF/web.xml</li> 
+ <li>/WebContent/WEB-INF/lib/</li> 
+ <li>/WebContent/WEB-INF/classes/</li> 
+</ul>
+<p>我们假设你的 Java 项目的包都在 <code>jetbrick.docs.samples</code> 下面，然后部署在 <code>http://127.0.0.1:8080/jetbrick_docs_samples/</code> 下面。</p>
+<h3><a name="x308598894"></a><span>1.2.2 增加 jetbrick 依赖包</span></h3>
+<p><strong>普通用户</strong></p>
+<p>将如下的 jars 复制到工程的 /WebContent/WEB-INF/lib/ 目录下面，然后加入到 Build Path 中去。</p> 
+<ul> 
+ <li>jetbrick-all-1.0.0.jar</li> 
+ <li>slf4j-api-1.7.7.jar</li> 
+ <li>slf4j-simple-1.7.7.jar (可选包)</li> 
+ <li>fastjson-1.1.38.jar (可选包)</li> 
+</ul>
+<p>以上 jars 你可以在 jetbrick-all-xxx.zip 中找到。</p>
+<p>对于 jetbrick 来说，我们只依赖于 <code>slf4j-api</code>，没有其他的第三方依赖。</p>
+<p><strong>Maven 用户</strong></p>
+<p>使用如下 Maven 坐标信息</p> 
+<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+<dependency>
+  <groupId>com.github.subchen</groupId>
+  <artifactId>jetbrick-all</artifactId>
+  <version>1.0.0</version>
+</dependency>
+<dependency>
+  <groupId>com.alibaba</groupId>
+  <artifactId>fastjson</artifactId>
+  <version>1.1.38</version>
+  <optional>true</optional>
+</dependency>
+
+]]></script>
+<h3><a name="x10689822"></a><span>1.2.3 配置 web.xml</span></h3> 
+<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <filter>
+        <filter-name>jetbrick-webmvc</filter-name>
+        <filter-class>jetbrick.web.mvc.DispatcherFilter</filter-class>
+        <init-param>
+            <param-name>contextLocation</param-name>
+            <param-value>/WEB-INF/jetbrick-webmvc.properties</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>jetbrick-webmvc</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+</web-app>
+]]></script>
+<h3><a name="x23309523"></a><span>1.2.4 配置 /WEB-INF/jetbrick-webmvc.properties</span></h3> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+web.development = true
+web.http.encoding = utf-8
+web.scan.packages = jetbrick.docs.samples
+web.router.bypass = *.ico, *.jsp, /assets/*
+web.urls.router = jetbrick.web.mvc.router.RestfulRouter
+web.view.default = jsp
+]]></script>
+<h3><a name="x1303791507"></a><span>1.2.5 创建一个 Controller</span></h3> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+package jetbrick.docs.samples.controllers;
+
+import javax.servlet.http.HttpSession;
+import jetbrick.web.mvc.action.*;
+import jetbrick.web.mvc.action.annotations.RequestForm;
+import jetbrick.web.mvc.ioc.annotations.Inject;
+import com.alibaba.fastjson.JSONAware;
+
+@Controller(singleton=true)
+public class PassportController {
+    @Inject
+    private PassportService passportService;
+
+    @Action(value = "/passport/login", method = HttpMethod.GET)
+    public String login() {
+        return "login.jsp";
+    }
+
+    @Action(value = "/passport/login", method = HttpMethod.POST)
+    public JSONAware login(
+            @RequestParam("username") String username,
+            @RequestParam("password") String password
+    ) {
+        boolean pass = passportService.validate(username, password);
+        if (pass) {
+            return JSON.ok();
+        } else {
+            return JSON.fail("Username or password is invalid.");
+        }
+    }
+
+    @Action("/passport/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/passport/login";
+    }
+}
+]]></script>
+<h3><a name="x1798276948"></a><span>1.2.6 创建一个 PassportService</span></h3>
+<p>PassportService 用来提供用户名密码认证服务。范例代码中，使用了固定的用户名和密码，实际代码应该是从数据库中进行验证。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+package jetbrick.docs.samples.services;
+
+@IocBean
+public class PassportService {
+
+    public boolean validate(String username, String password) {
+        return "admin".equals(username) && "admin".equals(password);
+    }
+}
+]]></script>
+<h3><a name="x1536429126"></a><span>1.2.7 创建登录页面 /WebContent/passport/login.jsp</span></h3> 
+<script type="syntaxhighlighter" class="brush: html"><![CDATA[
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body>
+<form action="./login" method="post">
+    Username: <br/>
+    <input type="text" name="username" size="30" /><br/>
+    Password: <br/>
+    <input type="password" name="password" size="30" /><br/>
+    <input type="submit" value="Login" />
+</form>
+</body>
+</html>
+]]></script>
+<h3><a name="x566409176"></a><span>1.2.8 放在 Tomcat 里面运行</span></h3>
+<p>好了，尝试将你的 Web 项目部署到 Tomcat 中去吧，然后运行。</p>
+<h4><a name="x325330520"></a><span>1.2.8.1 打开 Servers View</span></h4>
+<p>![](images/new_server_0.png)</p>
+<h4><a name="x76273523"></a><span>1.2.8.2 新建一个 Tomcat Server</span></h4>
+<p>![](images/new_server_1.png)</p>
+<h4><a name="x2124311525"></a><span>1.2.8.3 选择本地 Tomcat 服务器安装路径</span></h4>
+<p>![](images/new_server_2.png)</p>
+<h4><a name="x1061546776"></a><span>1.2.8.4 选择要部署的 Web 项目</span></h4>
+<p>![](images/new_server_3.png)</p>
+<h4><a name="x730812171"></a><span>1.2.8.5 启动 Tomcat</span></h4>
+<p>![](images/new_server_4.png)</p>
+<h4><a name="x70525282"></a><span>1.2.8.6 打开你的浏览器</span></h4>
+<p>输入：http://127.0.0.1:8080/jetbrick_docs_samples/passport/login</p>
+<h3><a name="x987282807"></a><span>1.2.9 完整 demo 下载</span></h3>
+<p>你可以在 <a href="http://subchen.github.io/jetbrick/download.html">http://subchen.github.io/jetbrick/download.html</a> 中下载最新的 demo 实例代码。</p>
+<h1><a name="x2099700764"></a><span>2 IoC 手册</span></h1>
+<h2><a name="x127598532"></a><span>2.1 什么是 IoC</span></h2>
+<p>控制反转（Inversion of Control，英文缩写为 IoC）是一个重要的面向对象编程的法则来减少代码之间的耦合度。其中最常見的方式叫做“依赖注入”（Dependency Injection，简称 DI），还有一种方式叫“依赖查找”（Dependency Lookup）。</p>
+<p>通俗的讲就是如果在什么地方需要一个依赖的对象，你自己不用去通过 new 生成你需要的对象，而是让 IoC 容器来为你创建该对象，并注入到你的对象中。</p>
+<p>维基百科参考：<a href="http://zh.wikipedia.org/wiki/%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC">控制反转（Inversion of Control，缩写为IoC）</a></p>
+<h2><a name="x727924782"></a><span>2.2 一个简单的例子 Hello World</span></h2>
+<h3><a name="x1000076523"></a><span>2.2.1 编程方式</span></h3>
+<p>显式的将对象加入到 IoC 容器中，并通过 <a href="ioc-inject.md"><code>@Inject</code></a> 进行对象注入。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+package jetbrick.docs.demo;
+
+public class User {
+    public String getName() {
+        return "jetbrick";
+    }
+}
+
+public class Hello {
+    @Inject
+    private User user;
+
+    public void says() {
+        System.out.println("Hello " + user.getName());
+    }
+}
+
+// 调用代码
+public class Test {
+    public static void main(String args[]) {
+        MutableIoc ioc = new MutableIoc();
+        ioc.addBean(User.class);
+        ioc.addBean(Hello.class);
+        Hello hello = ioc.getBean(Hello.class);
+        hello.says(); // got "Hello jetbrick"
+    }
+}
+]]></script>
+<h3><a name="x1987907483"></a><span>2.2.2 通过 annotation 自动发现</span></h3>
+<p>通过 <a href="ioc-iocbean.md"><code>@IocBean</code></a> 注解来自动将对象加入到 IoC 容器中，并通过 <code>@Inject</code> 进行对象注入。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+package jetbrick.docs.demo;
+
+@IocBean
+public class User {
+    private String name = "jetbrick";
+
+    public String getName() {
+        return name;
+    }
+}
+
+@IocBean
+public class Hello {
+    @Inject
+    private User user;
+
+    public void says() {
+        System.out.println("Hello " + user.getName());
+    }
+}
+
+// 调用代码
+public class Test {
+    public static void main(String args[]) {
+        MutableIoc ioc = new MutableIoc();
+        ioc.load(new IocAnnotationLoader("jetbrick.docs.demo"));
+        Hello hello = ioc.getBean(Hello.class);
+        hello.says();
+    }
+}
+]]></script>
+<h3><a name="x1872389334"></a><span>2.2.3 .properties 配置方式</span></h3>
+<p>在配置文件中配置，所有 <code>$</code> 开头的对象，将自动加入到 IoC 容器中。</p>
+<p><strong>ioc.properties</strong></p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+$user = jetbrick.docs.demo.User
+$user.name = WORLD
+
+$hello = jetbrick.docs.demo.Hello
+$hello.user = $user
+]]></script>
+<p><strong>Java 代码</strong></p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+package jetbrick.docs.demo;
+
+public class User {
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+}
+
+public class Hello {
+    private User user;
+
+    public void says() {
+        System.out.println("Hello " + user.getName());
+    }
+}
+
+// 调用代码
+public class Test {
+    public static void main(String args[]) {
+        MutableIoc ioc = new MutableIoc();
+        ioc.load(new PropertiesIocLoader("ioc.properties"));
+        Hello hello = (Hello) ioc.getBean("hello");
+        hello.says(); // got "Hello WORLD"
+    }
+}
+]]></script>
+<h3><a name="x426553962"></a><span>2.2.4 自定义配置文件？</span></h3>
+<p>既然我们可以支持 <code>.properties</code> 配置文件，那么我们也可以支持 XML，JSON 等格式的配置文件。</p>
+<p>其实我们只要实现一个 <code>jetbrick.ioc.loaders.IocLoader</code> 接口的自定义加载器就可以了。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+public interface IocLoader {
+    public void load(MutableIoc ioc);
+}
+]]></script>
+<p>具体怎么实现，可以参考：<code>jetbrick.ioc.loaders.IocAnnotationLoader</code> 或者 <code>jetbrick.ioc.loaders.IocPropertiesLoader</code>。</p>
+<p>同时，如果大家实现自己的 IocLoader，欢迎 share 相应的实现。</p>
+<h2><a name="x789665555"></a><span>2.3 @IocBean</span></h2>
+<p>此章节中，我们会详细讲解一下如何通过 Java Annotation 来配置你的 IoC 容器对象。</p>
+<p>通常，在 IoC 容器启动的时候，会在用户配置的 classpath 路径下面扫描所有的 Class，然后将所有声明了 <code>@IocBean</code> 这个 Annotation 的 Class，自动加入到 IoC 容器中进行管理。</p>
+<h3><a name="x480765676"></a><span>2.3.1 指定对象的名称</span></h3>
+<p>任何一个 Ioc 容器管理的对象，都必须有一个名字，以便通过 <code>ioc.getBean(name)</code> 来获取对象。因此，你可以这样定义你的对象:</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+package jetbrick.docs.demo;
+
+@IocBean("foo")
+public class Foo {
+    ...
+}
+]]></script>
+<p>我们看到，我们的 Foo 的名字叫 <code>foo</code>，然后我们可以通过下面的代码来获取该对象：</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+Foo foo = (Foo) ioc.getBean("foo");
+]]></script>
+<h3><a name="x134768920"></a><span>2.3.2 缺省的对象名称</span></h3>
+<p>如果你的注解 @IocBean 省略了名字，那么默认名字为定义类的完整的类名，如下：</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+package jetbrick.docs.demo;
+
+@IocBean
+public class Foo {
+    ...
+}
+]]></script>
+<p>这里，我们没有手动指定对象在 IoC 容器中的名称，这个时候将会采用默认的名称（类名的全称）。</p>
+<p>然后我们可以通过下面 2 种方式来获取该对象：</p> 
+<ol> 
+ <li><p>根据类名的全称</p> <script type="syntaxhighlighter" class="brush: java"><![CDATA[
+Foo foo = (Foo) ioc.getBean("jetbrick.docs.demo.Foo");
+]]></script></li> 
+ <li><p>直接根据类名</p> <script type="syntaxhighlighter" class="brush: java"><![CDATA[
+Foo foo = ioc.getBean(Foo.class);
+]]></script></li> 
+</ol> 
+<blockquote>
+ <p>Tips: 我们推荐对象都优先使用这种缺省名称，不容易产生命名冲突，并且代码更优雅。</p> 
+</blockquote>
+<h3><a name="x752249361"></a><span>2.3.3 工厂类 IocFactory</span></h3>
+<p>像 Spring 的 BeanFactory 一样，我们的 IoC 也支持工厂类。看范例代码：</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+package jetbrick.docs.demo;
+
+@IocBean("product")
+public class ProductFactory implements IocFactory<Product> {
+
+    @Override
+    public Product getObject() {
+        return new Product();
+    }
+}
+
+public class Product {
+    ...
+}
+]]></script>
+<p>通过代码我们可以看到，我的工厂类实现了 <code>IocFactory</code> 接口。<br />这样，我们通过 <code>ioc.getBean(&quot;product&quot;)</code> 获得对象将是 <code>Product</code>，而不是 <code>ProductFactory</code>。</p>
+<h3><a name="x21197577"></a><span>2.3.4 单例？</span></h3>
+<p>默认情况下，所有 <code>@IocBean</code> 的对象都被认为是单例对象，在 IoC 容器中只会存在一份实例。</p>
+<p>如果要将对象设置为非单例模式，那么只需要配置 <code>@IocBean(singleton=false)</code> 既可。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+package jetbrick.docs.demo;
+
+// 普通对象
+@IocBean(singleton=false)
+public class Foo {
+    ...
+}
+
+// 工厂类
+@IocBean(value="product", singleton=false)
+public class ProductFactory implements IocFactory<Product> {
+
+    @Override
+    public Product getObject() {
+        return new Product();
+    }
+}
+
+// 非单例，普通对象
+Foo foo1 = ioc.getBean(Foo.class);
+Foo foo2 = ioc.getBean(Foo.class);
+assertTrue(foo1 != foo2);
+
+// 非单例，工厂类也一样是使用哦
+Product product1 = (Product) ioc.getBean("product");
+Product product2 = (Product) ioc.getBean("product");
+assertTrue(product1 != product2);
+]]></script>
+<h2><a name="x1134533135"></a><span>2.4 @Inject</span></h2>
+<p>上一章节我们介绍了 <a href="ioc-iocbean.md"><code>@IocBean</code></a> 可以将 Java 对象自动加入到 IoC 容器中进行管理。这一章我们将介绍 <code>@Inject</code> 注解，来实现对象的注入。</p>
+<h3><a name="x201388364"></a><span>2.4.1 简单的例子</span></h3> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+package jetbrick.docs.demo;
+
+@IocBean
+public class User {
+    public String getName() {
+        return "jetbrick";
+    }
+}
+
+@IocBean
+public class Hello {
+    @Inject User user;
+
+    public void says() {
+        System.out.println("Hello " + user.getName());
+    }
+}
+
+// 调用
+public static void main(String args) {
+    Ioc ioc = ...
+    Hello hello = ioc.getBean(Hello.class);
+    hello.says();
+}
+]]></script>
+<p>看清楚了吗？我们通过 <code>@Inject</code> 注解，我们已经将 User 对象成功的注入到了 Hello 对象中。</p>
+<h3><a name="x1265312812"></a><span>2.4.2 @Inject 可配置的属性</span></h3> 
+<ol> 
+ <li><p><strong>value</strong></p><p>要注入对象的名称 name，缺省情况下，将根据对应类型的完整类名作为 name。</p><p>```java<br />@Inject<br />java.sql.DataSource dataSource</p><p>@Inject(&quot;mysql&quot;)<br />java.sql.DataSource mysqlDataSource<br />```</p><p>第一个 dataSource 将获取 <code>ioc.getBean(&quot;java.sql.DataSource&quot;)</code> 这样的对象。</p></li> 
+ <li><p><strong>required</strong></p><p>表示如果注入的对象不存在，是否要抛出 NullPointerExpcetion。</p><p>默认情况下，<code>required=true</code></p></li> 
+</ol>
+<h3><a name="x723985723"></a><span>2.4.3 字段注入</span></h3>
+<p>就像我们上面看到的例子一样，我们用 <code>@Inject</code> 注入的是字段。</p>
+<p>只要不是被声明成 <code>final</code> 的字段，IoC 都可以实现注入。不管是 <code>public</code> 的还是 <code>private</code> 的，亦或者是 <code>static</code> 的字段都没问题。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Inject("log4j")
+private Logger logger;
+]]></script>
+<h3><a name="x1171093780"></a><span>2.4.4 构造函数注入</span></h3>
+<p>除了最常见的字段注入之外，我们还提供了构造函数注入方式。</p>
+<h4><a name="x935460130"></a><span>2.4.4.1 指定构造函数</span></h4> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@IocBean
+public class Hello {
+    private User user;
+
+    @Inject
+    public Hello(User user) {
+        this.user = user;
+    }
+
+    public void says() {
+        System.out.println("Hello " + user.getName());
+    }
+}
+]]></script>
+<p>通过将 <code>@Inject</code> 声明在构造函数上面，我们就可以使用指定的构造函数来初始化对象。</p>
+<h4><a name="x280455429"></a><span>2.4.4.2 默认构造函数</span></h4>
+<p>如果没有 <code>@Inject</code> 声明的构造函数，那么必须存在一个空的构造函数，并且是 public 的。</p>
+<h4><a name="x325669478"></a><span>2.4.4.3 构造函数参数注入</span></h4>
+<p>默认情况下，每个参数都缺省使用了 <code>@Inject</code>，如果我们需要自定义，那么我们可以给每个参数手动指定 <code>@Inject</code>。如下：</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@IocBean
+public class Test {
+    private Foo foo;
+    private Bar bar;
+
+    @Inject
+    public Hello(
+        @Inject("foo") Foo foo,
+        @Inject(required=false) Bar bar
+    ) {
+        this.foo = foo;
+        this.bar = bar;
+    }
+}
+]]></script>
+<h2><a name="x1578008384"></a><span>2.5 IoC 对象生命周期</span></h2>
+<p>在对象注入完成之后，我们提供了一些方法来监控对象的生命周期。</p>
+<h3><a name="x1970780886"></a><span>2.5.1 注入完成之后调用的方法 @IocInit</span></h3> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@IocBean
+public class Test {
+    @Inject Foo foo;
+
+    @IocInit
+    private void initialize() {
+        System.out.println("foo is ready: " + foo);
+    }
+}
+]]></script> 
+<blockquote>
+ <p>Tips：<code>@IocInit</code> 标注的方法必须是没有任何参数，并且返回值是 <code>void</code>，非 <code>static</code> 的方法。</p> 
+</blockquote>
+<h3><a name="x1758292615"></a><span>2.5.2 被 IoC 容器删除时调用的方法 @IocFree</span></h3>
+<p>注意：如果你的对象是 <code>singleton=false</code>，那么 IoC 容器创建了对象实例的时候，并不会记录该对象实例。所以在对象被 IoC 容器移除的时候，并不会触发该方法调用。</p>
+<p>Sorry！该功能当前版本暂未实现！</p>
+<h2><a name="x1305264222"></a><span>2.6 @Config</span></h2>
+<p>在前面的章节中，我们使用 <code>@Inject</code> 注入 IoC 容器中管理的对象。在这个章节中，我们将介绍另外一种配置文件属性的注入方式。</p>
+<p>假设我们有这样一个配置文件：</p>
+<p>app.properties</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+app.encoding = utf-8
+app.debug = true
+app.users = admin, test
+]]></script>
+<p>AppConfig.java</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@IocBean
+public class AppConfig {
+
+    @Config("app.encoding")
+    private String encoding;
+
+    @Config(value="app.debug", defaultValue="false")
+    private boolean debug;
+
+    @Config("app.users")
+    private List<String> users;
+
+    ...
+}
+]]></script>
+<p>然后这样下面的代码将自动将 app.properties 中的属性注入到 AppConfig 类中。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+MutableIoc ioc = new MutableIoc();
+ioc.load(new IocPropertiesLoader("app.properties"));
+ioc.addBean(AppConfig.class);
+AppConfig config = ioc.getBean(AppConfig.class);
+]]></script>
+<p>心动了吗？我们的 <code>AppConfig</code> 竟然还能直接注入 <code>app.properties</code> 配置文件中配置的属性。</p>
+<p>并且注入的时候，还会自动进行类型转换，以匹配目标类型。</p>
+<p>和 <code>@Inject</code> 类似，<code>@Config</code> 可以被用在字段注入和参数注入。</p>
+<p>再来一个构造函数参数注入的例子:</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@IocBean
+public class Hello {
+    private final Foo foo;
+    private final String encoding;
+
+    @Inject
+    public Hello(
+        @Inject("foo") Foo foo,
+        @Config("app.encoding") String encoding
+    ) {
+        this.foo = foo;
+        this.encoding = encoding;
+    }
+}
+]]></script>
+<p>怎么样？有了 <code>@Config</code>，我们的注入更方便了。</p>
+<h2><a name="x18958269"></a><span>2.7 @SpringBean</span></h2>
+<p>IoC 容器支持 Spring IoC 容器作为外部容器，允许将 Spring IoC 容器中管理的 Bean 注入到对象中。</p>
+<p>看一个简单的例子：</p>
+<p>spring.xml</p> 
+<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+<bean id="dataSource" class="..." />
+]]></script>
+<p>Java 代码</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@IocBean
+public class JdbcUtils {
+	@Inject
+    private Foo foo;
+
+	@SpringBean("dataSource")
+    private DataSource dataSource;
+
+}
+]]></script>
+<p>如果你的 Spring 在 web.xml 中进行了初始化（可以通过 <code>WebApplicationContextUtils.getWebApplicationContext(ServletContext)</code> 获取），那么 JdbcUtils.dataSource 将会成功的被注入。</p>
+<p>如果你的 Spring 没有在 web.xml 中进行初始化，那么需要将 Spring 的 ApplicationContext 对象手动加入到 IoC 容器中。如下：</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+ApplicationContext appctx = ...
+MutableIoc ioc = ...
+ioc.addBean(ApplicationContext.class, appctx);
+]]></script>
+<h2><a name="x862969767"></a><span>2.8 自定义注入 Annotation，牛！</span></h2>
+<p>学习了前面的 <code>@Inject</code>, <code>@Config</code> 和 <code>@SpringBean</code> 注入 Annotation，这回 jetbrick 带来了更加强大的自定义 Annotation 注入功能。</p>
+<p>啥意思？ 看看下面的代码就明白了。</p>
+<h3><a name="x1288571069"></a><span>2.8.1 看代码学习</span></h3> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@IocBean
+public class Hello {
+
+    @InjectMe
+    private String me;
+
+}
+]]></script>
+<p><code>@InjectMe</code> 是什么？没见过啊？也能实现注入？ YES！</p>
+<p>其实这个 <code>@InjectMe</code> 是由用户自定义的，如下的代码：</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+import java.lang.annotation.*
+
+@Target({ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+@InjectFieldWith(InjectMeInjector.class)
+public @interface InjectMe {
+
+}
+]]></script>
+<p>在这里，<code>@InjectMe</code> 只是一个普通的 Annotation。唯一不同的是，这个 Annotation 本身存在一个 <code>@InjectFieldWith(...)</code> 的 Annotation。</p>
+<p>正是这个 <code>@InjectFieldWith(InjectMeInjector.class)</code> 用来表示 <code>@InjectMe</code> 将可以被用来注入字段（需要配合 <code>@Target({ElementType.FIELD})</code> 来使用）。</p>
+<p>那么如何来注入呢？就是由 <code>@InjectFieldWith(...)</code> Annotation 的参数类来实现的，在本例子中就是 <code>InjectMeInjector</code> 这个 Class 来实现的。</p>
+<p>其中 <code>InjectMeInjector</code> 实现如下：（字段注入需要实现 <code>FieldInjector</code> 接口）</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+public class InjectMeInjector implements FieldInjector {
+    private Field field;
+
+    @Override
+    public void initialize(Ioc ioc, FieldDescriptor fd, Annotation anno) {
+        this.field = fd.getField();
+    }
+
+    @Override
+    public void set(Object object) throws Exception {
+        field.set(object, "AAAAA");
+    }
+}
+]]></script>
+<p>怎么样，学会了吗？</p>
+<p>介绍完了自定义注入字段 Annotation，采用类似的方法，我们还可以定义注入参数 Annotation。</p>
+<h3><a name="x678290964"></a><span>2.8.2 自定义字段注入</span></h3> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Target({ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+@InjectFieldWith(XXXFieldInjector.class)
+public @interface XXX {
+    ...
+}
+
+public class XXXFieldInjector implements FieldInjector {
+    ...
+}
+]]></script>
+<h3><a name="x1092693216"></a><span>2.8.3 自定义参数注入 (构造函数参数)</span></h3> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Target({ElementType.PARAMETER})
+@Retention(RetentionPolicy.RUNTIME)
+@InjectParameterWith(XXXParameterInjector.class)
+public @interface XXX {
+    ...
+}
+
+public class XXXParameterInjector implements ParameterInjector {
+    ...
+}
+]]></script>
+<p><strong>Tips</strong>：我们也可以让一个注解既支持字段注入，也支持参数注入。怎么做？我们可以参考 <code>@Config</code> 或者 <code>@SpringBean</code> Annotation 的代码实现。</p>
+<h2><a name="x1734291474"></a><span>2.9 IoC Annotation 一览表</span></h2>
+<p>这里提供一个完整的 IoC 使用的 Annotation 列表，以供参考。</p> 
+<table> 
+ <thead> 
+  <tr> 
+   <th>注解 </th> 
+   <th>说明</th> 
+  </tr> 
+ </thead> 
+ <tbody> 
+  <tr> 
+   <td>@IocBean </td> 
+   <td>AnnotationIocLoader 将根据这个注解自动将该对象加入到 IoC 容器中管理</td> 
+  </tr> 
+  <tr> 
+   <td>@Inject </td> 
+   <td>注入 IoC 中管理的对象（字段和参数，构造函数）</td> 
+  </tr> 
+  <tr> 
+   <td>@Config </td> 
+   <td>注入配置文件中配置的参数（字段和参数）</td> 
+  </tr> 
+  <tr> 
+   <td>@SpringBean </td> 
+   <td>注入 Spring IoC 中的对象（字段和参数）</td> 
+  </tr> 
+  <tr> 
+   <td>@IocInit </td> 
+   <td>注入完成后的初始化方法</td> 
+  </tr> 
+  <tr> 
+   <td>@IocFree </td> 
+   <td>被 IoC 容器删除时调用的方法</td> 
+  </tr> 
+  <tr> 
+   <td>@InjectFieldWith </td> 
+   <td>实现自定义的字段注入的注解</td> 
+  </tr> 
+  <tr> 
+   <td>@InjectParameterWith </td> 
+   <td>实现自定义的参数注入的注解</td> 
+  </tr> 
+ </tbody> 
+</table>
+<h1><a name="x394150149"></a><span>3 webmvc 手册</span></h1>
+<h2><a name="x127601601"></a><span>3.1 什么是 MVC</span></h2>
+<p>MVC 是一种使用 Model-View-Controller (模型-视图-控制器) 设计创建 Web 应用程序的模式：<br />* <strong>Model（模型）</strong> - 是应用程序中用于处理应用程序数据逻辑的部分。通常模型对象负责在数据库中存取数据。<br />* <strong>View（视图）</strong> - 是应用程序中处理数据显示的部分。通常视图是依据模型数据创建的。<br />* <strong>Controller（控制器）</strong> - 是应用程序中处理用户交互的部分。通常控制器负责从视图读取数据，控制用户输入，并向模型发送数据。</p>
+<p>MVC 分层有助于管理复杂的应用程序，因为您可以在一个时间内专门关注一个方面。例如，您可以在不依赖业务逻辑的情况下专注于视图设计。同时也让应用程序的测试更加容易。</p>
+<p>MVC 分层同时也简化了分组开发。不同的开发人员可同时开发视图、控制器逻辑和业务逻辑。</p>
+<p>维基百科参考：<a href="http://zh.wikipedia.org/wiki/Mvc">MVC 模式（Model-View-Controller）</a></p>
+<h2><a name="x727924782"></a><span>3.2 一个简单的例子 Hello World</span></h2>
+<h3><a name="x10689822"></a><span>3.2.1 配置 web.xml</span></h3> 
+<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <filter>
+        <filter-name>jetbrick-webmvc</filter-name>
+        <filter-class>jetbrick.web.mvc.DispatcherFilter</filter-class>
+        <init-param>
+            <param-name>contextLocation</param-name>
+            <param-value>/WEB-INF/jetbrick-webmvc.properties</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>jetbrick-webmvc</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+ 
+</web-app>
+]]></script>
+<h3><a name="x23309523"></a><span>3.2.2 配置 /WEB-INF/jetbrick-webmvc.properties</span></h3> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+web.development = true
+web.http.encoding = utf-8
+web.scan.packages = jetbrick.docs.demo
+web.urls.bypass = *.ico, *.jsp, /assets/*
+web.urls.router = jetbrick.web.mvc.router.RestfulRouter
+web.view.default = jsp
+]]></script>
+<h3><a name="x1303791507"></a><span>3.2.3 创建一个 Controller</span></h3> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+package jetbrick.docs.demo.controllers;
+
+import jetbrick.web.mvc.action.*;
+
+@Controller
+public class HelloController {
+
+    @Action("/hello")
+    public String hello(Model model) {
+        model.add("name", "jetbrick");
+        return "hello.jsp";
+    }
+}
+]]></script>
+<h3><a name="x692237226"></a><span>3.2.4 创建登录页面 /WebContent/hello.jsp</span></h3> 
+<script type="syntaxhighlighter" class="brush: html"><![CDATA[
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /></head>
+<body>
+Hello ${name}!
+</body>
+</html>
+]]></script>
+<h3><a name="x566409176"></a><span>3.2.5 放在 Tomcat 里面运行</span></h3>
+<p>好了，将你的项目部署到 Tomcat 中去，然后运行吧。</p>
+<p>打开你的浏览器，输入：http://127.0.0.1:8080/demo/hello</p>
+<p><img src="images/tomcat_hello_world.png" alt="运行结果截图" "="" /></p>
+<h2><a name="x10689822"></a><span>3.3 配置 web.xml</span></h2>
+<h3><a name="x1850919028"></a><span>3.3.1 一个典型的 Restful 配置 &quot;/*&quot;</span></h3> 
+<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+<filter>
+    <filter-name>jetbrick-webmvc</filter-name>
+    <filter-class>jetbrick.web.mvc.DispatcherFilter</filter-class>
+    <init-param>
+        <param-name>contextLocation</param-name>
+        <param-value>/WEB-INF/jetbrick-webmvc.properties</param-value>
+    </init-param>
+</filter>
+<filter-mapping>
+    <filter-name>jetbrick-webmvc</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+]]></script> 
+<ol> 
+ <li>将 URL 映射成 <code>/*</code>，将会对所有的资源进行拦截，静态资源的过滤请看：<a href="mvc-bypass-urls.md">资源过滤器 BypassRequestUrls</a></li> 
+ <li>设置配置文件路径为 <code>/WEB-INF/jetbrick-webmvc.properties</code> （默认值）</li> 
+</ol>
+<h3><a name="x408256503"></a><span>3.3.2 传统的后缀名映射 &quot;*.do&quot;</span></h3> 
+<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+<filter>
+    <filter-name>jetbrick-webmvc</filter-name>
+    <filter-class>jetbrick.web.mvc.DispatcherFilter</filter-class>
+    <init-param>
+        <param-name>contextLocation</param-name>
+        <param-value>/WEB-INF/jetbrick-webmvc.properties</param-value>
+    </init-param>
+</filter>
+<filter-mapping>
+    <filter-name>jetbrick-webmvc</filter-name>
+    <url-pattern>*.do</url-pattern>
+</filter-mapping>
+]]></script> 
+<ol> 
+ <li>将 URL 映射成 <code>*.do</code></li> 
+ <li>设置配置文件路径为 <code>/WEB-INF/jetbrick-webmvc.properties</code> （默认值）</li> 
+</ol>
+<h2><a name="x653823178"></a><span>3.4 资源过滤器 BypassRequestUrls</span></h2>
+<h3><a name="x453295752"></a><span>3.4.1 什么是资源过滤器</span></h3>
+<p>在 web.xml 中，我们通常将 URL 映射成 <code>/*</code>，也就是将所有请求的 URL 都交给 <code>DispatcherFilter</code> 来进行处理。</p>
+<p>这其中包括了 js, css, jpg 等静态资源，也包括像 jsp 这样的等动态页面。而像这样的 URL 通常是由默认的 Servlet 来处理的，我们的 <code>DispatcherFilter</code> 是无法直接处理这样的 URL 资源的。如此就会造成这些 URL 将无法得到正确的处理。</p>
+<p>所以，这里我们需要对这些静态/动态资源进行 URL 过滤，让这些 URL 交给其他的 Servlet 来处理。</p>
+<h3><a name="x1456474688"></a><span>3.4.2 URL 过滤匹配算法</span></h3>
+<p>jetbrick 提供了 2 种资源过滤器，使用的不同的匹配算法。用户也可以实现自己的资源过滤器。</p> 
+<ol> 
+ <li>前缀/后缀匹配: <a href="#prefix">PrefixSuffixBypassRequestUrls</a>（默认）</li> 
+ <li>正则表达式匹配: <a href="#regex">RegexBypassRequestUrls</a></li> 
+</ol>
+<p><a name="prefix"></a></p>
+<h4><a name="x1849037035"></a><span>3.4.2.1 前缀/后缀匹配: PrefixSuffixBypassRequestUrls（默认）</span></h4>
+<p>匹配方式和常见的通配符匹配类似，但是只能使用 <code>*</code>, 并且 <code>*</code> 只能放在最前面或者最后面。</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+$bypassUrls = jetbrick.web.mvc.router.PrefixSuffixBypassRequestUrls
+$bypassUrls.patterns = \
+	*.jsp, *.js, *.css, *.jpg, *.png, *.gif, *.ico, *.swf, \
+	/assets/*, /static/*
+
+web.router.bypass = $bypassUrls
+]]></script>
+<p><a name="regex"></a></p>
+<h4><a name="x1626691937"></a><span>3.4.2.2 正则表达式匹配: RegexBypassRequestUrls</span></h4> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+$bypassUrls = jetbrick.web.mvc.router.RegexBypassRequestUrls
+$bypassUrls.patterns = \
+	^(.+[.])(jsp|js|css|jpg|png|gif|ico|swf)$, \
+	^(/assets/|/static/).+$
+
+web.router.bypass = $bypassUrls
+]]></script>
+<h3><a name="x1498584314"></a><span>3.4.3 自定义资源过滤器</span></h3>
+<p>如果用户想要自定义自己的过滤器，只要实现 <code>jetbrick.web.mvc.BypassRequestUrls</code> 接口即可。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+public interface BypassRequestUrls {
+    public boolean accept(HttpServletRequest request, String path);
+}
+]]></script>
+<h2><a name="x1849877426"></a><span>3.5 Controller 和 Action</span></h2>
+<p>Controller 是一个普通的 Java POJO 类。</p>
+<p>每个 Controller 类包含一个或者多个 Action 方法。每一个 Action 方法对应一个 Action URL。</p>
+<p>jetbrick 使用 <code>@Controller</code> 来标注 Controller 类，使用 <code>@Action</code> 来标注一个 Action 方法。</p>
+<h3><a name="x130940834"></a><span>3.5.1 一个最简单的 Controller 类</span></h3> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Controller("/hello")
+public class HelloController {
+
+    @Action("/world")
+    public void world() {
+    }
+}
+]]></script>
+<p>这个 Action 方法将会被映射到 <code>/hello/world</code> 这样的 URL 上面。</p>
+<h3><a name="x1370227551"></a><span>3.5.2 Action URL 映射</span></h3>
+<p>一个 Action URL 由 controller_path 和 action_path 组合而成。 规则如下：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+Action URL = /<controller_path>/<action_path>
+]]></script>
+<h4><a name="x1018730233"></a><span>3.5.2.1 范例 1</span></h4> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Controller("/users")
+public class UsersController {
+
+    @Action("/list")
+    public void list() {
+    }
+}
+]]></script>
+<p>其中：<br />* controller_path = /users<br />* action_path = /list</p>
+<p>那么组合在一起的 Action URL 就是 <code>/users/list</code></p>
+<h4><a name="x922563474"></a><span>3.5.2.2 范例 2 （默认 path）</span></h4> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Controller
+public class UsersController {
+
+    @Action
+    public void list() {
+    }
+}
+]]></script>
+<p>缺省默认 path 的规则如下：</p> 
+<ul> 
+ <li>controller_path - 默认为空。</li> 
+ <li>action_path - 默认为方法名。</li> 
+</ul>
+<p>根据默认规则，这样我们的 Action URL 就是 <code>/list</code></p>
+<h4><a name="x583851497"></a><span>3.5.2.3 URL 映射表格</span></h4>
+<p>下面的表格有助于对如何生成对于的 Action URL 有更直观的了解。</p> 
+<table> 
+ <thead> 
+  <tr> 
+   <th>controller_path </th> 
+   <th>action_path </th> 
+   <th>URL </th> 
+  </tr> 
+ </thead> 
+ <tbody> 
+  <tr> 
+   <td>默认(空 or <code>/</code>) </td> 
+   <td>默认 </td> 
+   <td>/&lt;method&gt; </td> 
+  </tr> 
+  <tr> 
+   <td>默认(空 or <code>/</code>) </td> 
+   <td>/ </td> 
+   <td>/ </td> 
+  </tr> 
+  <tr> 
+   <td>默认(空 or <code>/</code>) </td> 
+   <td>/foo </td> 
+   <td>/foo </td> 
+  </tr> 
+  <tr> 
+   <td>默认(空 or <code>/</code>) </td> 
+   <td>foo </td> 
+   <td>/foo </td> 
+  </tr> 
+  <tr> 
+   <td>/boo </td> 
+   <td>默认 </td> 
+   <td>/boo/&lt;method&gt; </td> 
+  </tr> 
+  <tr> 
+   <td>/boo </td> 
+   <td>/ </td> 
+   <td>/boo/ </td> 
+  </tr> 
+  <tr> 
+   <td>/boo </td> 
+   <td>/foo </td> 
+   <td>/boo/foo </td> 
+  </tr> 
+  <tr> 
+   <td>/boo </td> 
+   <td>foo </td> 
+   <td>/boo/foo </td> 
+  </tr> 
+ </tbody> 
+</table>
+<h3><a name="x943980709"></a><span>3.5.3 Controller 单例？</span></h3>
+<p>默认，我们的 Controller 是单例的，如果你的 Controller 是有状态的，那么你可以将 Controller 设为非单例的。如下：</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Controller(singleton=false)
+public class HelloController {
+
+}
+]]></script> 
+<blockquote>
+ <p><strong>Tips</strong>：<br />* 单例的 Controller 有助于提高响应速度，IoC 注入只发生一次。<br />* 单例的 Controller 是线程不安全的，所以应该是无状态的，或者是无关 Request/Session 的。</p> 
+</blockquote>
+<h3><a name="x1412204425"></a><span>3.5.4 HTTP request methods</span></h3>
+<p>默认的 Action 将会匹配 GET 和 POST 方法，用户可以使用 <code>@Action</code> 进行重载。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Controller
+public class FormController {
+
+    @Action(method=HttpMethod.POST)
+    public void save() {
+    }
+}
+]]></script>
+<p>这个 Action 方法将会匹配一个 <code>POST</code> 请求， URL为 <code>/save</code>。如果是 <code>GET</code> 或者其他的请求，那么将会得到一个 <code>404 (Page not found)</code>.</p>
+<p>我们也支持一个 Action 对应多个 Http Method，可以如下配置：</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Action(method={HttpMethod.GET, HttpMethod.POST})
+public void save() {
+}
+]]></script>
+<h2><a name="x712183564"></a><span>3.6 Controller/Action 注入</span></h2>
+<p>jetbrick 支持 IoC，所以，我们的 Controller 自然也可以注入依赖的 Bean 对象。</p>
+<h3><a name="x734508257"></a><span>3.6.1 Controller 字段注入</span></h3>
+<p>我们可以使用如下的 Annotation 来实现字段注入：</p> 
+<ul> 
+ <li><code>@Inject</code> - IoC 容器对象</li> 
+ <li><code>@Config</code> - 配置文件配置项</li> 
+ <li><code>@SpringBean</code> - Spring IoC 对象</li> 
+ <li><code>@XXX</code> - 用户自定义标注</li> 
+</ul>
+<p>基本上，Controller 字段注入的大部分都是全局对象。不支持直接注入 Request/Session 上下文相关的对象。</p>
+<h3><a name="x440478859"></a><span>3.6.2 Action 参数注入</span></h3>
+<p>在 Action 中，我们不仅可以注入 IoC 容器中的对象，我们也可以注入 Request/Session 上下文相关的对象。</p>
+<p>对于 Action 参数的注入，我们支持 2 种方式：</p>
+<p><strong>1. 根据 Annotation 注入</strong>：</p> 
+<ul> 
+ <li><code>@Inject</code> - IoC 容器中的对象</li> 
+ <li><code>@Config</code> - 配置文件中的配置项</li> 
+ <li><code>@SpringBean</code> - Spring IoC 对象</li> 
+ <li><code>@PathVariable</code> - Path URL 参数</li> 
+ <li><code>@RequestParam</code> - Request.getParameter(...)，也支持文件上传对象 FilePart</li> 
+ <li><code>@RequestForm</code> - 将多个 Request 参数，注入到一个 Form 对象中</li> 
+ <li><code>@RequestHeader</code> - Request.getHeader(...)</li> 
+ <li><code>@RequestCookie</code> - Request.getCookies()</li> 
+ <li><code>@RequestAttribute</code> - Request.getAttribute(...)</li> 
+ <li><code>@SessionAttribute</code> - Session.getAttribute(...)</li> 
+ <li><code>@ServletContextAttribute</code> - ServletContext.getAttribute(...)</li> 
+ <li><code>@InitParameter</code> - ServletContext.getInitParameter(...)</li> 
+ <li><code>@XXX</code> - 用户自定义标注</li> 
+</ul>
+<p><strong>2. 根据参数的类型注入：</strong></p> 
+<ul> 
+ <li><code>RequestContext</code> - Request 上下文对象</li> 
+ <li><code>Model</code> - Action 要返回的 Model 对象</li> 
+ <li><code>HttpServletRequest</code> - Request 对象</li> 
+ <li><code>HttpServletResponse</code> - Response 对象</li> 
+ <li><code>HttpSession</code> - Session 对象</li> 
+ <li><code>ServletContext</code> - ServletContext 对象</li> 
+ <li><code>FilePart</code> - 单个上传文件对象</li> 
+ <li><code>FilePart[]</code> - 所有上传文件对象</li> 
+ <li><code>RequestParameterMap</code> - a map of request parameter.</li> 
+ <li><code>RequestParameterValuesMap</code> - a map of request parameter values.</li> 
+ <li><code>RequestHeaderMap</code> - a map of request header.</li> 
+ <li><code>RequestHeaderValuesMap</code> - a map of request header values.</li> 
+ <li><code>RequestCookieMap</code> - a map of request cookie.</li> 
+ <li><code>RequestAttributeMap</code> - a map of request attributes.</li> 
+ <li><code>SessionAttributeMap</code> - a map of session attributes.</li> 
+ <li><code>ServetContextAttributeMap</code> - a map of servlet context attributes.</li> 
+ <li><code>ServetContextInitParameterMap</code> - a map of servlet context init parameters.</li> 
+ <li><code>@XXX</code> - 用户自定义类型</li> 
+</ul>
+<p>下面我们将对每一个 Annotation 和参数类型来说明。</p>
+<h4><a name="x781957475"></a><span>3.6.2.1 根据 Annotation 注入</span></h4>
+<h5><a name="x501669810"></a><span>3.6.2.1.1 @Inject/@Config/@SpringBean</span></h5>
+<p>这几个 Annotation 是 IoC 容器本身提供的，具体说明可以参考 IoC 中的相关内容。</p> 
+<ul> 
+ <li><a href="ioc-inject.md">@Inject</a></li> 
+ <li><a href="ioc-config.md">@Config</a></li> 
+ <li><a href="ioc-springbean.md">@SpringBean</a></li> 
+</ul>
+<h5><a name="x425761313"></a><span>3.6.2.1.2 @PathVariable</span></h5>
+<p>专门用于获取 Request URL 中 <code>{}</code> 参数变量。支持变量类型的自动转换。</p>
+<p>例如，我们的 Action URL 定义如下 <code>/users/{id}</code>，而我们的 Request URL 如下 <code>/users/123</code>。</p>
+<p>这样你就可以用 <code>@PathVariable(&quot;id&quot;)</code> 来获取 URL 中参数 <code>{id}</code> 对应的变量 <code>123</code>.</p> 
+<blockquote>
+ <p><strong>Tips</strong>:</p>
+ <p>JDK 8 开始支持方法参数名称，所以我们如果省略 <code>@PathVariable</code> 参数名称，那么我们将会从参数的名称中获取名字。对于使用 JDK 8 之前的版本，只要 Javac 编译的时候使用了 <code>-g</code> 编译选项（debug 编译），那么我们也可以在字节码源文件中自动获取参数名称。</p>
+ <p>Sorry！当前版本暂未实现。</p> 
+ <script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Action("/users/{id}")
+public void action(@PathVariable int id) {
+    System.out.println(id);
+}
+]]></script>
+ <p>是不是这样的代码更优雅！记住其他的类似的 Annotation 都可以这么干哦！</p> 
+</blockquote>
+<h5><a name="x144741474"></a><span>3.6.2.1.3 @RequestParam</span></h5>
+<p>用于从 Request 中获取参数，等价于 <code>request.getParameter(...)</code>，支持自动类型转换。</p>
+<p>我们既可以注入普通的 Parameter，也可以注入 FilePart 对象（文件上传对象）</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Action
+public void action(
+        @RequestParam("id") String id, 
+        @RequestParam("file") FilePart file
+    ) {
+    ...
+}
+]]></script>
+<h5><a name="x1806068845"></a><span>3.6.2.1.4 @RequestForm</span></h5>
+<p>将多个 Request 参数，注入到一个 Form 对象中</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+public class LoginInfo {
+    private String username;
+    private String password;
+    private boolean rememberMe;
+
+    // 省略 getter, setter
+}
+
+@Action
+public void action(@RequestForm LoginInfo form) {
+    System.out.println(form.getUsername());
+    System.out.println(form.getPassword());
+    System.out.println(form.isRememberMe());
+}
+]]></script>
+<h5><a name="x417861220"></a><span>3.6.2.1.5 @RequestHeader</span></h5>
+<p>等价于 <code>Request.getHeader(...)</code>，支持自动类型转换。</p>
+<h5><a name="x551347853"></a><span>3.6.2.1.6 @RequestCookie</span></h5>
+<p>获取 Cookie 信息，支持自动类型转换。</p>
+<h5><a name="x1461908179"></a><span>3.6.2.1.7 @RequestAttribute</span></h5>
+<p>等价于 <code>Request.getAttribute(...)</code></p>
+<h5><a name="x2103470842"></a><span>3.6.2.1.8 @SessionAttribute</span></h5>
+<p>等价于 <code>Session.getAttribute(...)</code></p>
+<h5><a name="x2116027826"></a><span>3.6.2.1.9 @ServletContextAttribute</span></h5>
+<p>等价于 <code>ServletContext.getAttribute(...)</code></p>
+<h5><a name="x2016000025"></a><span>3.6.2.1.10 @InitParameter</span></h5>
+<p>等价于 <code>ServletContext.getInitParameter(...)</code>，支持自动类型转换。</p>
+<h4><a name="x465224526"></a><span>3.6.2.2 根据参数的类型注入</span></h4>
+<h5><a name="x1906608064"></a><span>3.6.2.2.1 RequestContext</span></h5>
+<p>Request 上下文对象</p>
+<h5><a name="x74517257"></a><span>3.6.2.2.2 Model</span></h5>
+<p>Action 要返回的 Model 对象</p>
+<h5><a name="x63083346"></a><span>3.6.2.2.3 HttpServletRequest</span></h5>
+<p>Request 对象</p>
+<h5><a name="x2008517598"></a><span>3.6.2.2.4 HttpServletResponse</span></h5>
+<p>Response 对象</p>
+<h5><a name="x212373710"></a><span>3.6.2.2.5 HttpSession</span></h5>
+<p>Session 对象</p>
+<h5><a name="x1626103862"></a><span>3.6.2.2.6 ServletContext</span></h5>
+<p>ServletContext 对象</p>
+<h5><a name="x671018065"></a><span>3.6.2.2.7 FilePart</span></h5>
+<p>单个上传文件对象</p>
+<h5><a name="x603263151"></a><span>3.6.2.2.8 FilePart[]</span></h5>
+<p>所有上传文件对象</p>
+<h5><a name="x862839550"></a><span>3.6.2.2.9 RequestParameterMap</span></h5>
+<p>a map of request parameter.</p>
+<h5><a name="x1171228672"></a><span>3.6.2.2.10 RequestParameterValuesMap</span></h5>
+<p>a map of request parameter values.</p>
+<h5><a name="x1894188512"></a><span>3.6.2.2.11 RequestHeaderMap</span></h5>
+<p>a map of request header.</p>
+<h5><a name="x528625058"></a><span>3.6.2.2.12 RequestHeaderValuesMap</span></h5>
+<p>a map of request header values.</p>
+<h5><a name="x1961346391"></a><span>3.6.2.2.13 RequestCookieMap</span></h5>
+<p>a map of request cookie.</p>
+<h5><a name="x343155409"></a><span>3.6.2.2.14 RequestAttributeMap</span></h5>
+<p>a map of request attributes.</p>
+<h5><a name="x531981642"></a><span>3.6.2.2.15 SessionAttributeMap</span></h5>
+<p>a map of session attributes.</p>
+<h5><a name="x1672939722"></a><span>3.6.2.2.16 ServetContextAttributeMap</span></h5>
+<p>a map of servlet context attributes.</p>
+<h5><a name="x1735460045"></a><span>3.6.2.2.17 ServetContextInitParameterMap</span></h5>
+<p>a map of servlet context init parameters.</p>
+<h4><a name="x825620365"></a><span>3.6.2.3 进阶（自定义 Annotation 或者类型）</span></h4>
+<p>jetbrick webmvc 已经内置了大量的参数注入方式，怎么用都可以，并且我们也提供了扩展机制。</p>
+<p>如果用户想自定义注入的对象或者 Annotation，请看下面的章节：<a href="mvc_custom_annotation.md">自定义注入 Annotation<br /></a></p>
+<h2><a name="x55675397"></a><span>3.7 Result/ResultHandler</span></h2>
+<p>Result 是 action 方法的返回值。 action 方法返回值可以是任意类型，每一种 Result 类型将会有一个对应的 ResultHandler 来负责处理相应的 Result 对象。</p>
+<h3><a name="x2015464416"></a><span>3.7.1 内置的 Result/ResultHandler</span></h3>
+<p>jetbrick 已经内置了多种 Result/ResultHandler 处理器：</p> 
+<ul> 
+ <li><code>String</code>: 负责处理模板 View</li> 
+ <li><code>HttpStatus</code>: 响应一个 HTTP Status</li> 
+ <li><code>RawData</code>: 自定义输出</li> 
+ <li><code>RawDownload</code>: 文件下载</li> 
+ <li><code>JSONAware</code>: JSON 输出 (fastjson 库)</li> 
+ <li><code>JsonElement</code>: JSON 输出 (Gson 库)</li> 
+ <li><code>org.w3c.dom.Element</code>: XML 输出</li> 
+ <li><code>void</code>: 无 Response 输出。</li> 
+</ul>
+<p>我们将分别介绍不同的 Result 的使用方法。</p>
+<h4><a name="x1808118735"></a><span>3.7.1.1 String</span></h4>
+<p>String Result 是专门用来处理模板 View 的，同时也能处理 forward 和 redirect 的情况。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Action
+public String list() {
+    // 将会显示 JSP 页面
+    return "list.jsp";
+}
+
+@Action
+public String login() {
+    // 将会 redirect 到 /login
+    return "redirect:/login";
+}
+]]></script>
+<p>当我们使用 String 作为 Result 的时候，我们实际是由 View/ViewHandler 这一对兄弟来处理对应的 View。具体可以参考 <a href="mvc-view.md">View/ViewHandler</a></p>
+<h3><a name="x1365304646"></a><span>3.7.2 HttpStatus</span></h3>
+<p>生成一个 HTTP Response 响应。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Action
+public HttpStatus notfound() {
+    // 将会返回一个 404 (Page not found)
+    return HttpStatus.SC_NOT_FOUND;
+}
+]]></script>
+<h3><a name="x1645060142"></a><span>3.7.3 RawData</span></h3>
+<p>提供自定义输出</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Action
+public RawData image() {
+    return new RawData(new File("/tmp/123.gif"), "image/gif");
+}
+]]></script>
+<h3><a name="x2049317712"></a><span>3.7.4 RawDownload</span></h3>
+<p>提供文件下载功能</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Action
+public RawDownload download() {
+    return new RawDownload(new File("/tmp/123.doc"), "中文文件名.doc");
+}
+]]></script>
+<h3><a name="x1706784342"></a><span>3.7.5 JSONAware</span></h3>
+<p>使用 fastjson 库来生成一个 json 输出。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Action
+public JSONAware list() {
+    JSONAware json = new JSONObject();
+    json.put("list", ...);
+    ...
+    return json;
+}
+]]></script>
+<h4><a name="x1281188652"></a><span>3.7.5.1 JsonElement</span></h4>
+<p>使用 gson 库来生成一个 json 输出。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Action
+public GsonElement list() {
+    JsonObject json = new JsonObject();
+    json.add("list", ...);
+    ...
+    return json;
+}
+]]></script>
+<h3><a name="x166921985"></a><span>3.7.6 org.w3c.dom.Element</span></h3>
+<p>输出一个 XML Document</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Action
+public Element xml() {
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    DocumentBuilder builder = factory.newDocumentBuilder();
+    Document doc = builder.newDocument();
+    // 
+    Element root = doc.createElement("root");
+    doc.appendChild(root);
+    ...
+    //
+    return doc.getDocumentElement();
+}
+]]></script>
+<h3><a name="x3625364"></a><span>3.7.7 void</span></h3>
+<p>不进行任何输出操作（可能用户自己会进行一些自定义的输出）</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Action
+public void action() {
+    ...
+}
+]]></script>
+<h3><a name="x277287522"></a><span>3.7.8 自定义 Result/ResultHandler</span></h3>
+<p>jetbrick 允许用户定义自己的 Result 和 ResultHandler。</p>
+<h4><a name="x991822052"></a><span>3.7.8.1 自定义 Result</span></h4>
+<p>新建一个普通的 Java 对象: <code>MyResult</code></p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@ManagedWith(MyResultHandler.class)
+public class MyResult {
+    ...
+}
+]]></script> 
+<blockquote>
+ <p><strong>Tips</strong>: 需要使用 <code>@ManagedWith(...)</code> 标注，参数是对应的 ResultHandler 类。</p> 
+</blockquote>
+<h4><a name="x1204689466"></a><span>3.7.8.2 自定义 ResultHandler</span></h4>
+<p>新建一个 <code>MyResultHandler</code> 类来处理 <code>MyResult</code></p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Managed(MyResult.class)
+public class MyResultHandler implements ResultHandler<MyResult> {
+
+    @Override
+    public void handle(RequestContext ctx, MyResult result) throws Throwable {
+        ...
+    }
+}
+]]></script> 
+<blockquote>
+ <p><strong>Tips</strong>:<br />1. 需要实现 <code>jetbrick.web.mvc.results.ResultHandler</code> 接口<br />2. 需要使用 <code>@Managed(...)</code> 标注，参数是 Result 类。如果省略参数，那么将自动从 ResultHandler 接口的泛型参数中获取。</p> 
+</blockquote>
+<h4><a name="x498917526"></a><span>3.7.8.3 使用系统/第三方自带的 Result 类</span></h4>
+<p>如果你的 <code>Result</code> 类是系统自带的，或者第三方提供的，无法增加 <code>@ManagedWith(...)</code> 注解，那么也没关系。</p>
+<p>我们可以直接定义对应的 <code>ResultHandler</code>。然后将自定义的 <code>ResultHandler</code> 所在的 package 加入的 jetbrick 自动扫描路径下（由 <code>web.scan.packages</code> 配置），然后 jetbrick 就会在启动的时候，自动发现所有的 <code>ResultHandler</code>，并且将其和 <code>Result</code> 关联起来。</p>
+<p>我们真心的希望大家扩展自己的 Result/ResultHandler，然后共享出来，让 jetbrick 可以为更多的用户服务。</p>
+<h2><a name="x1826089861"></a><span>3.8 View/ViewHandler</span></h2>
+<p>当我们使用 String 作为 Result 的时候，我们实际是由 View/ViewHandler 这一对兄弟来处理对应的 View。</p>
+<p>Result 返回值可以由下面两部分组成：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+String Result = <view_type>:<view_path_name>
+]]></script> 
+<ul> 
+ <li>view_type - 可选的 View 类型，代表用那个 ViewHandler 来处理</li> 
+ <li>view_path_name - 逻辑视图名称（包含路径，默认是相对于 Action URL 的路径）</li> 
+</ul>
+<p>比如下面的几种 Result 返回值例子：</p> 
+<ul> 
+ <li>redirect:/passport/login</li> 
+ <li>login.jsp</li> 
+ <li>jetx:login.jetx</li> 
+</ul> 
+<blockquote>
+ <p><strong>Tips</strong>:<br />* 如果 view_type 省略，那么将从 view_path_name 中的使用的扩展名中获取。<br />* 如果 view_path_name 扩展名也没有，那么将使用系统默认的 ViewHandler (由 <code>web.view.default</code> 配置)。</p> 
+</blockquote>
+<h3><a name="x1284250400"></a><span>3.8.1 内置的 View/ViewHandler</span></h3>
+<p>jetbrick 已经内置了多种 View/ViewHandler 处理器：</p> 
+<ul> 
+ <li><code>forward</code>: Forward 到一个指定的 page</li> 
+ <li><code>redirect</code>: Redirect 到一个指定的 page/URL</li> 
+ <li><code>jsp</code>: 使用 JSP 作为 View</li> 
+ <li><code>jetx</code>: 使用 jetbrick-template 作为 View</li> 
+ <li><code>vm</code>: 使用 Velocity 作为 View</li> 
+</ul>
+<p>我们将分别介绍不同的 View 的使用方法。</p>
+<h4><a name="x677145915"></a><span>3.8.1.1 forward</span></h4>
+<p>等价于 <code>request.getRequestDispatcher(viewPathName).forward(request, response)</code></p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Action
+public String list() {
+    return "forward:list.jsp";
+}
+]]></script>
+<h3><a name="x776144932"></a><span>3.8.2 redirect</span></h3>
+<p>等价于 <code>response.sendRedirect(viewPathName);</code></p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Action
+public String list() {
+    return "redirect:/passport/login";
+}
+]]></script> 
+<blockquote>
+ <p><strong>Tips</strong>:<br />* 返回的路径可以是 <code>http://</code>, <code>https://</code> 等开头的绝对路径。<br />* 返回的路径也可以是相对于 request URL 的相对路径。<br />* 返回的路径如果是 <code>/</code> 开头的绝对路径，那么 jetbrick 自动在前面会加上 <code>request.getContextPath()</code>。</p> 
+</blockquote>
+<h3><a name="x105543"></a><span>3.8.3 jsp</span></h3>
+<p>默认使用 JSP 页面作为 View</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Action
+public String list() {
+    return "jsp:list";
+}
+
+@Action
+public String form() {
+    return "form.jsp";
+}
+]]></script>
+<h3><a name="x3258623"></a><span>3.8.4 jetx</span></h3>
+<p>默认使用 jetbrick-template 页面作为 View</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Action
+public String list() {
+    return "jetx:list";
+}
+
+@Action
+public String form() {
+    return "form.jetx";
+}
+]]></script>
+<h3><a name="x3767"></a><span>3.8.5 vm</span></h3>
+<p>默认使用 Velocity 页面作为 View</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Action
+public String list() {
+    return "vm:list";
+}
+
+@Action
+public String form() {
+    return "form.vm";
+}
+]]></script>
+<h3><a name="x622818178"></a><span>3.8.6 自定义 ViewHandler</span></h3>
+<p>jetbrick 允许用户定义自己的 ViewHandler。</p>
+<p>比如说，我们要使用 Freemarker 来作为我们的模板引擎，那么就要如下定义：</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Managed
+public class FreemarkerViewHandler extends AbstractTemplateViewHandler {
+
+    @Override
+    public String getViewType() {
+        return "fm";
+    }
+
+    @Override
+    public String getViewSuffix() {
+        return "flt";
+    }
+
+    @Override
+    protected boolean doRender(RequestContext ctx, String viewPathName) {
+        // sample code
+        engine = getEngine();
+        template = engine.getTemplate(viewPathName);
+        if (template == null) {
+            return false; // resource not found
+        }
+        
+        template.render(ctx.getRequest(), ctx.getResponse());
+        
+        return true;
+    }
+}
+]]></script> 
+<blockquote>
+ <p><strong>Tips</strong>:<br />1. 需要实现 <code>jetbrick.web.mvc.results.views.ViewHandler</code> 接口，我们推荐直接继承 <code>jetbrick.web.mvc.results.views.AbstractTemplateViewHandler</code> 抽象类<br />2. 需要使用 <code>@Managed</code> 标注<br />3. 需要将自定义的 ViewHandler 所在的 package 加入的 jetbrick 自动扫描路径下（由 <code>web.scan.packages</code> 配置）</p> 
+</blockquote>
+<p>如果大家实现了第三方的 ViewHandler，我们希望能共享出来，让 jetbrick 可以为更多的用户服务。</p>
+<h2><a name="x154900175"></a><span>3.9 全局异常处理器 Exception Handler</span></h2>
+<p>jetbrick 提供了一个全局的 Exception Handler 来处理所有的 Action/Result/View/Interpector 相关的错误。</p>
+<p>要实现全局的异常处理器，主要实现 <code>ExceptionHandler</code> 接口即可。</p>
+<h3><a name="x514106735"></a><span>3.9.1 新建一个 GlobalExceptionHandler.java 文件：</span></h3> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+package jetbrick.docs.samples;
+
+import jetbrick.web.mvc.ExceptionHandler;
+
+public class GlobalExceptionHandler implements ExceptionHandler {
+
+  @Override
+  public void handleError(RequestContext ctx, Throwable e) throws Throwable {
+    if (ServletUtils.isAjaxRequest(ctx.getRequest()) {
+      JSONObject json = new JSONObject();
+      json.put("succ", false);
+      json.put("message", e.getMessage());
+      ctx.handleResult(JSONAware.class, json);
+    } else {
+      if (e instanceof WebNotFoundException) {
+        ctx.handleResult("/error/404.jsp");
+      } else if (e instanceof WebForbiddenException) {
+        ctx.handleResult("/error/403.jsp");
+      } else {
+        ctx.handleResult("/error/500.jsp");
+      }
+    }
+  }
+}
+]]></script>
+<h3><a name="x863343253"></a><span>3.9.2 配置 jetbrick-webmvc.properties</span></h3> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+web.exception.handler = jetbrick.docs.samples.GlobalExceptionHandler
+]]></script>
+<h3><a name="x331392516"></a><span>3.9.3 新建 /error/500.jsp 等页面</span></h3> 
+<script type="syntaxhighlighter" class="brush: jsp"><![CDATA[
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+
+<%
+    Throwable e = (Throwable) request.getAttribute(jetbrick.web.mvc.ExceptionHandler.KEY_IN_REQUEST);
+    
+    String message = "";
+    java.io.ByteArrayOutputStream ostr = new java.io.ByteArrayOutputStream();
+    
+    if (e != null) {
+        message = e.getMessage();
+        e.printStackTrace(new java.io.PrintStream(ostr));
+    }
+
+    // dump request info and exception into log file
+    // send mail to admin
+    // ...
+%>
+
+<pre><xmp><%=ostr%></xmp></pre>
+]]></script>
+<h3><a name="x1045917"></a><span>3.9.4 经验</span></h3>
+<p>我们可以通过全局的异常处理器来处理一些服务端的未知异常，并保持现场出错信息到日志文件中，以方便分析，同时对于线上系统能及时的发送错误信息邮件给相关的管理员。</p>
+<p>我们也可以在这里处理一些用户鉴权相关的异常，以及时通知用户未授权错误。</p>
+<h2><a name="x1080953936"></a><span>3.10 自定义拦截器 Interceptor</span></h2>
+<h3><a name="x874158"></a><span>3.10.1 概述</span></h3>
+<p>Interceptor 是 jetbrick webmvc 用来实现对 Action 的预处理和后处理功能（AOP）。</p>
+<p>jetbrick 采用了类似于 HTTP Filter 的责任链模式实现 Interceptor chain。</p>
+<p>所有 Interceptor 都是单例的，非线程安全的。</p>
+<h3><a name="x726486304"></a><span>3.10.2 Interceptor 例子</span></h3>
+<p>用户自定义的 Interceptor 需要实现 <code>jetbrick.web.mvc.intercept.Interceptor</code> 接口。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+package jetbrick.docs.samples;
+
+import jetbrick.web.mvc.RequestContext;
+import jetbrick.web.mvc.config.WebappConfig;
+import jetbrick.web.mvc.intercept.Interceptor;
+import jetbrick.web.mvc.intercept.InterceptorChain;
+
+public class LogInterceptor implements Interceptor {
+
+    @Override
+    public void init(WebConfig config) {
+    }
+
+    @Override
+    public void intercept(RequestContext ctx, InterceptorChain chain) throws Throwable {
+        System.out.println("Before invoking");
+        chain.invoke();
+        System.out.println("After invoking");
+    }
+
+    @Override
+    public void destory() {
+    }
+}
+]]></script>
+<p>正如上面的代码所示，Interceptor 可以很方便地在 action 调用前后插入切面代码来实现 AOP。</p>
+<p>其中 <code>chain.invoke()</code> 方法将调用下一个 Interceptor 或者 Action 方法。</p> 
+<blockquote>
+ <p><strong>Tips</strong>: Interceptor 只能拦截 Action，不能拦截 View。</p> 
+</blockquote>
+<h3><a name="x727017404"></a><span>3.10.3 Interceptor 配置</span></h3>
+<p>jetbrick 总共下面支持 3 种级别的 Interceptor</p> 
+<ul> 
+ <li>Global 级别 - 对所有的 Action 进行拦截</li> 
+ <li>Controller 级别 - 对 Controller 中定义的 Action 进行拦截 (当前版本暂未实现)</li> 
+ <li>Action 级别 - 对单个 Action 方法进行拦截 (当前版本暂未实现)</li> 
+</ul>
+<h4><a name="x1902086687"></a><span>3.10.3.1 Global 级别</span></h4>
+<p>在全局配置文件中 jetbrick-webmvc.properties 进行配置。</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+$LogInterceptor = jetbrick.docs.samples.LogInterceptor
+$DbTransactionInterceptor = jetbrick.docs.samples.DbTransactionInterceptor
+
+web.interceptors = $LogInterceptor, $DbTransactionInterceptor
+]]></script>
+<h4><a name="x1477042017"></a><span>3.10.3.2 Controller 级别 (当前版本暂未实现)</span></h4>
+<p>在 Controller 类上面添加 @InterceptedBy 标注</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@InterceptedWith(AuthInterceptor.class)
+@Controller
+public class UserController {
+    ...
+}
+]]></script>
+<h4><a name="x1446671483"></a><span>3.10.3.3 Action 级别 (当前版本暂未实现)</span></h4>
+<p>在 Action 方法上面添加 @InterceptedBy 标注</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Controller
+public class UserController {
+
+    @InterceptedWith(AuthInterceptor.class)
+    @Action
+    public String save() {
+        ...
+    }
+}
+]]></script> 
+<blockquote>
+ <p><strong>Tips</strong>:<br />拦截器调用的顺序如下：<br />1. Action 级别<br />2. Controller 级别<br />3. Global 级别<br />同级的 Interceptor 和定义的顺序保持一致。</p> 
+</blockquote>
+<h2><a name="x600712278"></a><span>3.11 自定义插件 Plugin</span></h2>
+<h3><a name="x874158"></a><span>3.11.1 概述</span></h3>
+<p>Plugin 是 jetbrick webmvc 用来进行扩展自身功能的。Plugin 会随着 jetbrick webmvc 的启动而启动。</p>
+<h3><a name="x190969106"></a><span>3.11.2 Plugin 例子</span></h3>
+<p>用户自定义的 Plugin 需要实现 <code>jetbrick.web.mvc.plugin.Plugin</code> 接口。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+package jetbrick.docs.samples;
+
+import jetbrick.dao.schema.upgrade.DbUpgradeApp;
+import jetbrick.web.mvc.config.WebConfig;
+import jetbrick.web.mvc.plugin.Plugin;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * 支持数据库自动升级插件
+ */
+public class DbUpgradePlugin implements Plugin {
+    final Logger log = LoggerFactory.getLogger(DbUpgradePlugin.class);
+
+    @Override
+    public void init(WebConfig config) {
+        try {
+            DbUpgradeApp.execute();
+        } catch (Throwable e) {
+            log.error("DB Upgrade Exception.", e);
+            log.error("***********************************");
+            log.error("**          JVM exit!!!          **");
+            log.error("***********************************");
+            System.exit(1);
+        }
+    }
+
+    @Override
+    public void destory() {
+    }
+}
+]]></script>
+<h3><a name="x191500206"></a><span>3.11.3 Plugin 配置</span></h3> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+$DbUpgradePlugin = jetbrick.docs.samples.DbUpgradePlugin
+
+web.plugins = $DbUpgradePlugin, ...
+]]></script>
+<h2><a name="x572842111"></a><span>3.12 自定义 Action 参数注入 Annotation</span></h2>
+<p>在 <a href="mvc-action-inject.md">Action 参数注入</a>章节中，我们看到 <code>@Inject</code>, <code>@Config</code> 等用于 Controller 注入的 Annotation，还看到了 <code>@PathVariable</code>, <code>@RequestParam</code> 等专门用于 Action 方法的参数注入的 Request/Session 相关的 Annotation。</p>
+<p>同样的，我们在 IoC 相关的章节中也介绍了<a href="ioc-custom-annotation.md">IoC 自定义注入 Annotation</a>。但是在 IoC 容器中，只能使用 Request/Session 无关的自定义 Annotation。而本章节将介绍的是专门用于 Action 方法的参数注入的 Request 相关的自定义 Annotation。</p>
+<h3><a name="x1288571069"></a><span>3.12.1 看代码学习</span></h3>
+<p>先创建自己的 Annotation。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Target(ElementType.PARAMETER)
+@Retention(RetentionPolicy.RUNTIME)
+@ManagedWith(RequestHeaderArgumentGetter.class)
+public @interface RequestHeader {
+    String value();
+}
+]]></script>
+<p>注意，我们在这个 Annotation 上面标注了一个 <code>@ManagedWith(RequestHeaderArgumentGetter.class)</code>，这个是关键点。告诉 jetbrick，这个 Annotation 将会由 <code>RequestHeaderArgumentGetter</code> 来处理。</p>
+<p>下面我们在创建 RequestHeaderArgumentGetter.java</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Managed
+public class RequestHeaderArgumentGetter implements AnnotatedArgumentGetter<RequestHeader, String> {
+    private String name;
+
+    @Override
+    public void initialize(Class<?> type, RequestHeader annotation) {
+        this.name = annotation.value();        
+    }
+
+    @Override
+    public String get(RequestContext ctx) {
+        return ctx.getRequest().getHeader(name);
+    }
+}
+]]></script>
+<p>作为一个准备注入 Action 参数的自定义的 Annotation，我们的 Class 必须实现 <code>jetbrick.web.mvc.action.annotations.AnnotatedArgumentGetter&lt;A, T&gt;</code> 接口。</p>
+<p>其中，泛型参数 <code>A</code> 代表你要处理的自定义 Annotation，<code>T</code> 代表返回值类型。</p>
+<h3><a name="x805912966"></a><span>3.12.2 自定义注入类型</span></h3> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@ManagedWith(SessionUserArgumentGetter.class)
+public class SessionUser {
+    private int id;
+    private String username;
+    ...
+}
+]]></script>
+<p>其中 <code>@ManagedWith(SessionUserArgumentGetter.class)</code> 描述了 <code>SessionUser</code> 对象的注入将会由 <code>SessionUserArgumentGetter</code> 来实现。</p>
+<p>我们再来看 SessionUserArgumentGetter 参数注入处理器：</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Managed
+public class SessionUserArgumentGetter implements TypedArgumentGetter<SessionUser> {
+    @Override
+    public SessionUser get(RequestContext ctx) {
+        return (SessionUser) ctx.getSession().getAttribute("SESSION_USER");
+    }
+}
+]]></script>
+<p>其中，按类型注入必须实现 <code>jetbrick.web.mvc.action.annotations.TypedArgumentGetter&lt;T&gt;</code> 接口。</p>
+<p>再来看一下如何使用这个 <code>SessionUser</code>。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Controller
+public class PassportController {
+    @Inject UserService userService;
+
+    @Action("/passport/changepwd")
+    public String changePassword(SessionUser me, @RequestParam("pwd") String pwd) {
+        userService.changePassword(me.getId(), pwd);
+        return "ok.jsp";
+    }
+}
+]]></script>
+<p>如果我们要注入的类型是系统 Class 或者第三方提供的，无法为其添加 <code>@ManagedWith(XXXArgumentGetter.class)</code> Annotation，那么也没关系。只要有 XXXArgumentGetter.class 就可以了，比如我们想要注入 <code>java.util.Locale</code>，我们只要实现一个对应的 <code>LocaleArgumentGetter</code> 即可。如下：</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Managed(Locale.class)
+public class LocaleArgumentGetter implements TypedArgumentGetter<Locale> {
+    @Override
+    public Locale get(RequestContext ctx) {
+        return ctx.getSession().getLocale();
+    }
+}
+]]></script>
+<p>其中 <code>@Managed(Locale.class)</code> 会将 <code>Locale</code> 对象和 <code>LocaleArgumentGetter</code> 绑定起来。如果省略 <code>@Managed</code> 的参数，那么 jetbrick 会自动从 <code>TypedArgumentGetter&lt;Locale&gt;</code> 定义中获取泛型参数。</p>
+<h2><a name="x2079234266"></a><span>3.13 文件上传支持 FileUpload</span></h2>
+<p>jetbrick-webmvc 使用 <a href="http://commons.apache.org/fileupload">commons-fileupload</a> 来处理文件上传。</p>
+<p>jetbrick-webmvc 会自动判断 Request 请求时候是否是文件上传(multipart/form-data)，然后会将上传文件内容解析出来，将文件内容储存在临时文件中（由 <code>web.upload.dir</code> 配置），并封装成 FilePart 对象给用户使用。</p>
+<h3><a name="x1288571069"></a><span>3.13.1 看代码学习</span></h3> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Controller
+public class FileController {
+
+    @Action
+    public String upload(FilePart[] files) {
+        for (FilePart file: files) {
+            file.moveTo(new File("/uploads/" + file.getOriginalFileName()));
+        }
+        return "ok.jsp";
+    }
+}
+]]></script>
+<h3><a name="x1937794244"></a><span>3.13.2 API 接口</span></h3>
+<p>我们可以通过 <code>RequestContext</code> 对象获取上传的文件：</p> 
+<ul> 
+ <li><strong>List&lt;FilePart&gt; getFileParts()</strong> - 获取所有的文件对象</li> 
+ <li><strong>FilePart getFilePart(String name)</strong> - 按照名称获取文件对象</li> 
+ <li><strong>FilePart getFilePart()</strong> - 获取第一个文件对象</li> 
+</ul>
+<p>同样的，我们可以通过 Action 参数注入获取 FilePart 对象。</p> 
+<ul> 
+ <li><strong>FilePart[] files</strong> - 获取所有的文件对象(按类型注入)</li> 
+ <li><strong>FilePart file</strong> - 获取第一个文件对象(按类型注入)</li> 
+ <li><strong>@RequestParam(&quot;name&quot;) FilePart file</strong> - 按照名称获取文件对象</li> 
+</ul>
+<h3><a name="x176823674"></a><span>3.13.3 文件上传和其他参数混合</span></h3>
+<p>jetbrick-webmvc 已经在内部处理的该情况，其他参数我们依旧可以通过 <code>request.getParameter(...)</code> 来访问。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+@Controller
+public class PhotoController {
+
+    @Action("/upload/photo")
+    public String upload(
+            @RequestParam("userid") int userid, 
+            FilePart photo
+        ) {
+        String file = "/user/photos/" + userid +  '.jpg';
+        photo.moveTo(new File(file));
+        return "ok.jsp";
+    }
+}
+]]></script>
+<p>我们的 jsp 页面如下：</p> 
+<script type="syntaxhighlighter" class="brush: html"><![CDATA[
+<form action="/upload/photo" method="post" enctype="multipart/form-data">
+    UserId: <br/>
+    <input type="text" name="userid" value="123" size="30" /><br/>
+    Photo: <br/>
+    <input type="file" name="photo" size="30" /><br/>
+    <input type="submit" value="Submit" />
+</form>
+]]></script>
+<h2><a name="x795173590"></a><span>3.14 jetbrick-webmvc.properties</span></h2>
+<p>在 web.xml 中，我们配置了 jetbrick-webmvc 用到的全局配置文件，默认位于如下的路径： <code>/WEB-INF/jetbrick-webmvc.properties</code>。</p>
+<p>这里提供一个完整的可配置项列表，以供参考。</p> 
+<table> 
+ <thead> 
+  <tr> 
+   <th>name </th> 
+   <th>默认值 </th> 
+   <th>说明 </th> 
+  </tr> 
+ </thead> 
+ <tbody> 
+  <tr> 
+   <td>web.development </td> 
+   <td>true </td> 
+   <td>是否属于开发模式 </td> 
+  </tr> 
+  <tr> 
+   <td>web.http.encoding </td> 
+   <td>utf-8 </td> 
+   <td>默认编码 </td> 
+  </tr> 
+  <tr> 
+   <td>web.http.cache </td> 
+   <td>false </td> 
+   <td>是否启用 HTTP 协议的 Cache 功能 </td> 
+  </tr> 
+  <tr> 
+   <td>web.scan.packages </td> 
+   <td> </td> 
+   <td>默认 Annotation 扫描的 packages </td> 
+  </tr> 
+  <tr> 
+   <td>web.urls.bypass </td> 
+   <td> </td> 
+   <td>静态资源过滤器 </td> 
+  </tr> 
+  <tr> 
+   <td>web.urls.router </td> 
+   <td>RestfulRouter </td> 
+   <td>URL 路由方式 </td> 
+  </tr> 
+  <tr> 
+   <td>web.view.default </td> 
+   <td>jetx </td> 
+   <td>默认视图处理器别名 </td> 
+  </tr> 
+ </tbody> 
+</table>
+<h3><a name="x2077441631"></a><span>3.14.1 web.development</span></h3>
+<p>是否属于开发模式。默认为 <code>true</code></p>
+<p>何为开发模式？即框架中专门为了开发、调试方便，提供了额外的调试日志，并且禁用了部分 cache，以便能及时发现部分 Resource 的变更，做到热加载。</p>
+<h3><a name="x1025692383"></a><span>3.14.2 web.http.encoding</span></h3>
+<p>HTTP Request/Response 的编码方式，默认为 <code>utf-8</code></p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+request.setCharacterEncoding(encoding);
+response.setCharacterEncoding(encoding);
+]]></script>
+<h3><a name="x1029843594"></a><span>3.14.3 web.http.cache</span></h3>
+<p>是否启用 HTTP Response 的 cache，默认为 <code>false</code>，表示禁用。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+// Http 1.0 header
+response.setHeader("Buffer", "false");
+response.setHeader("Pragma", "no-cache");
+response.setDateHeader("Expires", 1L);
+// Http 1.1 header
+response.setHeader("Cache-Control", "no-cache, no-store, max-age=0");
+]]></script>
+<h3><a name="x886169564"></a><span>3.14.4 web.scan.packages</span></h3>
+<p>jetbrick-webmvc 通过 Annotation 的自动扫描，可以自动发现如下的配置：</p> 
+<ul> 
+ <li>@IocBean</li> 
+ <li>@Controller</li> 
+ <li>@Managed ResultHandler</li> 
+ <li>@Managed ViewResult</li> 
+ <li>@Managed ArgumentGetter</li> 
+</ul>
+<p>这里，用户需要配置 classpath 下面允许扫描的 package 名称。可以配置多个。</p>
+<p>如下：</p> 
+<script type="syntaxhighlighter" class="brush: text"><![CDATA[
+web.scan.packages = jetbrick.docs.demo.controllers, jetbrick.docs.demo.handlers
+]]></script>
+<h3><a name="x850770536"></a><span>3.14.5 web.urls.bypass</span></h3>
+<p>具体可以参考：<a href="mvc-bypass-urls.md">资源过滤器 BypassRequestUrls</a></p>
+<p>通常来讲，只有 web.xml 中将 URL 映射配置成 <code>/*</code> 的时候，才需要进行配置。</p>
+<p>目前系统提供了 2 种过滤器，用户可以选择一个，或者实现自己的过滤器。</p>
+<h3><a name="x401772551"></a><span>3.14.6 web.urls.router</span></h3>
+<p>默认的路由实现：<code>jetbrick.web.mvc.router.RestfulRouter</code></p>
+<h3><a name="x1848372142"></a><span>3.14.7 web.view.default</span></h3>
+<p>默认的 view 处理器别名： <code>jetx</code></p>
+<p>如果用户返回的 View Name 中，无法判断是有那个 View Handler 处理的话，那么将默认使用这里配置的 View Handler 来处理。</p>
+<p>更多信息可以看：<a href="mvc-view.md">View/ViewHandler</a></p>
+<h2><a name="x1182451560"></a><span>3.15 RequestContext 对象</span></h2>
+<h3><a name="x874158"></a><span>3.15.1 概述</span></h3>
+<p>RequestContext 是 jetbrick webmvc 核心类之一。RequestContext 封装 HTTP Request 相关常用操作。</p>
+<h3><a name="x648001924"></a><span>3.15.2 getCurrent()</span></h3>
+<p>对于每一个 HTTP Request 请求，jetbrick 都封装了一个 RequestContext 对象。并且将该对象放置在 ThreadLocal 中，方便让 RequestContext 对象能够在任意地方可以直接访问到。</p> 
+<script type="syntaxhighlighter" class="brush: java"><![CDATA[
+RequestContext ctx = RequestContext.getCurrent();
+]]></script>
+<h3><a name="x535959560"></a><span>3.15.3 HttpServletRequest/HttpSession/ServletContext</span></h3>
+<p>通过 RequestContext 对象，可以获取 HTTP 相关的对象，如下：</p> 
+<ul> 
+ <li><code>ServletContext getServletContext()</code></li> 
+ <li><code>HttpSession getSession()</code></li> 
+ <li><code>HttpServletRequest getRequest()</code></li> 
+ <li><code>HttpServletResponse getResponse()</code></li> 
+</ul>
+<h3><a name="x1788552412"></a><span>3.15.4 getParameter() 系列方法</span></h3>
+<p>RequestContext 对象提供了 getParameter() 系列方法，用于从 Request 中获取参数。</p> 
+<ul> 
+ <li><code>String getParameter(String key)</code></li> 
+ <li><code>String getParameter(String key, String defaultValue)</code></li> 
+ <li><code>String[] getParameterValues(String key)</code></li> 
+ <li><code>Integer getParameterAsInt(String key)</code></li> 
+ <li><code>Integer getParameterAsInt(String key, Integer defaultValue)</code></li> 
+ <li><code>Long getParameterAsLong(String key)</code></li> 
+ <li><code>Long getParameterAsLong(String key, Long defaultValue)</code></li> 
+</ul>
+<h3><a name="x206292270"></a><span>3.15.5 getFilePart() 系列方法</span></h3>
+<p>RequestContext 提供了 getFilePart() 系列方法来支持文件上传。支持 <code>multipart/form-data</code> 方式的表单上传，也支持 HTML5 方式的文件上传。</p> 
+<ul> 
+ <li><code>FilePart getFilePart()</code> - 获取第一个上传的文件</li> 
+ <li><code>FilePart getFilePart(String)</code> - 按 form 名称获取对应的文件</li> 
+ <li><code>List&lt;FilePart&gt; getFileParts()</code> - 获取所有上传的文件</li> 
+</ul>
+<h3><a name="x553493006"></a><span>3.15.6 Model 相关</span></h3>
+<p>jetbrick 将 Model 封装在了 RequestContext 中。</p> 
+<ul> 
+ <li><code>Model getModel()</code> - 获取关联的 Model 对象</li> 
+</ul>
+<h3><a name="x1782500884"></a><span>3.15.7 URL 相关</span></h3> 
+<ul> 
+ <li><code>File getWebroot()</code> - 获取 Web 根目录对应的文件路径</li> 
+ <li><code>String getPathInfo()</code> - 获取相对于 webapp 的 URL 路径</li> 
+ <li><code>String getContextPath()</code> - 获取 webapp 的 context path 路径</li> 
+</ul>
+<h3><a name="x1380635708"></a><span>3.15.8 RouteInfo 相关</span></h3> 
+<ul> 
+ <li><code>RouteInfo getRouteInfo()</code> - 获取路由信息</li> 
+ <li><code>String getPathVariable(String)</code> - 获取 URL 中对应的指定参数</li> 
+</ul>
+<h2><a name="x877997601"></a><span>3.16 MVC 注解一览表</span></h2>
+<p>这里提供一个完整的 MVC 使用的 Annotation 列表，以供参考。</p>
+<h3><a name="x2091868155"></a><span>3.16.1 Action 注解</span></h3> 
+<table> 
+ <thead> 
+  <tr> 
+   <th>注解 </th> 
+   <th>说明</th> 
+  </tr> 
+ </thead> 
+ <tbody> 
+  <tr> 
+   <td>@Controller </td> 
+   <td>表示一个 Controller 类</td> 
+  </tr> 
+  <tr> 
+   <td>@Action </td> 
+   <td>表示一个 Action 方法</td> 
+  </tr> 
+ </tbody> 
+</table>
+<h3><a name="x664633449"></a><span>3.16.2 参数注解</span></h3> 
+<table> 
+ <thead> 
+  <tr> 
+   <th>注解 </th> 
+   <th>说明</th> 
+  </tr> 
+ </thead> 
+ <tbody> 
+  <tr> 
+   <td>@PathVariable </td> 
+   <td>获取 URL PATH 中的参数</td> 
+  </tr> 
+  <tr> 
+   <td>@RequestParam </td> 
+   <td>request.getParameter()</td> 
+  </tr> 
+  <tr> 
+   <td>@RequestHeader </td> 
+   <td>request.getHeader()</td> 
+  </tr> 
+  <tr> 
+   <td>@RequestCookie </td> 
+   <td>ctx.getRequest().getCookies()</td> 
+  </tr> 
+  <tr> 
+   <td>@RequestForm </td> 
+   <td>将 request parameters 中的参数，注入到 form 中</td> 
+  </tr> 
+  <tr> 
+   <td>@RequestAttribute </td> 
+   <td>request.getAttribute()</td> 
+  </tr> 
+  <tr> 
+   <td>@SessionAttribute </td> 
+   <td>session.getAttribute()</td> 
+  </tr> 
+  <tr> 
+   <td>@ServletContextAttribute </td> 
+   <td>servletContext.getAttribute()</td> 
+  </tr> 
+  <tr> 
+   <td>@InitParameter </td> 
+   <td>servletContext.getInitParameter(name)</td> 
+  </tr> 
+ </tbody> 
+</table>
+<h3><a name="x1770738200"></a><span>3.16.3 扩展点注解</span></h3> 
+<table> 
+ <thead> 
+  <tr> 
+   <th>注解 </th> 
+   <th>说明</th> 
+  </tr> 
+ </thead> 
+ <tbody> 
+  <tr> 
+   <td>@Managed </td> 
+   <td>可以表示一个 ResultHandler/ViewHandler/ArgumentGetter 类</td> 
+  </tr> 
+  <tr> 
+   <td>@ManagedWith </td> 
+   <td>表示一个 Result 类，或者是一个 Argument Annotation</td> 
+  </tr> 
+ </tbody> 
+</table>
+<h1><a name="x69366"></a><span>4 FAQ</span></h1>
+<p>待补充...</p>
+<h1><a name="x897631760"></a><span>5 版本历史</span></h1>
+<h2><a name="x514129784"></a><span>5.1 Version 1.0.0 (2014-05-11)</span></h2> 
+<ul> 
+ <li>jetbrick-commons</li> 
+ <li>jetbrick-ioc</li> 
+ <li>jetbrick-webmvc</li> 
+ <li>First Public Release</li> 
+</ul>
+        </div>
+    </div>
+</div>
+
+<div class="jb-footer">
+    Copyright 2013-2014 Guoqiang Chen, Shanghai China. All rights reserved.
+    <br/>subchen&#64;gmail.com, QQ 群：310491655
+</div>
+
+<style type="text/css">
+#cnzz_stat_icon_1000210720 {
+	display: none;
+}
+</style>
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>
