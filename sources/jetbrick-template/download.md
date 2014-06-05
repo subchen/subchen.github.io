@@ -38,7 +38,7 @@ Maven 依赖 POM.xml
 <dependency>
     <groupId>com.github.subchen</groupId>
     <artifactId>jetbrick-template</artifactId>
-    <version>1.2.6</version>
+    <version>1.2.7</version>
 </dependency>
 ```
 
@@ -131,14 +131,14 @@ github: https://github.com/subchen/jetbrick-template
 最新版本 Latest Version
 =============================
 
-* [jetbrick-template-1.2.6.jar](http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.6/jetbrick-template-1.2.6.jar)
-* [jetbrick-template-1.2.6-sources.jar](http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.6/jetbrick-template-1.2.6-sources.jar)
-* [jetbrick-template-1.2.6-javadoc.jar](http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.6/jetbrick-template-1.2.6-javadoc.jar)
+* [jetbrick-template-1.2.7.jar](http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.7/jetbrick-template-1.2.7.jar)
+* [jetbrick-template-1.2.7-sources.jar](http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.7/jetbrick-template-1.2.7-sources.jar)
+* [jetbrick-template-1.2.7-javadoc.jar](http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.7/jetbrick-template-1.2.7-javadoc.jar)
 
 
 **第三方依赖 jar 下载**
 
-* [antlr4-runtime-4.1.jar](http://search.maven.org/remotecontent?filepath=org/antlr/antlr4-runtime/4.1/antlr4-runtime-4.1.jar)
+* [antlr4-runtime-4.2.2.jar](http://search.maven.org/remotecontent?filepath=org/antlr/antlr4-runtime/4.2.2/antlr4-runtime-4.2.2.jar)
 * [slf4j-api-1.7.7.jar](http://search.maven.org/remotecontent?filepath=org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar)
 
 更多历史版本，请看[这里](history.html)
@@ -147,19 +147,14 @@ github: https://github.com/subchen/jetbrick-template
 更新历史 Release Notes
 =============================
 
-<a name="release_notes_1_2_6"></a>
-**Version 1.2.6 (2014-05-18)**
+<a name="release_notes_1_2_7"></a>
+**Version 1.2.7 (2014-06-05)**
 
-* \[新增] [#94 增加 BASE_PATH 全局变量][issue_94]
-* \[变更] [#93 默认编译器更改为 JDT（如果存在）][issue_93]
-* \[变更] [#95 change buildin function iterator()->loop()][issue_95]
-* \[修复] [#88 安全调用对扩展方法不起作用][issue_88]
-* \[修复] [#92 JDK8 对 (a==null?null:a.toString()) 编译存在问题][issue_92]
+* \[修复] [#98 import.classes 相关 log 没有正确输出][issue_98]
+* \[修复] [#99 @Permission.view_schoolOrg 静态字段编译错误][issue_99]
+* \[修复] [#100 Map 的泛型类型推导问题][issue_100]
 
-[issue_88]: https://github.com/subchen/jetbrick-template/issues/88
-[issue_92]: https://github.com/subchen/jetbrick-template/issues/92
-[issue_93]: https://github.com/subchen/jetbrick-template/issues/93
-[issue_94]: https://github.com/subchen/jetbrick-template/issues/94
-[issue_95]: https://github.com/subchen/jetbrick-template/issues/95
-
+[issue_98]: https://github.com/subchen/jetbrick-template/issues/98
+[issue_99]: https://github.com/subchen/jetbrick-template/issues/99
+[issue_100]: https://github.com/subchen/jetbrick-template/issues/100
 

@@ -5,6 +5,7 @@
 
 |   时间     |  版本 |            二进制包              |                  源代码                  |  更新历史     |
 |------------|-------|----------------------------------|------------------------------------------|---------------|
+| 2014-06-05 | 1.2.7 | [jetbrick-template-1.2.7.jar][47]| [jetbrick-template-1.2.7-sources.jar][48]| [更新历史][49]|
 | 2014-05-18 | 1.2.6 | [jetbrick-template-1.2.6.jar][44]| [jetbrick-template-1.2.6-sources.jar][45]| [更新历史][46]|
 | 2014-03-28 | 1.2.5 | [jetbrick-template-1.2.5.jar][41]| [jetbrick-template-1.2.5-sources.jar][42]| [更新历史][43]|
 | 2014-03-22 | 1.2.4 | [jetbrick-template-1.2.4.jar][37]| [jetbrick-template-1.2.4-sources.jar][38]| [更新历史][39]|
@@ -62,9 +63,24 @@
 [44]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.6/jetbrick-template-1.2.6.jar
 [45]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.6/jetbrick-template-1.2.6-sources.jar
 [46]: #release_notes_1_2_6
+[47]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.7/jetbrick-template-1.2.7.jar
+[48]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.7/jetbrick-template-1.2.7-sources.jar
+[49]: #release_notes_1_2_7
 
 更新历史 Release Notes
 =============================
+
+<a name="release_notes_1_2_7"></a>
+**Version 1.2.7 (2014-06-05)**
+
+* \[修复] [#98 import.classes 相关 log 没有正确输出][issue_98]
+* \[修复] [#99 @Permission.view_schoolOrg 静态字段编译错误][issue_99]
+* \[修复] [#100 Map 的泛型类型推导问题][issue_100]
+
+[issue_98]: https://github.com/subchen/jetbrick-template/issues/98
+[issue_99]: https://github.com/subchen/jetbrick-template/issues/99
+[issue_100]: https://github.com/subchen/jetbrick-template/issues/100
+
 
 <a name="release_notes_1_2_6"></a>
 **Version 1.2.6 (2014-05-18)**
