@@ -301,7 +301,7 @@
 web.development = true
 web.http.encoding = utf-8
 web.scan.packages = jetbrick.docs.samples
-web.router.bypass = *.ico, *.jsp, /assets/*
+web.urls.bypass = *.ico, *.jsp, /assets/*
 web.urls.router = jetbrick.web.mvc.router.RestfulRouter
 web.view.default = jsp
 ]]></script>
@@ -1030,7 +1030,7 @@ $bypassUrls.patterns = \
 	*.jsp, *.js, *.css, *.jpg, *.png, *.gif, *.ico, *.swf, \
 	/assets/*, /static/*
 
-web.router.bypass = $bypassUrls
+web.urls.bypass = $bypassUrls
 ]]></script>
 <p><a name="regex"></a></p>
 <h4><a name="x1626691937"></a><span>3.4.2.2 正则表达式匹配: RegexBypassRequestUrls</span></h4> 
@@ -1040,7 +1040,7 @@ $bypassUrls.patterns = \
 	^(.+[.])(jsp|js|css|jpg|png|gif|ico|swf)$, \
 	^(/assets/|/static/).+$
 
-web.router.bypass = $bypassUrls
+web.urls.bypass = $bypassUrls
 ]]></script>
 <h3><a name="x1498584314"></a><span>3.4.3 自定义资源过滤器</span></h3>
 <p>如果用户想要自定义自己的过滤器，只要实现 <code>jetbrick.web.mvc.BypassRequestUrls</code> 接口即可。</p> 
