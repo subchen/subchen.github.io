@@ -5,6 +5,7 @@
 
 |   时间     |  版本 |            二进制包              |                  源代码                  |  更新历史     |
 |------------|-------|----------------------------------|------------------------------------------|---------------|
+| 2014-06-19 | 1.2.8 | [jetbrick-template-1.2.8.jar][51]| [jetbrick-template-1.2.8-sources.jar][52]| [更新历史][53]|
 | 2014-06-05 | 1.2.7 | [jetbrick-template-1.2.7.jar][47]| [jetbrick-template-1.2.7-sources.jar][48]| [更新历史][49]|
 | 2014-05-18 | 1.2.6 | [jetbrick-template-1.2.6.jar][44]| [jetbrick-template-1.2.6-sources.jar][45]| [更新历史][46]|
 | 2014-03-28 | 1.2.5 | [jetbrick-template-1.2.5.jar][41]| [jetbrick-template-1.2.5-sources.jar][42]| [更新历史][43]|
@@ -66,9 +67,27 @@
 [47]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.7/jetbrick-template-1.2.7.jar
 [48]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.7/jetbrick-template-1.2.7-sources.jar
 [49]: #release_notes_1_2_7
+[51]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.8/jetbrick-template-1.2.8.jar
+[52]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.8/jetbrick-template-1.2.8-sources.jar
+[53]: #release_notes_1_2_8
+
 
 更新历史 Release Notes
 =============================
+
+<a name="release_notes_1_2_8"></a>
+**Version 1.2.8 (2014-06-19)**
+
+* \[增强] [#104 for.size 对 iterator 的支持][issue_104]
+* \[修复] [#102 macro递归调用解析异常][issue_102]
+* \[修复] [#103 Mac环境PathUtilsTest单元测试失败][issue_103]
+* \[修复] 捕获 Tomcat Server 中的 ClientAbortException
+* \[修复] Lexer 中的非法字符串
+
+[issue_102]: https://github.com/subchen/jetbrick-template/issues/102
+[issue_103]: https://github.com/subchen/jetbrick-template/issues/103
+[issue_104]: https://github.com/subchen/jetbrick-template/issues/104
+
 
 <a name="release_notes_1_2_7"></a>
 **Version 1.2.7 (2014-06-05)**

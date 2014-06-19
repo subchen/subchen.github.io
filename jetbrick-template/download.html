@@ -34,9 +34,9 @@
             <li>2. 具有高性能、高扩展性</li>
             <li>3. 完美替代 JSP, Velocity 等引擎模板</li>
         </ul>
-        <a href="http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.7/jetbrick-template-1.2.7.jar" class="download-button">
+        <a href="http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.8/jetbrick-template-1.2.8.jar" class="download-button">
             <img src="../assets/images/download.png"/>
-            <span>jetbrick-template-1.2.7.jar<br/>2014-06-05</span>
+            <span>jetbrick-template-1.2.8.jar<br/>2014-06-19</span>
         </a>
     </div>
 </div>
@@ -61,7 +61,7 @@
 
 <div class="container">
     <div class="announcement">
-        <a href="download.html#version">2014-06-05：jetbrick-template-1.2.7 正式版已发布，欢迎下载。</a>
+        <a href="download.html#version">2014-06-19：jetbrick-template-1.2.8 正式版已发布，欢迎下载。</a>
     </div>
 </div>
 
@@ -126,7 +126,7 @@
 <dependency>
     <groupId>com.github.subchen</groupId>
     <artifactId>jetbrick-template</artifactId>
-    <version>1.2.7</version>
+    <version>1.2.8</version>
 </dependency>
 ]]></script>
 <p>Eclipse Java Compiler.</p> 
@@ -141,23 +141,21 @@
 <p>github: <a href="https://github.com/subchen/jetbrick-template">https://github.com/subchen/jetbrick-template</a></p>
 <p>编译方法：</p> 
 <ol> 
- <li><p>先安装 apache-ant 1.9.x</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
-wget http://mirrors.cnnic.cn/apache//ant/binaries/apache-ant-1.9.2-bin.zip
+ <li><p>先安装 maven</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
+wget http://mirror.esocc.com/apache/maven/maven-3/3.2.1/binaries/apache-maven-3.2.1-bin.zip
 ]]></script></li> 
- <li><p>设置好 JDK, ANT 环境变量</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
-set JAVA_HOME=/path/jdk_1.6.x
-set ANT_HOME=/path/apache-ant_1.9.x
-set PATH=%JAVA_HOME%/bin;%ANT_HOME%/bin;%PATH%
+ <li><p>设置好 JDK, Maven 环境变量</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
+set JAVA_HOME=c:/jdk_1.6.x
+set MVN_HOME=c:/apache-maven-3.2.1
+set PATH=%JAVA_HOME%/bin;%MVN_HOME%/bin;%PATH%
 ]]></script></li> 
  <li><p>编译</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 git clone https://github.com/subchen/jetbrick-template.git
 cd jetbrick-template
-ant dist
+mvn install
 ]]></script></li> 
- <li><p>编译后的文件存放在 build 目录中</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
+ <li><p>编译后的文件存放在 target 目录中</p> <script type="syntaxhighlighter" class="brush: text"><![CDATA[
 jetbrick-template-x.x.x.jar
-jetbrick-template-x.x.x.zip
-jetbrick-template-x.x.x-all.zip
 ]]></script></li> 
 </ol>
 <p><a name="samples"></a></p>
@@ -189,23 +187,17 @@ jetbrick-template-x.x.x-all.zip
 <p><a name="version"></a></p>
 <h1><a name="x1304924747"></a><span>7 最新版本 Latest Version</span></h1> 
 <ul> 
- <li><a href="http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.7/jetbrick-template-1.2.7.jar">jetbrick-template-1.2.7.jar</a></li> 
- <li><a href="http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.7/jetbrick-template-1.2.7-sources.jar">jetbrick-template-1.2.7-sources.jar</a></li> 
- <li><a href="http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.7/jetbrick-template-1.2.7-javadoc.jar">jetbrick-template-1.2.7-javadoc.jar</a></li> 
+ <li><a href="http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.8/jetbrick-template-1.2.8.jar">jetbrick-template-1.2.8.jar</a></li> 
+ <li><a href="http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.8/jetbrick-template-1.2.8-sources.jar">jetbrick-template-1.2.8-sources.jar</a></li> 
+ <li><a href="http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.8/jetbrick-template-1.2.8-javadoc.jar">jetbrick-template-1.2.8-javadoc.jar</a></li> 
 </ul>
 <p><strong>第三方依赖 jar 下载</strong></p> 
 <ul> 
  <li><a href="http://search.maven.org/remotecontent?filepath=org/antlr/antlr4-runtime/4.2.2/antlr4-runtime-4.2.2.jar">antlr4-runtime-4.2.2.jar</a></li> 
  <li><a href="http://search.maven.org/remotecontent?filepath=org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar">slf4j-api-1.7.7.jar</a></li> 
 </ul>
-<p>更多历史版本，请看<a href="history.html">这里</a></p>
 <h1><a name="x887846512"></a><span>8 更新历史 Release Notes</span></h1>
-<p><a name="release_notes_1_2_7"></a><br /><strong>Version 1.2.7 (2014-06-05)</strong></p> 
-<ul> 
- <li>[修复] <a href="https://github.com/subchen/jetbrick-template/issues/98">#98 import.classes 相关 log 没有正确输出</a></li> 
- <li>[修复] <a href="https://github.com/subchen/jetbrick-template/issues/99">#99 @Permission.view_schoolOrg 静态字段编译错误</a></li> 
- <li>[修复] <a href="https://github.com/subchen/jetbrick-template/issues/100">#100 Map 的泛型类型推导问题</a></li> 
-</ul>
+<p><a href="history.html">完整历史版本，请看这里</a></p>
 
 <!-- markdown body end -->
 
