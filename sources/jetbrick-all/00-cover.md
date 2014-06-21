@@ -4,12 +4,12 @@
             <b>jetbrick-framework<br/>用户手册</b>
         </div>
         <div style="font-size:25px;">
-            <b>版本: 1.0.1</b>
+            <b>版本: {{VERSION}}</b>
         </div>
         <p></p>
         <div style="font-size:25px;line-height:20px;margin-top:150px;">
             <p><b>作者: 陈国强</b></p>
-            <p><b>日期：2014-05-18</b></p>
+            <p><b>日期：{{LAST_DATE}}</b></p>
         </div>
     </div>
 </div>
