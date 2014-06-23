@@ -301,7 +301,7 @@
 web.development = true
 web.http.encoding = utf-8
 web.scan.packages = jetbrick.docs.samples
-web.urls.bypass = *.ico, *.jsp, /assets/*
+web.urls.bypass = jetbrick.web.mvc.router.PrefixSuffixBypassRequestUrls
 web.urls.router = jetbrick.web.mvc.router.RestfulRouter
 web.view.default = jsp
 ]]></script>
@@ -937,7 +937,7 @@ public class XXXParameterInjector implements ParameterInjector {
 web.development = true
 web.http.encoding = utf-8
 web.scan.packages = jetbrick.docs.demo
-web.urls.bypass = *.ico, *.jsp, /assets/*
+web.urls.bypass = jetbrick.web.mvc.router.PrefixSuffixBypassRequestUrls
 web.urls.router = jetbrick.web.mvc.router.RestfulRouter
 web.view.default = jsp
 ]]></script>
