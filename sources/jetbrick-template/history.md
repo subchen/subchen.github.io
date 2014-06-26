@@ -5,6 +5,7 @@
 
 |   时间     |  版本 |            二进制包              |                  源代码                  |  更新历史     |
 |------------|-------|----------------------------------|------------------------------------------|---------------|
+| 2014-06-26 | 1.2.9 | [jetbrick-template-1.2.9.jar][54]| [jetbrick-template-1.2.9-sources.jar][55]| [更新历史][56]|
 | 2014-06-19 | 1.2.8 | [jetbrick-template-1.2.8.jar][51]| [jetbrick-template-1.2.8-sources.jar][52]| [更新历史][53]|
 | 2014-06-05 | 1.2.7 | [jetbrick-template-1.2.7.jar][47]| [jetbrick-template-1.2.7-sources.jar][48]| [更新历史][49]|
 | 2014-05-18 | 1.2.6 | [jetbrick-template-1.2.6.jar][44]| [jetbrick-template-1.2.6-sources.jar][45]| [更新历史][46]|
@@ -70,10 +71,21 @@
 [51]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.8/jetbrick-template-1.2.8.jar
 [52]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.8/jetbrick-template-1.2.8-sources.jar
 [53]: #release_notes_1_2_8
+[54]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.9/jetbrick-template-1.2.9.jar
+[55]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.9/jetbrick-template-1.2.9-sources.jar
+[56]: #release_notes_1_2_9
 
 
 更新历史 Release Notes
 =============================
+
+<a name="release_notes_1_2_9"></a>
+**Version 1.2.9 (2014-06-26)**
+
+* \[修复] [#105 define内部类生成错误][issue_105]
+
+[issue_105]: https://github.com/subchen/jetbrick-template/issues/105
+
 
 <a name="release_notes_1_2_8"></a>
 **Version 1.2.8 (2014-06-19)**
