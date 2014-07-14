@@ -209,10 +209,10 @@ JetEngine engine = JetEngine.create(config);
 
 ```java
 public class UserInfoMethods {
-	public static String isOnline(UserInfo user, JetPageContext ctx) {
-    	HttpSession session = (HttpSession) ctx.getContext().get(JetContext.SESSION_NAME);
-    	return session.getAttribute("user_" - user.getName()) != null;
-  	}
+    public static String isOnline(UserInfo user, JetPageContext ctx) {
+        HttpSession session = (HttpSession) ctx.getContext().get(JetWebContext.SESSION);
+        return session.getAttribute("user_" - user.getName()) != null;
+    }
 }
  
 // 把 UserInfoMethods 加入到 engine 中
