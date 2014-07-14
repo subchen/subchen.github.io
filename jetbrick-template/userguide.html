@@ -271,7 +271,7 @@ ${"BAIDU".link("http://www.baidu.com/")}
 <script type="syntaxhighlighter" class="brush: java"><![CDATA[
 public class UserInfoMethods {
 	public static String isOnline(UserInfo user, JetPageContext ctx) {
-    	HttpSession session = (HttpSession) ctx.getContext().get(JetContext.SESSION_NAME);
+    	HttpSession session = (HttpSession) ctx.getContext().get(JetWebContext.SESSION);
     	return session.getAttribute("user_" - user.getName()) != null;
   	}
 }
