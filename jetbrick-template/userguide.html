@@ -239,7 +239,7 @@ public void putAll(Map<String, Object> context);
 <script type="syntaxhighlighter" class="brush: java"><![CDATA[
 public class StringMethods {
   public static String link(String text, String url) {
-    return "<a href=\"" - url - "\">" - text - "</a>";
+    return "<a href=\"" + url + "\">" + text + "</a>";
   }
 }
 ]]></script>
@@ -272,7 +272,7 @@ ${"BAIDU".link("http://www.baidu.com/")}
 public class UserInfoMethods {
 	public static String isOnline(UserInfo user, JetPageContext ctx) {
     	HttpSession session = (HttpSession) ctx.getContext().get(JetWebContext.SESSION);
-    	return session.getAttribute("user_" - user.getName()) != null;
+    	return session.getAttribute("user_" + user.getName()) != null;
   	}
 }
  
@@ -303,7 +303,7 @@ public class Functions {
   }
   // 上下文相关函数
   public static String hello(JetPageContext ctx) {
-    return "Hello " - ctx.getContext().get("name");
+    return "Hello " + ctx.getContext().get("name");
   }
 }
 
