@@ -534,7 +534,7 @@ compile.strategy = none
  <li><p><code>precompile</code><br />在 JetEngine 初始化的时候，自动获取所有的模板(根据 <code>template.suffix</code> 过滤)，然后启动一个独立的线程进行编译。<br />这样虽然启动时间会增加，但是后面的模板访问将会非常的快。并且在预编译没有完成期间，应用可以正常访问，不冲突。</p></li> 
  <li><p><code>always</code> （默认值）<br />就是在模板被首次访问的时候，进行编译。</p></li> 
  <li><p><code>auto</code><br />就是在模板被首次访问的时候，如果磁盘中已经存在编译好的 Class 文件（并且源文件没有改变），那么直接加载该 Class 文件，否则进行编译。</p></li> 
- <li><p><code>none</code><br />改模式下，将不在对模板进行编译。（发布的时候，用户无需发布任何模板源文件）<br />用户必须通过 <code>JetxGenerateApp</code> 预编译工具，事先将模板全部编译成 class 文件，并将所有的 class 文件放在 classpath 下面。<br />注意： class 文件放在 classpath 下面，而不是 <code>compile.path</code> 对应的目录。</p></li> 
+ <li><p><code>none</code><br />该模式下，将不在对模板进行编译。（发布的时候，用户无需发布任何模板源文件）<br />用户必须通过 <code>JetxGenerateApp</code> 预编译工具，事先将模板全部编译成 class 文件，并将所有的 class 文件放在 classpath 下面。<br />注意： class 文件放在 classpath 下面，而不是 <code>compile.path</code> 对应的目录。</p></li> 
 </ul> 
 <blockquote>
  <p>注意：<br />不管采用什么模式，对于使用 <code>JetEngine.createTemplate(source)</code> 直接由源码创建的模板，仍然需要进行编译。 </p> 
