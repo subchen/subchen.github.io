@@ -3,25 +3,26 @@
 所有版本 All Versions
 =============================
 
-|   时间     |  版本 |            二进制包              |                  源代码                  |  更新历史     |
-|------------|-------|----------------------------------|------------------------------------------|---------------|
-| 2014-06-26 | 1.2.9 | [jetbrick-template-1.2.9.jar][54]| [jetbrick-template-1.2.9-sources.jar][55]| [更新历史][56]|
-| 2014-06-19 | 1.2.8 | [jetbrick-template-1.2.8.jar][51]| [jetbrick-template-1.2.8-sources.jar][52]| [更新历史][53]|
-| 2014-06-05 | 1.2.7 | [jetbrick-template-1.2.7.jar][47]| [jetbrick-template-1.2.7-sources.jar][48]| [更新历史][49]|
-| 2014-05-18 | 1.2.6 | [jetbrick-template-1.2.6.jar][44]| [jetbrick-template-1.2.6-sources.jar][45]| [更新历史][46]|
-| 2014-03-28 | 1.2.5 | [jetbrick-template-1.2.5.jar][41]| [jetbrick-template-1.2.5-sources.jar][42]| [更新历史][43]|
-| 2014-03-22 | 1.2.4 | [jetbrick-template-1.2.4.jar][37]| [jetbrick-template-1.2.4-sources.jar][38]| [更新历史][39]|
-| 2014-03-10 | 1.2.3 | [jetbrick-template-1.2.3.jar][34]| [jetbrick-template-1.2.3-sources.jar][35]| [更新历史][36]|
-| 2014-02-23 | 1.2.2 | [jetbrick-template-1.2.2.jar][31]| [jetbrick-template-1.2.2-sources.jar][32]| [更新历史][33]|
-| 2014-01-26 | 1.2.1 | [jetbrick-template-1.2.1.jar][27]| [jetbrick-template-1.2.1-sources.jar][28]| [更新历史][29]|
-| 2014-01-05 | 1.2.0 | [jetbrick-template-1.2.0.jar][24]| [jetbrick-template-1.2.0-sources.jar][25]| [更新历史][26]|
-| 2013-12-22 | 1.1.3 | [jetbrick-template-1.1.3.jar][21]| [jetbrick-template-1.1.3-sources.jar][22]| [更新历史][23]|
-| 2013-12-15 | 1.1.2 | [jetbrick-template-1.1.2.jar][17]| [jetbrick-template-1.1.2-sources.jar][18]| [更新历史][19]|
-| 2013-12-08 | 1.1.1 | [jetbrick-template-1.1.1.jar][14]| [jetbrick-template-1.1.1-sources.jar][15]| [更新历史][16]|
-| 2013-12-02 | 1.1.0 | [jetbrick-template-1.1.0.jar][11]| [jetbrick-template-1.1.0-sources.jar][12]| [更新历史][13]|
-| 2013-11-22 | 1.0.2 | [jetbrick-template-1.0.2.jar][7] | [jetbrick-template-1.0.2-sources.jar][8] | [更新历史][9] |
-| 2013-11-20 | 1.0.1 | [jetbrick-template-1.0.1.jar][4] | [jetbrick-template-1.0.1-sources.jar][5] | [更新历史][6] |
-| 2013-11-18 | 1.0.0 | [jetbrick-template-1.0.0.jar][1] | [jetbrick-template-1.0.0-sources.jar][2] | [更新历史][3] |
+|   时间     |  版本  |            二进制包                |                   源代码                   |  更新历史     |
+|------------|--------|------------------------------------|--------------------------------------------|---------------|
+| 2014-07-15 | 1.2.10 | [jetbrick-template-1.2.10.jar][57] | [jetbrick-template-1.2.10-sources.jar][58] | [更新历史][59]|
+| 2014-06-26 | 1.2.9  | [jetbrick-template-1.2.9.jar][54]  | [jetbrick-template-1.2.9-sources.jar][55]  | [更新历史][56]|
+| 2014-06-19 | 1.2.8  | [jetbrick-template-1.2.8.jar][51]  | [jetbrick-template-1.2.8-sources.jar][52]  | [更新历史][53]|
+| 2014-06-05 | 1.2.7  | [jetbrick-template-1.2.7.jar][47]  | [jetbrick-template-1.2.7-sources.jar][48]  | [更新历史][49]|
+| 2014-05-18 | 1.2.6  | [jetbrick-template-1.2.6.jar][44]  | [jetbrick-template-1.2.6-sources.jar][45]  | [更新历史][46]|
+| 2014-03-28 | 1.2.5  | [jetbrick-template-1.2.5.jar][41]  | [jetbrick-template-1.2.5-sources.jar][42]  | [更新历史][43]|
+| 2014-03-22 | 1.2.4  | [jetbrick-template-1.2.4.jar][37]  | [jetbrick-template-1.2.4-sources.jar][38]  | [更新历史][39]|
+| 2014-03-10 | 1.2.3  | [jetbrick-template-1.2.3.jar][34]  | [jetbrick-template-1.2.3-sources.jar][35]  | [更新历史][36]|
+| 2014-02-23 | 1.2.2  | [jetbrick-template-1.2.2.jar][31]  | [jetbrick-template-1.2.2-sources.jar][32]  | [更新历史][33]|
+| 2014-01-26 | 1.2.1  | [jetbrick-template-1.2.1.jar][27]  | [jetbrick-template-1.2.1-sources.jar][28]  | [更新历史][29]|
+| 2014-01-05 | 1.2.0  | [jetbrick-template-1.2.0.jar][24]  | [jetbrick-template-1.2.0-sources.jar][25]  | [更新历史][26]|
+| 2013-12-22 | 1.1.3  | [jetbrick-template-1.1.3.jar][21]  | [jetbrick-template-1.1.3-sources.jar][22]  | [更新历史][23]|
+| 2013-12-15 | 1.1.2  | [jetbrick-template-1.1.2.jar][17]  | [jetbrick-template-1.1.2-sources.jar][18]  | [更新历史][19]|
+| 2013-12-08 | 1.1.1  | [jetbrick-template-1.1.1.jar][14]  | [jetbrick-template-1.1.1-sources.jar][15]  | [更新历史][16]|
+| 2013-12-02 | 1.1.0  | [jetbrick-template-1.1.0.jar][11]  | [jetbrick-template-1.1.0-sources.jar][12]  | [更新历史][13]|
+| 2013-11-22 | 1.0.2  | [jetbrick-template-1.0.2.jar][7]   | [jetbrick-template-1.0.2-sources.jar][8]   | [更新历史][9] |
+| 2013-11-20 | 1.0.1  | [jetbrick-template-1.0.1.jar][4]   | [jetbrick-template-1.0.1-sources.jar][5]   | [更新历史][6] |
+| 2013-11-18 | 1.0.0  | [jetbrick-template-1.0.0.jar][1]   | [jetbrick-template-1.0.0-sources.jar][2]   | [更新历史][3] |
 
 [1]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.0.0/jetbrick-template-1.0.0.jar
 [2]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.0.0/jetbrick-template-1.0.0-sources.jar
@@ -74,10 +75,20 @@
 [54]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.9/jetbrick-template-1.2.9.jar
 [55]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.9/jetbrick-template-1.2.9-sources.jar
 [56]: #release_notes_1_2_9
-
+[57]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.10/jetbrick-template-1.2.10.jar
+[58]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.10/jetbrick-template-1.2.10-sources.jar
+[59]: #release_notes_1_2_10
 
 更新历史 Release Notes
 =============================
+
+<a name="release_notes_1_2_10"></a>
+**Version 1.2.10 (2014-07-15)**
+
+* \[修复] [#106 ClasspathResourceLoader 中文模板名称有问题][issue_106]
+
+[issue_106]: https://github.com/subchen/jetbrick-template/issues/106
+
 
 <a name="release_notes_1_2_9"></a>
 **Version 1.2.9 (2014-06-26)**

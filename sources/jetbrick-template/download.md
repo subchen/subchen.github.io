@@ -38,7 +38,7 @@ Maven 依赖 POM.xml
 <dependency>
     <groupId>com.github.subchen</groupId>
     <artifactId>jetbrick-template</artifactId>
-    <version>1.2.9</version>
+    <version>1.2.10</version>
 </dependency>
 ```
 
@@ -129,9 +129,9 @@ github: https://github.com/subchen/jetbrick-template
 最新版本 Latest Version
 =============================
 
-* [jetbrick-template-1.2.9.jar](http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.9/jetbrick-template-1.2.9.jar)
-* [jetbrick-template-1.2.9-sources.jar](http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.9/jetbrick-template-1.2.9-sources.jar)
-* [jetbrick-template-1.2.9-javadoc.jar](http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.9/jetbrick-template-1.2.9-javadoc.jar)
+* [jetbrick-template-1.2.10.jar](http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.10/jetbrick-template-1.2.10.jar)
+* [jetbrick-template-1.2.10-sources.jar](http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.10/jetbrick-template-1.2.10-sources.jar)
+* [jetbrick-template-1.2.10-javadoc.jar](http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.10/jetbrick-template-1.2.10-javadoc.jar)
 
 
 **第三方依赖 jar 下载**
