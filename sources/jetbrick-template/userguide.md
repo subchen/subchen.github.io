@@ -172,7 +172,7 @@ jetbrick-template 也在这里带给大家强大的动态方法扩展机制。�
 ```java
 public class StringMethods {
   public static String link(String text, String url) {
-    return "<a href=\"" - url - "\">" - text - "</a>";
+    return "<a href=\"" + url + "\">" + text + "</a>";
   }
 }
 ```
@@ -202,7 +202,7 @@ JetEngine engine = JetEngine.create(config);
 
 和上下文无关的扩展方法相比，上下文相关的扩展方法多一个参数。
 
-- 方法签名必须是 `public` 和 `static`
+* 方法签名必须是 `public` 和 `static`
 * 方法第一个参数类型是要扩展的 Class
 * **方法第二个参数类型必须是 JetPageContext**
 * 方法其余参数自定义
@@ -211,7 +211,7 @@ JetEngine engine = JetEngine.create(config);
 public class UserInfoMethods {
     public static String isOnline(UserInfo user, JetPageContext ctx) {
         HttpSession session = (HttpSession) ctx.getContext().get(JetWebContext.SESSION);
-        return session.getAttribute("user_" - user.getName()) != null;
+        return session.getAttribute("user_" + user.getName()) != null;
     }
 }
  
@@ -246,7 +246,7 @@ public class Functions {
   }
   // 上下文相关函数
   public static String hello(JetPageContext ctx) {
-    return "Hello " - ctx.getContext().get("name");
+    return "Hello " + ctx.getContext().get("name");
   }
 }
 
