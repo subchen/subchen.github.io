@@ -5,6 +5,7 @@
 
 |   时间     |  版本  |            二进制包                |                   源代码                   |  更新历史     |
 |------------|--------|------------------------------------|--------------------------------------------|---------------|
+| 2014-09-06 | 1.2.11 | [jetbrick-template-1.2.11.jar][61] | [jetbrick-template-1.2.11-sources.jar][62] | [更新历史][63]|
 | 2014-07-15 | 1.2.10 | [jetbrick-template-1.2.10.jar][57] | [jetbrick-template-1.2.10-sources.jar][58] | [更新历史][59]|
 | 2014-06-26 | 1.2.9  | [jetbrick-template-1.2.9.jar][54]  | [jetbrick-template-1.2.9-sources.jar][55]  | [更新历史][56]|
 | 2014-06-19 | 1.2.8  | [jetbrick-template-1.2.8.jar][51]  | [jetbrick-template-1.2.8-sources.jar][52]  | [更新历史][53]|
@@ -78,9 +79,24 @@
 [57]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.10/jetbrick-template-1.2.10.jar
 [58]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.10/jetbrick-template-1.2.10-sources.jar
 [59]: #release_notes_1_2_10
+[57]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.11/jetbrick-template-1.2.11.jar
+[58]: http://search.maven.org/remotecontent?filepath=com/github/subchen/jetbrick-template/1.2.11/jetbrick-template-1.2.11-sources.jar
+[59]: #release_notes_1_2_11
 
 更新历史 Release Notes
 =============================
+
+<a name="release_notes_1_2_11"></a>
+**Version 1.2.11 (2014-09-06)**
+
+* \[增强] [#107 可否增加对jfinal的Model的get()方法？][issue_107]
+* \[修复] [#108 servletContext 对象获取改进建议(JFinal 集成)][issue_108]
+* \[修复] [#111 使用jetbrick每次启动时都报错：ClientAbortException 但功能不影响][issue_111]
+
+[issue_107]: https://github.com/subchen/jetbrick-template/issues/107
+[issue_108]: https://github.com/subchen/jetbrick-template/issues/108
+[issue_111]: https://github.com/subchen/jetbrick-template/issues/111
+
 
 <a name="release_notes_1_2_10"></a>
 **Version 1.2.10 (2014-07-15)**
