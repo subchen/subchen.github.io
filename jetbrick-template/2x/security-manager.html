@@ -139,13 +139,13 @@
 #$securityManager.configFile = ${web.root}/WEB-INF/jetx-black_white_list.txt
 #
 $securityManager.nameList = \
-                            -java.lang.System.exit \
-                            -java.lang.reflect \
-                            -java.sql \
-                            -javax.tools \
-                            -java.io \
-                            +java.io.File.getName \
-                            +java.io.File.getPath \
+                            -java.lang.System.exit, \
+                            -java.lang.reflect, \
+                            -java.sql, \
+                            -javax.tools, \
+                            -java.io, \
+                            +java.io.File.getName, \
+                            +java.io.File.getPath, \
                             -sun
 
 $loader = jetbrick.template.loader.FileSystemResourceLoader
