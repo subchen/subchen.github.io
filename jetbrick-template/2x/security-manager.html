@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>宏 Macro :: jetbrick-template</title>
+    <title>安全管理器 SecurityManager :: jetbrick-template</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="canonical" href="http://subchen.github.io/jetbrick-template/2x/ext-macro.html"/>
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-template/2x/security-manager.html"/>
     <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
 
     <link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" />
@@ -121,73 +121,67 @@
     </div>
 
     <article class="markdown">
-        <h1><a class="anchor" name="-macro"></a>宏 Macro</h1> 
-<p><code>jetbrick-template</code> 支持用户在模板中定义可重用的模板片段，我们称之为<code>宏 Macro</code>。</p> 
-<p>比如下面的代码范例：</p> 
-<pre><code class="highlight plaintext">#macro label_input(String label, String name, String help)
-  &lt;label class="control-label" for="${name}"&gt;${label}:&lt;/label&gt;
-  &lt;div class="controls"&gt;
-    &lt;input id="${name}" name="${name}" type="text" class="input-xlarge" /&gt;
-    &lt;p class="help-block"&gt;${help}&lt;/p&gt;
-  &lt;/div&gt;
-#end
-
-#call label_input("用户名", "username", "请输入合法的用户名称.")
-#call label_input("邮箱", "email", "请输入合法的用户邮箱.")
-</code></pre> 
-<h2><a class="anchor" name="-macro"></a>1 定义宏 Macro</h2> 
-<p>语法：</p> 
-<pre><code class="highlight plaintext">#macro name ( [arg_type] arg_name,  ... )
-    ...
-#end
-</code></pre> 
+        <h1><a class="anchor" name="-securitymanager"></a>安全管理器 SecurityManager</h1> 
+<p>由于 <code>jetbrick-template</code> 支持在模板中直接调用 Java 类和方法，在一些特殊的项目中(如CMS)，如果允许用户上传自己的模板，那样就会涉及到安全性问题。</p> 
+<p>考虑到这种情况，<code>jetbrick-template</code> 引入了自己的安全管理器。</p> 
+<h2><a class="anchor" name="69007255"></a>1 安全管理器能做什么</h2> 
 <ul> 
- <li>参数类型在 <code>strict</code> 模式下，必须定义</li> 
- <li>不允许在相同的模板中定义同名 macro</li> 
+ <li>拦截 Class 的引用</li> 
+ <li>拦截 Class 构造函数调用</li> 
+ <li>拦截 Class 的方法调用(静态和动态方法)</li> 
+ <li>拦截 Class 的字段调用(静态和动态字段)</li> 
 </ul> 
-<h2><a class="anchor" name="-macro"></a>2 调用宏 Macro</h2> 
-<p>有 2 种方法可以调用 macro</p> 
+<h2><a class="anchor" name="1840408184"></a>2 如何启用安全管理器</h2> 
+<p>安全管理器和 ResourceLoader 绑定在一起，也就是说，每个 ResourceLoader 可以有独立的安全管理器。</p> 
+<p>安全管理器默认通过一个黑白名单列表来实现。黑白名单可以放在一个单独的文本文件中，也可以直接放在配置文件中。用户也可以实现自定义的安全管理器。</p> 
+<pre><code class="highlight plaintext">$securityManager = jetbrick.template.JetSecurityManagerImpl
+# 
+#$securityManager.configFile = ${web.root}/WEB-INF/jetx-black_white_list.txt
+#
+$securityManager.nameList = \
+                            -java.lang.System.exit \
+                            -java.lang.reflect \
+                            -java.sql \
+                            -javax.tools \
+                            -java.io \
+                            +java.io.File.getName \
+                            +java.io.File.getPath \
+                            -sun
+
+$loader = jetbrick.template.loader.FileSystemResourceLoader
+$loader.root = /opt/templates/
+$loader.reloadable = true
+$loader.securityManager = $securityManager
+
+jetx.template.loaders = $loader
+</code></pre> 
+<h3><a class="anchor" name="jetsecuritymanagerimpl-"></a>2.1 JetSecurityManagerImpl 属性说明</h3> 
 <ul> 
- <li><p><code>#call macro_name(args...)</code> </p> <pre><code class="highlight plaintext">#call label_input("用户名", "username", "请输入合法的用户名称.")
-#call label_input("邮箱", "email", "请输入合法的用户邮箱.")
-</code></pre></li> 
- <li><p><code>${macroGet(macro_name, args...)}</code></p> <pre><code class="highlight plaintext">${macroGet("label_input", "用户名", "username", "请输入合法的用户名称.")}
-${macroGet("label_input", "邮箱", "email", "请输入合法的用户邮箱.")}
-</code></pre></li> 
+ <li><code>configFile</code> 用外部文件配置黑白名单。（每行一个名单）</li> 
+ <li><code>nameList</code> 以逗号分隔的黑白名单。</li> 
 </ul> 
-<h2><a class="anchor" name="1708917075"></a>3 使用外部的宏定义模板</h2> 
-<p>如果我们有很多公共的宏需要共享，那么我们可以将这些宏定义在一个独立的模板文件中。</p> 
-<p>比如我们定义了一个保护了多个宏的模板：<code>/commons/macros.jetx</code></p> 
-<pre><code class="highlight plaintext">#macro hello(...)
-  ...
-#end
-
-#macro hi(...)
-  ...
-#end
-</code></pre> 
-<p>然后，对于要使用这些宏的模板，通过 <code>#options(loadmacro="...")</code> 的方式将宏文件导入就可。</p> 
-<pre><code class="highlight plaintext">#options(
-  loadmacro = "/commons/macros.jetx"
-)
-
-#call hello(...)
-#call hi(...)
-</code></pre> 
-<blockquote class="info">
- <p><strong>优先级</strong>：如果导入的宏和模板中定义的宏名称相同，那么将无法使用，而只能使用模板中定义的。(即模板定义优先)</p> 
-</blockquote> 
-<h2><a class="anchor" name="135004323"></a>4 全局导入宏定义</h2> 
-<p>如果我们要把定义好的外部宏模板，默认共享给所有的模板，而不是每次通过 <code>#options(loadmacro="...")</code> 的方式导入，那么我们可以这么做：</p> 
+<h3><a class="anchor" name="257293343"></a>2.2 黑白名单格式说明</h3> 
+<p><strong>前缀符号：</strong></p> 
 <ul> 
- <li><p>API 动态注册</p> <pre><code class="highlight java"><span class="n">JetEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="o">...</span>
-<span class="n">JetTemplate</span> <span class="n">template</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="na">getTemplate</span><span class="o">(</span><span class="s">"/commons/macros.jetx"</span><span class="o">);</span>
-<span class="n">GlobalResolver</span> <span class="n">resolver</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="na">getGlobalResolver</span><span class="o">();</span>
-<span class="n">resolver</span><span class="o">.</span><span class="na">registerMacros</span><span class="o">(</span><span class="n">template</span><span class="o">);</span>
-</code></pre></li> 
- <li><p>在配置文件中注册 jetbrick-template.properties </p> <pre><code class="highlight plaintext">jetx.import.macros = /commons/macros.jetx
-</code></pre></li> 
-</ul>
+ <li><code>+</code> 开头代表白名单</li> 
+ <li><code>-</code> 开头代表黑名单</li> 
+ <li>没有开始符号，则默认为白名单</li> 
+</ul> 
+<p><strong>名单格式：</strong></p> 
+<ul> 
+ <li>包名： <code>pkg</code></li> 
+ <li>类名名： <code>pkg.class</code></li> 
+ <li>方法名： <code>pkg.class.method</code></li> 
+ <li>字段名： <code>pkg.class.field</code></li> 
+</ul> 
+<p><strong>实例：</strong></p> 
+<pre><code class="highlight plaintext">-java.sql                           // 禁止访问 java.sql 下面的任何 Class，包括所有孙子包下面的 Class
+-java.lang.System.exit              // 禁止调用 System.exit() 方法
++java.util.Collections.EMPTY_LIST   // 允许访问 Collections.EMPTY_LIST 字段
+</code></pre> 
+<h2><a class="anchor" name="598304405"></a>3 自定义安全管理器</h2> 
+<p>虽然 <code>jetbrick-template</code> 已经内置了一个默认的安全管理器实现，但是用户也可以实现自己的安全管理器。</p> 
+<p>需要实现接口： <code>jetbrick.template.JetSecurityManager</code></p>
     </article>
 
 	<hr style="margin: 10px 0 5px 0;" />
