@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>资源过滤器 BypassRequestUrls :: jetbrick-webmvc</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-webmvc/bypass-urls.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../jetbrick-webmvc/overview.html" class="navbar-brand" style="padding:10px;">
+                <img src="../assets/images/logo-jetbrick-webmvc-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发指南 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../jetbrick-webmvc/overview.html">概述 Overview</a></li>
+                        <li><a href="../jetbrick-webmvc/helloworld.html">快速开始 Hello World</a></li>
+                        <li><a href="../jetbrick-webmvc/webxml.html">配置 web.xml</a></li>
+                        <li><a href="../jetbrick-webmvc/config.html">配置 jetbrick-webmvc.properties</a></li>
+                        <li><a href="../jetbrick-webmvc/bypass-urls.html">资源过滤器 BypassRequestUrls</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/controller.html">Controller 和 Action</a></li>
+                        <li><a href="../jetbrick-webmvc/action-inject.html">Controller/Action 注入</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/result.html">Result/ResultHandler</a></li>
+                        <li><a href="../jetbrick-webmvc/view.html">View/ViewHandler</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/fileupload.html">文件上传支持 FileUpload</a></li>
+                        <li><a href="../jetbrick-webmvc/request-context.html">RequestContext 对象</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/annotation-list.html">MVC 注解一览表</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">高级用法 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../jetbrick-webmvc/exception-handler.html">全局异常处理器 Exception Handler</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/interceptor.html">自定义拦截器 Interceptor</a></li>
+                        <li><a href="../jetbrick-webmvc/plugin.html">自定义插件 Plugin</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/custom-annotation.html">自定义 Action 参数注入 Annotation</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../index.html">jetbrick 首页</a></li>
+                        <li><a href="../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../jetbrick-webmvc/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="https://github.com/subchen/jetbrick-webmvc"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <article class="markdown">
+        <h1><a class="anchor" name="-bypassrequesturls"></a>资源过滤器 BypassRequestUrls</h1> 
+<p>在 <code>web.xml</code> 中，我们通常将 URL 映射成 <code>/*</code>，也就是将所有请求的 URL 都交给 <code>DispatcherFilter</code> 来进行处理。</p> 
+<p>这其中包括了 js, css, jpg 等静态资源，也包括像 jsp 这样的等动态页面。而像这样的 URL 通常是由默认的 Servlet 来处理的，我们的 <code>DispatcherFilter</code> 是无法直接处理这样的 URL 资源的。如此就会造成这些 URL 将无法得到正确的处理。</p> 
+<p>所以，这里我们需要对这些静态/动态资源进行 URL 过滤，让这些 URL 交给其他的 Servlet 来处理。</p> 
+<h2><a class="anchor" name="url-"></a>1 URL 过滤匹配算法</h2> 
+<p>jetbrick 提供了 2 种资源过滤器，使用的不同的匹配算法。用户也可以实现自己的资源过滤器。</p> 
+<ol> 
+ <li>前缀/后缀匹配: <a href="#-prefixsuffixbypassrequesturls">PrefixSuffixBypassRequestUrls</a>（默认）</li> 
+ <li>正则表达式匹配: <a href="#-regexbypassrequesturls">RegexBypassRequestUrls</a></li> 
+</ol> 
+<h3><a class="anchor" name="-prefixsuffixbypassrequesturls-"></a>1.1 前缀/后缀匹配: PrefixSuffixBypassRequestUrls（默认）</h3> 
+<p>匹配方式和常见的通配符匹配类似，但是只能使用 <code>*</code>, 并且 <code>*</code> 只能放在最前面或者最后面。</p> 
+<pre><code class="highlight plaintext">$bypassUrls = jetbrick.web.mvc.router.PrefixSuffixBypassRequestUrls
+$bypassUrls.patterns = *.jsp, *.html, /assets/*
+
+web.urls.bypass = $bypassUrls
+</code></pre> 
+<h3><a class="anchor" name="-regexbypassrequesturls"></a>1.2 正则表达式匹配: RegexBypassRequestUrls</h3> 
+<pre><code class="highlight plaintext">$bypassUrls = jetbrick.web.mvc.router.RegexBypassRequestUrls
+$bypassUrls.patterns = \
+    ^(.+[.])(jsp|html)$, \
+    ^(/assets/|/static/).+$
+
+web.urls.bypass = $bypassUrls
+</code></pre> 
+<h2><a class="anchor" name="1498584314"></a>2 自定义资源过滤器</h2> 
+<hr> 
+<p>如果用户想要自定义自己的过滤器，只要实现 <code>jetbrick.web.mvc.BypassRequestUrls</code> 接口即可。</p> 
+<pre><code class="highlight java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">BypassRequestUrls</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="n">accept</span><span class="o">(</span><span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="n">String</span> <span class="n">path</span><span class="o">);</span>
+
+<span class="o">}</span>
+</code></pre>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

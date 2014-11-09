@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>开发 :: jetbrick-template-1x</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-template/1x/userguide.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../../jetbrick-template/index.html" class="navbar-brand" style="padding:10px;">
+                <img src="../../assets/images/logo-jetbrick-template-1x-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="../../jetbrick-template/1x/overview.html">概述</a></li>
+                <li><a href="../../jetbrick-template/1x/userguide.html">开发</a></li>
+                <li><a href="../../jetbrick-template/1x/config.html">配置</a></li>
+                <li><a href="../../jetbrick-template/1x/syntax.html">语法</a></li>
+                <li><a href="../../jetbrick-template/1x/integration.html">Web集成</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">FAQ <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/1x/faq-compile.html">将模板编译成 Java Class 有什么好处</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-define.html">为什么需要 #define 声明变量类型？</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-error.html">常见错误分析</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-autoscan.html">如何让自动扫描发现用户自定义的扩展方法/函数/标签 Class</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-include.html">如何嵌入子模板？（父子间参数传递）</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-layout.html">如何实现 layout 功能？</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-tag.html">如何自定义 Tag？</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-spring.html">在 Spring 中的集成方法</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">jetbrick 首页</a></li>
+                        <li><a href="../../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../../jetbrick-template/1x/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="http://github.com/subchen/jetbrick-template-1x"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jb-announcement">
+        jetbrick-template-2.x 已经发布，新版文档请看这里：<a href="http://subchen.github.io/jetbrick-template/2x/">http://subchen.github.io/jetbrick-template/2x/</a>
+    </div>
+
+    <article class="markdown">
+        <h1><a class="anchor" name="-start"></a>从这里开始 Start</h1> 
+<h2><a class="anchor" name="-steps"></a>1 基本步骤 Steps</h2> 
+<ol> 
+ <li>创建自定义配置的 <code>JetEngine</code> 对象。推荐使用单例模式创建。</li> 
+ <li>根据模板路径，获取一个模板对象 <code>JetTemplate</code>。</li> 
+ <li>创建一个 <code>Map&lt;String, Object&gt;</code> 对象，并加入你的 data objects。</li> 
+ <li>准备一个待输出的对象，<code>OutputStream</code> 或者 <code>Writer</code>。</li> 
+ <li>根据你的 data objects 来渲染模板，并获得输出结果。</li> 
+</ol> 
+<p>具体的 Java 代码，看上去是这样的：</p> 
+<pre><code class="highlight java"><span class="c1">// 创建一个默认的 JetEngine</span>
+<span class="n">JetEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="n">JetEngine</span><span class="o">.</span><span class="na">create</span><span class="o">();</span> 
+
+<span class="c1">// 获取一个模板对象</span>
+<span class="n">JetTemplate</span> <span class="n">template</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="na">getTemplate</span><span class="o">(</span><span class="s">"/sample.jetx"</span><span class="o">);</span>
+
+<span class="c1">// 创建 context 对象</span>
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">context</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+<span class="n">context</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"user"</span><span class="o">,</span> <span class="n">user</span><span class="o">);</span>
+<span class="n">context</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"books"</span><span class="o">,</span> <span class="n">books</span><span class="o">);</span>
+
+<span class="c1">// 渲染模板</span>
+<span class="n">StringWriter</span> <span class="n">writer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringWriter</span><span class="o">();</span>
+<span class="n">template</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">writer</span><span class="o">);</span>
+
+<span class="c1">// 打印结果</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">writer</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+</code></pre> 
+<p>整个过程，是不是非常简单？</p> 
+<p>下面将介绍几个 API 的核心对象：<code>JetEngine</code>，<code>JetTemplate</code>，<code>JetContext</code> </p> 
+<h1><a class="anchor" name="-core"></a>核心对象 Core</h1> 
+<h2><a class="anchor" name="jetengine"></a>2 JetEngine</h2> 
+<p>整个模板引擎的由 <code>JetEngine</code> 驱动，不同的 <code>JetEngine</code> 对象可以使用不同的配置。一般在一个 Application 或者 Webapp 中，我们只需要一个 <code>JetEngine</code> 对象就可以了，我们推荐使用单例模式创建。</p> 
+<h3><a class="anchor" name="-jetengine-"></a>2.1 如何创建 JetEngine？</h3> 
+<ol> 
+ <li><p><code>JetEngine.create()</code></p> <p>在 classpath 根目录下面自动查找 <code>jetbrick-template.properties</code> 文件。如果文件不存在，则使用默认配置。</p></li> 
+ <li><p><code>JetEngine.create(File)</code></p> <p>从用户指定的 <code>File</code> 文件中加载系统配置，该文件必须是一个 <code>.properties</code> 文件。</p></li> 
+ <li><p><code>JetEngine.create(Properties)</code></p> <p>从用户指定的 <code>Properties</code> 对象中加载系统配置。</p></li> 
+</ol> 
+<p>有哪些配置？ <a href="config.html">看这里所有的配置</a></p> 
+<h3><a class="anchor" name="-jettemplate-"></a>2.2 获取 JetTemplate 对象</h3> 
+<p>通过下面的方法获取 <code>JetTemplate</code> 对象。</p> 
+<pre><code class="highlight java"><span class="kd">public</span> <span class="n">JetTemplate</span> <span class="nf">getTemplate</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ResourceNotFoundException</span><span class="o">;</span>
+</code></pre> 
+<p>我们也可以获得一个 <code>Resource</code> （模板文件或者非模板文件），或者判断一个 <code>Resource</code> 是否存在。</p> 
+<pre><code class="highlight java"><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">lookupResource</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="o">);</span>
+<span class="kd">public</span> <span class="n">Resource</span> <span class="nf">getResource</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ResourceNotFoundException</span><span class="o">;</span>
+</code></pre> 
+<blockquote> 
+ <p><strong>注意</strong>：对于一个 resource 或者 template 的 name，应该以 <code>/</code> 开头，并且以 <code>/</code> 作为分隔符，如：<code>/templates/index.jetx</code>。</p> 
+</blockquote> 
+<h3><a class="anchor" name="933655172"></a>2.3 从源码中直接创建模板</h3> 
+<pre><code class="highlight java"><span class="kd">public</span> <span class="n">JetTemplate</span> <span class="nf">createTemplate</span><span class="p">(</span><span class="n">String</span> <span class="n">source</span><span class="o">);</span>
+</code></pre> 
+<p>比如：</p> 
+<pre><code class="highlight java"><span class="n">JetTemplate</span> <span class="n">template</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="na">createTemplate</span><span class="o">(</span><span class="s">"${1+2*3}"</span><span class="o">);</span>
+<span class="n">UnsafeCharArrayWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UnsafeCharArrayWriter</span><span class="o">();</span>
+<span class="n">template</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="k">new</span> <span class="n">JetContext</span><span class="o">(),</span> <span class="n">out</span><span class="o">);</span>
+<span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="s">"7"</span><span class="o">,</span> <span class="n">out</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+</code></pre> 
+<p>注意： createTemplate() 每次都会编译生成新的 JetTemplate 对象，如果需要缓存，请自行维护。</p> 
+<h2><a class="anchor" name="jettemplate"></a>3 JetTemplate</h2> 
+<p>对应于一个模板文件，通过 <code>JetEngine.getTemplate(name)</code> 获取。在第一次获取的时候，会先将模板生成对应的 <code>.java</code> 文件，然后在将 <code>.java</code> 文件编译成 <code>.class</code> 文件。</p> 
+<p>如果模板不存在，则抛出 <code>ResourceNotFoundException</code>。</p> 
+<p>然后通过下面几个方法可以对模板进行渲染：</p> 
+<pre><code class="highlight java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">render</span><span class="p">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">context</span><span class="o">,</span> <span class="n">Writer</span> <span class="n">out</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">render</span><span class="p">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">context</span><span class="o">,</span> <span class="n">OutputStream</span> <span class="n">out</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">render</span><span class="p">(</span><span class="n">JetContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">Writer</span> <span class="n">out</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">render</span><span class="p">(</span><span class="n">JetContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">OutputStream</span> <span class="n">out</span><span class="o">);</span>
+</code></pre> 
+<p>我们可以使用 <code>Map&lt;String, Object&gt;</code> 或者 <code>JetContext</code> 存储我们的 data objects。<code>JetContext</code> 是对 <code>Map&lt;String, Object&gt;</code> 的简单封装。</p> 
+<blockquote> 
+ <p><strong>注意</strong>： </p> 
+ <ul> 
+  <li><code>context</code> 对象在模板运行期间，并不会受到模板污染，即数据不会被改变（保证数据的无侵入性）。</li> 
+ </ul> 
+</blockquote> 
+<h2><a class="anchor" name="jetcontext"></a>4 JetContext</h2> 
+<p>用来存储和获取模板关联的 data objects。可以通过 <code>new JetContext()</code> 或者 <code>new JetContext(map)</code> 创建。</p> 
+<p>使用 <code>JetContext</code> 就像使用 Java 的 <code>HashMap</code> 一样。常用的方法如下：</p> 
+<pre><code class="highlight java"><span class="kd">public</span> <span class="n">Object</span> <span class="nf">get</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">put</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">Object</span> <span class="n">value</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">putAll</span><span class="p">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">context</span><span class="o">);</span>
+</code></pre> 
+<blockquote> 
+ <p><strong>注意</strong>：</p> 
+ <ul> 
+  <li><code>JetContext</code> 会被 <code>#put</code> 指令修改</li> 
+  <li>用户提供的 <code>JetContext</code> 不会受到 <code>#set</code> 的影响，但是内部的使用的 <code>JetContext</code> 对象会受到 <code>#set</code> 指令的影响。</li> 
+  <li><code>JetContext</code> 会在父子模板调用的时候，形成一个 Context Chain，子模板可以自动获取父模板的变量，而父模板无法看到子模板的 <code>JetContext</code>。但是子模板可以通过 <code>#put(name, value)</code> 来修改父模板的 <code>JetContext</code>。具体查看：<a href="faq-include.html">如何嵌入子模板？</a></li> 
+ </ul> 
+</blockquote> 
+<h1><a class="anchor" name="1213031356"></a>高级用法</h1> 
+<p>上面只是简单的介绍了一下 <code>jetbrick-template</code> 的基本用法，下面将介绍一些高级用法，也是 <code>jetbrick-template</code> 有别于其他模板引擎的特色。</p> 
+<p><a name="methods"></a></p> 
+<h2><a class="anchor" name="-methods"></a>5 方法扩展 Methods</h2> 
+<p>我们知道一个 Java Class 的 所有 methods 都是定义在同一个 class 文件中的，不能在其他地方进行动态扩展。但是一些其他动态语言却支持在 Class 外部为这个 Class 增加一些方法。比如：</p> 
+<ul> 
+ <li>JavaScript 的 prototype 机制</li> 
+ <li>Groovy 的 metaClass 机制</li> 
+ <li>JetBrains 的 Kotlin</li> 
+</ul> 
+<p>jetbrick-template 也在这里带给大家强大的动态方法扩展机制。如：<code>"123".asInt()</code>, <code>new Date().format("yyyy-MM-dd")</code>。</p> 
+<blockquote> 
+ <p><strong>注意</strong>：如果 Class 已经定义了同名方法，则优先使用 Class 定义的方法。但是扩展方法支持方法重载(Overrload)。</p> 
+</blockquote> 
+<p>方法扩展支持 2 种模式：</p> 
+<ul> 
+ <li>上下文无关方法：MethodTool.method(bean, ...)</li> 
+ <li>上下文相关方法：MethodTool.method(bean, JetPageContext, ...)</li> 
+</ul> 
+<h3><a class="anchor" name="-methodtool-method-bean-"></a>5.1 上下文无关方法 MethodTool.method(bean, ...)</h3> 
+<ul> 
+ <li>方法签名必须是 <code>public</code> 和 <code>static</code></li> 
+ <li>方法的第一个参数类型必须是要扩展的 Class</li> 
+ <li>方法其余参数自定义</li> 
+</ul> 
+<p>示例：对 <code>String</code> 进行扩展</p> 
+<pre><code class="highlight java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringMethods</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">link</span><span class="o">(</span><span class="n">String</span> <span class="n">text</span><span class="o">,</span> <span class="n">String</span> <span class="n">url</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"&lt;a href=\""</span> <span class="o">+</span> <span class="n">url</span> <span class="o">+</span> <span class="s">"\"&gt;"</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="s">"&lt;/a&gt;"</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre> 
+<p>然后需要把扩展的 <code>StringMethods</code> 注册到 <code>JetEngine</code>。</p> 
+<pre><code class="highlight java"><span class="c1">// 把 StringMethods 加入到 engine 中</span>
+<span class="n">Properties</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Properties</span><span class="o">();</span>
+<span class="n">config</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">JetConfig</span><span class="o">.</span><span class="na">IMPORT_METHODS</span><span class="o">,</span> <span class="n">StringMethods</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+<span class="n">JetEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="n">JetEngine</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">config</span><span class="o">);</span>
+<span class="o">...</span>
+</code></pre> 
+<p>模板：</p> 
+<pre><code class="highlight plaintext">${"BAIDU".link("http://www.baidu.com/")}
+</code></pre> 
+<p>输出结果：</p> 
+<pre><code class="highlight plaintext">&lt;a href="http://www.baidu.com/"&gt;BAIDU&lt;/a&gt;
+</code></pre> 
+<h3><a class="anchor" name="-methodtool-method-bean-jetpagecontext-"></a>5.2 上下文相关方法 MethodTool.method(bean, JetPageContext, ...)</h3> 
+<p>如果扩展的方法需要用到 template 相关联的运行时信息 <code>JetPageContext</code>，那么我们就需要扩展一个上下文相关的 method。</p> 
+<p>和上下文无关的扩展方法相比，上下文相关的扩展方法多一个参数。</p> 
+<ul> 
+ <li>方法签名必须是 <code>public</code> 和 <code>static</code></li> 
+ <li>方法第一个参数类型是要扩展的 Class</li> 
+ <li><strong>方法第二个参数类型必须是 JetPageContext</strong></li> 
+ <li>方法其余参数自定义</li> 
+</ul> 
+<pre><code class="highlight java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserInfoMethods</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">isOnline</span><span class="o">(</span><span class="n">UserInfo</span> <span class="n">user</span><span class="o">,</span> <span class="n">JetPageContext</span> <span class="n">ctx</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">HttpSession</span> <span class="n">session</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpSession</span><span class="o">)</span> <span class="n">ctx</span><span class="o">.</span><span class="na">getContext</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="n">JetWebContext</span><span class="o">.</span><span class="na">SESSION</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"user_"</span> <span class="o">+</span> <span class="n">user</span><span class="o">.</span><span class="na">getName</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 把 UserInfoMethods 加入到 engine 中</span>
+<span class="n">Properties</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Properties</span><span class="o">();</span>
+<span class="n">config</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">JetConfig</span><span class="o">.</span><span class="na">IMPORT_METHODS</span><span class="o">,</span> <span class="n">UserInfoMethods</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+<span class="n">JetEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="n">JetEngine</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">config</span><span class="o">);</span>
+<span class="o">...</span>
+</code></pre> 
+<p>模板：</p> 
+<pre><code class="highlight plaintext">#define(UserInfo user)
+${user.isOnline()}
+</code></pre> 
+<p><a name="functions"></a></p> 
+<h2><a class="anchor" name="-functions"></a>6 函数扩展 Functions</h2> 
+<p>jetbrick-template 还支持函数扩展，如 <code>${now()}</code>, <code>${include("tag.jetx")}</code>。</p> 
+<ul> 
+ <li>上下文无关函数：任意参数</li> 
+ <li>上下文相关函数：第一个参数必须是 JetPageContext</li> 
+</ul> 
+<p>示例：</p> 
+<pre><code class="highlight java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Functions</span> <span class="o">{</span>
+  <span class="c1">// 上下文无关函数</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">today</span><span class="o">(</span><span class="n">String</span> <span class="n">format</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="n">format</span><span class="o">).</span><span class="na">format</span><span class="o">(</span><span class="k">new</span> <span class="n">Date</span><span class="o">());</span>
+  <span class="o">}</span>
+  <span class="c1">// 上下文相关函数</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">hello</span><span class="o">(</span><span class="n">JetPageContext</span> <span class="n">ctx</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"Hello "</span> <span class="o">+</span> <span class="n">ctx</span><span class="o">.</span><span class="na">getContext</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="s">"name"</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 把 Functions 加入到 engine 中</span>
+<span class="n">Properties</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Properties</span><span class="o">();</span>
+<span class="n">config</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">JetConfig</span><span class="o">.</span><span class="na">IMPORT_FUNCTIONS</span><span class="o">,</span> <span class="n">Functions</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+<span class="n">JetEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="n">JetEngine</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">config</span><span class="o">);</span>
+<span class="o">...</span>
+
+</code></pre> 
+<p>模板：</p> 
+<pre><code class="highlight plaintext">${today("yyyy-MM-dd")}
+${hello()}
+</code></pre> 
+<blockquote> 
+ <p><strong>注意</strong>：函数和扩展方法的唯一区别是少了第一个扩展类型的参数，其他的都一样。</p> 
+</blockquote> 
+<p><a name="tags"></a></p> 
+<h2><a class="anchor" name="-tags"></a>7 自定义标签 Tags</h2> 
+<p>jetbrick-template 自定义标签 Tag，类似于 JSP Taglib，但是要比 JSP Taglib 更简单更好用。</p> 
+<p>示例：</p> 
+<pre><code class="highlight java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Tags</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">cache</span><span class="o">(</span><span class="n">JetTagContext</span> <span class="n">ctx</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">timeout</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+    <span class="n">Cache</span> <span class="n">cache</span> <span class="o">=</span> <span class="n">CacheManager</span><span class="o">.</span><span class="na">getCache</span><span class="o">();</span> <span class="c1">// 请用自己的 Cache 代替</span>
+    <span class="n">Object</span> <span class="n">value</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">value</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">value</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="na">getBodyContext</span><span class="o">();</span>
+      <span class="n">cache</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">value</span><span class="o">,</span> <span class="n">timeout</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="n">ctx</span><span class="o">.</span><span class="na">getWriter</span><span class="o">().</span><span class="na">print</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre> 
+<p>对于每一个 Tag 的方法声明，有如下要求：</p> 
+<ul> 
+ <li>方法签名必须是 <code>public</code> <code>static</code></li> 
+ <li>方法返回值必须是 <code>void</code></li> 
+ <li>方法第一个参数必须是 <code>JetTagContext</code>， 其余参数自定义</li> 
+ <li>允许 throws 任意的 <code>Throwable</code></li> 
+ <li>允许定义相同名字的 Tag，但是方法参数不一样 （Overload）</li> 
+ <li>支持可变参数 (VarArgs)</li> 
+</ul> 
+<p>然后需要把自定义的 Tags 注册到 <code>JetEngine</code>。</p> 
+<pre><code class="highlight plaintext">// 把 Tags 加入到 engine 中
+Properties config = new Properties();
+config.put(JetConfig.IMPORT_TAGS, Tags.class.getName());
+JetEngine engine = JetEngine.create(config);
+...
+</code></pre> 
+<p>模板：</p> 
+<pre><code class="highlight plaintext">#tag cache("sum", 10)
+    计算结果将被缓存10秒： ${1+2+3+4+5+6+7+8+9}
+#end
+</code></pre> 
+<p>具体可以参考：<a href="faq-tag.html">jetbrick-template 中如何自定义 Tag？</a></p> 
+<h1><a class="anchor" name="-finding-issue"></a>错误处理 Finding Issue</h1> 
+<p><code>jetbrick-template</code> 提供了强大的错误定位功能，你再也不用担心找不到错误原因了。</p> 
+<h2><a class="anchor" name="-syntax-error"></a>8 语法错误 Syntax Error</h2> 
+<p>模板示例：</p> 
+<pre><code class="highlight plaintext">#for (user in userlist)
+&lt;tr&gt;
+    &lt;td&gt;${for.index}&lt;/td&gt;
+    &lt;td&gt;${user.name}&lt;/td&gt;
+    &lt;td&gt;${user.roles.asHTML()}&lt;/td&gt;
+&lt;/tr&gt;
+#end
+</code></pre> 
+<p>错误提示：(错误所在的行号和列号，错误模板路径，错误原因等）</p> 
+<pre><code class="highlight plaintext">22:14:51.406 [main] ERROR (JetTemplateErrorListener.java:27) - Template parse failed:
+C:\Users\Sub\AppData\Local\Temp\jetx_1_0_0\template\sample.java:5
+message: The method asHTML() is undefined for the type List.
+1. #for (user: userlist)
+2. &lt;tr&gt;
+3.     &lt;td&gt;${for.index}&lt;/td&gt;
+4.     &lt;td&gt;${user.name}&lt;/td&gt;
+5.     &lt;td&gt;${user.roles.asHTML()}&lt;/td&gt;
+                        ^^^^^^
+</code></pre> 
+<h2><a class="anchor" name="-compile-error"></a>9 编译错误 Compile Error</h2> 
+<p>这种错误正常情况下是不会发生的，如果发生这种情况，<a href="https://github.com/subchen/jetbrick-template/issues/">请到这里 open issues</a>。</p> 
+<p>但是如果发生这样的错误，也可以得到下面的类似错误提示。</p> 
+<pre><code class="highlight plaintext">Exception in thread "main" java.lang.IllegalStateException: Compilation failed.
+C:\Users\Sub\AppData\Local\Temp\jetx_1_0_0\template\debug_jetx.java:13: 'void' type not allowed here
+  11:     JetWriter $out = $ctx.getWriter();
+  12:     JetContext context = $ctx.getContext();
+  13:     $out.print(("1"+JetFunctions.debug("aaa"))); // line: 1
+                      ^
+1 error(s)
+</code></pre> 
+<p>我们可以从打印出来的编译错误中，可以看到大部分源代码后面都会有一个 <code>// line: XXX</code> 的注释，这个就是生成的 java 代码对应原始模板文件的行号映射。这样我们就能找到原始模板的错误行数了。</p> 
+<p>模板示例：</p> 
+<pre><code class="highlight plaintext">1: ${"1"+debug("aaa")}
+</code></pre> 
+<p>生成的 Java 代码示例：</p> 
+<pre><code class="highlight java"><span class="n">$out</span><span class="o">.</span><span class="na">print</span><span class="o">((</span><span class="s">"1"</span><span class="o">+</span><span class="n">JetFunctions</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">"aaa"</span><span class="o">)));</span> <span class="c1">// line: 1</span>
+</code></pre> 
+<h2><a class="anchor" name="-runtime-error"></a>10 运行期错误 Runtime Error</h2> 
+<p>如果在模板运行期间发生错误，那么就可以得到类似下面的错误 Java Exception Stack。</p> 
+<p>错误例子模板如下：</p> 
+<pre><code class="highlight plaintext">#set (arraylist = ["a","b","c","d"])
+#for (int x : arraylist)
+    ${x}
+#end
+</code></pre> 
+<p>获得的运行期错误 Java Exception Stack 如下：</p> 
+<pre><code class="highlight plaintext">generateJavaClass: C:\Users\Sub\AppData\Local\Temp\jetx_1_0_0\template\for_loop_list_jetx.class
+Exception in thread "main" java.lang.ClassCastException: java.lang.String cannot be cast to java.lang.Integer
+    at template.for_loop_list_jetx.render(for_loop_list_jetx.java:14)
+    at jetbrick.template.JetTemplate.render(JetTemplate.java:125)
+    at jetbrick.template.JetTemplate.render(JetTemplate.java:115)
+    at testcase.JetEngineTestCase.test(JetEngineTestCase.java:36)
+    at testcase.JetEngineTestCase.main(JetEngineTestCase.java:64)
+</code></pre> 
+<p>根据错误所在行(for_loop_list_jetx.java:14)，我们查看生成的 Java Source。</p> 
+<pre><code class="highlight java"><span class="mi">11</span><span class="o">:</span>    <span class="n">List</span> <span class="n">arraylist</span> <span class="o">=</span> <span class="o">(</span><span class="n">List</span><span class="o">)</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"a"</span><span class="o">,</span><span class="s">"b"</span><span class="o">,</span><span class="s">"c"</span><span class="o">,</span><span class="s">"d"</span><span class="o">);</span> <span class="c1">// line: 1</span>
+<span class="mi">12</span><span class="o">:</span>    <span class="n">Iterator</span><span class="o">&lt;?&gt;</span> <span class="n">$it_3</span> <span class="o">=</span> <span class="n">JetUtils</span><span class="o">.</span><span class="na">asIterator</span><span class="o">(</span><span class="n">arraylist</span><span class="o">);</span>
+<span class="mi">13</span><span class="o">:</span>    <span class="k">while</span> <span class="o">(</span><span class="n">$it_3</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span> <span class="c1">// line: 2</span>
+<span class="mi">14</span><span class="o">:</span>      <span class="n">Integer</span> <span class="n">x</span> <span class="o">=</span> <span class="o">(</span><span class="n">Integer</span><span class="o">)</span> <span class="n">$it_3</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+<span class="mi">15</span><span class="o">:</span>      <span class="n">$out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">$txt_4</span><span class="o">,</span> <span class="n">$txt_4_bytes</span><span class="o">);</span>
+</code></pre> 
+<p>然后根据 Java Source 中对应的行数，知道这个是一个 <code>#for</code> 指令，查看生成的注释(<code>// line: 2</code>)，就能找到对应的原始模板所在的错误行号是第二行：<code>#for (int x : arraylist)</code>。</p> 
+<p>至此，我们就能知道错误的原因是 <code>arraylist</code> 是一个 <code>List&lt;Object&gt;</code>，里面的每个元素是 <code>String</code>，强制类型转换成 <code>int</code> 失败导致的。正确的模板语句应该是 <code>#for (String x : arraylist)</code>。</p> 
+<p><a name="debug"></a></p> 
+<h2><a class="anchor" name="-debug-"></a>11 如何调试模板 debug？</h2> 
+<h3><a class="anchor" name="-debug-format-args-"></a>11.1 使用 debug(format, args...) 函数</h3> 
+<p>范例：</p> 
+<pre><code class="highlight plaintext">${debug("id = {}, users.size = {}.", id, users.size()}
+</code></pre> 
+<blockquote> 
+ <p>注意： </p> 
+ <ol> 
+  <li><p>要使用 debug 函数，需要 Slf4j 配合，在对应的 log 实现中打开 debug.</p></li> 
+  <li><p>具体的 format 参数格式请查看 <a href="http://www.slf4j.org/apidocs/org/slf4j/Logger.html">Slf4j Logger</a>。</p></li> 
+ </ol> 
+</blockquote> 
+<p>开启 debug 日志：</p> 
+<ul> 
+ <li><p>Log4j: </p> <pre><code class="highlight plaintext">log4j.logger.jetbrick.template.runtime.JetUtils = DEBUG
+</code></pre></li> 
+ <li><p>Logback</p> <pre><code class="highlight xml"><span class="nt">&lt;logger</span> <span class="na">name=</span><span class="s">"jetbrick.template.runtime.JetUtils"</span> <span class="na">level=</span><span class="s">"DEBUG"</span> <span class="nt">/&gt;</span>
+</code></pre></li> 
+</ul> 
+<h3><a class="anchor" name="-eclipse-"></a>11.2 用 Eclipse 进行调试</h3> 
+<ol> 
+ <li><p>将模板编译路径连接到 Project 的 source path</p> <p><img src="/assets/images/snapshots/screen_link_source.png" alt="png"></p></li> 
+ <li><p>设置断点 </p> <p><img src="/assets/images/snapshots/screen_set_breakpoint.png" alt="png"></p></li> 
+ <li><p>开始 debug</p> <p><img src="/assets/images/snapshots/screen_debug.png" alt="png"></p></li> 
+</ol>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

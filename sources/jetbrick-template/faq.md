@@ -1,8 +1,0 @@
-* [jetbrick-template 将模板编译成 Java Class 有什么好处？](faq-compile.html)
-* [jetbrick-template 中为什么需要 #define 声明变量类型？](faq-define.html)
-* [jetbrick-template 常见错误分析](faq-error.html)
-* [jetbrick-template 如何让自动扫描发现用户自定义的扩展方法/函数/标签 Class](faq-autoscan.html)
-* [jetbrick-template 中如何嵌入子模板？（父子间参数传递）](faq-include.html)
-* [jetbrick-template 中如何自定义 Tag？](faq-tag.html)
-* [jetbrick-template 中如何实现 layout 功能？](faq-layout.html)
-* [jetbrick-template 在 Spring 中的集成方法](faq-spring.html)

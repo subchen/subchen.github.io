@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IoC Annotation 一览表 :: jetbrick-ioc</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-ioc/annotation-list.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../jetbrick-ioc/overview.html" class="navbar-brand" style="padding:10px;">
+                <img src="../assets/images/logo-jetbrick-ioc-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发指南 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../jetbrick-ioc/overview.html">概述 Overview</a></li>
+                        <li><a href="../jetbrick-ioc/helloworld.html">快速入门 Hello World</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-ioc/anno-iocbean.html">@IocBean</a></li>
+                        <li><a href="../jetbrick-ioc/anno-inject.html">@Inject</a></li>
+                        <li><a href="../jetbrick-ioc/lifecycle.html">IoC 对象生命周期</a></li>
+                        <li><a href="../jetbrick-ioc/anno-config.html">@Config</a></li>
+                        <li><a href="../jetbrick-ioc/anno-springbean.html">@SpringBean</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-ioc/custom-annotation.html">自定义注入 Annotation</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-ioc/annotation-list.html">IoC Annotation 一览表</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../index.html">jetbrick 首页</a></li>
+                        <li><a href="../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../jetbrick-ioc/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="https://github.com/subchen/jetbrick-ioc"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <article class="markdown">
+        <h1><a class="anchor" name="ioc-annotation-"></a>IoC Annotation 一览表</h1> 
+<p>这里提供一个完整的 IoC 使用的 Annotation 列表，以供参考。</p> 
+<table>
+ <thead> 
+  <tr> 
+   <th>注解</th> 
+   <th>说明</th> 
+  </tr> 
+ </thead>
+ <tbody> 
+  <tr> 
+   <td>@IocBean</td> 
+   <td>AnnotationIocLoader 将根据这个注解自动将该对象加入到 IoC 容器中管理</td> 
+  </tr> 
+  <tr> 
+   <td>@Inject</td> 
+   <td>注入 IoC 中管理的对象（字段和参数，构造函数）</td> 
+  </tr> 
+  <tr> 
+   <td>@Config</td> 
+   <td>注入配置文件中配置的参数（字段和参数）</td> 
+  </tr> 
+  <tr> 
+   <td>@SpringBean</td> 
+   <td>注入 Spring IoC 中的对象（字段和参数）</td> 
+  </tr> 
+  <tr> 
+   <td>@IocInit</td> 
+   <td>注入完成后的初始化方法</td> 
+  </tr> 
+  <tr> 
+   <td>@IocFree</td> 
+   <td>被 IoC 容器删除时调用的方法</td> 
+  </tr> 
+  <tr> 
+   <td>@InjectFieldWith</td> 
+   <td>实现自定义的字段注入的注解</td> 
+  </tr> 
+  <tr> 
+   <td>@InjectParameterWith</td> 
+   <td>实现自定义的参数注入的注解</td> 
+  </tr> 
+ </tbody>
+</table>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

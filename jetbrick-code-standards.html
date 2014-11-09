@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JAVA 编码规范 2.0 for Jetbrick :: jetbrick</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-code-standards.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="./assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="./assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="./assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="./assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="./index.html" class="navbar-brand" style="padding:10px;">
+                <img src="./assets/images/logo-jetbrick-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="./index.html">jetbrick 首页</a></li>
+                        <li><a href="./jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="./jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="./jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="./jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="./jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href=".//download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="https://github.com/subchen/jetbrick"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <article class="markdown">
+        <h1><a class="anchor" name="java-2-0-for-jetbrick"></a>JAVA 编码规范 2.0 for Jetbrick</h1> 
+<h2><a class="anchor" name="1-java-"></a>1 1. Java 文件格式</h2> 
+<ul> 
+ <li>文件格式必须是 <code>UTF-8</code>，无 <code>BOM</code> 格式</li> 
+ <li>文件回车换行符必须是 <code>Unix</code> 风格</li> 
+ <li>每个文件结尾必须有一个空白行</li> 
+ <li>行尾空白内容应该被 trim 掉</li> 
+ <li><p>每个文件开头必须写上项目的标准 LICENSE 注释，如下：</p> <pre><code class="highlight java"><span class="cm">/** * Copyright 2013-2014 Guoqiang Chen, Shanghai, China. All rights reserved. * * Author: Guoqiang Chen * Email: subchen@gmail.com * WebURL: https://github.com/subchen * * Licensed under the Apache License, Version 2.0 (the "License"); * you may not use this file except in compliance with the License. * You may obtain a copy of the License at * * http://www.apache.org/licenses/LICENSE-2.0 * * Unless required by applicable law or agreed to in writing, software * distributed under the License is distributed on an "AS IS" BASIS, * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. * See the License for the specific language governing permissions and * limitations under the License. */</span>
+</code></pre></li> 
+ <li><p>代码必须是格式化的，请使用统一的 Eclipse 的代码格式文件：<a href="http://github.com/jetbrick-aggregate/tree/master/jetbrick-eclipse-formatter/src/main/resources/jetbrick-eclipse-formatter.xml">jetbrick-eclipse-formatter.xml</a></p></li> 
+ <li><p>不想被自动格式化的代码请用 <code>@formatter</code> 包裹，如下：</p> <pre><code class="highlight java"><span class="c1">//@formatter:off</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span><span class="o">[]</span> <span class="n">DATE_PATTERNS</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{</span> 
+    <span class="s">"yyyy-MM-dd HH:mm:ss.SSS"</span><span class="o">,</span> 
+    <span class="s">"yyyy-MM-dd HH:mm:ss"</span><span class="o">,</span> 
+    <span class="s">"yyyy-MM-dd"</span><span class="o">,</span> 
+    <span class="s">"HH:mm:ss"</span>
+<span class="o">};</span>
+<span class="c1">//@formatter:on</span>
+</code></pre></li> 
+ <li><p>Java 文件必须是可编译的，不应该有任何的 <code>warning</code> 存在</p></li> 
+</ul> 
+<h2><a class="anchor" name="2-"></a>2 2. 包名</h2> 
+<ul> 
+ <li>包名必须是全部小写的，最好用一个单词表示，尽量不要以复数结尾</li> 
+ <li>包名必须以 <code>jetbrick.</code> 开头</li> 
+ <li>接口或者抽象类的多种实现，推荐以 <code>support</code>, <code>spi</code> 等命名</li> 
+</ul> 
+<h2><a class="anchor" name="3-"></a>3 3. 类名</h2> 
+<ul> 
+ <li>类名必须首字母大写，驼峰命名法： 如 <code>UserInfo</code>，<code>ClassUtils</code></li> 
+ <li>类名尽量不要缩写，如果缩写，必须为特别常用的缩写</li> 
+ <li>接口的命名<strong>不要</strong>以 <code>I</code> 开头</li> 
+ <li>抽象类推荐以 <code>Abstract</code> 开头</li> 
+ <li>接口的默认实现推荐以 <code>Default</code> 开头或者 <code>Impl</code> 结尾</li> 
+ <li>每个 Class 都需要标注 <code>@auther</code>, <code>@since</code></li> 
+ <li>每个 Class 都应该有简短的注释</li> 
+</ul> 
+<h2><a class="anchor" name="4-imports"></a>4 4. Imports</h2> 
+<ul> 
+ <li>Imports 间不要有空行</li> 
+ <li>超过 3 个相同包下面的 Class 需要使用 <code>.*</code> 代替</li> 
+ <li>不要使用 <code>import static</code>, 除了 <code>JUnit</code> / <code>TestNG</code> 的 <code>assertXXX</code> 方法</li> 
+</ul> 
+<h2><a class="anchor" name="5-"></a>5 5. 方法</h2> 
+<ul> 
+ <li>方法名称应该采用首字母小写，驼峰命名法： 如 <code>getUser</code>，<code>lookupClass</code></li> 
+ <li>对于一个 <code>public</code> 的方法，都应该对参数进行基本的校验，比如 <code>null</code> 检测</li> 
+ <li>对外开放 API 的 <code>public</code> 方法都需要标注 <code>@since</code></li> 
+ <li>每个 <code>public</code> 方法都应该有简短的注释</li> 
+ <li>推荐每个 <code>public</code> 的方法的参数和返回值都加上 <code>@Nullable</code> 或者 <code>@NotNull</code> 标注</li> 
+</ul> 
+<h2><a class="anchor" name="6-"></a>6 6. 常量</h2> 
+<ul> 
+ <li>常量必须是全大写，并用 <code>_</code> 分隔，如 <code>MAX_INTEGER</code></li> 
+ <li>常量必须是 <code>static</code> <code>final</code></li> 
+</ul> 
+<h2><a class="anchor" name="7-"></a>7 7. 变量</h2> 
+<ul> 
+ <li>变量名称必须首字母小写，驼峰命名法</li> 
+ <li>变量名尽量使用缩写，以简短为主</li> 
+ <li>不要用拼音，要用英文表示</li> 
+ <li>如果是集合或数组，用复数名词，或者添加 <code>List</code>, <code>Map</code> 等后缀</li> 
+</ul> 
+<h2><a class="anchor" name="8-"></a>8 8. 注释</h2> 
+<ul> 
+ <li>注释必须和代码保持一致，中文/英文均可</li> 
+ <li>注释中的第一个句子要以（英文）句号、问号或者感叹号结束。 <code>javadoc</code> 工具会将注释中的第一个句子放在方法汇总表和索引中。</li> 
+ <li>如果注释中有超过一个段落，用 <code>&lt;p&gt;</code> 标签分隔</li> 
+ <li>如果注释中有多个章节，用 <code>&lt;h2&gt;</code> 标签声明每个章节的标题</li> 
+ <li>示例代码以 <code>&lt;pre&gt;</code> 包裹</li> 
+</ul> 
+<h2><a class="anchor" name="9-"></a>9 9. 异常</h2> 
+<ul> 
+ <li>异常类名必须以 <code>Exception</code> 结尾</li> 
+ <li>所有自定义异常都必须继承自 <code>RuntimeException</code></li> 
+ <li>方法尽量不要抛出非 <code>RuntimeException</code> 异常</li> 
+ <li>异常应该和主要的 Class 放在一起，而不是所有的异常类放在一个包下面</li> 
+ <li>异常描述应该使用英文句子，尽量不要用中文。</li> 
+ <li>被 <code>catch</code> 住的 <code>Exception</code>，必须要处理，或者重新抛出</li> 
+</ul> 
+<h2><a class="anchor" name="10-"></a>10 10. 日志</h2> 
+<ul> 
+ <li>日志框架使用 <code>slf4j</code></li> 
+ <li>实例不多的对象类，不要使用 <code>static</code> 声明 <code>log</code></li> 
+ <li>尽量使用 <code>debug</code> 而不是 <code>info</code> 级别</li> 
+ <li>启动时候需要输出的重要日志，请用 <code>info</code> 级别</li> 
+ <li>被 <code>catch</code> 住的 <code>Exception</code>，应该被打印出来 <code>log.error(e)</code></li> 
+</ul> 
+<h2><a class="anchor" name="11-"></a>11 11. 单元测试</h2> 
+<ul> 
+ <li>单元测试框架用 <code>JUnit</code></li> 
+ <li>单元测试覆盖率工具用 <code>Jacoco</code></li> 
+ <li>Mock 框架使用 <code>Mockito</code></li> 
+ <li>尽可能为每个方法提供单元测试</li> 
+ <li>覆盖率应该不低于 <code>50%</code></li> 
+</ul>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

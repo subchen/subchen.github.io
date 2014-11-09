@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>如何实现 layout 功能？ :: jetbrick-template-1x</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-template/1x/faq-layout.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../../jetbrick-template/index.html" class="navbar-brand" style="padding:10px;">
+                <img src="../../assets/images/logo-jetbrick-template-1x-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="../../jetbrick-template/1x/overview.html">概述</a></li>
+                <li><a href="../../jetbrick-template/1x/userguide.html">开发</a></li>
+                <li><a href="../../jetbrick-template/1x/config.html">配置</a></li>
+                <li><a href="../../jetbrick-template/1x/syntax.html">语法</a></li>
+                <li><a href="../../jetbrick-template/1x/integration.html">Web集成</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">FAQ <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/1x/faq-compile.html">将模板编译成 Java Class 有什么好处</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-define.html">为什么需要 #define 声明变量类型？</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-error.html">常见错误分析</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-autoscan.html">如何让自动扫描发现用户自定义的扩展方法/函数/标签 Class</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-include.html">如何嵌入子模板？（父子间参数传递）</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-layout.html">如何实现 layout 功能？</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-tag.html">如何自定义 Tag？</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-spring.html">在 Spring 中的集成方法</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">jetbrick 首页</a></li>
+                        <li><a href="../../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../../jetbrick-template/1x/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="http://github.com/subchen/jetbrick-template-1x"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jb-announcement">
+        jetbrick-template-2.x 已经发布，新版文档请看这里：<a href="http://subchen.github.io/jetbrick-template/2x/">http://subchen.github.io/jetbrick-template/2x/</a>
+    </div>
+
+    <article class="markdown">
+        <h1><a class="anchor" name="-jetbrick-template-layout-"></a>在 jetbrick-template 中如何实现 layout 功能</h1> 
+<p>通常页面都有一个布局，大体上有页面头部，尾部，以及正文三部分。头部和尾部内容基本上固定，只有正文是变化的。</p> 
+<p>jetbrick-template 可以使用 3 种方法实现模板的 layout 功能。</p> 
+<ol> 
+ <li><code>#include(file, ...)</code> 指令</li> 
+ <li><code>#tag layout(file, ...)</code> 标签</li> 
+ <li><code>#tag block(name)</code> + <code>#inlcude(file, ...)</code> 组合</li> 
+</ol> 
+<h2><a class="anchor" name="753318042"></a>1 常规模式</h2> 
+<p>我们将页面公共部分放在 include 文件中，然后在每个页面中应用 include 文件来实现内容共享。</p> 
+<p>main.jetx</p> 
+<pre><code class="highlight html">#include("/include/header.jetx")
+<span class="nt">&lt;table&gt;</span>  
+  这是正文内容  
+<span class="nt">&lt;/table&gt;</span>  
+#include("/include/footer.jetx")
+</code></pre> 
+<p>这个不算 layout?<br> 呵呵，继续放下看。</p> 
+<h2><a class="anchor" name="670265539"></a>2 变种模式</h2> 
+<p>常规模式中，只是共享了一些公共内容，但是并没有实现真正的 layout，因为 layout 一变，include 的方式可能就会发生变化，这样所有文件都要重新 include，不是很方便。</p> 
+<p>下面就是 #include 模式的变种（动态 include），来实现真正的 layout。</p> 
+<p>layout.jetx</p> 
+<pre><code class="highlight html"><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>${title}<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"header"</span><span class="nt">&gt;</span>This is a logo image.<span class="nt">&lt;/div&gt;</span>
+
+    #include(parameter.pageUrl)
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"footer"</span><span class="nt">&gt;</span>Copyright @2000-2010, All Rights Reserved.<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre> 
+<p>main.jetx</p> 
+<pre><code class="highlight html"><span class="nt">&lt;table&gt;</span>  
+  这是正文内容  
+<span class="nt">&lt;/table&gt;</span>
+</code></pre> 
+<p>Action.java</p> 
+<pre><code class="highlight java"><span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"/layout.jetx?pageUrl="</span> <span class="o">+</span> <span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="s">"/main.jetx"</span><span class="o">,</span> <span class="err">"</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span><span class="o">);</span>
+<span class="n">RequestDispatcher</span> <span class="n">rd</span> <span class="o">=</span> <span class="n">getServletContext</span><span class="o">().</span><span class="na">getRequestDispatcher</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+<span class="n">rd</span><span class="o">.</span><span class="na">forward</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+</code></pre> 
+<p>怎么样？通过一个 pageUrl 参数来达到动态 layout 的目的，这样我们以后只要修改layout.jetx 文件就能达到修改所有页面布局了。</p> 
+<p>URL 访问方法： <a href="http://127.0.0.1:8080/layout.jetx?pageUrl=main.jetx">http://127.0.0.1:8080/layout.jetx?pageUrl=main.jetx</a></p> 
+<h2><a class="anchor" name="-tag-layout-file-"></a>3 #tag layout(file, ...)</h2> 
+<p>这里再介绍一种采用 layout 自定义标签来实现。</p> 
+<p>layout.jetx</p> 
+<pre><code class="highlight html"><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>${title}<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"header"</span><span class="nt">&gt;</span>This is a logo image.<span class="nt">&lt;/div&gt;</span>
+
+    ${bodyContent}
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"footer"</span><span class="nt">&gt;</span>Copyright @2000-2010, All Rights Reserved.<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre> 
+<p>main.jetx</p> 
+<pre><code class="highlight html">#tag layout("layout.jetx") 
+<span class="nt">&lt;table&gt;</span>  
+  这是正文内容  
+<span class="nt">&lt;/table&gt;</span>
+#end
+</code></pre> 
+<p>layout 标签允许指定一个 layout 模板文件，在渲染页面的时候，会将layout标签体的渲染内容作为一个 bodyContent 变量插入到 layout 指定模板文件里。</p> 
+<p>这样，我们就可以通过直接访问 <a href="http://127.0.0.1:8080/main.jetx">http://127.0.0.1:8080/main.jetx</a></p> 
+<h2><a class="anchor" name="-tag-block-inlcude"></a>4 组合 #tag block() + #inlcude</h2> 
+<p>上面的 #tag layout() 标签只能嵌入一块自定义的内容 <code>${bodyContent}</code>，那么如果想要嵌入多个自定义的变量块呢？</p> 
+<p>main.jetx</p> 
+<pre><code class="highlight html">#tag block("bodyContent1")
+    BODY 1111
+#end
+#tag block("bodyContent2")
+    BODY 2222
+#end
+#include ("layout.jetx")
+</code></pre> 
+<p>layout.jetx</p> 
+<pre><code class="highlight html">This is a header.
+<span class="nt">&lt;div&gt;</span>
+    ${bodyContent1}
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div&gt;</span>
+    ${bodyContent2}
+<span class="nt">&lt;/div&gt;</span>
+This is a footer.
+</code></pre> 
+<p>输出结果：</p> 
+<pre><code class="highlight html">This is a header.
+<span class="nt">&lt;div&gt;</span>
+    BODY 1111
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div&gt;</span>
+    BODY 2222
+<span class="nt">&lt;/div&gt;</span>
+This is a footer.
+</code></pre> 
+<p>怎么样？现在就可以随意的进行组合了。</p> 
+<h2><a class="anchor" name="block-"></a>5 block 的默认值和重载</h2> 
+<p>在 layout.jetx 中，我们也可以定义默认内容，在 main.jetx 中对默认内容进行重载，如下：</p> 
+<p>layout.jetx</p> 
+<pre><code class="highlight html">This is a header.
+<span class="nt">&lt;div&gt;</span>
+#tag default_block("bodyContent1")
+    This is a default BODY 1111
+#end
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div&gt;</span>
+#tag default_block("bodyContent2")
+    This is a default BODY 2222
+#end
+<span class="nt">&lt;/div&gt;</span>
+This is a footer.
+</code></pre> 
+<p>main.jetx</p> 
+<pre><code class="highlight html">#tag block("bodyContent1")
+    Override block 111
+#end
+#include ("layout.jetx")
+</code></pre> 
+<p>输出结果：</p> 
+<pre><code class="highlight html">This is a header.
+<span class="nt">&lt;div&gt;</span>
+    Override block 111
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div&gt;</span>
+    This is a default BODY 2222
+<span class="nt">&lt;/div&gt;</span>
+This is a footer.
+</code></pre> 
+<h2><a class="anchor" name="796152"></a>6 总结</h2> 
+<p>不管采用哪种方式，jetbrick-template 都提供很大的灵活性来实现页面布局功能。</p> 
+<p>其中自定义 #tag 标签机制提供了非常强大功能，很容易实现其他模板引擎难以实现的功能，比如像 JSP Taglib 一样实现自定义标签，如 Cache Tag 将内容缓存到 memecached/redis 的标签等等。</p>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

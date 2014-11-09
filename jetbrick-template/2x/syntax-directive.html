@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>指令 Directive :: jetbrick-template</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-template/2x/syntax-directive.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../../jetbrick-template/index.html" class="navbar-brand" style="padding:10px;">
+                <img src="../../assets/images/logo-jetbrick-template-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/overview.html">概述 Overview</a></li>
+                        <li><a href="../../jetbrick-template/2x/quickstart.html">快速开始 Quick Start</a></li>
+                        <li><a href="../../jetbrick-template/2x/core-object.html">核心对象 Core</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/global-context.html">全局变量 Global Context</a></li>
+                        <li><a href="../../jetbrick-template/2x/handle-error.html">模板详细错误</a></li>
+                        <li><a href="../../jetbrick-template/2x/debug.html">调试模板 Debug</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">进阶 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/ext-method.html">扩展方法 Method</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-function.html">扩展函数 Function</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-tag.html">标签 Tag</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-macro.html">宏 Macro</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/include.html">嵌入子模板 Include</a></li>
+                        <li><a href="../../jetbrick-template/2x/layout.html">布局 Layout</a></li>
+                    </ul>
+                </li>
+                <li><a href="../../jetbrick-template/2x/config.html">配置</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">语法 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/syntax-text.html">文本 Text</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-comment.html">注释 Comment</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-value.html">值 Value</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-directive.html">指令 Directive</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-expression.html">表达式 Expression</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/velocity-comparison.html">和 Velocity 的比较</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web集成 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/web-integration.html">Web 框架集成</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-servlet.html">直接使用 HttpServlet</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-filter.html">直接使用 Filter</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jetbrickmvc.html">与 Jetbrick webmvc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-springmvc.html">与 Spring webmvc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jfinal.html">与 JFinal 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jodd.html">与 Jodd madvoc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-struts.html">与 Struts 2.x 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-nutz.html">与 Nutz 集成</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">jetbrick 首页</a></li>
+                        <li><a href="../../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../../jetbrick-template/2x/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="http://github.com/subchen/jetbrick-template-2x"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jb-announcement">
+        jetbrick-template-1.x 旧版文档请看这里：<a href="http://subchen.github.io/jetbrick-template/1x/">http://subchen.github.io/jetbrick-template/1x/</a>
+    </div>
+
+    <article class="markdown">
+        <h1><a class="anchor" name="-directive"></a>指令 Directive</h1> 
+<h2><a class="anchor" name="-options"></a>1 模板选项 #options</h2> 
+<pre><code class="highlight plaintext">#options (
+    loadmacro = "/macors/commons.jetx",
+    loadmacro = "/macors/users.jetx",
+    import = "java.lang.*",
+    import = "java.util.*",
+    safecall = true,
+    strict = true,
+    trimWhitespaces = true
+)
+</code></pre> 
+<p>其中：</p> 
+<ul> 
+ <li><code>strict = true</code> 代表模板中用到的变量必须先进行 <code>#define</code>, 否则出错</li> 
+ <li><code>safecall = true</code> 开启安全调用</li> 
+ <li><code>import</code> 引入 package</li> 
+ <li><code>loadmacro</code> 引入外部文件中的 macro 定义</li> 
+ <li><code>trimLeadingWhitespaces</code> 删除文件头上的空白内容</li> 
+</ul> 
+<h2><a class="anchor" name="-define"></a>2 变量类型声明 #define</h2> 
+<p>为了让模板的可读性更好，以及防止一些未知的错误发生，我们提倡为模板中用到的每个变量声明变量类型。</p> 
+<p>语法：</p> 
+<ul> 
+ <li><code>#define(type name, ...)</code></li> 
+</ul> 
+<p>示例：</p> 
+<pre><code class="highlight plaintext">#define(String name)
+#define(UserInfo user, List userlist)
+</code></pre> 
+<blockquote class="warn">
+ <p><strong>注意</strong>：</p> 
+ <ul> 
+  <li>在同一个模板中，不允许重复声明变量类型</li> 
+  <li>变量必须先声明，再使用</li> 
+  <li>在 <code>strict</code> 模式中，变量必须进行声明类型</li> 
+ </ul> 
+</blockquote> 
+<h2><a class="anchor" name="-set"></a>3 赋值语句 #set</h2> 
+<p>语法：</p> 
+<ul> 
+ <li><code>#set([type] name = value, ...)</code></li> 
+</ul> 
+<p>示例：</p> 
+<pre><code class="highlight plaintext">#set(int num = 1+2*3)
+#set(color1 = "#ff0000", color2 = "#00ff00")
+</code></pre> 
+<blockquote class="warn">
+ <p><strong>注意</strong>：在同一个模板中，不允许重复声明变量类型。</p> 
+</blockquote> 
+<h2><a class="anchor" name="-if-elseif-else"></a>4 条件语句 #if, #elseif, #else</h2> 
+<p>如果 <code>#if</code> 条件表达式计算结果为 <code>true</code> 或非空，则输出指令所包含的块, 否则输出 <code>#else</code> 指令块。</p> 
+<p>语法：</p> 
+<ul> 
+ <li><code>#if(expression)</code> ... <code>#end</code></li> 
+ <li><code>#if(expression)</code> ... <code>#else</code> ... <code>#end</code></li> 
+ <li><code>#if(expression)</code> ... <code>#elseif(expression)</code> ... <code>#else</code> ... <code>#end</code></li> 
+</ul> 
+<p>示例：</p> 
+<pre><code class="highlight plaintext">#if (user.role == "admin")
+    ...
+#elseif (user.role == "vip")
+    ...
+#elseif (user.role == "guest")
+    ...
+#else
+    ...
+#end
+</code></pre> 
+<blockquote class="info">
+ <p><strong>提示</strong>：</p> 
+ <ul> 
+  <li>对于 <code>expression</code> 为非 <code>Boolean</code> 值：非零数字，非空字串，非空集合，非 <code>null</code> 对象，即为 <code>true</code>。</li> 
+  <li>如果 <code>#else</code> 后面紧跟着其他文本，比如 <code>#elseABC</code>，那么可以通过添加一对空括号来分割，修改成 <code>#else()ABC</code>。这样可读性就能加强，模板解析也不会出现问题。所有的无参数指令，比如 <code>#end</code>，<code>#break</code>，<code>#stop</code> 都支持这样的语法。<code>()</code> 前面和之间请不要插入任何空格。</li> 
+ </ul> 
+</blockquote> 
+<h2><a class="anchor" name="-for"></a>5 循环语句 #for</h2> 
+<p>循环重复输出指令所包含的块，如果是空的集合对象，那么输出 <code>#else</code> 块。</p> 
+<p>语法：</p> 
+<ul> 
+ <li><code>#for([type] id: expression)</code> ... <code>#end</code></li> 
+ <li><code>#for([type] id: expression)</code> ... <code>#else</code> ... <code>#end</code></li> 
+</ul> 
+<p><code>#for</code> 支持以下类型的 <code>expression</code></p> 
+<ul> 
+ <li>Iterator</li> 
+ <li>Iterable (Collection, ...)</li> 
+ <li>Map</li> 
+ <li>Enumeration</li> 
+ <li>Array</li> 
+ <li>Enum</li> 
+ <li>null (空循环)</li> 
+ <li>Object (只循环一次)</li> 
+</ul> 
+<p>示例：</p> 
+<pre><code class="highlight plaintext">#for (Book book : user.books)
+    ${for.index} // 内部循环计数器，从 1 开始计数
+    ...
+#end
+</code></pre> 
+<h3><a class="anchor" name="-for-for"></a>5.1 #for 内部对象 for</h3> 
+<ul> 
+ <li><code>for.index</code> 可用于内部循环计数，从 <code>1</code> 开始计数。</li> 
+ <li><code>for.size</code> 获取循环总数。</li> 
+ <li><code>for.first</code> 是否第一个元素。</li> 
+ <li><code>for.last</code> 是否最后一个元素。</li> 
+ <li><code>for.odd</code> 是否第奇数个元素。</li> 
+ <li><code>for.even</code> 是否第偶数个元素。</li> 
+</ul> 
+<h3><a class="anchor" name="for-else"></a>5.2 for-else</h3> 
+<p>指令 <code>#else</code> 可用于循环为空时的内容输出。</p> 
+<pre><code class="highlight plaintext">#for (Book book : user.books)
+    ...
+#else
+    No books are found in here.
+#end
+</code></pre> 
+<h3><a class="anchor" name="count-loop"></a>5.3 count-loop</h3> 
+<p>要使用 count-loop 循环, 我们可以借助于 <code>range()</code> 函数，比如：</p> 
+<pre><code class="highlight plaintext">#for (int i : range(1, 100))
+    ...
+#end
+</code></pre> 
+<h2><a class="anchor" name="-break-continue"></a>6 循环中断或继续语句 #break, #continue</h2> 
+<p>当 <code>expression</code> 为 <code>true</code>，<code>#break</code> 中断当前循环，而 <code>#continue</code> 跳过余下的内容，跳到下一个循环。</p> 
+<p>语法：</p> 
+<ul> 
+ <li><code>#break</code></li> 
+ <li><code>#break(expression)</code></li> 
+ <li><code>#continue</code></li> 
+ <li><code>#continue(expression)</code></li> 
+</ul> 
+<p>示例：</p> 
+<pre><code class="highlight plaintext">#for (book : user.books)
+    ...
+    #break(book.price &gt; 100)
+    ...
+    #continue(book.price &lt; 50)
+    ...
+#end
+</code></pre> 
+<blockquote class="info">
+ <p><strong>提示</strong>：无参数格式代表 <code>expression</code> 永远为 <code>true</code>。</p> 
+</blockquote> 
+<h2><a class="anchor" name="-stop"></a>7 停止解析语句 #stop</h2> 
+<p>当 <code>expression</code> 为真或非空时，停止模板运行，立刻返回。</p> 
+<p>语法：</p> 
+<ul> 
+ <li><code>#stop</code></li> 
+ <li><code>#stop(expression)</code></li> 
+</ul> 
+<p>示例：</p> 
+<pre><code class="highlight plaintext">#stop(error != null)
+</code></pre> 
+<blockquote class="info">
+ <p><strong>提示</strong>：无参数格式代表 <code>expression</code> 永远为 <code>true</code>。</p> 
+</blockquote> 
+<h2><a class="anchor" name="-include"></a>8 嵌套模板语句 #include</h2> 
+<p>嵌入一个子模板，将子模板内容输出到当前位置。</p> 
+<p>语法：</p> 
+<ul> 
+ <li><code>#include(file, [parameters], [returnName])</code></li> 
+</ul> 
+<p>示例：</p> 
+<pre><code class="highlight plaintext">#include("/include/header.jetx") // 绝对路径
+#include("../userinfo.jetx") // 相对路径
+#include(file) // 动态路径
+#include("/include/header.jetx", {role: "admin"}) // 传递参数
+#include("/include/header.jetx", {}, "result") // 获取返回值
+</code></pre> 
+<blockquote class="info">
+ <p><strong>注意</strong>：</p> 
+ <ul> 
+  <li>子模板自动共享父模板 <code>Context</code> 变量，同时还可以另外传递一些私有参数 <code>parameters</code> 给子模板。</li> 
+  <li>子模板可以用 <code>#return</code> 指令返回一个对象给父模板，并存储在父模板中 <code>returnName</code> 指定的变量名中。</li> 
+  <li>如果 <code>returnName</code> 为 null，那么默认为 <code>RESULT</code></li> 
+ </ul> 
+</blockquote> 
+<p>具体用法请移步： <a href="include.html">嵌入子模板 #include</a></p> 
+<h2><a class="anchor" name="-macro-call"></a>9 宏定义 #macro, #call</h2> 
+<p>定义一个代码片段，然后可以重复使用。</p> 
+<p>宏定义语法：</p> 
+<ul> 
+ <li><code>#macro name([type] name, ...)</code> ... <code>#end</code></li> 
+</ul> 
+<blockquote class="info">
+ <p><strong>注意</strong>： 每个宏可以定义 0~N 个参数，并可以选择声明类型。</p> 
+</blockquote> 
+<p>宏调用语法：</p> 
+<ul> 
+ <li><code>#call macro_name(args...)</code></li> 
+</ul> 
+<p>示例：</p> 
+<pre><code class="highlight plaintext">#macro header(String name)
+    Hello ${name}!
+#end
+
+#call header("张三")
+#call header("李四")
+</code></pre> 
+<p>输出结果：</p> 
+<pre><code class="highlight plaintext">    Hello 张三!
+    Hello 李四!
+</code></pre> 
+<p>更多关于宏 Macro 的内容请查看：<a href="ext-macro.html">宏 Macro</a></p> 
+<h2><a class="anchor" name="-tag"></a>10 自定义标签 #tag</h2> 
+<p><code>jetbrick-template</code> 支持自定义 Tag，类似于 JSP Taglib，但是要比 JSP Taglib 更简单更好用。</p> 
+<p>语法：</p> 
+<ul> 
+ <li><code>#tag name(args ...)</code> ... <code>#end</code></li> 
+</ul> 
+<blockquote class="info">
+ <p><strong>注意</strong>： </p> 
+ <ul> 
+  <li>需要在 Java 端先定义 Tag 标签的实现，并进行注册。 </li> 
+  <li>Tag 调用的参数必须和定义的一致。</li> 
+ </ul> 
+</blockquote> 
+<p>示例：</p> 
+<pre><code class="highlight plaintext">#tag layout_block("list")
+    &lt;ul&gt;
+        &lt;li&gt;Home&lt;/li&gt;
+        &lt;li&gt;Document&lt;/li&gt;
+        &lt;li&gt;Download&lt;/li&gt;
+        &lt;li&gt;About&lt;/li&gt;
+    &lt;/ul&gt;
+#end
+</code></pre> 
+<p>更多关于标签 Tag 的内容请查看：<a href="ext-tag.html">标签 Tag</a></p>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

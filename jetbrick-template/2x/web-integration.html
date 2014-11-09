@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web 框架集成 :: jetbrick-template</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-template/2x/web-integration.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../../jetbrick-template/index.html" class="navbar-brand" style="padding:10px;">
+                <img src="../../assets/images/logo-jetbrick-template-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/overview.html">概述 Overview</a></li>
+                        <li><a href="../../jetbrick-template/2x/quickstart.html">快速开始 Quick Start</a></li>
+                        <li><a href="../../jetbrick-template/2x/core-object.html">核心对象 Core</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/global-context.html">全局变量 Global Context</a></li>
+                        <li><a href="../../jetbrick-template/2x/handle-error.html">模板详细错误</a></li>
+                        <li><a href="../../jetbrick-template/2x/debug.html">调试模板 Debug</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">进阶 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/ext-method.html">扩展方法 Method</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-function.html">扩展函数 Function</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-tag.html">标签 Tag</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-macro.html">宏 Macro</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/include.html">嵌入子模板 Include</a></li>
+                        <li><a href="../../jetbrick-template/2x/layout.html">布局 Layout</a></li>
+                    </ul>
+                </li>
+                <li><a href="../../jetbrick-template/2x/config.html">配置</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">语法 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/syntax-text.html">文本 Text</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-comment.html">注释 Comment</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-value.html">值 Value</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-directive.html">指令 Directive</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-expression.html">表达式 Expression</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/velocity-comparison.html">和 Velocity 的比较</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web集成 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/web-integration.html">Web 框架集成</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-servlet.html">直接使用 HttpServlet</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-filter.html">直接使用 Filter</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jetbrickmvc.html">与 Jetbrick webmvc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-springmvc.html">与 Spring webmvc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jfinal.html">与 JFinal 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jodd.html">与 Jodd madvoc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-struts.html">与 Struts 2.x 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-nutz.html">与 Nutz 集成</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">jetbrick 首页</a></li>
+                        <li><a href="../../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../../jetbrick-template/2x/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="http://github.com/subchen/jetbrick-template-2x"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jb-announcement">
+        jetbrick-template-1.x 旧版文档请看这里：<a href="http://subchen.github.io/jetbrick-template/1x/">http://subchen.github.io/jetbrick-template/1x/</a>
+    </div>
+
+    <article class="markdown">
+        <h1><a class="anchor" name="web-"></a>Web 集成</h1> 
+<p><code>jetbrick-template</code> 除了作为普通的模板引擎嵌入在 Application 中外，大部分情况下还会和各种 WebMVC 框架整合作为前端的 View，来代替过时的 <code>JSP</code> 或者 <code>Velocity</code>。</p> 
+<p>目前已近集成了几种流行的 Web 框架：</p> 
+<ul> 
+ <li><a href="web-integration-servlet.html">HttpServlet</a></li> 
+ <li><a href="web-integration-filter.html">Filter</a></li> 
+ <li><a href="web-integration-jetbrickmvc.html">Jetbrick webmvc</a></li> 
+ <li><a href="web-integration-springmvc.html">Springmvc</a></li> 
+ <li><a href="web-integration-jfinal.html">JFinal</a></li> 
+ <li><a href="web-integration-jodd.html">Jodd 3.5.1+</a></li> 
+ <li><a href="web-integration-struts.html">Struts 2.x</a></li> 
+ <li><a href="web-integration-nutz.html">Nutz</a></li> 
+</ul> 
+<p><a href="download.html#-samples">点击这里下载各种集成方式的演示 demo</a></p> 
+<h2><a class="anchor" name="web-"></a>1 Web 中的默认隐含对象</h2> 
+<p>当 <code>jetbrick-template</code> 被用作 Web 应用中时候，会自动引入下面的对象，这些对象在所有的模板中全局可访问。</p> 
+<table>
+ <thead> 
+  <tr> 
+   <th>隐含对象</th> 
+   <th>类 型</th> 
+   <th>说 明</th> 
+  </tr> 
+ </thead>
+ <tbody> 
+  <tr> 
+   <td>application</td> 
+   <td>ServletContext</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td>session</td> 
+   <td>HttpSession</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td>request</td> 
+   <td>HttpServletRequest</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td>response</td> 
+   <td>HttpServletResponse</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td>applicationScope</td> 
+   <td>Map&lt;String,Object&gt;</td> 
+   <td>快捷访问 servletContext.getAttribute(name)</td> 
+  </tr> 
+  <tr> 
+   <td>sessionScope</td> 
+   <td>Map&lt;String,Object&gt;</td> 
+   <td>快捷访问 session.getAttribute(name)</td> 
+  </tr> 
+  <tr> 
+   <td>requestScope</td> 
+   <td>Map&lt;String,Object&gt;</td> 
+   <td>快捷访问 request.getAttribute(name)</td> 
+  </tr> 
+  <tr> 
+   <td>param</td> 
+   <td>Map&lt;String,String&gt;</td> 
+   <td>快捷访问 request.getParameter(name)</td> 
+  </tr> 
+  <tr> 
+   <td>paramValues</td> 
+   <td>Map&lt;String,String[]&gt;</td> 
+   <td>快捷访问 request.getParameterValues(name)</td> 
+  </tr> 
+  <tr> 
+   <td>CONTEXT_PATH</td> 
+   <td>String</td> 
+   <td>快捷访问 request.getContextPath()</td> 
+  </tr> 
+  <tr> 
+   <td>WEBROOT_PATH</td> 
+   <td>String</td> 
+   <td>完整的webapp路径: <a href="http://127.0.0.1:8080/myapp">http://127.0.0.1:8080/myapp</a></td> 
+  </tr> 
+  <tr> 
+   <td>BASE_PATH</td> 
+   <td>String</td> 
+   <td>专门用于 &lt;base href="${BASE_PATH}"&gt;</td> 
+  </tr> 
+ </tbody>
+</table> 
+<p><strong>下面的例子演示了如何使用这些隐含变量：</strong></p> 
+<p>模板如下：</p> 
+<pre><code class="highlight plaintext">request.requestURI == ${request.requestURI}
+request.getParameter("name") == ${param.name}
+request.getAttribute("items") == ${requestScope.items}
+session.getAttribute("user") == ${sessionScope.user}
+</code></pre> 
+<p>特别需要说明的一点是：模板中使用或者声明的全局变量不光会从 <code>context</code> 中获取，在 Web 应用中，还会从 <code>requestScope</code>，<code>sessionScope</code>，<code>applicationScope</code> 中查找对应的内容。</p> 
+<p>默认的查顺序如下：</p> 
+<ol> 
+ <li>context</li> 
+ <li>requestScope</li> 
+ <li>sessionScope</li> 
+ <li>applicationScope</li> 
+</ol> 
+<p>也就是说，如果存在 <code>request.getAttribute("user")</code> 的情况下 <code>${user}</code> 等价于 <code>${requestScope.user}</code>。</p> 
+<h2><a class="anchor" name="web-"></a>2 Web 下的资源加载</h2> 
+<p>在 Web 集成模式中，采用以下的默认值：</p> 
+<pre><code class="highlight plaintext">template.loader = $loader
+
+$loader = jetbrick.template.loader.ServletResourceLoader
+$loader.root = /
+$loader.reloadable = false
+</code></pre> 
+<p>对于 <code>ServletResourceLoader</code> 的来说，<code>root</code> 的路径相对于 webapp 的根目录。如果把模板放置在 <code>/WEB-INF/templates</code> 目录下，可以这么配置：</p> 
+<pre><code class="highlight plaintext">template.loader = $loader
+
+$loader = jetbrick.template.loader.ServletResourceLoader
+$loader.root = /WEB-INF/templates
+$loader.reloadable = false
+</code></pre> 
+<h2><a class="anchor" name="-jetengine"></a>3 获取 JetEngine</h2> 
+<p>在 Web 集成模式中，<code>JetEngine</code> 是由 <code>JetWebEngine.create(...)</code> 创建出来的(单例模式)，所以我们可以通过下面的代码来获取 <code>JetEngine</code></p> 
+<pre><code class="highlight java"><span class="n">JetEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="n">JetWebEngine</span><span class="o">.</span><span class="na">getEngine</span><span class="o">();</span>
+</code></pre> 
+<h2><a class="anchor" name="-request-session-web-"></a>4 获取 request, session 等 Web 对象</h2> 
+<p>在 web 环境中，我们有时候需要获取 <code>request</code>, <code>session</code>, <code>servletContext</code> 等常用对象，我们可以通过下面的方法获取：</p> 
+<pre><code class="highlight java"><span class="n">InterpretContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">InterpretContext</span><span class="o">.</span><span class="na">current</span><span class="o">();</span>
+<span class="n">ValueStack</span> <span class="n">valueStack</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="na">getValueStack</span><span class="o">();</span>
+
+<span class="n">HttpServletRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="n">valueStack</span><span class="o">.</span><span class="na">getValue</span><span class="o">(</span><span class="n">JetWebContext</span><span class="o">.</span><span class="na">REQUEST</span><span class="o">);</span>
+<span class="n">HttpSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">valueStack</span><span class="o">.</span><span class="na">getValue</span><span class="o">(</span><span class="n">JetWebContext</span><span class="o">.</span><span class="na">SESSION</span><span class="o">);</span>
+<span class="n">ServletContext</span> <span class="n">servletContext</span> <span class="o">=</span> <span class="n">valueStack</span><span class="o">.</span><span class="na">getValue</span><span class="o">(</span><span class="n">JetWebContext</span><span class="o">.</span><span class="na">APPLICATION</span><span class="o">);</span>
+</code></pre>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

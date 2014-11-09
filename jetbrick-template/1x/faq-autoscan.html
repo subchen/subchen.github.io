@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>如何让自动扫描发现用户自定义的扩展方法/函数/标签 Class :: jetbrick-template-1x</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-template/1x/faq-autoscan.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../../jetbrick-template/index.html" class="navbar-brand" style="padding:10px;">
+                <img src="../../assets/images/logo-jetbrick-template-1x-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="../../jetbrick-template/1x/overview.html">概述</a></li>
+                <li><a href="../../jetbrick-template/1x/userguide.html">开发</a></li>
+                <li><a href="../../jetbrick-template/1x/config.html">配置</a></li>
+                <li><a href="../../jetbrick-template/1x/syntax.html">语法</a></li>
+                <li><a href="../../jetbrick-template/1x/integration.html">Web集成</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">FAQ <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/1x/faq-compile.html">将模板编译成 Java Class 有什么好处</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-define.html">为什么需要 #define 声明变量类型？</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-error.html">常见错误分析</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-autoscan.html">如何让自动扫描发现用户自定义的扩展方法/函数/标签 Class</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-include.html">如何嵌入子模板？（父子间参数传递）</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-layout.html">如何实现 layout 功能？</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-tag.html">如何自定义 Tag？</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-spring.html">在 Spring 中的集成方法</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">jetbrick 首页</a></li>
+                        <li><a href="../../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../../jetbrick-template/1x/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="http://github.com/subchen/jetbrick-template-1x"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jb-announcement">
+        jetbrick-template-2.x 已经发布，新版文档请看这里：<a href="http://subchen.github.io/jetbrick-template/2x/">http://subchen.github.io/jetbrick-template/2x/</a>
+    </div>
+
+    <article class="markdown">
+        <h1><a class="anchor" name="-class"></a>如何自动发现用户自定义的扩展方法/函数/标签 Class</h1> 
+<p>jetbrick-template 主要的扩展点有下列几个：</p> 
+<ol> 
+ <li>扩展方法</li> 
+ <li>扩展函数</li> 
+ <li>自定义标签 #tag</li> 
+</ol> 
+<p>常规的配置方法如下：</p> 
+<pre><code class="highlight plaintext"># 扩展方法
+import.methods = app.methods.StringMethods, app.methods.DateMethods
+
+# 扩展函数
+import.functions = app.functions.UserFunctions
+
+# 自定义标签
+import.tags = app.tags.UserTags, app.tags.CacheTags
+</code></pre> 
+<p>如果需要增加或者调整 Class，需要同时维护这个配置文件，比较麻烦。</p> 
+<p>从 1.1.2 开始，增加 annotation 自动扫描查找 Methods / Functions / Tags Class 的功能</p> 
+<p>具体的 annotation 如下：</p> 
+<pre><code class="highlight java"><span class="nd">@JetAnnotations</span><span class="o">.</span><span class="na">Methods</span>
+<span class="nd">@JetAnnotations</span><span class="o">.</span><span class="na">Functions</span>
+<span class="nd">@JetAnnotations</span><span class="o">.</span><span class="na">Tags</span>
+</code></pre> 
+<p>只要在对应的 Class 中，增加对应的 annotation 即可。</p> 
+<p>例如：</p> 
+<pre><code class="highlight java">
+<span class="nd">@JetAnnotations</span><span class="o">.</span><span class="na">Methods</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringMethods</span> <span class="o">{</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre> 
+<p>然后开启 <code>import.autoscan = true</code> 就可以自动发现了。</p> 
+<p>当然，为了加快发现的速度，建议同时配置 <code>import.autoscan.packages</code>。</p> 
+<p>Good luck.</p>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

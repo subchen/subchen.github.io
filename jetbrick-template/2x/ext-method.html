@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>扩展方法 Method :: jetbrick-template</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-template/2x/ext-method.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../../jetbrick-template/index.html" class="navbar-brand" style="padding:10px;">
+                <img src="../../assets/images/logo-jetbrick-template-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/overview.html">概述 Overview</a></li>
+                        <li><a href="../../jetbrick-template/2x/quickstart.html">快速开始 Quick Start</a></li>
+                        <li><a href="../../jetbrick-template/2x/core-object.html">核心对象 Core</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/global-context.html">全局变量 Global Context</a></li>
+                        <li><a href="../../jetbrick-template/2x/handle-error.html">模板详细错误</a></li>
+                        <li><a href="../../jetbrick-template/2x/debug.html">调试模板 Debug</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">进阶 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/ext-method.html">扩展方法 Method</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-function.html">扩展函数 Function</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-tag.html">标签 Tag</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-macro.html">宏 Macro</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/include.html">嵌入子模板 Include</a></li>
+                        <li><a href="../../jetbrick-template/2x/layout.html">布局 Layout</a></li>
+                    </ul>
+                </li>
+                <li><a href="../../jetbrick-template/2x/config.html">配置</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">语法 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/syntax-text.html">文本 Text</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-comment.html">注释 Comment</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-value.html">值 Value</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-directive.html">指令 Directive</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-expression.html">表达式 Expression</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/velocity-comparison.html">和 Velocity 的比较</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web集成 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/web-integration.html">Web 框架集成</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-servlet.html">直接使用 HttpServlet</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-filter.html">直接使用 Filter</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jetbrickmvc.html">与 Jetbrick webmvc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-springmvc.html">与 Spring webmvc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jfinal.html">与 JFinal 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jodd.html">与 Jodd madvoc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-struts.html">与 Struts 2.x 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-nutz.html">与 Nutz 集成</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">jetbrick 首页</a></li>
+                        <li><a href="../../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../../jetbrick-template/2x/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="http://github.com/subchen/jetbrick-template-2x"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jb-announcement">
+        jetbrick-template-1.x 旧版文档请看这里：<a href="http://subchen.github.io/jetbrick-template/1x/">http://subchen.github.io/jetbrick-template/1x/</a>
+    </div>
+
+    <article class="markdown">
+        <h1><a class="anchor" name="-methods"></a>扩展方法 Methods</h1> 
+<p>我们知道一个 Java Class 的 所有 methods 都是定义在同一个 class 文件中的，不能在其他地方进行动态扩展。但是一些其他动态语言却支持在 Class 外部为这个 Class 增加一些方法。比如：</p> 
+<ul> 
+ <li>JavaScript 的 prototype 机制</li> 
+ <li>Groovy 的 metaClass 机制</li> 
+</ul> 
+<p><code>jetbrick-template</code> 也在这里带给大家强大的动态方法扩展机制。如：</p> 
+<ul> 
+ <li><code>${"123".asInt()}</code></li> 
+ <li><code>${new Date().format("yyyy-MM-dd")}</code></li> 
+ <li><code>${[1, false, null].asJson()}</code></li> 
+</ul> 
+<blockquote class="warn">
+ <p><strong>注意</strong>：如果 <code>Class</code> 已经定义了同名方法，则优先使用 <code>Class</code> 定义的方法。但是扩展方法支持方法重载 (Overrload)。</p> 
+</blockquote> 
+<h2><a class="anchor" name="853784393"></a>1 定义扩展方法</h2> 
+<p>语法：</p> 
+<pre><code class="highlight plaintext">public static Object method_name ( Object object, args ... )
+</code></pre> 
+<ul> 
+ <li>方法签名必须是 <code>public</code> 和 <code>static</code></li> 
+ <li>方法的第一个参数类型必须是要扩展的 Object, 其余参数自定义</li> 
+ <li>允许定义相同名字的 method，但是方法参数不一样 （Overload）</li> 
+ <li>支持可变参数 (VarArgs)</li> 
+</ul> 
+<p>示例：对 <code>String.class</code> 进行扩展</p> 
+<pre><code class="highlight java"><span class="kn">package</span> <span class="n">jetbrick</span><span class="o">.</span><span class="na">demo</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringMethods</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">link</span><span class="o">(</span><span class="n">String</span> <span class="n">text</span><span class="o">,</span> <span class="n">String</span> <span class="n">url</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"&lt;a href=\""</span> <span class="o">+</span> <span class="n">url</span> <span class="o">+</span> <span class="s">"\"&gt;"</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="s">"&lt;/a&gt;"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre> 
+<h2><a class="anchor" name="2104524308"></a>2 注册扩展方法</h2> 
+<p>用户自定义的扩展方法必须注册到 <code>JetEngine</code> 中才能使用。注册方法有 3 种途径：</p> 
+<ul> 
+ <li><p>API 动态注册</p> <pre><code class="highlight java"><span class="n">JetEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">GlobalResolver</span> <span class="n">resolver</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="na">getGlobalResolver</span><span class="o">();</span>
+<span class="n">resolver</span><span class="o">.</span><span class="na">registerMethods</span><span class="o">(</span><span class="n">StringMethods</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></li> 
+ <li><p>在配置文件中注册 jetbrick-template.properties </p> <pre><code class="highlight plaintext">jetx.import.methods = jetbrick.demo.StringMethods
+</code></pre></li> 
+ <li><p>自动扫描注册</p> 
+  <ul> 
+   <li><p>配置扫描路径</p> <pre><code class="highlight plaintext">jetx.autoscan.packages = jetbrick.demo
+</code></pre></li> 
+   <li><p>为 Class 增加扫描 <code>@JetAnnotations.Methods</code></p> <pre><code class="highlight java"><span class="nd">@JetAnnotations</span><span class="o">.</span><span class="na">Methods</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringMethods</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+</code></pre></li> 
+  </ul></li> 
+</ul> 
+<h2><a class="anchor" name="1889713752"></a>3 在模板中使用扩展方法</h2> 
+<p>模板：</p> 
+<pre><code class="highlight plaintext">${"BAIDU".link("http://www.baidu.com/")}
+</code></pre> 
+<p>输出结果：</p> 
+<pre><code class="highlight plaintext">&lt;a href="http://www.baidu.com/"&gt;BAIDU&lt;/a&gt;
+</code></pre> 
+<h2><a class="anchor" name="-interpretcontext-"></a>4 在扩展方法中获取 InterpretContext 上下文</h2> 
+<p>要获取 <code>InterpretContext</code> 对象，可以通过 <code>InterpretContext.current()</code> 方法获取当前 Thread local context 关联的 <code>InterpretContext</code> 对象。</p> 
+<pre><code class="highlight java"><span class="nd">@JetAnnotations</span><span class="o">.</span><span class="na">Methods</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserInfoMethods</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">isOnline</span><span class="o">(</span><span class="n">UserInfo</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">InterpretContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">InterpretContext</span><span class="o">.</span><span class="na">current</span><span class="o">();</span>
+        <span class="n">HttpSession</span> <span class="n">session</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpSession</span><span class="o">)</span> <span class="n">ctx</span><span class="o">.</span><span class="na">getValueStack</span><span class="o">().</span><span class="na">getValue</span><span class="o">(</span><span class="n">JetWebContext</span><span class="o">.</span><span class="na">SESSION</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"user_"</span> <span class="o">+</span> <span class="n">user</span><span class="o">.</span><span class="na">getId</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre> 
+<p>模板范例：</p> 
+<pre><code class="highlight plaintext">#define(UserInfo user)
+${user.isOnline()}
+</code></pre> 
+<h2><a class="anchor" name="-buildin-methods"></a>5 模板已经内置的扩展方法 Buildin Methods</h2> 
+<p>所有内置的扩展方法都定义在 <code>jetbrick.template.runtime.buildin.JetMethods</code></p> 
+<h4><a class="anchor" name="-cast"></a>基本数据类型转换 Cast</h4> 
+<ul> 
+ <li>String.asBoolean()</li> 
+ <li>String.asInt()</li> 
+ <li>String.asLong()</li> 
+ <li>String.asFloat()</li> 
+ <li>String.asDouble()</li> 
+ <li>String.asDate()</li> 
+ <li>String.asDate(String format)</li> 
+ <li>Collection.asList()</li> 
+ <li>Object[].asList()</li> 
+ <li>Object.asString()</li> 
+</ul> 
+<h4><a class="anchor" name="-format"></a>数据格式化 Format</h4> 
+<ul> 
+ <li>Number.format()</li> 
+ <li>Number.format(String format)</li> 
+ <li>Date.format()</li> 
+ <li>Date.format(String format)</li> 
+</ul> 
+<h4><a class="anchor" name="-escape-unescape"></a>数据 Escape/Unescape</h4> 
+<ul> 
+ <li>String.escapeJava()</li> 
+ <li>String.unescapeJava()</li> 
+ <li>String.escapeJavaScript()</li> 
+ <li>String.unescapeJavaScript()</li> 
+ <li>String.escapeXml()</li> 
+ <li>String.unescapeXml()</li> 
+ <li>String.escapeUrl()</li> 
+ <li>String.escapeUrl(String encoding)</li> 
+ <li>String.unescapeUrl()</li> 
+ <li>String.unescapeUrl(String encoding)</li> 
+</ul> 
+<h4><a class="anchor" name="json-"></a>JSON 输出</h4> 
+<ul> 
+ <li>Object.asJson()</li> 
+</ul> 
+<h4><a class="anchor" name="1079447065"></a>字符串转换</h4> 
+<ul> 
+ <li>String.capitalize()</li> 
+ <li>String.toUnderlineName()</li> 
+ <li>String.toCamelCase()</li> 
+ <li>String.toCapitalizeCamelCase()</li> 
+</ul>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

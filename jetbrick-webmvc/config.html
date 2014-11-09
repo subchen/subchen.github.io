@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>配置 jetbrick-webmvc.properties :: jetbrick-webmvc</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-webmvc/config.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../jetbrick-webmvc/overview.html" class="navbar-brand" style="padding:10px;">
+                <img src="../assets/images/logo-jetbrick-webmvc-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发指南 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../jetbrick-webmvc/overview.html">概述 Overview</a></li>
+                        <li><a href="../jetbrick-webmvc/helloworld.html">快速开始 Hello World</a></li>
+                        <li><a href="../jetbrick-webmvc/webxml.html">配置 web.xml</a></li>
+                        <li><a href="../jetbrick-webmvc/config.html">配置 jetbrick-webmvc.properties</a></li>
+                        <li><a href="../jetbrick-webmvc/bypass-urls.html">资源过滤器 BypassRequestUrls</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/controller.html">Controller 和 Action</a></li>
+                        <li><a href="../jetbrick-webmvc/action-inject.html">Controller/Action 注入</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/result.html">Result/ResultHandler</a></li>
+                        <li><a href="../jetbrick-webmvc/view.html">View/ViewHandler</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/fileupload.html">文件上传支持 FileUpload</a></li>
+                        <li><a href="../jetbrick-webmvc/request-context.html">RequestContext 对象</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/annotation-list.html">MVC 注解一览表</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">高级用法 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../jetbrick-webmvc/exception-handler.html">全局异常处理器 Exception Handler</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/interceptor.html">自定义拦截器 Interceptor</a></li>
+                        <li><a href="../jetbrick-webmvc/plugin.html">自定义插件 Plugin</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/custom-annotation.html">自定义 Action 参数注入 Annotation</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../index.html">jetbrick 首页</a></li>
+                        <li><a href="../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../jetbrick-webmvc/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="https://github.com/subchen/jetbrick-webmvc"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <article class="markdown">
+        <h1><a class="anchor" name="-jetbrick-webmvc-properties"></a>配置 jetbrick-webmvc.properties</h1> 
+<p>在 web.xml 中，我们配置了 jetbrick-webmvc 用到的全局配置文件，默认位于如下的路径： <code>/WEB-INF/jetbrick-webmvc.properties</code>。</p> 
+<p>这里提供一个完整的可配置项列表，以供参考。</p> 
+<table>
+ <thead> 
+  <tr> 
+   <th>名称</th> 
+   <th>默认值</th> 
+   <th>说明</th> 
+  </tr> 
+ </thead>
+ <tbody> 
+  <tr> 
+   <td>web.development</td> 
+   <td>true</td> 
+   <td>是否属于开发模式</td> 
+  </tr> 
+  <tr> 
+   <td>web.http.encoding</td> 
+   <td>utf-8</td> 
+   <td>默认编码</td> 
+  </tr> 
+  <tr> 
+   <td>web.http.cache</td> 
+   <td>false</td> 
+   <td>是否启用 HTTP 协议的 Cache 功能</td> 
+  </tr> 
+  <tr> 
+   <td>web.scan.packages</td> 
+   <td></td> 
+   <td>默认 Annotation 扫描的 packages</td> 
+  </tr> 
+  <tr> 
+   <td>web.urls.bypass</td> 
+   <td></td> 
+   <td>静态资源过滤器</td> 
+  </tr> 
+  <tr> 
+   <td>web.urls.router</td> 
+   <td>RestfulRouter</td> 
+   <td>URL 路由方式</td> 
+  </tr> 
+  <tr> 
+   <td>web.view.default</td> 
+   <td>jetx</td> 
+   <td>默认视图处理器别名</td> 
+  </tr> 
+ </tbody>
+</table> 
+<h2><a class="anchor" name="web-development"></a>1 web.development</h2> 
+<p>是否属于开发模式。默认为 <code>true</code></p> 
+<p>何为开发模式？即框架中专门为了开发、调试方便，提供了额外的调试日志，并且禁用了部分 cache，以便能及时发现部分 Resource 的变更，做到热加载。</p> 
+<h2><a class="anchor" name="web-http-encoding"></a>2 web.http.encoding</h2> 
+<p>HTTP Request/Response 的编码方式，默认为 <code>utf-8</code></p> 
+<pre><code class="highlight java"><span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="n">encoding</span><span class="o">);</span>
+<span class="n">response</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="n">encoding</span><span class="o">);</span>
+</code></pre> 
+<h2><a class="anchor" name="web-http-cache"></a>3 web.http.cache</h2> 
+<p>是否启用 HTTP Response 的 cache，默认为 <code>false</code>，表示禁用。</p> 
+<pre><code class="highlight java"><span class="c1">// Http 1.0 header</span>
+<span class="n">response</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">"Buffer"</span><span class="o">,</span> <span class="s">"false"</span><span class="o">);</span>
+<span class="n">response</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">"Pragma"</span><span class="o">,</span> <span class="s">"no-cache"</span><span class="o">);</span>
+<span class="n">response</span><span class="o">.</span><span class="na">setDateHeader</span><span class="o">(</span><span class="s">"Expires"</span><span class="o">,</span> <span class="mi">1L</span><span class="o">);</span>
+
+<span class="c1">// Http 1.1 header</span>
+<span class="n">response</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">"Cache-Control"</span><span class="o">,</span> <span class="s">"no-cache, no-store, max-age=0"</span><span class="o">);</span>
+</code></pre> 
+<h2><a class="anchor" name="web-scan-packages"></a>4 web.scan.packages</h2> 
+<p>jetbrick-webmvc 通过 Annotation 的自动扫描，可以自动发现如下的配置：</p> 
+<ul> 
+ <li>@IocBean</li> 
+ <li>@Controller</li> 
+ <li>@Managed ResultHandler</li> 
+ <li>@Managed ViewResult</li> 
+ <li>@Managed ArgumentGetter</li> 
+ <li>@Managed FileUpload</li> 
+</ul> 
+<p>这里，用户需要配置 classpath 下面允许扫描的 package 名称。可以配置多个。</p> 
+<p>如下：</p> 
+<pre><code class="highlight plaintext">web.scan.packages = jetbrick.docs.demo.controllers, jetbrick.docs.demo.handlers
+</code></pre> 
+<h2><a class="anchor" name="web-urls-bypass"></a>5 web.urls.bypass</h2> 
+<p>具体可以参考：<a href="bypass-urls.html">资源过滤器 BypassRequestUrls</a></p> 
+<p>通常来讲，只有 web.xml 中将 URL 映射配置成 <code>/*</code> 的时候，才需要进行配置。</p> 
+<p>目前系统提供了 2 种过滤器，用户可以选择一个，或者实现自己的过滤器。</p> 
+<h2><a class="anchor" name="web-urls-router"></a>6 web.urls.router</h2> 
+<p>默认的路由实现：<code>jetbrick.web.mvc.router.RestfulRouter</code></p> 
+<h2><a class="anchor" name="web-view-default"></a>7 web.view.default</h2> 
+<p>默认的 view 处理器别名： <code>jsp</code></p> 
+<p>如果用户返回的 View Name 中，无法判断是有那个 View Handler 处理的话，那么将默认使用这里配置的 View Handler 来处理。</p> 
+<p>更多信息可以看：<a href="view.html">View/ViewHandler</a></p>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

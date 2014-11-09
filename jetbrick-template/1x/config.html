@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>配置 :: jetbrick-template-1x</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-template/1x/config.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../../jetbrick-template/index.html" class="navbar-brand" style="padding:10px;">
+                <img src="../../assets/images/logo-jetbrick-template-1x-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="../../jetbrick-template/1x/overview.html">概述</a></li>
+                <li><a href="../../jetbrick-template/1x/userguide.html">开发</a></li>
+                <li><a href="../../jetbrick-template/1x/config.html">配置</a></li>
+                <li><a href="../../jetbrick-template/1x/syntax.html">语法</a></li>
+                <li><a href="../../jetbrick-template/1x/integration.html">Web集成</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">FAQ <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/1x/faq-compile.html">将模板编译成 Java Class 有什么好处</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-define.html">为什么需要 #define 声明变量类型？</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-error.html">常见错误分析</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-autoscan.html">如何让自动扫描发现用户自定义的扩展方法/函数/标签 Class</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-include.html">如何嵌入子模板？（父子间参数传递）</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-layout.html">如何实现 layout 功能？</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-tag.html">如何自定义 Tag？</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-spring.html">在 Spring 中的集成方法</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">jetbrick 首页</a></li>
+                        <li><a href="../../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../../jetbrick-template/1x/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="http://github.com/subchen/jetbrick-template-1x"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jb-announcement">
+        jetbrick-template-2.x 已经发布，新版文档请看这里：<a href="http://subchen.github.io/jetbrick-template/2x/">http://subchen.github.io/jetbrick-template/2x/</a>
+    </div>
+
+    <article class="markdown">
+        <h1><a class="anchor" name="1106755817"></a>全局配置选项</h1> 
+<table>
+ <thead> 
+  <tr> 
+   <th>名称</th> 
+   <th>说明</th> 
+   <th>默认值</th> 
+  </tr> 
+ </thead>
+ <tbody> 
+  <tr> 
+   <td><a href="#import-packages">import.packages</a></td> 
+   <td>默认导入的 java 包</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td><a href="#import-classes">import.classes</a></td> 
+   <td>默认导入的 java 类</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td><a href="#import-variables">import.variables</a></td> 
+   <td>默认定义的 java 变量类型</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td><a href="#global-variables">global.variables</a></td> 
+   <td>全局变量工厂类</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td><a href="#import-methods">import.methods</a></td> 
+   <td>默认导入的扩展方法</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td><a href="#import-functions">import.functions</a></td> 
+   <td>默认导入的扩展函数</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td><a href="#import-tags">import.tags</a></td> 
+   <td>默认导入的自定义标签 tags</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td><a href="#import-autoscan">import.autoscan</a></td> 
+   <td>是否自动扫描自定义扩展 Class</td> 
+   <td>false</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#import-autoscan-packages">import.autoscan.packages</a></td> 
+   <td>在指定的包中进行自动扫描</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td><a href="#input-encoding">input.encoding</a></td> 
+   <td>模板源文件的编码格式</td> 
+   <td>utf-8</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#output-encoding">output.encoding</a></td> 
+   <td>模板输出编码格式</td> 
+   <td>utf-8</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#syntax-safecall">syntax.safecall</a></td> 
+   <td>是否默认启用全局的安全调用</td> 
+   <td>false</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#template-loader">template.loader</a></td> 
+   <td>模板资源载入Class</td> 
+   <td>jetbrick.template.resource.loader.FileSystemResourceLoader</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#template-path">template.path</a></td> 
+   <td>模板资源的根目录</td> 
+   <td>当前目录</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#template-suffix">template.suffix</a></td> 
+   <td>默认模板文件扩展名</td> 
+   <td>.jetx</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#template-reloadable">template.reloadable</a></td> 
+   <td>是否允许热加载</td> 
+   <td>false</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#compile-tool">compile.tool</a></td> 
+   <td>编译器</td> 
+   <td>jetbrick.template.compiler.JdtCompiler</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#compile-strategy">compile.strategy</a></td> 
+   <td>编译策略</td> 
+   <td>always</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#compile-debug">compile.debug</a></td> 
+   <td>是否允许输出 debug 信息</td> 
+   <td>false</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#compile-path">compile.path</a></td> 
+   <td>默认编译输出路径</td> 
+   <td>系统TEMP目录下面的 jetx 目录</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#security-manager">security.manager</a></td> 
+   <td>安全管理器实现类</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td><a href="#security-manager-file">security.manager.file</a></td> 
+   <td>安全管理器黑白名单文件</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td><a href="#security-manager-namelist">security.manager.namelist</a></td> 
+   <td>安全管理器黑白名单列表</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td><a href="#trim-directive-line">trim.directive.line</a></td> 
+   <td>是否要删除指令行两边的空白</td> 
+   <td>true</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#trim-directive-comments">trim.directive.comments</a></td> 
+   <td>是否支持指令两边增加注释对</td> 
+   <td>false</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#trim-directive-comments-prefix">trim.directive.comments.prefix</a></td> 
+   <td>指令注释的开始部分</td> 
+   <td>&lt;!--</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#trim-directive-comments-suffix">trim.directive.comments.suffix</a></td> 
+   <td>指令注释的结束部分</td> 
+   <td>--&gt;</td> 
+  </tr> 
+ </tbody>
+</table> 
+<blockquote> 
+ <p><strong>注意</strong>：</p> 
+ <ol> 
+  <li>所有配置选项都必须在 <code>JetEngine</code> 初始化的时候指定，不允许动态修改。</li> 
+  <li>所有配置选项都支持变量啦，具体参考 <a href="#output-encoding"><code>template.path</code></a> 或者 <a href="#compile-path"><code>compile.path</code></a> 中的例子。</li> 
+ </ol> 
+</blockquote> 
+<h2><a class="anchor" name="71556755"></a>1 全局定义(包/类/变量)</h2> 
+<p>在模板中，如果要用到一些其他的 Class, 那么可以先 import 进来，这样就可以在模板中使用短名字，比如 <code>Date</code> 而不是 <code>java.util.Date</code>。</p> 
+<h3><a class="anchor" name="import-packages"></a>1.1 import.packages</h3> 
+<p>用来配置包名，会自动导入包下面的所有类。允许配置多个包名，用逗号分隔。</p> 
+<p>支持三种方式，如下：<br> 1. <code>jetbrick.schema.app.model</code><br> 2. <code>jetbrick.schema.app.methods.*</code><br> 3. <code>jetbrick.schema.**</code></p> 
+<p>其中 <code>1</code> 和 <code>2</code> 是一样的，会自动导入包下面的所有 Class 文件，但是不包含子包。<br> 而方式 <code>3</code> 会自动将子包下面的 Class 也一起导入进来。</p> 
+<p>示例如下：</p> 
+<pre><code class="highlight plaintext">import.packages = jetbrick.schema.app.model, jetbrick.schema.app.methods.*, jetbrick.schema.**
+</code></pre> 
+<blockquote> 
+ <p><strong>注意</strong>：<code>jetbrick-template</code> 会自动引入 <code>java.lang.*</code> 和 <code>java.util.*</code>。</p> 
+</blockquote> 
+<h3><a class="anchor" name="import-classes"></a>1.2 import.classes</h3> 
+<p>用来配置单个类名，优先级比 <code>import.packages</code> 高。允许配置多个类名，用逗号分隔。</p> 
+<p>示例如下：</p> 
+<pre><code class="highlight plaintext">import.classes = java.io.File, java.util.List
+</code></pre> 
+<h3><a class="anchor" name="import-variables"></a>1.3 import.variables</h3> 
+<p>在一个 webapp 中，我们希望每个模板都自动引入一些变量，比如 <code>HttpServletRequest request</code>，那么我们就可以在这里定义。</p> 
+<p>允许配置多个变量定义，用逗号分隔。示例如下：</p> 
+<pre><code class="highlight plaintext">import.variables = HttpServletRequest request
+import.variables = jetbrick.orm.Pagelist pagelist, List&lt;Entity&gt; entites
+</code></pre> 
+<p>变量的类型可以使用泛型定义，并且会自动在 <code>import.packages</code> 和 <code>import.classes</code> 里面查找 Class。</p> 
+<blockquote> 
+ <p><strong>注意</strong>：全局定义的变量如果在模板中被重新定义成其他类型(<code>#define</code>, <code>#set</code>)，则以模板定义优先。</p> 
+</blockquote> 
+<h3><a class="anchor" name="global-variables"></a>1.4 global.variables</h3> 
+<p>该配置主要用来设置用户自定义的全局变量。如下：</p> 
+<pre><code class="highlight plaintext">global.variables = webapp.GlobalVariables
+</code></pre> 
+<p>然后用户的实现 <code>webapp.GlobalVariables</code> 如下：</p> 
+<pre><code class="highlight java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GlobalVariables</span> <span class="kd">implements</span> <span class="n">JetGlobalVariables</span>  <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Object</span> <span class="n">get</span><span class="o">(</span><span class="n">JetContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="s">"copyright"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">name</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="s">"copyright@2000-2010"</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="s">"today"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">name</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span>           
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="s">"contextPath"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">name</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">HttpServletRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpServletRequest</span><span class="o">)</span> <span class="n">context</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">JetWebContext</span><span class="o">.</span><span class="na">REQUEST</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">request</span><span class="o">.</span><span class="na">getContextPath</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre> 
+<p>注意： 用户提供的全局变量，还需要在 <code>import.variables</code> 中声明变量的类型。</p> 
+<pre><code class="highlight plaintext">import.variables = String copyright, Date today, String contextPath
+</code></pre> 
+<p>然后就可以在模板中使用了</p> 
+<pre><code class="highlight plaintext">${copyright}
+${today.format("yyyy-MM-dd")}
+${contextPath}
+</code></pre> 
+<h2><a class="anchor" name="817993292"></a>2 扩展方法/函数/标签</h2> 
+<h3><a class="anchor" name="import-methods"></a>2.1 import.methods</h3> 
+<p>我们知道一个 Java Class 的 所有 methods 都是定义在同一个 class 文件中的，不能在其他地方进行动态扩展。但是一些其他动态语言却支持在 Class 外部为这个 Class 增加一些方法。比如：</p> 
+<ul> 
+ <li>JavaScript 的 prototype 机制</li> 
+ <li>Groovy 的 metaClass 机制</li> 
+ <li>Kotlin</li> 
+</ul> 
+<p>jetbrick-template 也在这里带给大家强大的动态方法扩展机制。<br> 具体参考： <a href="userguide.html#methods">jetbrick-template 动态方法扩展</a></p> 
+<p>这里就是把实现了动态扩展的 Method Class 注册到 JetEngine 中。允许配置多个 Class 定义，用逗号分隔。示例如下：</p> 
+<pre><code class="highlight plaintext">import.methods = StringMethods, app.project.methods.UserAuthMethods
+</code></pre> 
+<p>定义的类名会自动在 <code>import.packages</code> 里面查找 Class。</p> 
+<p><code>jetbrick-template</code> 默认会注册 <code>jetbrick.template.runtime.JetMethods</code>，<br> 具体参考：<a href="syntax.html#default_methods">默认的方法扩展 Methods</a>。</p> 
+<h3><a class="anchor" name="import-functions"></a>2.2 import.functions</h3> 
+<p>和 <code>import.methods</code> 类似，我们还支持在模板中使用函数。</p> 
+<p>允许配置多个 Function Class 定义，用逗号分隔。示例如下：</p> 
+<pre><code class="highlight plaintext">import.functions = app.project.methods.UserAuthFunctions
+</code></pre> 
+<p><code>jetbrick-template</code> 默认会注册 <code>jetbrick.template.runtime.JetFunctions</code>，<br> 具体参考：<a href="syntax.html#default_functions">默认的函数扩展 Functions</a>。</p> 
+<h3><a class="anchor" name="import-tags"></a>2.3 import.tags</h3> 
+<p>我们支持在模板中自定义标签 #tag。</p> 
+<p>允许配置多个 Tag Class 定义，用逗号分隔。示例如下：</p> 
+<pre><code class="highlight plaintext">import.tags = app.project.tags.UserTags
+</code></pre> 
+<p><code>jetbrick-template</code> 默认会注册 <code>jetbrick.template.runtime.JetTags</code>，<br> 具体参考：<a href="syntax.html#default_tags">默认的自定义标签 Tags</a>。</p> 
+<h3><a class="anchor" name="import-autoscan"></a>2.4 import.autoscan</h3> 
+<p>是否自动扫描用户自定义的扩展 Class，扫描的内容是： <strong>扩展方法，扩展函数，自定义标签</strong></p> 
+<p>默认 <code>false</code>，不启用。</p> 
+<h3><a class="anchor" name="import-autoscan-packages"></a>2.5 import.autoscan.packages</h3> 
+<p>在指定的包下面进行自动扫描，如果为空，那么扫描整个 classpath。支持定义多个包。</p> 
+<pre><code class="highlight plaintext">import.autoscan = true
+import.autoscan.packages = app.methods, app.functions, app.tags
+</code></pre> 
+<blockquote> 
+ <p><strong>注意</strong>：</p> 
+ <ol> 
+  <li>扫描整个 classpath 需要花费一定的时间（大约每秒10000个类），建议配置 <code>import.autoscan.packages</code> 以加快速度。</li> 
+  <li>由于不会对扫描的 class 加载到 jvm 中，所以不会产生 OOM。</li> 
+ </ol> 
+</blockquote> 
+<p>更多详细内容请参考： <a href="faq-autoscan.html">如何让自动扫描发现用户自定义的扩展方法/函数/标签 Class</a></p> 
+<h2><a class="anchor" name="1497214921"></a>3 模板路径和编码格式</h2> 
+<h3><a class="anchor" name="input-encoding"></a>3.1 input.encoding</h3> 
+<p>模板源文件的编码格式，默认为 <code>utf-8</code>。</p> 
+<h3><a class="anchor" name="output-encoding"></a>3.2 output.encoding</h3> 
+<p>模板输出内容的编码格式，默认为 <code>utf-8</code>。</p> 
+<blockquote> 
+ <p><strong>注意</strong>：一般在 web 中，<code>output.encoding</code> 应该和 html 页面的 <code>contentType</code> 中的编码，以及 <code>response</code> 的 <code>characterEncoding</code> 完全一致。</p> 
+</blockquote> 
+<h2><a class="anchor" name="1095099928"></a>4 语法选项</h2> 
+<h3><a class="anchor" name="syntax-safecall"></a>4.1 syntax.safecall</h3> 
+<p>jetbrick-template 支持 4 种方法的安全调用（类似于 Groovy），以避免出现 <code>NullPointerException</code></p> 
+<ol> 
+ <li>属性调用 <code>bean?.property</code></li> 
+ <li>方法调用 <code>bean?.method(...)</code></li> 
+ <li>数组访问 <code>array?[index]</code></li> 
+ <li>Map访问 <code>map?[key]</code></li> 
+</ol> 
+<p>如果 <code>syntax.safecall = true</code>，那么将会把全局默认的语法变成安全调用语法。<br> 如 <code>bean.property</code> 将等价于 <code>bean?.property</code>。这样我就可以省略 <code>?</code> 拉。 </p> 
+<p>默认为 <code>false</code>，不启用。</p> 
+<h3><a class="anchor" name="template-loader"></a>4.2 template.loader</h3> 
+<p>如何找到我们自己的模板文件呢？这里就是定义我们要使用的查找类。我们支持下面几种 Class</p> 
+<pre><code class="highlight plaintext">template.loader = jetbrick.template.resource.loader.FileSystemResourceLoader
+template.loader = jetbrick.template.resource.loader.ClasspathResourceLoader
+template.loader = jetbrick.template.resource.loader.JarResourceLoader
+template.loader = jetbrick.template.web.WebResourceLoader
+template.loader = jetbrick.template.resource.loader.MultipathResourceLoader
+</code></pre> 
+<p>默认为 <code>jetbrick.template.resource.loader.FileSystemResourceLoader</code>。</p> 
+<p>注意：如果是 Web 集成模式，默认值为 <code>jetbrick.template.web.WebResourceLoader</code>。</p> 
+<h3><a class="anchor" name="template-path"></a>4.3 template.path</h3> 
+<p>除了要定义 <code>template.loader</code>，我们还需要定义模板存放的根目录。</p> 
+<p>默认为系统当前目录：<code>System.getProperty("user.dir")</code>。</p> 
+<p>注意：如果是 web 集成模式，默认为 webapp 的根目录。具体请参考：<a href="integration.html#JetEngine">JetEngine 自动加载方式</a> 中注意事项。</p> 
+<ul> 
+ <li>从文件系统加载</li> 
+</ul> 
+<pre><code class="highlight plaintext">template.loader = jetbrick.template.resource.loader.FileSystemResourceLoader
+template.path = /opt/app/templates/
+</code></pre> 
+<ul> 
+ <li>从Classpath下加载</li> 
+</ul> 
+<pre><code class="highlight plaintext">template.loader = jetbrick.template.resource.loader.ClasspathResourceLoader
+template.path = /META-INF/templates/
+</code></pre> 
+<ul> 
+ <li>从jar包中加载</li> 
+</ul> 
+<pre><code class="highlight plaintext">template.loader = jetbrick.template.resource.loader.JarResourceLoader
+template.path = /opt/app/templates.jar
+</code></pre> 
+<ul> 
+ <li>从webapp目录中加载(仅在Web框架集成中有效，并且已经被设置为默认项)</li> 
+</ul> 
+<pre><code class="highlight plaintext">template.loader = jetbrick.template.web.WebResourceLoader
+template.path = /WEB-INF/templates
+</code></pre> 
+<ul> 
+ <li>从多个目录中加载</li> 
+</ul> 
+<pre><code class="highlight plaintext">template.loader = jetbrick.template.resource.loader.MultipathResourceLoader
+template.path = file:/path/to, classpath:/, jar:/path/to/sample.jar, webapp:/WEB-INF/templates
+</code></pre> 
+<p>注意：<code>template.path</code> 支持多种路径，由逗号分隔。每个路径由一个前缀开头，代表相应的 ResouceLoader。具体如下：</p> 
+<table>
+ <thead> 
+  <tr> 
+   <th>前缀</th> 
+   <th>代表的 ResourceLoader</th> 
+  </tr> 
+ </thead>
+ <tbody> 
+  <tr> 
+   <td>file:</td> 
+   <td>FileSystemResourceLoader</td> 
+  </tr> 
+  <tr> 
+   <td>classpath:</td> 
+   <td>ClasspathResourceLoader</td> 
+  </tr> 
+  <tr> 
+   <td>jar:</td> 
+   <td>JarResourceLoader</td> 
+  </tr> 
+  <tr> 
+   <td>webapp:</td> 
+   <td>WebResourceLoader</td> 
+  </tr> 
+  <tr> 
+   <td>&lt;MyClassLoader&gt;:</td> 
+   <td>用户自定义的 ResourceLoader (完整类名)</td> 
+  </tr> 
+ </tbody>
+</table> 
+<p><font color="red"><br> 现在 <code>template.path</code> 支持变量了，如：<br> </font></p> 
+<pre><code class="highlight plaintext">template.path = ${user.dir}/templates
+template.path = ${webapp.dir}/WEB-INF/templates
+</code></pre> 
+<p>那么我们支持哪些变量呢？其实这些变量都来自于 <code>System.getProperty(name)</code>，只要 <code>System</code> 里有的，都支持。<br> 其中 <code>webapp.dir</code> 是个特殊变量，由 Web 集成框架在系统启动的时候，通过 <code>System.setProperty("webapp.dir", servletContext.getRealPath("/"))</code> 设置的。</p> 
+<h3><a class="anchor" name="template-suffix"></a>4.4 template.suffix</h3> 
+<p>默认的模板文件扩展名 <code>.jetx</code>，主要用于 Web 框架集成中，用于查找和过滤模板用。</p> 
+<h3><a class="anchor" name="template-reloadable"></a>4.5 template.reloadable</h3> 
+<p>在开发模式下面，我们一般需要频繁的修改模板内容来进行调试。那么我们需要打开这个功能来支持模板的热部署。（类似于 <code>JSP</code>）</p> 
+<p>是否需要重新编译和加载模板，取决于模板源文件的最后修改时间。</p> 
+<p>默认为 <code>false</code>，建议只在开发模式中启用。</p> 
+<h2><a class="anchor" name="1004799563"></a>5 编译选项</h2> 
+<p>jetbrick-template 采用编译成 Java ByteCode 来提高性能。</p> 
+<h3><a class="anchor" name="compile-tool"></a>5.1 compile.tool</h3> 
+<p>模板编译器的配置，默认使用 Eclipse Java Compiler, 如果不存在，那么将切换到 JDK 自带的编译器 （需要使用 JDK，而不是 JRE）。</p> 
+<p>目前可选的配置如下：</p> 
+<pre><code class="highlight plaintext"># 使用 Eclipse Java Compiler (默认值)
+compile.tool = jetbrick.template.compiler.JdtCompiler
+
+# 使用 JDK Compiler
+compile.tool = jetbrick.template.compiler.JdkCompiler
+</code></pre> 
+<p>Eclipse Java Compiler 需要引入第三方 jar (Tomcat 等 WebServer 一般都自带该 jar)</p> 
+<pre><code class="highlight xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.eclipse.jdt.core.compiler<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>ecj<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>4.3.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre> 
+<ol> 
+ <li>对于不支持 <code>javax.tools.JavaCompiler</code> 接口的 BAE (Baidu App Engine), 应该使用该编译器。</li> 
+ <li>对于出现未知的编译错误的时候，可以尝试切换编译器。</li> 
+</ol> 
+<h3><a class="anchor" name="compile-strategy"></a>5.2 compile.strategy</h3> 
+<p>模板从 1.2.0 开始，提供更加灵活的编译策略。由下面 4 中情况</p> 
+<pre><code class="highlight plaintext">compile.strategy = precompile
+compile.strategy = always
+compile.strategy = auto
+compile.strategy = none
+</code></pre> 
+<ul> 
+ <li><p><code>precompile</code><br> 在 JetEngine 初始化的时候，自动获取所有的模板(根据 <code>template.suffix</code> 过滤)，然后启动一个独立的线程进行编译。<br> 这样虽然启动时间会增加，但是后面的模板访问将会非常的快。并且在预编译没有完成期间，应用可以正常访问，不冲突。 </p></li> 
+ <li><p><code>always</code> （默认值）<br> 就是在模板被首次访问的时候，进行编译。</p></li> 
+ <li><p><code>auto</code><br> 就是在模板被首次访问的时候，如果磁盘中已经存在编译好的 Class 文件（并且源文件没有改变），那么直接加载该 Class 文件，否则进行编译。</p></li> 
+ <li><p><code>none</code><br> 该模式下，将不在对模板进行编译。（发布的时候，用户无需发布任何模板源文件）<br> 用户必须通过 <code>JetxGenerateApp</code> 预编译工具，事先将模板全部编译成 class 文件，并将所有的 class 文件放在 classpath 下面。<br> 注意： class 文件放在 classpath 下面，而不是 <code>compile.path</code> 对应的目录。</p></li> 
+</ul> 
+<blockquote> 
+ <p>注意：<br> 不管采用什么模式，对于使用 <code>JetEngine.createTemplate(source)</code> 直接由源码创建的模板，仍然需要进行编译。 </p> 
+</blockquote> 
+<h3><a class="anchor" name="compile-debug"></a>5.3 compile.debug</h3> 
+<p>是否在日志中打印输出模板生成的 Java Source 源代码。</p> 
+<p>默认 <code>false</code>，建议在开发模式中启用。</p> 
+<blockquote> 
+ <p><strong>注意</strong>：同时需要 slf4j 的配合才能输出日志。默认已经开启了 <code>INFO</code> 级别的日志。</p> 
+</blockquote> 
+<h3><a class="anchor" name="compile-path"></a>5.4 compile.path</h3> 
+<p>在模板编译的时候，会先生成对应的 <code>.java</code> 文件，然后在把 <code>.java</code> 文件编译成 <code>.class</code> 文件。我们生成的这 2 种文件就放在这个目录下面。</p> 
+<p>在用 Eclipse 进行 debug 的时候，可以 link 这个目录为 sourcepath 来进行 debug。<br> 具体参考：<a href="userguide.html#debug">如何调试模板 debug？</a></p> 
+<p>默认会在系统TEMP目录 <code>System.getProperty("java.io.tmpdir")</code> 下面新建一个 <code>jetx</code> 目录。如果这个目录非法或者没有写的权限，那么就会抛出 Exception。</p> 
+<blockquote> 
+ <p><strong>注意</strong>：</p> 
+ <ul> 
+  <li>如果一个应用中使用多个 <code>JetEngine</code> 实例，请配置不同的 <code>compile.path</code> 防止出现冲突。我们建议用户每次都重定义这个路径。</li> 
+ </ul> 
+</blockquote> 
+<p><font color="red"><br> 现在 <code>compile.path</code> 支持变量了，如：<br> </font></p> 
+<pre><code class="highlight plaintext">compile.path = ${java.io.tmp}/jetx
+compile.path = ${webapp.dir}/WEB-INF/jetx_classes
+</code></pre> 
+<p>那么我们支持哪些变量呢？其实这些变量都来自于 <code>System.getProperty(name)</code>，只要 <code>System</code> 里有的，都支持。<br> 其中 <code>webapp.dir</code> 是个特殊变量，由 Web 集成框架在系统启动的时候，通过 <code>System.setProperty("webapp.dir", servletContext.getRealPath("/"))</code> 设置的。</p> 
+<h2><a class="anchor" name="818233124"></a>6 安全管理器</h2> 
+<p>从 1.2.0 开始，模块新增了安全管理器，特别适合于 CMS 软件，允许用户自定义模板的场景。</p> 
+<h3><a class="anchor" name="security-manager"></a>6.1 security.manager</h3> 
+<p>配置安全管理器的实现类，默认为空，表示禁用安全管理器。</p> 
+<p>启用方式(使用默认的安全管理器)：</p> 
+<pre><code class="highlight plaintext">security.manager = jetbrick.template.parser.JetSecurityManagerImpl
+</code></pre> 
+<p>用户也可以实现自己的安全管理器，只要实现接口： <code>jetbrick.template.JetSecurityManager</code> 即可。</p> 
+<p>安全管理器只在对模板进行解析编译的时候进行，运行期不会影响任何性能。</p> 
+<h3><a class="anchor" name="security-manager-file"></a>6.2 security.manager.file</h3> 
+<p>给默认的安全管理器，配置黑白名单，将该名单放在独立的外部文件中。（每行一个名单）</p> 
+<pre><code class="highlight plaintext">security.manager.file = ${webapp.dir}/WEB-INF/jetx-white-black-list.txt
+</code></pre> 
+<h3><a class="anchor" name="security-manager-namelist"></a>6.3 security.manager.namelist</h3> 
+<p>给默认的安全管理器，配置黑白名单，多个名单以逗号分隔。</p> 
+<pre><code class="highlight plaintext">security.manager.namelist = -java.lang.System.exit \
+                            -java.lang.reflect \
+                            -java.sql \
+                            -javax.tools \
+                            -java.io \
+                            +java.io.File.getName \
+                            +java.io.File.getPath \
+                            -sun \
+</code></pre> 
+<p><code>security.manager.file</code> 和 <code>security.manager.namelist</code> 二选一配置即可。</p> 
+<p>黑白名单的格式如下：</p> 
+<ol> 
+ <li>前缀符号：</li> 
+</ol> 
+<pre><code class="highlight plaintext">* `+` 开头代表白名单
+* `-` 开头代表黑名单
+* 没有开始符号，则默认为白名单
+</code></pre> 
+<ol> 
+ <li>名单格式：</li> 
+</ol> 
+<pre><code class="highlight plaintext">* 包名： `pkg`
+* 类名名： `pkg.class`
+* 方法名： `pkg.class.method`
+* 字段名： `pkg.class.field`
+</code></pre> 
+<p>实例：</p> 
+<pre><code class="highlight plaintext">-java.sql                           // 禁止访问 java.sql 下面的任何 Class，包括所有孙子包下面的 Class
+-java.lang.System.exit              // 禁止调用 System.exit() 方法
++java.util.Collections.EMPTY_LIST   // 允许访问 Collections.EMPTY_LIST 字段
+</code></pre> 
+<h2><a class="anchor" name="867245599"></a>7 注释指令</h2> 
+<p>由于目前的指令一般直接嵌入在 HTML，对于一些使用可视化编辑器的用户来说，可能会造成一些干扰。<br> 模板从 1.0.1 开始增加对指令注释支持，如：<code>&lt;!-- #if (...) --&gt;</code>; 增强对可视化编辑器的友好度。</p> 
+<h3><a class="anchor" name="trim-directive-comments"></a>7.1 trim.directive.comments</h3> 
+<p>是否开启对注释指令的支持，默认为 <code>false</code>，表示不启用。</p> 
+<h3><a class="anchor" name="trim-directive-comments-prefix"></a>7.2 trim.directive.comments.prefix</h3> 
+<p>设置注释开始格式，默认为 <code>&lt;!--</code></p> 
+<h3><a class="anchor" name="trim-directive-comments-suffix"></a>7.3 trim.directive.comments.suffix</h3> 
+<p>设置注释开始格式，默认为 <code>--&gt;</code></p> 
+<blockquote> 
+ <p><strong>注意</strong>： 如果开启注释指令的支持，系统并没有强制要求 <code>trim.directive.comments.prefix</code> 和 <code>trim.directive.comments.suffix</code> 必须配对出现。也就是说如果使用 <code>&lt;!-- #end</code> 也是可以的。当然我们还是建议你配对使用。</p> 
+</blockquote> 
+<p>范例：</p> 
+<pre><code class="highlight html"><span class="nt">&lt;table&gt;</span>
+<span class="c">&lt;!-- #for (User user: userlist) --&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>${user.name}<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>${user.email}<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+<span class="c">&lt;!-- #end --&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</code></pre> 
+<h2><a class="anchor" name="641838512"></a>8 其他选项</h2> 
+<h3><a class="anchor" name="trim-directive-line"></a>8.1 trim.directive.line</h3> 
+<p>由于指令之间存在很多的空白内容，而空白内容也会被作为原始文本原封不动的输出，这样会造成很多输出的内容参差不齐。这个就是用来优化输出格式的，对于用模板来进行代码生成时候特别有用。不建议关闭。</p> 
+<p>模板示例：</p> 
+<pre><code class="highlight plaintext">#for (int n: [1,2,3])
+${n}
+#end
+</code></pre> 
+<p>禁用后效果：<code>false</code></p> 
+<pre><code class="highlight plaintext">
+1
+
+2
+
+3
+
+</code></pre> 
+<p>启用后的效果：<code>true</code> (默认启用)</p> 
+<pre><code class="highlight plaintext">1
+2
+3
+</code></pre> 
+<h2><a class="anchor" name="793518697"></a>9 推荐配置</h2> 
+<h3><a class="anchor" name="746078021"></a>9.1 开发环境</h3> 
+<pre><code class="highlight plaintext">import.packages = pkg1, pkg2
+import.autoscan = true
+import.autoscan.packages = pkg1, pgk2
+
+template.path = /path/to/templates/
+template.reloadable = true
+
+compile.strategy = always
+compile.path = /path/to/temp/
+compile.debug = true
+</code></pre> 
+<h3><a class="anchor" name="913514012"></a>9.2 生产环境</h3> 
+<pre><code class="highlight plaintext">import.packages = pkg1, pkg2
+import.autoscan = true
+import.autoscan.packages = pkg1, pgk2
+
+template.path = /path/to/templates/
+template.reloadable = false
+
+compile.strategy = precompile
+compile.path = /path/to/temp/
+compile.debug = false
+</code></pre>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

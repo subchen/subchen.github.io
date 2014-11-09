@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View/ViewHandler :: jetbrick-webmvc</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-webmvc/view.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../jetbrick-webmvc/overview.html" class="navbar-brand" style="padding:10px;">
+                <img src="../assets/images/logo-jetbrick-webmvc-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发指南 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../jetbrick-webmvc/overview.html">概述 Overview</a></li>
+                        <li><a href="../jetbrick-webmvc/helloworld.html">快速开始 Hello World</a></li>
+                        <li><a href="../jetbrick-webmvc/webxml.html">配置 web.xml</a></li>
+                        <li><a href="../jetbrick-webmvc/config.html">配置 jetbrick-webmvc.properties</a></li>
+                        <li><a href="../jetbrick-webmvc/bypass-urls.html">资源过滤器 BypassRequestUrls</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/controller.html">Controller 和 Action</a></li>
+                        <li><a href="../jetbrick-webmvc/action-inject.html">Controller/Action 注入</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/result.html">Result/ResultHandler</a></li>
+                        <li><a href="../jetbrick-webmvc/view.html">View/ViewHandler</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/fileupload.html">文件上传支持 FileUpload</a></li>
+                        <li><a href="../jetbrick-webmvc/request-context.html">RequestContext 对象</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/annotation-list.html">MVC 注解一览表</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">高级用法 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../jetbrick-webmvc/exception-handler.html">全局异常处理器 Exception Handler</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/interceptor.html">自定义拦截器 Interceptor</a></li>
+                        <li><a href="../jetbrick-webmvc/plugin.html">自定义插件 Plugin</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/custom-annotation.html">自定义 Action 参数注入 Annotation</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../index.html">jetbrick 首页</a></li>
+                        <li><a href="../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../jetbrick-webmvc/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="https://github.com/subchen/jetbrick-webmvc"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <article class="markdown">
+        <h1><a class="anchor" name="view-viewhandler"></a>View/ViewHandler</h1> 
+<p>当我们使用 String 作为 Result 的时候，我们实际是由 View/ViewHandler 这一对兄弟来处理对应的 View。</p> 
+<p>Result 返回值可以由下面两部分组成：</p> 
+<pre><code class="highlight plaintext">String Result = &lt;view_type&gt;:&lt;view_path_name&gt;
+</code></pre> 
+<ul> 
+ <li>view_type - 可选的 View 类型，代表用那个 ViewHandler 来处理</li> 
+ <li>view_path_name - 逻辑视图名称（包含路径，默认是相对于 Action URL 的路径）</li> 
+</ul> 
+<p>比如下面的几种 Result 返回值例子：</p> 
+<ul> 
+ <li>redirect:/passport/login</li> 
+ <li>login.jsp</li> 
+ <li>jetx:login.jetx</li> 
+</ul> 
+<blockquote class="info">
+ <p><strong>提示</strong>：<br> * 如果 view_type 省略，那么将从 view_path_name 中的使用的扩展名中获取。<br> * 如果 view_path_name 扩展名也没有，那么将使用系统默认的 ViewHandler (由 <code>web.view.default</code> 配置)。</p> 
+</blockquote> 
+<h2><a class="anchor" name="-view-viewhandler"></a>1 内置的 View/ViewHandler</h2> 
+<p>jetbrick 已经内置了多种 View/ViewHandler 处理器：</p> 
+<ul> 
+ <li><code>forward</code>: Forward 到一个指定的 page</li> 
+ <li><code>redirect</code>: Redirect 到一个指定的 page/URL</li> 
+ <li><code>jsp</code>: 使用 JSP 作为 View</li> 
+ <li><code>jetx</code>: 使用 jetbrick-template 作为 View</li> 
+ <li><code>json</code>: 使用 JSON 文本输出作为 View</li> 
+ <li><code>xml</code>: 使用 XML 文本输出作为 View</li> 
+ <li><code>text</code>: 使用纯文本输出作为 View</li> 
+ <li><code>html</code>: 使用 HTML 文本输出作为 View</li> 
+ <li><code>js</code>: 使用 JS 文本输出作为 View</li> 
+ <li><code>css</code>: 使用 CSS 文本输出作为 View</li> 
+</ul> 
+<p>我们将分别介绍不同的 View 的使用方法。</p> 
+<h3><a class="anchor" name="forward"></a>1.1 forward</h3> 
+<p>等价于 <code>request.getRequestDispatcher(viewPathName).forward(request, response)</code></p> 
+<pre><code class="highlight java"><span class="nd">@Action</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">list</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"forward:list.jsp"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre> 
+<h3><a class="anchor" name="redirect"></a>1.2 redirect</h3> 
+<p>等价于 <code>response.sendRedirect(viewPathName);</code></p> 
+<pre><code class="highlight java"><span class="nd">@Action</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">list</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"redirect:/passport/login"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre> 
+<blockquote class="info">
+ <p><strong>提示</strong>: </p> 
+ <ul> 
+  <li>返回的路径可以是 <code>http://</code>, <code>https://</code> 等开头的绝对路径。</li> 
+  <li>返回的路径也可以是相对于 request URL 的相对路径。</li> 
+  <li>返回的路径如果是 <code>/</code> 开头的绝对路径，那么 jetbrick 自动在前面会加上 <code>request.getContextPath()</code>。</li> 
+ </ul> 
+</blockquote> 
+<h3><a class="anchor" name="jsp"></a>1.3 jsp</h3> 
+<p>默认使用 JSP 页面作为 View</p> 
+<pre><code class="highlight java"><span class="nd">@Action</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">list</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"jsp:list"</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Action</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">form</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"form.jsp"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre> 
+<h3><a class="anchor" name="jetx"></a>1.4 jetx</h3> 
+<p>默认使用 jetbrick-template 页面作为 View</p> 
+<p>需要加入依赖：</p> 
+<pre><code class="highlight xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.github.subchen<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>jetbrick-template-jetbrickmvc<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre> 
+<p>范例代码如下：</p> 
+<pre><code class="highlight java"><span class="nd">@Action</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">list</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"jetx:list"</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Action</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">form</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"form.jetx"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre> 
+<h3><a class="anchor" name="json-xml-text-html-js-css"></a>1.5 json/xml/text/html/js/css</h3> 
+<p>使用用户提供的文本进行输出</p> 
+<pre><code class="highlight java"><span class="nd">@Action</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">json</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"json: [1,2,3]"</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="nd">@Action</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">xml</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"xml: &lt;root id='1'&gt;&lt;/root&gt;"</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="nd">@Action</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">text</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"text: 纯文本"</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="nd">@Action</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">html</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"html: &lt;font color='red'&gt;Failed&lt;/font&gt;"</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="nd">@Action</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">js</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"data = {};"</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="nd">@Action</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">css</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"css: div.block { width: 100px; }"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre> 
+<h2><a class="anchor" name="-viewhandler"></a>2 自定义 ViewHandler</h2> 
+<p>jetbrick 允许用户定义自己的 ViewHandler。</p> 
+<p>比如说，我们要使用 Freemarker 来作为我们的模板引擎，那么就要如下定义：</p> 
+<pre><code class="highlight java"><span class="nd">@Managed</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FreemarkerViewHandler</span> <span class="kd">extends</span> <span class="n">AbstractTemplateViewHandler</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">getViewType</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"fm"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">getViewSuffix</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"flt"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">boolean</span> <span class="n">doRender</span><span class="o">(</span><span class="n">RequestContext</span> <span class="n">ctx</span><span class="o">,</span> <span class="n">String</span> <span class="n">viewPathName</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// sample code</span>
+        <span class="n">engine</span> <span class="o">=</span> <span class="n">getEngine</span><span class="o">();</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="na">getTemplate</span><span class="o">(</span><span class="n">viewPathName</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">template</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span> <span class="c1">// resource not found</span>
+        <span class="o">}</span>
+
+        <span class="n">template</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">ctx</span><span class="o">.</span><span class="na">getRequest</span><span class="o">(),</span> <span class="n">ctx</span><span class="o">.</span><span class="na">getResponse</span><span class="o">());</span>
+
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre> 
+<blockquote class="info">
+ <p><strong>提示</strong>：</p> 
+ <ol> 
+  <li>需要实现 <code>jetbrick.web.mvc.results.view.ViewHandler</code> 接口，我们推荐直接继承 <code>jetbrick.web.mvc.results.view.AbstractTemplateViewHandler</code> 抽象类</li> 
+  <li>需要使用 <code>@Managed</code> 标注</li> 
+  <li>需要将自定义的 ViewHandler 所在的 package 加入的 jetbrick 自动扫描路径下（由 <code>web.scan.packages</code> 配置）</li> 
+ </ol> 
+</blockquote> 
+<p>如果大家实现了第三方的 ViewHandler，我们希望能共享出来，让 jetbrick 可以为更多的用户服务。</p>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>全局变量 Global Context :: jetbrick-template</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-template/2x/global-context.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../../jetbrick-template/index.html" class="navbar-brand" style="padding:10px;">
+                <img src="../../assets/images/logo-jetbrick-template-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/overview.html">概述 Overview</a></li>
+                        <li><a href="../../jetbrick-template/2x/quickstart.html">快速开始 Quick Start</a></li>
+                        <li><a href="../../jetbrick-template/2x/core-object.html">核心对象 Core</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/global-context.html">全局变量 Global Context</a></li>
+                        <li><a href="../../jetbrick-template/2x/handle-error.html">模板详细错误</a></li>
+                        <li><a href="../../jetbrick-template/2x/debug.html">调试模板 Debug</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">进阶 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/ext-method.html">扩展方法 Method</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-function.html">扩展函数 Function</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-tag.html">标签 Tag</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-macro.html">宏 Macro</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/include.html">嵌入子模板 Include</a></li>
+                        <li><a href="../../jetbrick-template/2x/layout.html">布局 Layout</a></li>
+                    </ul>
+                </li>
+                <li><a href="../../jetbrick-template/2x/config.html">配置</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">语法 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/syntax-text.html">文本 Text</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-comment.html">注释 Comment</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-value.html">值 Value</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-directive.html">指令 Directive</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-expression.html">表达式 Expression</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/velocity-comparison.html">和 Velocity 的比较</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web集成 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/web-integration.html">Web 框架集成</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-servlet.html">直接使用 HttpServlet</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-filter.html">直接使用 Filter</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jetbrickmvc.html">与 Jetbrick webmvc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-springmvc.html">与 Spring webmvc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jfinal.html">与 JFinal 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jodd.html">与 Jodd madvoc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-struts.html">与 Struts 2.x 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-nutz.html">与 Nutz 集成</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">jetbrick 首页</a></li>
+                        <li><a href="../../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../../jetbrick-template/2x/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="http://github.com/subchen/jetbrick-template-2x"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jb-announcement">
+        jetbrick-template-1.x 旧版文档请看这里：<a href="http://subchen.github.io/jetbrick-template/1x/">http://subchen.github.io/jetbrick-template/1x/</a>
+    </div>
+
+    <article class="markdown">
+        <h1><a class="anchor" name="-global-context"></a>全局变量 Global Context</h1> 
+<p>通过 <code>JetEngine.getGlobalContext()</code>，可以得到一个 <code>JetGlobalContext</code> 对象，我们可以通过这个对象，来动态设置全局变量的。</p> 
+<h2><a class="anchor" name="jetglobalcontext-api"></a>1 JetGlobalContext API</h2> 
+<ul> 
+ <li><p><code>define(Class&lt;?&gt; type, String name)</code></p> <p>为全局变量定义类型(在 strict 模式下，必须定义类型)</p></li> 
+ <li><p><code>set(String name, Object value)</code></p> <p>设置全局变量</p></li> 
+ <li><p><code>set(Class&lt;?&gt; class, String name, Object value)</code></p> <p>define + set 快捷版本</p></li> 
+</ul> 
+<blockquote class="info">
+ <p><strong>最佳实践</strong>：使用 <code>set(Class&lt;?&gt; class, String name, Object value)</code> 为每个全局变量设置变量类型。</p> 
+</blockquote> 
+<h2><a class="anchor" name="-samples"></a>2 范例 Samples</h2> 
+<pre><code class="highlight java"><span class="n">JetEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="n">JetEngine</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
+
+<span class="n">JetGlobalContext</span> <span class="n">globalContext</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="na">getGlobalContext</span><span class="o">();</span>
+
+<span class="c1">// 定义一个全局变量类型(自定义类型，不设置值)</span>
+<span class="n">globalContext</span><span class="o">.</span><span class="na">define</span><span class="o">(</span><span class="n">AuthService</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"authService"</span><span class="o">);</span>
+
+<span class="c1">// 加入一个全局变量值</span>
+<span class="n">String</span> <span class="n">tmpdir</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s">"java.io.tmpdir"</span><span class="o">);</span>
+<span class="n">globalContext</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"tmpdir"</span><span class="o">,</span> <span class="n">tmpdir</span><span class="o">);</span>
+
+</code></pre>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

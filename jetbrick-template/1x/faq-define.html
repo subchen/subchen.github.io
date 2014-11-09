@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>为什么需要 #define 声明变量类型？ :: jetbrick-template-1x</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-template/1x/faq-define.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../../jetbrick-template/index.html" class="navbar-brand" style="padding:10px;">
+                <img src="../../assets/images/logo-jetbrick-template-1x-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="../../jetbrick-template/1x/overview.html">概述</a></li>
+                <li><a href="../../jetbrick-template/1x/userguide.html">开发</a></li>
+                <li><a href="../../jetbrick-template/1x/config.html">配置</a></li>
+                <li><a href="../../jetbrick-template/1x/syntax.html">语法</a></li>
+                <li><a href="../../jetbrick-template/1x/integration.html">Web集成</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">FAQ <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/1x/faq-compile.html">将模板编译成 Java Class 有什么好处</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-define.html">为什么需要 #define 声明变量类型？</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-error.html">常见错误分析</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-autoscan.html">如何让自动扫描发现用户自定义的扩展方法/函数/标签 Class</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-include.html">如何嵌入子模板？（父子间参数传递）</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-layout.html">如何实现 layout 功能？</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-tag.html">如何自定义 Tag？</a></li>
+                        <li><a href="../../jetbrick-template/1x/faq-spring.html">在 Spring 中的集成方法</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">jetbrick 首页</a></li>
+                        <li><a href="../../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../../jetbrick-template/1x/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="http://github.com/subchen/jetbrick-template-1x"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jb-announcement">
+        jetbrick-template-2.x 已经发布，新版文档请看这里：<a href="http://subchen.github.io/jetbrick-template/2x/">http://subchen.github.io/jetbrick-template/2x/</a>
+    </div>
+
+    <article class="markdown">
+        <h1><a class="anchor" name="jetbrick-template-define-"></a>jetbrick-template 中为什么需要 #define 声明变量类型？</h1> 
+<p>由于 jetbrick-template 将模板编译成 Java Class 来提高模板的运行性能。所以模板在运行之前需要像 JSP 一样，先进行编译。</p> 
+<p>jetbrick-template 编译的时候，需要确定变量的类型来消除反射和类型转换。(注意： JSP 的 EL 表达式是通过反射解释执行的，不需要在编译期间确定变量的类型)</p> 
+<p>jetbrick-template 支持类型推导，但是如果无法进行类型推导的时候，就会默认对象的类型是 Object，那么如果需要调用非 Object 对象的属性或者方法的时候，就需要借助 #define 或者 #set 指令来进行变量类型的声明。</p> 
+<p>如何获取变量的类型：</p> 
+<ol> 
+ <li>全局默认导入的变量类型，如 <code>context</code>， <code>request</code>， <code>session</code> 等</li> 
+ <li>全局 <code>import.variables</code> 中定义的变量类型</li> 
+ <li><code>obj.foo</code> 对应的属性类型</li> 
+ <li><code>obj.method()</code> 对应的方法返回值</li> 
+ <li>扩展函数、扩展方法的返回值</li> 
+ <li>其他运算结果</li> 
+</ol> 
+<p>注意： 由于 Java 泛型采用的是类型消除（伪泛型），所以对于 Java 泛型的类型推导在一些情况下是不工作的，这时就需要用 <code>#set(type name = expression)</code> 将中间结果定义为一个类型。也可以用强制类型转换：<code>((String)(obj.items.get(0)).toUpperCase()</code>。</p> 
+<p>一般在下列情况需要 #define 类型声明</p> 
+<ul> 
+ <li><code>${bar.foo}</code> 读取 foo 属性</li> 
+ <li><code>${bar.foo()}</code> 调用 foo() 方法</li> 
+ <li><code>${fnCall(bar)}</code> 调用 fnCall() 函数扩展</li> 
+</ul> 
+<p>下列情况不需要 <code>#define</code> 类型声明</p> 
+<ul> 
+ <li><code>${bar}</code> 直接输出对象</li> 
+ <li><code>#for (type var : items)</code> #for 指令的循环对象 items</li> 
+</ul> 
+<p>我们建议每个模板中所有的 <code>#define</code> 语句都统一定义在文件开头位置，这样方便我们知道模板依赖的各种变量。</p> 
+<p><code>#define</code> 指令是声明哪些全局 <code>contex</code>t 的变量类型，如果需要指定中间运算结果的变量类型，请用 <code>#set</code> 指令。</p>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

@@ -1,113 +1,112 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset='utf-8'>
+    <title>jetbrick :: 轻量级 JAVA 开发框架</title>
+
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="baidu-site-verification" content="WCWZyfY1Hq" />
-    <meta name="google-site-verification" content="1gstJBWBdVHBBvMQo5uVaIywIgv5HIcpkZHVU8yxPrU" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
-    <title>jetbrick 系列项目主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="assets/css/application.min.css" rel="stylesheet" type="text/css"/>
+    <link rel="canonical" href="http://subchen.github.io/index.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
 
-    <!--[if lt IE 9]>
-    <script src="assets/js/html5shiv.js"></script><![endif]-->
-    <script type="text/javascript" src="assets/js/application.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="./assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="./assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="./assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="./assets/js/application.js"></script>
 </head>
 
 <body>
 
-<div class="jb-topbar">
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
     <div class="container">
-        <img src="assets/images/logo-mini.png"/>
+        <div class="navbar-header">
+            <a href="./index.html" class="navbar-brand" style="padding:10px;">
+                <img src="./assets/images/logo-jetbrick-light.png" height="30">
+            </a>
+        </div>
     </div>
-</div>
+</nav>
 
 <div class="container">
-    <br/>
-    <h1>jetbrick 系列开源项目</h1>
-    <p>
-        jetbrick 致力于解决在 Java 开发过程中面临的多种问题。
-        从前端的 Java 模板引擎，CSS/JS 的 Widget UI 库，
-        再到后端的 Web MVC，O/R Mapping 等。包含了全生命周期的开发框架。
-        其中每一个框架都可以单独使用，目前全部项目已经开源，文档正在完善中...
-    </p>
-</div>
-<style>
-    .project-link:hover {
-        text-decoration: none;
-        box-shadow: 0 0 5px #b37f14;
-        border-color: #b37f14;
-    }
-    .project-link {
-        color: #34302d;
-        transition: all 0.2s;
-        -webkit-transition: all 0.2s;
-        -moz-transition: all 0.2s;
-        -ms-transition: all 0.2s;
-        -o-transition: all 0.2s;
-
-        border: 1px solid #ccc;
-        display: inline-block;
-        width: 275px;
-        height: 330px;
-        vertical-align: top;
-        padding: 30px;
-        cursor: pointer;
-    }
-</style>
-<div class="container">
-    <a class="project-link" href="jetbrick-template/index.html">
-        <img src="assets/images/jetbrick-template-logo.png">
-        <p>新一代 Java 模板引擎，具有高性能和高扩展性。 适合于动态 HTML 页面输出或者代码生成，可替代 JSP 页面或者 Velocity 等模板。</p>
-        <ul style="margin-left: 30px;">
-            <li>支持类似于 Velocity 的多种指令</li>
-            <li>支持静态编译</li>
-            <li>支持编译缓存</li>
-            <li>支持热加载</li>
-            <li>支持类型推导</li>
-            <li>支持泛型</li>
-            <li>支持可变参数方法调用</li>
-            <li>支持方法重载</li>
-            <li>支持类似于 Groovy 的方法扩展</li>
-            <li>支持函数扩展</li>
-        </ul>
-    </a>
-    <a class="project-link" style="margin-left: 19px;" href="jetbrick/index.html">
-        <img src="assets/images/jetbrick-framework-logo.png">
-        <p>融合了多个项目，文档已完成</p>
-        <ul style="margin-left: 30px;">
-            <li>jetbrick-commons</li>
-            <li>jetbrick-ioc</li>
-            <li>jetbrick-webmvc</li>
-            <li>jetbrick-orm</li>
-            <li>jetbrick-dbupgrade</li>
-        </ul>
-    </a>
-    <a class="project-link pull-right" href="#">
-        <img src="assets/images/jetbrick-widget-logo.png">
-        <p>1个 CSS 框架 + 1个 JS 框架 (Core + UI)</p>
-        <p>文档完善中...</p>
-    </a>
+    <article class="markdown">
+    
+        <h1>jetbrick 系列框架</h1>
+                
+        <table><thead>
+          <tr>
+            <th>产品</th>
+            <th>版本</th>
+            <th>说明</th>
+            <th>文档</th>
+            <th>下载</th>
+            <th>源码</th>
+          </tr>
+        </thead><tbody>
+          <tr>
+            <td>jetbrick-commons</td>
+            <td>2.0.1</td>
+            <td>提供了常用的 utils 类库，无第三方 jars 依赖</td>
+            <td><a href="jetbrick-commons/overview.html">文档</a></td>
+            <td><a href="jetbrick-commons/download.html">下载</a></td>
+            <td><a href="https://github.com/subchen/jetbrick-commons">源码</a></td>
+          </tr>
+          <tr>
+            <td>jetbrick-ioc</td>
+            <td>2.0.1</td>
+            <td>简单，小巧的 IoC 容器，Bean 自动发现，自动注册</td>
+            <td><a href="jetbrick-ioc/overview.html">文档</a></td>
+            <td><a href="jetbrick-ioc/download.html">下载</a></td>
+            <td><a href="https://github.com/subchen/jetbrick-ioc">源码</a></td>
+          </tr>
+          <tr>
+            <td>jetbrick-orm</td>
+            <td>2.0</td>
+            <td>JDBC 的轻量级封装，面向对象的 API 接口。简单，高效</td>
+            <td><a href="jetbrick-orm/overview.html">文档</a></td>
+            <td><a href="jetbrick-orm/download.html">下载</a></td>
+            <td><a href="https://github.com/subchen/jetbrick-orm">源码</a></td>
+          </tr>
+          <tr>
+            <td>jetbrick-webmvc</td>
+            <td>2.0</td>
+            <td>类似于 Struts, Spring MVC 等经典 MVC 框架，提供更小巧、强大，更灵活的 webmvc</td>
+            <td><a href="jetbrick-webmvc/overview.html">文档</a></td>
+            <td><a href="jetbrick-webmvc/download.html">下载</a></td>
+            <td><a href="https://github.com/subchen/jetbrick-webmvc">源码</a></td>
+          </tr>
+          <tr>
+            <td>jetbrick-template</td>
+            <td>2.0</td>
+            <td>新一代 Java 模板引擎，具有高性能和高扩展性。完美替代 JSP 页面或者 Velocity 等模板引擎</td>
+            <td><a href="jetbrick-template/index.html">文档</a></td>
+            <td><a href="jetbrick-template/2x/download.html">下载</a></td>
+            <td><a href="https://github.com/subchen/jetbrick-template-2x">源码</a></td>
+          </tr>
+        </tbody></table>
+    </article>
 </div>
 
-<div class="container">
-    <div class="jb-footer">
-        Copyright 2010-2014 Guoqiang Chen. All rights reserved.
-        <br/>subchen&#64;gmail.com
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
     </div>
-</div>
+</footer>
 
-<style type="text/css">
-#cnzz_stat_icon_1000210720 {
-    display: none;
-}
-</style>
 <script type="text/javascript">
 var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
 document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
 </script>
 
-
 </body>
 </html>
+

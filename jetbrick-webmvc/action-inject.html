@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Controller/Action 注入 :: jetbrick-webmvc</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-webmvc/action-inject.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../jetbrick-webmvc/overview.html" class="navbar-brand" style="padding:10px;">
+                <img src="../assets/images/logo-jetbrick-webmvc-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发指南 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../jetbrick-webmvc/overview.html">概述 Overview</a></li>
+                        <li><a href="../jetbrick-webmvc/helloworld.html">快速开始 Hello World</a></li>
+                        <li><a href="../jetbrick-webmvc/webxml.html">配置 web.xml</a></li>
+                        <li><a href="../jetbrick-webmvc/config.html">配置 jetbrick-webmvc.properties</a></li>
+                        <li><a href="../jetbrick-webmvc/bypass-urls.html">资源过滤器 BypassRequestUrls</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/controller.html">Controller 和 Action</a></li>
+                        <li><a href="../jetbrick-webmvc/action-inject.html">Controller/Action 注入</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/result.html">Result/ResultHandler</a></li>
+                        <li><a href="../jetbrick-webmvc/view.html">View/ViewHandler</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/fileupload.html">文件上传支持 FileUpload</a></li>
+                        <li><a href="../jetbrick-webmvc/request-context.html">RequestContext 对象</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/annotation-list.html">MVC 注解一览表</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">高级用法 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../jetbrick-webmvc/exception-handler.html">全局异常处理器 Exception Handler</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/interceptor.html">自定义拦截器 Interceptor</a></li>
+                        <li><a href="../jetbrick-webmvc/plugin.html">自定义插件 Plugin</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/custom-annotation.html">自定义 Action 参数注入 Annotation</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../index.html">jetbrick 首页</a></li>
+                        <li><a href="../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../jetbrick-webmvc/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="https://github.com/subchen/jetbrick-webmvc"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <article class="markdown">
+        <h1><a class="anchor" name="controller-action-"></a>Controller/Action 注入</h1> 
+<p>jetbrick 支持 IoC，所以，我们的 Controller 自然也可以注入依赖的 Bean 对象。</p> 
+<h2><a class="anchor" name="controller-"></a>1 Controller 字段注入</h2> 
+<p>我们可以使用如下的 Annotation 来实现字段注入：</p> 
+<ul> 
+ <li><code>@Inject</code> - IoC 容器对象</li> 
+ <li><code>@Config</code> - 配置文件配置项</li> 
+ <li><code>@SpringBean</code> - Spring IoC 对象</li> 
+ <li><code>@XXX</code> - 用户自定义标注</li> 
+</ul> 
+<p>基本上，Controller 字段注入的大部分都是全局对象。不支持直接注入 Request/Session 上下文相关的对象。</p> 
+<h2><a class="anchor" name="action-"></a>2 Action 参数注入</h2> 
+<p>在 Action 方法中，我们不仅可以注入 IoC 容器中的对象，我们也可以注入 Request/Session 上下文相关的对象。</p> 
+<p>对于 Action 方法参数的注入，我们支持 2 种方式：</p> 
+<h3><a class="anchor" name="-annotation-"></a>2.1 根据 Annotation 注入</h3> 
+<ul> 
+ <li><code>@Inject</code> - IoC 容器中的对象</li> 
+ <li><code>@Config</code> - 配置文件中的配置项</li> 
+ <li><code>@SpringBean</code> - Spring IoC 对象</li> 
+ <li><code>@PathVariable</code> - Path URL 参数</li> 
+ <li><code>@RequestParam</code> - Request.getParameter(...)，也支持文件上传对象 FilePart</li> 
+ <li><code>@RequestForm</code> - 将多个 Request 参数，注入到一个 Form 对象中</li> 
+ <li><code>@RequestHeader</code> - Request.getHeader(...)</li> 
+ <li><code>@RequestCookie</code> - Request.getCookies()</li> 
+ <li><code>@RequestAttribute</code> - Request.getAttribute(...)</li> 
+ <li><code>@SessionAttribute</code> - Session.getAttribute(...)</li> 
+ <li><code>@ServletContextAttribute</code> - ServletContext.getAttribute(...)</li> 
+ <li><code>@InitParameter</code> - ServletContext.getInitParameter(...)</li> 
+ <li><code>@XXX</code> - 用户自定义标注</li> 
+</ul> 
+<h3><a class="anchor" name="1537123724"></a>2.2 根据参数的类型注入：</h3> 
+<ul> 
+ <li><code>RequestContext</code> - Request 上下文对象</li> 
+ <li><code>Model</code> - Action 要返回的 Model 对象</li> 
+ <li><code>HttpServletRequest</code> - Request 对象</li> 
+ <li><code>HttpServletResponse</code> - Response 对象</li> 
+ <li><code>HttpSession</code> - Session 对象</li> 
+ <li><code>ServletContext</code> - ServletContext 对象</li> 
+ <li><code>FilePart</code> - 单个上传文件对象</li> 
+ <li><code>FilePart[]</code> - 所有上传文件对象</li> 
+ <li><code>RequestParameterMap</code> - a map of request parameter.</li> 
+ <li><code>RequestParameterValuesMap</code> - a map of request parameter values.</li> 
+ <li><code>RequestHeaderMap</code> - a map of request header.</li> 
+ <li><code>RequestHeaderValuesMap</code> - a map of request header values.</li> 
+ <li><code>RequestCookieMap</code> - a map of request cookie.</li> 
+ <li><code>RequestAttributeMap</code> - a map of request attributes.</li> 
+ <li><code>SessionAttributeMap</code> - a map of session attributes.</li> 
+ <li><code>ServetContextAttributeMap</code> - a map of servlet context attributes.</li> 
+ <li><code>ServetContextInitParameterMap</code> - a map of servlet context init parameters.</li> 
+ <li><code>XXX</code> - 用户自定义类型</li> 
+</ul> 
+<h2><a class="anchor" name="-annotation-"></a>3 下面我们将对每一个 Annotation 和参数类型来说明</h2> 
+<h3><a class="anchor" name="-annotation-"></a>3.1 根据 Annotation 注入</h3> 
+<h4><a class="anchor" name="-inject-config-springbean"></a>@Inject/@Config/@SpringBean</h4> 
+<p>这几个 Annotation 是 IoC 容器本身提供的，具体说明可以参考 IoC 中的相关内容。</p> 
+<ul> 
+ <li><a href="../jetbrick-ioc/anno-inject.html">@Inject</a></li> 
+ <li><a href="../jetbrick-ioc/anno-config.html">@Config</a></li> 
+</ul> 
+<h4><a class="anchor" name="-pathvariable"></a>@PathVariable</h4> 
+<p>专门用于获取 Request URL 中 <code>{}</code> 参数变量。支持变量类型的自动转换。</p> 
+<p>例如，我们的 Action URL 定义如下 <code>/users/{id}</code>，而我们的 Request URL 如下 <code>/users/123</code>。</p> 
+<p>这样你就可以用 <code>@PathVariable("id")</code> 来获取 URL 中参数 <code>{id}</code> 对应的变量 <code>123</code>.</p> 
+<blockquote class="info">
+ <p><strong>提示</strong>:</p> 
+ <p>JDK 8 开始支持方法参数名称(编译选项 <code>-parameters</code>)。</p> 
+ <p>我们如果省略 <code>@PathVariable</code> 参数名称，那么我们将会从参数的名称中获取名字。</p> 
+ <p>对于使用 JDK 8 之前的版本，只要 Javac 编译的时候使用了 <code>-g</code> 编译选项（debug 编译），那么我们也可以在字节码源文件中自动获取参数名称。</p> 
+ <pre><code class="highlight java"><span class="nd">@Action</span><span class="o">(</span><span class="s">"/users/{id}"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">action</span><span class="p">(</span><span class="nd">@PathVariable</span> <span class="kt">int</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre> 
+ <p>是不是这样的代码更优雅！记住其他的类似的 Annotation 都可以这么干哦！</p> 
+</blockquote> 
+<h4><a class="anchor" name="-requestparam"></a>@RequestParam</h4> 
+<p>用于从 Request 中获取参数，等价于 <code>request.getParameter(...)</code>，支持自动类型转换。</p> 
+<p>我们既可以注入普通的 Parameter，也可以注入 FilePart 对象（文件上传对象）</p> 
+<pre><code class="highlight java"><span class="nd">@Action</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">action</span><span class="p">(</span>
+        <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"id"</span><span class="o">)</span> <span class="n">String</span> <span class="n">id</span><span class="o">,</span> 
+        <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"file"</span><span class="o">)</span> <span class="n">FilePart</span> <span class="n">file</span>
+    <span class="o">)</span> <span class="o">{</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre> 
+<h4><a class="anchor" name="-requestform"></a>@RequestForm</h4> 
+<p>将多个 Request 参数，注入到一个 Form 对象中</p> 
+<pre><code class="highlight java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginInfo</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">username</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">password</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">rememberMe</span><span class="o">;</span>
+
+    <span class="c1">// 省略 getter, setter</span>
+<span class="o">}</span>
+
+<span class="nd">@Action</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">action</span><span class="p">(</span><span class="nd">@RequestForm</span> <span class="n">LoginInfo</span> <span class="n">form</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">form</span><span class="o">.</span><span class="na">getUsername</span><span class="o">());</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">form</span><span class="o">.</span><span class="na">getPassword</span><span class="o">());</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">form</span><span class="o">.</span><span class="na">isRememberMe</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre> 
+<h4><a class="anchor" name="-requestheader"></a>@RequestHeader</h4> 
+<p>等价于 <code>Request.getHeader(...)</code>，支持自动类型转换。</p> 
+<h4><a class="anchor" name="-requestcookie"></a>@RequestCookie</h4> 
+<p>获取 Cookie 信息，支持自动类型转换。</p> 
+<h4><a class="anchor" name="-requestattribute"></a>@RequestAttribute</h4> 
+<p>等价于 <code>Request.getAttribute(...)</code></p> 
+<h4><a class="anchor" name="-sessionattribute"></a>@SessionAttribute</h4> 
+<p>等价于 <code>Session.getAttribute(...)</code></p> 
+<h4><a class="anchor" name="-servletcontextattribute"></a>@ServletContextAttribute</h4> 
+<p>等价于 <code>ServletContext.getAttribute(...)</code></p> 
+<h4><a class="anchor" name="-initparameter"></a>@InitParameter</h4> 
+<p>等价于 <code>ServletContext.getInitParameter(...)</code>，支持自动类型转换。</p> 
+<h4><a class="anchor" name="465224526"></a>根据参数的类型注入</h4> 
+<h4><a class="anchor" name="requestcontext"></a>RequestContext</h4> 
+<p>Request 上下文对象</p> 
+<h4><a class="anchor" name="model"></a>Model</h4> 
+<p>Action 要返回的 Model 对象</p> 
+<h4><a class="anchor" name="httpservletrequest"></a>HttpServletRequest</h4> 
+<p>Request 对象</p> 
+<h4><a class="anchor" name="httpservletresponse"></a>HttpServletResponse</h4> 
+<p>Response 对象</p> 
+<h4><a class="anchor" name="httpsession"></a>HttpSession</h4> 
+<p>Session 对象</p> 
+<h4><a class="anchor" name="servletcontext"></a>ServletContext</h4> 
+<p>ServletContext 对象</p> 
+<h4><a class="anchor" name="filepart"></a>FilePart</h4> 
+<p>单个上传文件对象</p> 
+<h4><a class="anchor" name="filepart-"></a>FilePart[]</h4> 
+<p>所有上传文件对象</p> 
+<h4><a class="anchor" name="requestparametermap"></a>RequestParameterMap</h4> 
+<p>a map of request parameter.</p> 
+<h4><a class="anchor" name="requestparametervaluesmap"></a>RequestParameterValuesMap</h4> 
+<p>a map of request parameter values.</p> 
+<h4><a class="anchor" name="requestheadermap"></a>RequestHeaderMap</h4> 
+<p>a map of request header.</p> 
+<h4><a class="anchor" name="requestheadervaluesmap"></a>RequestHeaderValuesMap</h4> 
+<p>a map of request header values.</p> 
+<h4><a class="anchor" name="requestcookiemap"></a>RequestCookieMap</h4> 
+<p>a map of request cookie.</p> 
+<h4><a class="anchor" name="requestattributemap"></a>RequestAttributeMap</h4> 
+<p>a map of request attributes.</p> 
+<h4><a class="anchor" name="sessionattributemap"></a>SessionAttributeMap</h4> 
+<p>a map of session attributes.</p> 
+<h4><a class="anchor" name="servetcontextattributemap"></a>ServetContextAttributeMap</h4> 
+<p>a map of servlet context attributes.</p> 
+<h4><a class="anchor" name="servetcontextinitparametermap"></a>ServetContextInitParameterMap</h4> 
+<p>a map of servlet context init parameters.</p> 
+<h2><a class="anchor" name="-annotation-"></a>4 进阶（自定义 Annotation 或者类型）</h2> 
+<p>jetbrick-webmvc 已经内置了大量的参数注入方式，怎么用都可以，并且我们也提供了扩展机制。</p> 
+<p>如果用户想自定义注入的对象或者 Annotation，请看下面的章节：<a href="custom_annotation.html">自定义注入 Annotation<br> </a></p>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

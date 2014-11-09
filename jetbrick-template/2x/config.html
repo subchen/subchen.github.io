@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>配置 :: jetbrick-template</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-template/2x/config.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../../jetbrick-template/index.html" class="navbar-brand" style="padding:10px;">
+                <img src="../../assets/images/logo-jetbrick-template-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/overview.html">概述 Overview</a></li>
+                        <li><a href="../../jetbrick-template/2x/quickstart.html">快速开始 Quick Start</a></li>
+                        <li><a href="../../jetbrick-template/2x/core-object.html">核心对象 Core</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/global-context.html">全局变量 Global Context</a></li>
+                        <li><a href="../../jetbrick-template/2x/handle-error.html">模板详细错误</a></li>
+                        <li><a href="../../jetbrick-template/2x/debug.html">调试模板 Debug</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">进阶 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/ext-method.html">扩展方法 Method</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-function.html">扩展函数 Function</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-tag.html">标签 Tag</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-macro.html">宏 Macro</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/include.html">嵌入子模板 Include</a></li>
+                        <li><a href="../../jetbrick-template/2x/layout.html">布局 Layout</a></li>
+                    </ul>
+                </li>
+                <li><a href="../../jetbrick-template/2x/config.html">配置</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">语法 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/syntax-text.html">文本 Text</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-comment.html">注释 Comment</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-value.html">值 Value</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-directive.html">指令 Directive</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-expression.html">表达式 Expression</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/velocity-comparison.html">和 Velocity 的比较</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web集成 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/web-integration.html">Web 框架集成</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-servlet.html">直接使用 HttpServlet</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-filter.html">直接使用 Filter</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jetbrickmvc.html">与 Jetbrick webmvc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-springmvc.html">与 Spring webmvc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jfinal.html">与 JFinal 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jodd.html">与 Jodd madvoc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-struts.html">与 Struts 2.x 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-nutz.html">与 Nutz 集成</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">jetbrick 首页</a></li>
+                        <li><a href="../../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../../jetbrick-template/2x/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="http://github.com/subchen/jetbrick-template-2x"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jb-announcement">
+        jetbrick-template-1.x 旧版文档请看这里：<a href="http://subchen.github.io/jetbrick-template/1x/">http://subchen.github.io/jetbrick-template/1x/</a>
+    </div>
+
+    <article class="markdown">
+        <h1><a class="anchor" name="1106755817"></a>全局配置选项</h1> 
+<table>
+ <thead> 
+  <tr> 
+   <th>名称</th> 
+   <th>说明</th> 
+   <th>默认值</th> 
+  </tr> 
+ </thead>
+ <tbody> 
+  <tr> 
+   <td><a href="#jetx-import-classes">jetx.import.classes</a></td> 
+   <td>默认导入的 java 类</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetx-import-defines">jetx.import.defines</a></td> 
+   <td>默认声明的 java 变量类型</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetx-import-methods">jetx.import.methods</a></td> 
+   <td>默认导入的扩展方法</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetx-import-functions">jetx.import.functions</a></td> 
+   <td>默认导入的扩展函数</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetx-import-tags">jetx.import.tags</a></td> 
+   <td>默认导入的 tags</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetx-import-macros">jetx.import.macros</a></td> 
+   <td>默认导入的 macros</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetx-autoscan-packages">jetx.autoscan.packages</a></td> 
+   <td>在指定的包中进行自动扫描</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetx-autoscan-skiperrors">jetx.autoscan.skiperrors</a></td> 
+   <td>自动扫描的时候跳过遇到错误</td> 
+   <td>false</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetx-template-loaders">jetx.template.loaders</a></td> 
+   <td>模板资源载入Class</td> 
+   <td>jetbrick.template.loader.ClasspathResourceLoader</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetx-template-suffix">jetx.template.suffix</a></td> 
+   <td>默认模板文件扩展名</td> 
+   <td>.jetx</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetx-input-encoding">jetx.input.encoding</a></td> 
+   <td>模板源文件的编码格式</td> 
+   <td>utf-8</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetx-output-encoding">jetx.output.encoding</a></td> 
+   <td>模板输出编码格式</td> 
+   <td>utf-8</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetx-syntax-strict">jetx.syntax.strict</a></td> 
+   <td>是否默认启用严格语法模式</td> 
+   <td>false</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetx-syntax-safecall">jetx.syntax.safecall</a></td> 
+   <td>是否默认启用全局的安全调用</td> 
+   <td>false</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetx-trim-leading-whitespaces">jetx.trim.leading.whitespaces</a></td> 
+   <td>是否要删除模板开头处的空白</td> 
+   <td>true</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetx-trim-directive-whitespaces">jetx.trim.directive.whitespaces</a></td> 
+   <td>是否要删除指令行两边的空白</td> 
+   <td>true</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetx-trim-directive-comments">jetx.trim.directive.comments</a></td> 
+   <td>是否支持指令两边增加注释对</td> 
+   <td>false</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetx-trim-directive-comments-prefix">jetx.trim.directive.comments.prefix</a></td> 
+   <td>指令注释的开始部分</td> 
+   <td>&lt;!--</td> 
+  </tr> 
+  <tr> 
+   <td><a href="#jetx-trim-directive-comments-suffix">jetx.trim.directive.comments.suffix</a></td> 
+   <td>指令注释的结束部分</td> 
+   <td>--&gt;</td> 
+  </tr> 
+ </tbody>
+</table> 
+<h2><a class="anchor" name="71556755"></a>1 全局定义(包/类/变量)</h2> 
+<p>在模板中，如果要用到一些其他的 Class, 那么可以先 import 进来，这样就可以在模板中使用短名字，比如 <code>Date</code> 而不是 <code>java.util.Date</code>。</p> 
+<h3><a class="anchor" name="jetx-import-classes"></a>1.1 jetx.import.classes</h3> 
+<p>用来配置默认导入的 class，多个 import，用逗号分隔。</p> 
+<p>支持三种方式，如下：</p> 
+<ol> 
+ <li><code>jetbrick.schema.app.model.UserInfo</code></li> 
+ <li><code>jetbrick.schema.app.methods.*</code></li> 
+ <li><code>jetbrick.schema.**</code></li> 
+</ol> 
+<p>其中 <code>1</code> 和 <code>2</code> 是和 <code>java</code> 中的 <code>import</code> 指令含义是一样的。而方式 <code>3</code> 会自动将子包下面的 Class 也一起导入进来。</p> 
+<p><code>jetbrick-template</code> 会自动引入 <code>java.lang.*</code> 和 <code>java.util.*</code>。</p> 
+<blockquote class="info">
+ <p>优先级：方式 <code>1</code> 优先级最高，如果出现多个 Class 的名称是一样的，那么以配置文件中定义的顺序为准。</p> 
+</blockquote> 
+<p>示例如下：</p> 
+<pre><code class="highlight plaintext">jetx.import.classes = jetbrick.app.model.*, \
+                      jetbrick.app.methods.*, \
+                      jetbrick.app.support.**, \
+                      jetbrick.app.model.UserInfo
+</code></pre> 
+<p>当然，我们也可以在每个模板中用 <code>#option(import="xxx")</code> 方式引入每个模板是私有的 Class。</p> 
+<h3><a class="anchor" name="jetx-import-defines"></a>1.2 jetx.import.defines</h3> 
+<p>在大部分情况下，我们希望每个模板都能自动引入一些全局变量，那么我们在这里可以为这些全局变量声明变量类型，比如 <code>HttpServletRequest request</code></p> 
+<p>允许配置多个变量定义，用逗号分隔。示例如下：</p> 
+<pre><code class="highlight plaintext">jetx.import.variables = HttpServletRequest request, \
+                        jetbrick.dao.orm.Pagelist pagelist, \
+                        List entites
+</code></pre> 
+<p>变量的类型如果没有使用包名，那么将会自动在 <code>jetx.import.classes</code> 里面查找 Class。</p> 
+<blockquote class="warn">
+ <p><strong>注意</strong>：全局定义的变量类型，如果在模板中被 <code>#define</code> 或者 <code>#set</code> 指令重新定义成其他类型，则以模板定义优先。</p> 
+</blockquote> 
+<h2><a class="anchor" name="112563340"></a>2 扩展方法/函数/标签/宏</h2> 
+<p><code>jetbrick-template</code> 支持如下的扩展：</p> 
+<ul> 
+ <li>方法扩展 Methods</li> 
+ <li>全局函数 Functions</li> 
+ <li>全局标签 Tags</li> 
+ <li>全局宏 Macros</li> 
+</ul> 
+<p>为了让模板能找到对应的方法扩展，我们需要在配置文件中对这些实现了扩展的 Class 进行注册。</p> 
+<h3><a class="anchor" name="jetx-import-methods"></a>2.1 jetx.import.methods</h3> 
+<p>允许配置多个 Method Class 定义，用逗号分隔。示例如下：</p> 
+<pre><code class="highlight plaintext">jetx.import.methods = StringMethods, app.project.methods.UserAuthMethods
+</code></pre> 
+<p>定义的类名会自动在 <code>jetx.import.classes</code> 里面查找 实际的Class。</p> 
+<p><code>JetEngine</code> 默认会注册 <code>jetbrick.template.runtime.buildin.JetMethods</code></p> 
+<p>具体参考：<a href="ext-method.html#-buildin-methods">默认的方法扩展 Methods</a>。</p> 
+<h3><a class="anchor" name="jetx-import-functions"></a>2.2 jetx.import.functions</h3> 
+<p>允许配置多个 Function Class 定义，用逗号分隔。示例如下：</p> 
+<pre><code class="highlight plaintext">jetx.import.functions = app.project.methods.UserAuthFunctions
+</code></pre> 
+<p><code>JetEngine</code> 默认会注册 <code>jetbrick.template.runtime.buildin.JetFunctions</code></p> 
+<p>具体参考：<a href="ext-function.html#-buildin-functions">默认的函数扩展 Functions</a>。</p> 
+<h3><a class="anchor" name="jetx-import-tags"></a>2.3 jetx.import.tags</h3> 
+<p>允许配置多个 Tag Class 定义，用逗号分隔。示例如下：</p> 
+<pre><code class="highlight plaintext">jetx.import.tags = app.project.tags.UserTags
+</code></pre> 
+<p><code>JetEngine</code> 默认会注册 <code>jetbrick.template.runtime.buildin.JetTags</code></p> 
+<p>具体参考：<a href="ext-tag.html#-buildin-tags">默认的自定义标签 Tags</a>。</p> 
+<h3><a class="anchor" name="jetx-import-macros"></a>2.4 jetx.import.macros</h3> 
+<p>允许配置多个 Macro File 定义，用逗号分隔。示例如下：</p> 
+<pre><code class="highlight plaintext">jetx.import.macros = /macros/commons.jetx, /macros/auth.jetx
+</code></pre> 
+<h3><a class="anchor" name="jetx-autoscan-packages"></a>2.5 jetx.autoscan.packages</h3> 
+<p>如果我们实现了大量的扩展 methods, functions 或者 tags, 那么我们就要进行大量的配置，并且每次增加新的扩展 Class，我们就要修改配置文件，不是很方便。</p> 
+<p>为了解决这个问题，我们提供了指定扫描用户自定义的扩展 Class，扫描的内容是： </p> 
+<ul> 
+ <li>方法扩展 Methods</li> 
+ <li>全局函数 Functions</li> 
+ <li>全局标签 Tags</li> 
+</ul> 
+<p>我们需要在这里配置要扫描的包名，这样 <code>JetEngine</code> 就会在初始化的时候，到指定的包下面进行自动扫描(也会扫描子包中的 class)，自动将扫描到的扩展 Class 注册到 <code>JetEngine</code>。</p> 
+<p>支持定义多个扫描的包。</p> 
+<pre><code class="highlight plaintext">jetx.autoscan.packages = app.methods, app.functions, app.tags
+</code></pre> 
+<p>要让 <code>JetEngine</code> 知道某个 Class 是扩展 Class，那么就需要在这个 Class 上面加入下面某个 Annotation</p> 
+<ul> 
+ <li>@JetAnnotations.Methods</li> 
+ <li>@JetAnnotations.Functions</li> 
+ <li>@JetAnnotations.Tags</li> 
+</ul> 
+<p>更多详细内容请参考： <a href="faq-autoscan.html">如何让自动扫描发现用户自定义的扩展方法/函数/标签 Class</a></p> 
+<h3><a class="anchor" name="jetx-autoscan-skiperrors"></a>2.6 jetx.autoscan.skiperrors</h3> 
+<p>如果扫描到的 Class 无法存在对应的 Annotation，那么需要 load 到 JVM 进行分析，如果 load 失败，那么默认会抛出错误，如果想要忽略这种错误，那么可以配置：</p> 
+<pre><code class="highlight plaintext">jetx.autoscan.skiperrors = true
+</code></pre> 
+<h2><a class="anchor" name="1497214921"></a>3 模板路径和编码格式</h2> 
+<h3><a class="anchor" name="jetx-template-loaders"></a>3.1 jetx.template.loaders</h3> 
+<p>如何找到我们自己的模板文件呢？这里就是定义我们要使用的模板查找类。</p> 
+<p>我们支持下面几种模板查找类：</p> 
+<ul> 
+ <li>jetbrick.template.loader.ClasspathResourceLoader</li> 
+ <li>jetbrick.template.loader.FileSystemResourceLoader</li> 
+ <li>jetbrick.template.loader.ServletResourceLoader</li> 
+</ul> 
+<p>默认为 <code>jetbrick.template.loader.ClasspathResourceLoader</code>。</p> 
+<blockquote class="warn">
+ <p><strong>注意</strong>：如果是 webapp 环境下，会将默认值修改为 <code>jetbrick.template.loader.ServletResourceLoader</code></p> 
+</blockquote> 
+<h4><a class="anchor" name="-classpath-"></a>从 Classpath 中加载</h4> 
+<pre><code class="highlight plaintext">jetx.template.loaders = $loader
+
+$loader = jetbrick.template.loader.ClasspathResourceLoader
+$loader.root = /META-INF/templates/
+$loader.reloadable = false
+</code></pre> 
+<h4><a class="anchor" name="-filesystem-"></a>从 FileSystem 中加载</h4> 
+<pre><code class="highlight plaintext">jetx.template.loaders = $loader
+
+$loader = jetbrick.template.loader.FileSystemResourceLoader
+$loader.root = /opt/templates/
+$loader.reloadable = true
+</code></pre> 
+<h4><a class="anchor" name="-webapp-jetbrick-template-web-x-x-x-jar-"></a>从 webapp 目录中加载 (需要 jetbrick-template-web-x.x.x.jar)</h4> 
+<pre><code class="highlight plaintext">jetx.template.loaders = $loader
+
+$loader = jetbrick.template.loader.ServletResourceLoader
+$loader.root = /WEB-INF/templates/
+$loader.reloadable = true
+</code></pre> 
+<h4><a class="anchor" name="1225071771"></a>从多个目录中加载</h4> 
+<pre><code class="highlight plaintext">jetx.template.loaders = $classpathLoader, $webLoader
+
+$classpathLoader = jetbrick.template.loader.ClasspathResourceLoader
+$classpathLoader.root = /META-INF/templates/
+$classpathLoader.reloadable = false
+
+$webLoader = jetbrick.template.loader.ServletResourceLoader
+$webLoader.root = /WEB-INF/templates/
+$webLoader.reloadable = true
+</code></pre> 
+<h3><a class="anchor" name="jetx-template-suffix"></a>3.2 jetx.template.suffix</h3> 
+<p>默认的模板文件扩展名 <code>.jetx</code>，主要用于 Web 框架集成中，用于查找和过滤模板用。</p> 
+<h3><a class="anchor" name="jetx-input-encoding"></a>3.3 jetx.input.encoding</h3> 
+<p>模板源文件的编码格式，默认为 <code>utf-8</code>。</p> 
+<h3><a class="anchor" name="jetx-output-encoding"></a>3.4 jetx.output.encoding</h3> 
+<p>模板输出内容的编码格式，默认为 <code>utf-8</code>。</p> 
+<blockquote class="info">
+ <p><strong>最佳实践</strong>：一般在 webapp 中，<code>jetx.output.encoding</code> 应该和 html 页面的 <code>contentType</code> 中的编码，以及 <code>response</code> 的 <code>characterEncoding</code> 完全保持一致。</p> 
+</blockquote> 
+<h2><a class="anchor" name="1095099928"></a>4 语法选项</h2> 
+<h3><a class="anchor" name="jetx-syntax-strict"></a>4.1 jetx.syntax.strict</h3> 
+<p>为了让每个模板中使用到的变量都有严格的类型定义，同时增加代码的可读性，我们可以将模板语法设置为 <code>strict</code> 模式。</p> 
+<p>在 <code>strict</code> 模式中，每个模板中使用的变量都必须使用 <code>#define</code> 或者 <code>#set</code> 进行变量类型声明 (或者使用 <code>jetx.import.defines</code> 定义的全局变量类型声明)</p> 
+<p>默认为 <code>false</code>，即允许可以不是有 <code>#define</code> 进行变量声明定义。</p> 
+<blockquote class="info">
+ <p><strong>最佳实践</strong>：从团队开发管理的角度来说，我们推荐使用 <code>strict</code> 模式，这样有利于代码的维护和沟通。</p> 
+</blockquote> 
+<h3><a class="anchor" name="jetx-syntax-safecall"></a>4.2 jetx.syntax.safecall</h3> 
+<p><code>jetbrick-template</code> 支持下面的安全调用（类似于 Groovy），以避免出现 <code>NullPointerException</code></p> 
+<ul> 
+ <li>属性调用 <code>bean.property</code></li> 
+ <li>方法调用 <code>bean.method(...)</code></li> 
+ <li>数组/List访问 <code>array[index]</code></li> 
+ <li>Map访问 <code>map[key]</code> </li> 
+</ul> 
+<p>默认为 <code>false</code>，不启用。</p> 
+<h2><a class="anchor" name="835704913"></a>5 模板格式</h2> 
+<h3><a class="anchor" name="jetx-trim-leading-whitespaces"></a>5.1 jetx.trim.leading.whitespaces</h3> 
+<p>类似于 JSP 的 <code>&lt;%@ page trimDirectiveWhitespaces="true" %&gt;</code>, 可以让模板的开始位置处跳过不必要的空白内容。</p> 
+<p>默认：<code>false</code>，不启用</p> 
+<h3><a class="anchor" name="jetx-trim-directive-whitespaces"></a>5.2 jetx.trim.directive.whitespaces</h3> 
+<p>由于指令之间存在很多的空白内容，而空白内容也会被作为原始文本原封不动的输出，这样会造成很多输出的内容参差不齐。这个就是用来优化输出格式的，对于用模板来进行代码生成时候特别有用。不建议关闭。</p> 
+<p>模板示例：</p> 
+<pre><code class="highlight plaintext">#for (int n: [1,2,3])
+${n}
+#end
+</code></pre> 
+<p>禁用后效果：<code>false</code></p> 
+<pre><code class="highlight plaintext">
+1
+
+2
+
+3
+
+</code></pre> 
+<p>启用后的效果：<code>true</code> (默认启用)</p> 
+<pre><code class="highlight plaintext">1
+2
+3
+</code></pre> 
+<h2><a class="anchor" name="867245599"></a>6 注释指令</h2> 
+<p>由于目前的指令一般直接嵌入在 HTML，对于一些使用可视化编辑器的用户来说，可能会造成一些干扰。<br> 模板增加对指令注释支持，如：<code>&lt;!-- #if (...) --&gt;</code>; 增强对可视化编辑器的友好度。</p> 
+<h3><a class="anchor" name="jetx-trim-directive-comments"></a>6.1 jetx.trim.directive.comments</h3> 
+<p>是否开启对注释指令的支持，默认为 <code>false</code>，表示不启用。</p> 
+<h3><a class="anchor" name="jetx-trim-directive-comments-prefix"></a>6.2 jetx.trim.directive.comments.prefix</h3> 
+<p>设置注释开始格式，默认为 <code>&lt;!--</code></p> 
+<h3><a class="anchor" name="jetx-trim-directive-comments-suffix"></a>6.3 jetx.trim.directive.comments.suffix</h3> 
+<p>设置注释开始格式，默认为 <code>--&gt;</code></p> 
+<blockquote class="warn">
+ <p><strong>注意</strong>： 如果开启注释指令的支持，系统并没有强制要求 <code>jetx.trim.directive.comments.prefix</code> 和 <code>jetx.trim.directive.comments.suffix</code> 必须配对出现。也就是说如果使用 <code>&lt;!-- #end</code> 也是可以的。当然我们还是建议你配对使用。</p> 
+</blockquote> 
+<p>范例：</p> 
+<pre><code class="highlight html"><span class="nt">&lt;table&gt;</span>
+<span class="c">&lt;!-- #for (User user: userlist) --&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>${user.name}<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>${user.email}<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+<span class="c">&lt;!-- #end --&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</code></pre>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

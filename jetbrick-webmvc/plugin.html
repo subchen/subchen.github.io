@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>自定义插件 Plugin :: jetbrick-webmvc</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-webmvc/plugin.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../jetbrick-webmvc/overview.html" class="navbar-brand" style="padding:10px;">
+                <img src="../assets/images/logo-jetbrick-webmvc-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发指南 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../jetbrick-webmvc/overview.html">概述 Overview</a></li>
+                        <li><a href="../jetbrick-webmvc/helloworld.html">快速开始 Hello World</a></li>
+                        <li><a href="../jetbrick-webmvc/webxml.html">配置 web.xml</a></li>
+                        <li><a href="../jetbrick-webmvc/config.html">配置 jetbrick-webmvc.properties</a></li>
+                        <li><a href="../jetbrick-webmvc/bypass-urls.html">资源过滤器 BypassRequestUrls</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/controller.html">Controller 和 Action</a></li>
+                        <li><a href="../jetbrick-webmvc/action-inject.html">Controller/Action 注入</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/result.html">Result/ResultHandler</a></li>
+                        <li><a href="../jetbrick-webmvc/view.html">View/ViewHandler</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/fileupload.html">文件上传支持 FileUpload</a></li>
+                        <li><a href="../jetbrick-webmvc/request-context.html">RequestContext 对象</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/annotation-list.html">MVC 注解一览表</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">高级用法 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../jetbrick-webmvc/exception-handler.html">全局异常处理器 Exception Handler</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/interceptor.html">自定义拦截器 Interceptor</a></li>
+                        <li><a href="../jetbrick-webmvc/plugin.html">自定义插件 Plugin</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/custom-annotation.html">自定义 Action 参数注入 Annotation</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../index.html">jetbrick 首页</a></li>
+                        <li><a href="../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../jetbrick-webmvc/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="https://github.com/subchen/jetbrick-webmvc"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <article class="markdown">
+        <h1><a class="anchor" name="-plugin"></a>自定义插件 Plugin</h1> 
+<p>Plugin 是 jetbrick webmvc 用来进行扩展自身功能的。Plugin 会随着 jetbrick webmvc 的启动而启动。</p> 
+<h2><a class="anchor" name="plugin-"></a>1 Plugin 例子</h2> 
+<p>用户自定义的 Plugin 需要实现 <code>jetbrick.web.mvc.plugin.Plugin</code> 接口。</p> 
+<pre><code class="highlight java"><span class="kn">package</span> <span class="n">jetbrick</span><span class="o">.</span><span class="na">docs</span><span class="o">.</span><span class="na">samples</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">jetbrick.dao.schema.upgrade.DbUpgradeApp</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">jetbrick.web.mvc.plugin.Plugin</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.slf4j.Logger</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.slf4j.LoggerFactory</span><span class="o">;</span>
+
+<span class="cm">/** * 支持数据库自动升级插件 */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DbUpgradePlugin</span> <span class="kd">implements</span> <span class="n">Plugin</span> <span class="o">{</span>
+    <span class="kd">final</span> <span class="n">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="n">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">DbUpgradePlugin</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">initialize</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">DbUpgradeApp</span><span class="o">.</span><span class="na">execute</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Throwable</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"DB Upgrade Exception."</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"***********************************"</span><span class="o">);</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"** JVM exit!!! **"</span><span class="o">);</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"***********************************"</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">destory</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre> 
+<h2><a class="anchor" name="plugin-"></a>2 Plugin 配置</h2> 
+<pre><code class="highlight plaintext">$DbUpgradePlugin = jetbrick.docs.samples.DbUpgradePlugin
+
+web.plugins = $DbUpgradePlugin, ...
+</code></pre>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

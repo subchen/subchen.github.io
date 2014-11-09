@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>自定义 Action 参数注入 Annotation :: jetbrick-webmvc</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-webmvc/custom-annotation.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../jetbrick-webmvc/overview.html" class="navbar-brand" style="padding:10px;">
+                <img src="../assets/images/logo-jetbrick-webmvc-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发指南 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../jetbrick-webmvc/overview.html">概述 Overview</a></li>
+                        <li><a href="../jetbrick-webmvc/helloworld.html">快速开始 Hello World</a></li>
+                        <li><a href="../jetbrick-webmvc/webxml.html">配置 web.xml</a></li>
+                        <li><a href="../jetbrick-webmvc/config.html">配置 jetbrick-webmvc.properties</a></li>
+                        <li><a href="../jetbrick-webmvc/bypass-urls.html">资源过滤器 BypassRequestUrls</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/controller.html">Controller 和 Action</a></li>
+                        <li><a href="../jetbrick-webmvc/action-inject.html">Controller/Action 注入</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/result.html">Result/ResultHandler</a></li>
+                        <li><a href="../jetbrick-webmvc/view.html">View/ViewHandler</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/fileupload.html">文件上传支持 FileUpload</a></li>
+                        <li><a href="../jetbrick-webmvc/request-context.html">RequestContext 对象</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/annotation-list.html">MVC 注解一览表</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">高级用法 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../jetbrick-webmvc/exception-handler.html">全局异常处理器 Exception Handler</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/interceptor.html">自定义拦截器 Interceptor</a></li>
+                        <li><a href="../jetbrick-webmvc/plugin.html">自定义插件 Plugin</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../jetbrick-webmvc/custom-annotation.html">自定义 Action 参数注入 Annotation</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../index.html">jetbrick 首页</a></li>
+                        <li><a href="../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../jetbrick-webmvc/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="https://github.com/subchen/jetbrick-webmvc"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <article class="markdown">
+        <h1><a class="anchor" name="-action-annotation"></a>自定义 Action 参数注入 Annotation</h1> 
+<p>在 <a href="action-inject.html">Action 参数注入</a>章节中，我们看到 <code>@Inject</code>, <code>@Config</code> 等用于 Controller 注入的 Annotation，还看到了 <code>@PathVariable</code>, <code>@RequestParam</code> 等专门用于 Action 方法的参数注入的 Request/Session 相关的 Annotation。</p> 
+<p>同样的，我们在 IoC 相关的章节中也介绍了<a href="../jetbrick-ioc/custom-annotation.html">IoC 自定义注入 Annotation</a>。但是在 IoC 容器中，只能使用 Request/Session 无关的自定义 Annotation。而本章节将介绍的是专门用于 Action 方法的参数注入的 Request 相关的自定义 Annotation。</p> 
+<h2><a class="anchor" name="1288571069"></a>1 看代码学习</h2> 
+<p>先创建自己的 Annotation。</p> 
+<pre><code class="highlight java"><span class="nd">@Target</span><span class="o">(</span><span class="n">ElementType</span><span class="o">.</span><span class="na">PARAMETER</span><span class="o">)</span>
+<span class="nd">@Retention</span><span class="o">(</span><span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
+<span class="nd">@ManagedWith</span><span class="o">(</span><span class="n">RequestHeaderArgumentGetter</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nd">@interface</span> <span class="n">RequestHeader</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">value</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre> 
+<p>注意，我们在这个 Annotation 上面标注了一个 <code>@ManagedWith(RequestHeaderArgumentGetter.class)</code>，这个是关键点。告诉 jetbrick，这个 Annotation 将会由 <code>RequestHeaderArgumentGetter</code> 来处理。</p> 
+<p>下面我们在创建 RequestHeaderArgumentGetter.java</p> 
+<pre><code class="highlight java"><span class="nd">@Managed</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RequestHeaderArgumentGetter</span> <span class="kd">implements</span> <span class="n">AnnotatedArgumentGetter</span><span class="o">&lt;</span><span class="n">RequestHeader</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">initialize</span><span class="o">(</span><span class="n">ArgumentContext</span><span class="o">&lt;</span><span class="n">RequestHeader</span><span class="o">&gt;</span> <span class="n">ctx</span><span class="o">)</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="na">getAnnotation</span><span class="o">().</span><span class="na">value</span><span class="o">();</span>        
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">get</span><span class="o">(</span><span class="n">RequestContext</span> <span class="n">ctx</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">ctx</span><span class="o">.</span><span class="na">getRequest</span><span class="o">().</span><span class="na">getHeader</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre> 
+<p>作为一个准备注入 Action 参数的自定义的 Annotation，我们的 Class 必须实现 <code>jetbrick.web.mvc.action.annotations.AnnotatedArgumentGetter&lt;A, T&gt;</code> 接口。</p> 
+<p>其中，泛型参数 <code>A</code> 代表你要处理的自定义 Annotation，<code>T</code> 代表返回值类型。</p> 
+<h2><a class="anchor" name="805912966"></a>2 自定义注入类型</h2> 
+<pre><code class="highlight java"><span class="nd">@ManagedWith</span><span class="o">(</span><span class="n">SessionUserArgumentGetter</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SessionUser</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">username</span><span class="o">;</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre> 
+<p>其中 <code>@ManagedWith(SessionUserArgumentGetter.class)</code> 描述了 <code>SessionUser</code> 对象的注入将会由 <code>SessionUserArgumentGetter</code> 来实现。</p> 
+<p>我们再来看 SessionUserArgumentGetter 参数注入处理器：</p> 
+<pre><code class="highlight java"><span class="nd">@Managed</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SessionUserArgumentGetter</span> <span class="kd">implements</span> <span class="n">TypedArgumentGetter</span><span class="o">&lt;</span><span class="n">SessionUser</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">SessionUser</span> <span class="n">get</span><span class="o">(</span><span class="n">RequestContext</span> <span class="n">ctx</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span><span class="n">SessionUser</span><span class="o">)</span> <span class="n">ctx</span><span class="o">.</span><span class="na">getSession</span><span class="o">().</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"SESSION_USER"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre> 
+<p>其中，按类型注入必须实现 <code>jetbrick.web.mvc.action.annotations.TypedArgumentGetter&lt;T&gt;</code> 接口。</p> 
+<p>再来看一下如何使用这个 <code>SessionUser</code>。</p> 
+<pre><code class="highlight java"><span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PassportController</span> <span class="o">{</span>
+    <span class="nd">@Inject</span> <span class="n">UserService</span> <span class="n">userService</span><span class="o">;</span>
+
+    <span class="nd">@Action</span><span class="o">(</span><span class="s">"/passport/changepwd"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">changePassword</span><span class="o">(</span><span class="n">SessionUser</span> <span class="n">me</span><span class="o">,</span> <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"pwd"</span><span class="o">)</span> <span class="n">String</span> <span class="n">pwd</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">userService</span><span class="o">.</span><span class="na">changePassword</span><span class="o">(</span><span class="n">me</span><span class="o">.</span><span class="na">getId</span><span class="o">(),</span> <span class="n">pwd</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"ok.jsp"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre> 
+<p>如果我们要注入的类型是系统 Class 或者第三方提供的，无法为其添加 <code>@ManagedWith(XXXArgumentGetter.class)</code> Annotation，那么也没关系。只要有 XXXArgumentGetter.class 就可以了，比如我们想要注入 <code>java.util.Locale</code>，我们只要实现一个对应的 <code>LocaleArgumentGetter</code> 即可。如下：</p> 
+<pre><code class="highlight java"><span class="nd">@Managed</span><span class="o">(</span><span class="n">Locale</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LocaleArgumentGetter</span> <span class="kd">implements</span> <span class="n">TypedArgumentGetter</span><span class="o">&lt;</span><span class="n">Locale</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Locale</span> <span class="n">get</span><span class="o">(</span><span class="n">RequestContext</span> <span class="n">ctx</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">ctx</span><span class="o">.</span><span class="na">getSession</span><span class="o">().</span><span class="na">getLocale</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre> 
+<p>其中 <code>@Managed(Locale.class)</code> 会将 <code>Locale</code> 对象和 <code>LocaleArgumentGetter</code> 绑定起来。如果省略 <code>@Managed</code> 的参数，那么 jetbrick 会自动从 <code>TypedArgumentGetter&lt;Locale&gt;</code> 定义中获取泛型参数。</p>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

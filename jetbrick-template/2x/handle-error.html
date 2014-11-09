@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>模板详细错误 :: jetbrick-template</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-template/2x/handle-error.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../../jetbrick-template/index.html" class="navbar-brand" style="padding:10px;">
+                <img src="../../assets/images/logo-jetbrick-template-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/overview.html">概述 Overview</a></li>
+                        <li><a href="../../jetbrick-template/2x/quickstart.html">快速开始 Quick Start</a></li>
+                        <li><a href="../../jetbrick-template/2x/core-object.html">核心对象 Core</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/global-context.html">全局变量 Global Context</a></li>
+                        <li><a href="../../jetbrick-template/2x/handle-error.html">模板详细错误</a></li>
+                        <li><a href="../../jetbrick-template/2x/debug.html">调试模板 Debug</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">进阶 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/ext-method.html">扩展方法 Method</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-function.html">扩展函数 Function</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-tag.html">标签 Tag</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-macro.html">宏 Macro</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/include.html">嵌入子模板 Include</a></li>
+                        <li><a href="../../jetbrick-template/2x/layout.html">布局 Layout</a></li>
+                    </ul>
+                </li>
+                <li><a href="../../jetbrick-template/2x/config.html">配置</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">语法 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/syntax-text.html">文本 Text</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-comment.html">注释 Comment</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-value.html">值 Value</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-directive.html">指令 Directive</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-expression.html">表达式 Expression</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/velocity-comparison.html">和 Velocity 的比较</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web集成 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/web-integration.html">Web 框架集成</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-servlet.html">直接使用 HttpServlet</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-filter.html">直接使用 Filter</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jetbrickmvc.html">与 Jetbrick webmvc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-springmvc.html">与 Spring webmvc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jfinal.html">与 JFinal 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jodd.html">与 Jodd madvoc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-struts.html">与 Struts 2.x 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-nutz.html">与 Nutz 集成</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">jetbrick 首页</a></li>
+                        <li><a href="../../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../../jetbrick-template/2x/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="http://github.com/subchen/jetbrick-template-2x"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jb-announcement">
+        jetbrick-template-1.x 旧版文档请看这里：<a href="http://subchen.github.io/jetbrick-template/1x/">http://subchen.github.io/jetbrick-template/1x/</a>
+    </div>
+
+    <article class="markdown">
+        <h1><a class="anchor" name="-finding-issue"></a>错误处理 Finding Issue</h1> 
+<p><code>jetbrick-template</code> 提供了强大的错误定位功能，你再也不用担心找不到错误原因了。</p> 
+<h2><a class="anchor" name="-syntax-error"></a>1 语法错误 Syntax Error</h2> 
+<p>错误的模板示例：</p> 
+<pre><code class="highlight html">#for (user: userlist)
+<span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>${for.index}<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>${user.name}<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>${user.vip ? "vip", "normal"}<span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+#end
+</code></pre> 
+<p>错误提示包括了：错误所在的行号和列号，错误模板路径，错误原因等</p> 
+<pre><code class="highlight plaintext">jetbrick.template.parser.SyntaxException: mismatched input ',' expecting {'[', '?', ':', '.', '===', '!==', '==', '!=', '&gt;', '&lt;', '&gt;=', '&lt;=', '&amp;&amp;', '||', '+', '-', '*', '/', '%', '&amp;', '|', '^', '&lt;&lt;', '&gt;&gt;', '&gt;&gt;&gt;', 'instanceof'}
+
+template: /samples/syntax-error-test.jetx: 5,28
+-------------------------------------------------------------------------------
+   3:     &lt;td&gt;${for.index}&lt;/td&gt;
+   4:     &lt;td&gt;${user.name}&lt;/td&gt;
+   5:     &lt;td&gt;${user.vip ? "vip", "normal"}&lt;/td&gt;
+                                ^ -- here
+   6: &lt;/tr&gt;
+   7: #end
+-------------------------------------------------------------------------------
+
+    at jetbrick.template.parser.AstBuilder$AstErrorListener.syntaxError(AstBuilder.java:77)
+    at org.antlr.v4.runtime.ProxyErrorListener.syntaxError(ProxyErrorListener.java:67)
+    at org.antlr.v4.runtime.Parser.notifyErrorListeners(Parser.java:561)
+    at org.antlr.v4.runtime.DefaultErrorStrategy.reportInputMismatch(DefaultErrorStrategy.java:327)
+    at org.antlr.v4.runtime.DefaultErrorStrategy.reportError(DefaultErrorStrategy.java:150)
+    at jetbrick.template.runtime.parser.grammer.JetTemplateParser.expression(JetTemplateParser.java:2309)
+    at jetbrick.template.runtime.parser.grammer.JetTemplateParser.expression(JetTemplateParser.java:2235)
+    at jetbrick.template.runtime.parser.grammer.JetTemplateParser.value(JetTemplateParser.java:313)
+    at jetbrick.template.runtime.parser.grammer.JetTemplateParser.block(JetTemplateParser.java:188)
+    at jetbrick.template.runtime.parser.grammer.JetTemplateParser.directive_for(JetTemplateParser.java:1027)
+    at jetbrick.template.runtime.parser.grammer.JetTemplateParser.directive(JetTemplateParser.java:427)
+    at jetbrick.template.runtime.parser.grammer.JetTemplateParser.block(JetTemplateParser.java:219)
+    at jetbrick.template.runtime.parser.grammer.JetTemplateParser.template(JetTemplateParser.java:117)
+    at jetbrick.template.parser.AstBuilder.create(AstBuilder.java:49)
+    at jetbrick.template.JetTemplateImpl.rebuildAstNodeAndConfig(JetTemplateImpl.java:111)
+    at jetbrick.template.JetTemplateImpl.reload(JetTemplateImpl.java:82)
+    at jetbrick.template.JetEngineImpl.getTemplate(JetEngineImpl.java:91)
+
+</code></pre> 
+<h2><a class="anchor" name="-runtime-error"></a>2 运行期错误 Runtime Error</h2> 
+<p>如果在模板运行期间发生错误，那么就可以得到类似下面的错误 Java Exception Stack。</p> 
+<p>模板示例：</p> 
+<pre><code class="highlight html">#for (user: userlist)
+<span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>${for.index}<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>${user.name}<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>${user.vip ? "vip" : "normal"}<span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+#end
+</code></pre> 
+<p>错误提示包括了：错误所在的行号和列号，错误模板路径，错误原因等</p> 
+<pre><code class="highlight plaintext">jetbrick.template.runtime.InterpretException: property get error: vip
+
+template: /samples/runtime-error-test.jetx: 5, 16
+-------------------------------------------------------------------------------
+   3:     &lt;td&gt;${for.index}&lt;/td&gt;
+   4:     &lt;td&gt;${user.name}&lt;/td&gt;
+   5:     &lt;td&gt;${user.vip ? "vip" : "normal"}&lt;/td&gt;
+                    ^ -- here
+   6: &lt;/tr&gt;
+   7: #end
+-------------------------------------------------------------------------------
+
+    at jetbrick.template.parser.ast.AstInvokeField.doInvokeGetter(AstInvokeField.java:76)
+    at jetbrick.template.parser.ast.AstInvokeField.execute(AstInvokeField.java:51)
+    at jetbrick.template.parser.ast.AstValue.execute(AstValue.java:36)
+    at jetbrick.template.parser.ast.AstStatementList.execute(AstStatementList.java:182)
+    at jetbrick.template.parser.ast.AstDirectiveFor.execute(AstDirectiveFor.java:59)
+    at jetbrick.template.parser.ast.AstStatementList.execute(AstStatementList.java:182)
+    at jetbrick.template.parser.ast.AstTemplate.execute(AstTemplate.java:37)
+    at jetbrick.template.JetTemplateImpl.doInterpret(JetTemplateImpl.java:154)
+    at jetbrick.template.JetTemplateImpl.render(JetTemplateImpl.java:139)
+Caused by: java.lang.RuntimeException: java.lang.UnsupportedOperationException
+    at jetbrick.util.ExceptionUtils.unchecked(ExceptionUtils.java:33)
+    at jetbrick.util.ExceptionUtils.unchecked(ExceptionUtils.java:31)
+    at jetbrick.bean.MethodInfo.invoke(MethodInfo.java:194)
+    at jetbrick.bean.PropertyInfo.get(PropertyInfo.java:111)
+    at jetbrick.template.parser.ast.AstInvokeField.doInvokeGetter(AstInvokeField.java:70)
+    ... 10 more
+Caused by: java.lang.UnsupportedOperationException
+    at jetbrick.demo.Model.getVip(Model.java:38)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke(Method.java:483)
+    at jetbrick.bean.MethodInfo.invoke(MethodInfo.java:192)
+    ... 12 more
+</code></pre> 
+<p>根据 <code>root cause</code>，我们可以看到是 <code>user.vip</code> 这个属性调用，抛出了 <code>UnsupportedOperationException</code>。</p>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

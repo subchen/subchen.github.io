@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>快速开始 Quick Start :: jetbrick-template</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-template/2x/quickstart.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../../jetbrick-template/index.html" class="navbar-brand" style="padding:10px;">
+                <img src="../../assets/images/logo-jetbrick-template-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/overview.html">概述 Overview</a></li>
+                        <li><a href="../../jetbrick-template/2x/quickstart.html">快速开始 Quick Start</a></li>
+                        <li><a href="../../jetbrick-template/2x/core-object.html">核心对象 Core</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/global-context.html">全局变量 Global Context</a></li>
+                        <li><a href="../../jetbrick-template/2x/handle-error.html">模板详细错误</a></li>
+                        <li><a href="../../jetbrick-template/2x/debug.html">调试模板 Debug</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">进阶 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/ext-method.html">扩展方法 Method</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-function.html">扩展函数 Function</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-tag.html">标签 Tag</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-macro.html">宏 Macro</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/include.html">嵌入子模板 Include</a></li>
+                        <li><a href="../../jetbrick-template/2x/layout.html">布局 Layout</a></li>
+                    </ul>
+                </li>
+                <li><a href="../../jetbrick-template/2x/config.html">配置</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">语法 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/syntax-text.html">文本 Text</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-comment.html">注释 Comment</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-value.html">值 Value</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-directive.html">指令 Directive</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-expression.html">表达式 Expression</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/velocity-comparison.html">和 Velocity 的比较</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web集成 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/web-integration.html">Web 框架集成</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-servlet.html">直接使用 HttpServlet</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-filter.html">直接使用 Filter</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jetbrickmvc.html">与 Jetbrick webmvc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-springmvc.html">与 Spring webmvc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jfinal.html">与 JFinal 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jodd.html">与 Jodd madvoc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-struts.html">与 Struts 2.x 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-nutz.html">与 Nutz 集成</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">jetbrick 首页</a></li>
+                        <li><a href="../../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../../jetbrick-template/2x/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="http://github.com/subchen/jetbrick-template-2x"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jb-announcement">
+        jetbrick-template-1.x 旧版文档请看这里：<a href="http://subchen.github.io/jetbrick-template/1x/">http://subchen.github.io/jetbrick-template/1x/</a>
+    </div>
+
+    <article class="markdown">
+        <h1><a class="anchor" name="-start"></a>从这里开始 Start</h1> 
+<p>本章节将快速的带领你领略一下 <code>jetbrick-template</code> 的工作方式。</p> 
+<blockquote class="info">
+ <p><strong>推荐</strong>：模板文件扩展名为 <code>.jetx</code>。</p> 
+</blockquote> 
+<p>首先，<code>jetbrick-template</code> 有 2 种工作模式：</p> 
+<ul> 
+ <li><a href="#-application-">普通的 Application 应用</a></li> 
+ <li><a href="#-webapp-">Webapp 应用</a></li> 
+</ul> 
+<p>2 种模式的区别在于：在 webapp 模式中，我们针对 web 应用，提供的大量的 Web 专用的内置变量(如 request 对象)，以及一些常用的 web 扩展。</p> 
+<h2><a class="anchor" name="-application-"></a>1 普通的 Application 环境</h2> 
+<ol> 
+ <li><p>新建一个 Maven 工程，并加入下面的 <code>jetbrick-template</code> 依赖</p> <pre><code class="highlight xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.github.subchen<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>jetbrick-template<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></li> 
+ <li><p>新建一个 User.java 作为 Model</p> <pre><code class="highlight java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">email</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">User</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">email</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">email</span> <span class="o">=</span> <span class="n">email</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">getEmail</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">email</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setEmail</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">email</span> <span class="o">=</span> <span class="n">email</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></li> 
+ <li><p>新建一个 users.jetx 模板，并放在默认的 classpath 根目录 (<code>src/main/resources</code>)</p> <pre><code class="highlight html">#define(List users)
+<span class="nt">&lt;table&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>序号<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>姓名<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>邮箱<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  #for (User user : users)
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>${for.index}<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>${user.name}<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>${user.email}<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  #end
+<span class="nt">&lt;/table&gt;</span>
+</code></pre></li> 
+ <li><p>新建一个 JUnit Test 测试类 JetxTest.java</p> <pre><code class="highlight java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JetxTest</span> <span class="o">{</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">test</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 0. 准备一些 Model 数据作为测试</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span>
+            <span class="k">new</span> <span class="n">User</span><span class="o">(</span><span class="s">"张三"</span><span class="o">,</span> <span class="s">"zhangsan@qq.com"</span><span class="o">),</span>
+            <span class="k">new</span> <span class="n">User</span><span class="o">(</span><span class="s">"李四"</span><span class="o">,</span> <span class="s">"lisi@qq.com"</span><span class="o">),</span>
+            <span class="k">new</span> <span class="n">User</span><span class="o">(</span><span class="s">"王五"</span><span class="o">,</span> <span class="s">"wangwu@qq.com"</span><span class="o">),</span>
+        <span class="o">);</span>
+
+        <span class="c1">// 1. 创建一个默认的 JetEngine</span>
+        <span class="n">JetEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="n">JetEngine</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
+
+        <span class="c1">// 2. 获取一个模板对象 (从默认的 classpath 下面)</span>
+        <span class="n">JetTemplate</span> <span class="n">template</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="na">getTemplate</span><span class="o">(</span><span class="s">"/users.jetx"</span><span class="o">);</span>
+
+        <span class="c1">// 3. 创建 context 对象</span>
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">context</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+        <span class="n">context</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"users"</span><span class="o">,</span> <span class="n">users</span><span class="o">);</span>
+
+        <span class="c1">// 4. 渲染模板到自定义的 Writer</span>
+        <span class="n">StringWriter</span> <span class="n">writer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringWriter</span><span class="o">();</span>
+        <span class="n">template</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">writer</span><span class="o">);</span>
+
+        <span class="c1">// 5. 打印结果</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">writer</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></li> 
+ <li><p>运行 JUnit 测试，得到的模板结果如下：</p> <pre><code class="highlight html"><span class="nt">&lt;table&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>序号<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>姓名<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>邮箱<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>1<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>张三<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>zhangsan@qq.com<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>2<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>李四<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>lisi@qq.com<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>3<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>王五<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>wangwu@qq.com<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</code></pre></li> 
+</ol> 
+<p>完整的 demo 请参考： <a href="https://github.com/subchen/jetbrick-template-samples/blob/master/quickstart-app/">https://github.com/subchen/jetbrick-template-samples/blob/master/quickstart-app/</a></p> 
+<h2><a class="anchor" name="webapp-"></a>2 Webapp 环境</h2> 
+<ol> 
+ <li><p>新建一个 Maven Webapp 工程，并加入下面的 <code>jetbrick-template</code> 依赖</p> <pre><code class="highlight xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.github.subchen<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>jetbrick-template-web<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></li> 
+ <li><p>配置 web.xml</p> <pre><code class="highlight xml"><span class="nt">&lt;servlet&gt;</span>
+  <span class="nt">&lt;servlet-name&gt;</span>jetbrick-template<span class="nt">&lt;/servlet-name&gt;</span>
+  <span class="nt">&lt;servlet-class&gt;</span>jetbrick.template.web.servlet.JetTemplateServlet<span class="nt">&lt;/servlet-class&gt;</span>
+  <span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
+<span class="nt">&lt;/servlet&gt;</span>
+<span class="nt">&lt;servlet-mapping&gt;</span>
+  <span class="nt">&lt;servlet-name&gt;</span>jetbrick-template<span class="nt">&lt;/servlet-name&gt;</span>
+  <span class="nt">&lt;url-pattern&gt;</span>*.jetx<span class="nt">&lt;/url-pattern&gt;</span>
+<span class="nt">&lt;/servlet-mapping&gt;</span>
+</code></pre></li> 
+ <li><p>新建一个 request.jetx 模板，并放在默认的 webroot 根目录 (<code>src/main/webapp</code>)</p> <pre><code class="highlight html"><span class="nt">&lt;div&gt;</span>request headers:<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;ul&gt;</span>
+    #for(String name: request.headerNames)
+    <span class="nt">&lt;li&gt;</span>${name}: ${request.getHeader(name)}<span class="nt">&lt;/li&gt;</span>
+    #end
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre></li> 
+ <li><p>部署你的 webapp，并打开浏览器访问 <a href="#">http://127.0.0.1:8080/request.jetx</a>，将会看到下面类似的结果：</p> <pre><code class="highlight html">request headers:
+* Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+* Accept-Encoding:gzip,deflate,sdch
+* Accept-Language:en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4,zh-TW;q=0.2
+* Cache-Control:max-age=0
+* Connection:keep-alive
+* Host:127.0.0.1
+* Referer:http://127.0.0.1:8080/request.jetx
+* User-Agent:Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36
+</code></pre></li> 
+</ol> 
+<p>完整的 demo 请参考： <a href="https://github.com/subchen/jetbrick-template-samples/blob/master/quickstart-webapp/">https://github.com/subchen/jetbrick-template-samples/blob/master/quickstart-webapp/</a></p>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

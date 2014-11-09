@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>和 Velocity 的比较 :: jetbrick-template</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="http://subchen.github.io/jetbrick-template/2x/velocity-comparison.html"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/application.css" />
+
+    <!--[if lt IE 9]><script type="text/javascript" src="../../assets/js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="../../assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/ZeroClipboard.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/application.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../../jetbrick-template/index.html" class="navbar-brand" style="padding:10px;">
+                <img src="../../assets/images/logo-jetbrick-template-light.png" height="30">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/overview.html">概述 Overview</a></li>
+                        <li><a href="../../jetbrick-template/2x/quickstart.html">快速开始 Quick Start</a></li>
+                        <li><a href="../../jetbrick-template/2x/core-object.html">核心对象 Core</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/global-context.html">全局变量 Global Context</a></li>
+                        <li><a href="../../jetbrick-template/2x/handle-error.html">模板详细错误</a></li>
+                        <li><a href="../../jetbrick-template/2x/debug.html">调试模板 Debug</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">进阶 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/ext-method.html">扩展方法 Method</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-function.html">扩展函数 Function</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-tag.html">标签 Tag</a></li>
+                        <li><a href="../../jetbrick-template/2x/ext-macro.html">宏 Macro</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/include.html">嵌入子模板 Include</a></li>
+                        <li><a href="../../jetbrick-template/2x/layout.html">布局 Layout</a></li>
+                    </ul>
+                </li>
+                <li><a href="../../jetbrick-template/2x/config.html">配置</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">语法 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/syntax-text.html">文本 Text</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-comment.html">注释 Comment</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-value.html">值 Value</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-directive.html">指令 Directive</a></li>
+                        <li><a href="../../jetbrick-template/2x/syntax-expression.html">表达式 Expression</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/velocity-comparison.html">和 Velocity 的比较</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web集成 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../jetbrick-template/2x/web-integration.html">Web 框架集成</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-servlet.html">直接使用 HttpServlet</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-filter.html">直接使用 Filter</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jetbrickmvc.html">与 Jetbrick webmvc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-springmvc.html">与 Spring webmvc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jfinal.html">与 JFinal 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-jodd.html">与 Jodd madvoc 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-struts.html">与 Struts 2.x 集成</a></li>
+                        <li><a href="../../jetbrick-template/2x/web-integration-nutz.html">与 Nutz 集成</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">jetbrick 首页</a></li>
+                        <li><a href="../../jetbrick-commons/overview.html">jetbrick-commons</a></li>
+                        <li><a href="../../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
+                        <li><a href="../../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
+                        <li><a href="../../jetbrick-orm/overview.html">jetbrick-orm</a></li>
+                        <li><a href="../../jetbrick-template/index.html">jetbrick-template</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../../jetbrick-template/2x/download.html"><i class="fa fa-download"></i> 下载</a></li>
+                <li><a href="http://github.com/subchen/jetbrick-template-2x"><i class="fa fa-github-alt"></i> 源码</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="jb-announcement">
+        jetbrick-template-1.x 旧版文档请看这里：<a href="http://subchen.github.io/jetbrick-template/1x/">http://subchen.github.io/jetbrick-template/1x/</a>
+    </div>
+
+    <article class="markdown">
+        <h1><a class="anchor" name="-velocity-"></a>和 Velocity 的比较</h1> 
+<p><code>jetbrick-template</code> 的指令和老牌的模板引擎 <code>Velocity</code> 是非常相似的。</p> 
+<h2><a class="anchor" name="1094687580"></a>1 语法差异</h2> 
+<ul> 
+ <li>jetbrick-template 指令中的变量不加 <code>$</code> 符，只支持 <code>#if(x == y)</code>，不支持 <code>#if($x == $y)</code>，因为指令中没有加引号的字符串就是变量，和 Java 语法一样，没有加 <code>$</code> 的必要。</li> 
+ <li>jetbrick-template 占位符必需加大括号，只支持 <code>${foo}</code>，不支持 <code>$foo</code>，因为 <code>$</code> 在 JavaScript 中也是合法变量名符号，而 <code>${}</code> 不是，避免混淆。</li> 
+ <li>jetbrick-template 占位符当变量为 <code>null</code> 时输出空白串，而不像 Velocity 那样原样输出指令原文，即 <code>${foo}</code>，等价于 Velocity 的 <code>$!{foo}</code>，以免表达式源码泄漏。</li> 
+ <li>jetbrick-template 支持在所有使用变量的地方，进行表达式计算，也就是你不需要像 Velocity 那样，先 <code>#set($j = $i + 1)</code> 到一个临时变量，再输出临时变量 <code>${j}</code>，jetbrick-template 可以直接输出 <code>${i + 1}</code>，其它指令也一样，比如：<code>#if(i + 1 == n)</code>。</li> 
+ <li>jetbrick-template 采用扩展 Class 原生方法的方式，如：<code>${"str".toChar()}</code>，而不像 Velocity 的 Tool 工具方法那样：<code>$(StringTool.toChar("a"))</code>，这样的调用方式更直观，更符合代码书写习惯。</li> 
+ <li>jetbrick-template 支持属性和方法的安全调用 (<code>safecall=true</code>)。如 <code>${user.name}</code>，<code>${user.hasRole("vip")}</code>。如果 <code>user</code> 对象为 <code>null</code>，那么返回结果就是 <code>null</code>，不会出现烦人的 <code>NullPointerException</code>。</li> 
+ <li>jetbrick-template 还支持静态字段/方法调用，函数扩展，自定义标签等等。</li> 
+</ul> 
+<h2><a class="anchor" name="775409745"></a>2 指令差异</h2> 
+<table> 
+ <tbody>
+  <tr> 
+   <th>velocity</th> 
+   <th>jetbrick-template</th> 
+   <th width="40px">异同</th> 
+   <th>功能</th> 
+   <th>变化</th> 
+  </tr> 
+  <tr> 
+   <td>${foo.bar}<br>$foo.bar</td> 
+   <td>${foo.bar}</td> 
+   <td><font color="green">相同</font></td> 
+   <td>输出占位符</td> 
+   <td>jetbrick-template 大括号必需</td> 
+  </tr> 
+  <tr> 
+   <td>$!{foo.bar}<br>$!foo.bar</td> 
+   <td>$!{foo.bar}</td> 
+   <td><font color="red">不同</font></td> 
+   <td>空值不显示源码</td> 
+   <td>velocity 为空值不显示源码<br>jetbrick-template 改为HTML过滤输出</td> 
+  </tr> 
+  <tr> 
+   <td>## ...<br>#* ... *#</td> 
+   <td>## ...<br>#// ...<br>#-- ... --#</td> 
+   <td>相似</td> 
+   <td>注释</td> 
+   <td>块注释格式不一样</td> 
+  </tr> 
+  <tr> 
+   <td>#[[ ... ]]#</td> 
+   <td>#[[ ... ]]#</td> 
+   <td><font color="green">相同</font></td> 
+   <td>不解析文本块</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td>\# \$ \\</td> 
+   <td>\# \$ \\</td> 
+   <td><font color="green">相同</font></td> 
+   <td>特殊字符转义</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td>n/a</td> 
+   <td>#define(Type foo = bar)</td> 
+   <td><font color="red">新增</font></td> 
+   <td>给变量声明类型</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td>#set($foo = $bar)</td> 
+   <td>#set([Type] foo = bar)</td> 
+   <td><font color="green">相同</font></td> 
+   <td>给变量赋值</td> 
+   <td>可带类型声明</td> 
+  </tr> 
+  <tr> 
+   <td>n/a</td> 
+   <td>#return ( obj )</td> 
+   <td><font color="red">新增</font></td> 
+   <td>返回子模板变量给父模板</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td>#if($foo == $bar)</td> 
+   <td>#if(foo == bar)</td> 
+   <td><font color="green">相同</font></td> 
+   <td>条件判断</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td>#elseif($foo == $bar)</td> 
+   <td>#elseif(foo == bar)</td> 
+   <td><font color="green">相同</font></td> 
+   <td>否定条件判断</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td>#else</td> 
+   <td>#else</td> 
+   <td><font color="green">相同</font></td> 
+   <td>否定判断</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td>#end</td> 
+   <td>#end</td> 
+   <td><font color="green">相同</font></td> 
+   <td>结束指令</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td>#foreach($item in $list)</td> 
+   <td>#for(item : list)<br>#for(Type item : list)</td> 
+   <td>相似</td> 
+   <td>循环指令</td> 
+   <td>改为Java格式，可以带类型声明</td> 
+  </tr> 
+  <tr> 
+   <td>#break</td> 
+   <td>#break<br>#break(foo == bar)</td> 
+   <td><font color="green">相同</font></td> 
+   <td>中断循环</td> 
+   <td>可以直接带条件</td> 
+  </tr> 
+  <tr> 
+   <td>n/a</td> 
+   <td>#continue<br>#continue(foo == bar)</td> 
+   <td><font color="red">新增</font></td> 
+   <td>继续下一个循环</td> 
+   <td>可以直接带条件</td> 
+  </tr> 
+  <tr> 
+   <td>#stop</td> 
+   <td>#stop<br>#stop(foo == bar)</td> 
+   <td><font color="green">相同</font></td> 
+   <td>停止模板解析</td> 
+   <td>可以直接带条件</td> 
+  </tr> 
+  <tr> 
+   <td>#macro($foo)</td> 
+   <td>#macro foo(...)</td> 
+   <td>相似</td> 
+   <td>可复用模板片段宏</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
+   <td>#macro_name($)</td> 
+   <td>#call macro_name(...)</td> 
+   <td>相似</td> 
+   <td>调用模板片段宏</td> 
+   <td>采用 #call, 更清晰</td> 
+  </tr> 
+  <tr> 
+   <td>n/a</td> 
+   <td>#tag foo(...)</td> 
+   <td><font color="red">新增</font></td> 
+   <td>自定义标签</td> 
+   <td>jetbrick-template 允许自定义标签</td> 
+  </tr> 
+  <tr> 
+   <td>#include("foo.txt")</td> 
+   <td>fileGet("foo.txt")</td> 
+   <td>不同</td> 
+   <td>读取文本文件内容</td> 
+   <td>jetbrick-template 用扩展函数实现</td> 
+  </tr> 
+  <tr> 
+   <td>#parse("foo.vm")</td> 
+   <td>#include("foo.jetx")<br>#include("foo.jetx", args)</td> 
+   <td>相似</td> 
+   <td>调用子模板</td> 
+   <td>jetbrick-template 支持私有参数传递</td> 
+  </tr> 
+  <tr> 
+   <td>#evaluate("${1 + 2}")</td> 
+   <td>n/a</td> 
+   <td><font color="red">不同</font></td> 
+   <td>模板求值</td> 
+   <td>jetbrick-tempate 不支持</td> 
+  </tr> 
+  <tr> 
+   <td>n/a</td> 
+   <td>#options(...)</td> 
+   <td><font color="red">新增</font></td> 
+   <td>模板选项</td> 
+   <td>jetbrick-tempate 支持独立的模板选项</td> 
+  </tr> 
+ </tbody>
+</table>
+    </article>
+
+	<hr style="margin: 10px 0 5px 0;" />
+
+<div id="SOHUCS"></div>
+<script>
+  (function(){
+    var appid = 'cyrq0AJBi',
+    conf = 'prod_c4f298861c05cc4301a4a5b1eb5115e9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+
+</div>
+
+<footer>
+    <div class="container jb-footer">
+        <hr>
+        <p>Copyright 2013-2014 Guoqiang Chen. All rights reserved.</p>
+        <p><i class="fa fa-envelope"></i> subchen&#64;gmail.com <i class="fa fa-qq"></i> 310491655</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1000210720'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000210720' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>
