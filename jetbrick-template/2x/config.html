@@ -293,6 +293,9 @@
 <p>允许配置多个 Macro File 定义，用逗号分隔。示例如下：</p> 
 <pre><code class="highlight plaintext">jetx.import.macros = /macros/commons.jetx, /macros/auth.jetx
 </code></pre> 
+<blockquote class="info">
+ <p><strong>提示</strong>：这里配置的外部宏文件路径是一个模板路径，需要使用 <code>engine.getTemplate(file)</code> 能加载到的路径名称。</p> 
+</blockquote> 
 <h3><a class="anchor" name="jetx-autoscan-packages"></a>2.5 jetx.autoscan.packages</h3> 
 <p>如果我们实现了大量的扩展 methods, functions 或者 tags, 那么我们就要进行大量的配置，并且每次增加新的扩展 Class，我们就要修改配置文件，不是很方便。</p> 
 <p>为了解决这个问题，我们提供了指定扫描用户自定义的扩展 Class，扫描的内容是： </p> 

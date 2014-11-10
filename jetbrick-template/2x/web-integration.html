@@ -125,7 +125,7 @@
 <p><code>jetbrick-template</code> 除了作为普通的模板引擎嵌入在 Application 中外，大部分情况下还会和各种 WebMVC 框架整合作为前端的 View，来代替过时的 <code>JSP</code> 或者 <code>Velocity</code>。</p> 
 <p>目前已近集成了几种流行的 Web 框架：</p> 
 <ul> 
- <li><a href="web-integration-servlet.html">HttpServlet</a></li> 
+ <li><a href="web-integration-servlet.html">Servlet</a></li> 
  <li><a href="web-integration-filter.html">Filter</a></li> 
  <li><a href="web-integration-jetbrickmvc.html">Jetbrick webmvc</a></li> 
  <li><a href="web-integration-springmvc.html">Springmvc</a></li> 
@@ -239,11 +239,19 @@ $loader = jetbrick.template.loader.ServletResourceLoader
 $loader.root = /WEB-INF/templates
 $loader.reloadable = false
 </code></pre> 
-<h2><a class="anchor" name="-jetengine"></a>3 获取 JetEngine</h2> 
+<h2><a class="anchor" name="34260892"></a>3 默认配置文件</h2> 
+<p><code>jetbrick-template.properties</code> 一般我们放在 <code>/WEB-INF/</code> 目录下，那么我们可以这么在 <code>web.xml</code> 中进行配置</p> 
+<pre><code class="highlight xml"><span class="nt">&lt;context-param&gt;</span>
+    <span class="nt">&lt;param-name&gt;</span>jetbrick-template-config-location<span class="nt">&lt;/param-name&gt;</span>
+    <span class="nt">&lt;param-value&gt;</span>/WEB-INF/jetbrick-template.properties<span class="nt">&lt;/param-value&gt;</span>
+<span class="nt">&lt;/context-param&gt;</span>
+</code></pre> 
+<p>这种配置文件路径指定方法对所有内置的 webmvc 集成都有效。</p> 
+<h2><a class="anchor" name="-jetengine"></a>4 获取 JetEngine</h2> 
 <p>在 Web 集成模式中，<code>JetEngine</code> 是由 <code>JetWebEngine.create(...)</code> 创建出来的(单例模式)，所以我们可以通过下面的代码来获取 <code>JetEngine</code></p> 
 <pre><code class="highlight java"><span class="n">JetEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="n">JetWebEngine</span><span class="o">.</span><span class="na">getEngine</span><span class="o">();</span>
 </code></pre> 
-<h2><a class="anchor" name="-request-session-web-"></a>4 获取 request, session 等 Web 对象</h2> 
+<h2><a class="anchor" name="-request-session-web-"></a>5 获取 request, session 等 Web 对象</h2> 
 <p>在 web 环境中，我们有时候需要获取 <code>request</code>, <code>session</code>, <code>servletContext</code> 等常用对象，我们可以通过下面的方法获取：</p> 
 <pre><code class="highlight java"><span class="n">InterpretContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">InterpretContext</span><span class="o">.</span><span class="na">current</span><span class="o">();</span>
 <span class="n">ValueStack</span> <span class="n">valueStack</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="na">getValueStack</span><span class="o">();</span>
