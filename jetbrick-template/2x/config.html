@@ -182,6 +182,11 @@
    <td>.jetx</td> 
   </tr> 
   <tr> 
+   <td><a href="#jetx-template-source-securitymanager">jetx.template.source.securityManager</a></td> 
+   <td>createTemplate()使用的安全管理器</td> 
+   <td></td> 
+  </tr> 
+  <tr> 
    <td><a href="#jetx-input-encoding">jetx.input.encoding</a></td> 
    <td>模板源文件的编码格式</td> 
    <td>utf-8</td> 
@@ -366,9 +371,12 @@ $webLoader.reloadable = true
 </code></pre> 
 <h3><a class="anchor" name="jetx-template-suffix"></a>3.2 jetx.template.suffix</h3> 
 <p>默认的模板文件扩展名 <code>.jetx</code>，主要用于 Web 框架集成中，用于查找和过滤模板用。</p> 
-<h3><a class="anchor" name="jetx-input-encoding"></a>3.3 jetx.input.encoding</h3> 
+<h3><a class="anchor" name="jetx-template-source-securitymanager"></a>3.3 jetx.template.source.securityManager</h3> 
+<p>默认通过 <code>JetEngine.createTemplate()</code> 以源码方式创建的模板，设置安全管理器。</p> 
+<p>具体可以参考：<a href="security-manager.html">安全管理器</a></p> 
+<h3><a class="anchor" name="jetx-input-encoding"></a>3.4 jetx.input.encoding</h3> 
 <p>模板源文件的编码格式，默认为 <code>utf-8</code>。</p> 
-<h3><a class="anchor" name="jetx-output-encoding"></a>3.4 jetx.output.encoding</h3> 
+<h3><a class="anchor" name="jetx-output-encoding"></a>3.5 jetx.output.encoding</h3> 
 <p>模板输出内容的编码格式，默认为 <code>utf-8</code>。</p> 
 <blockquote class="info">
  <p><strong>最佳实践</strong>：一般在 webapp 中，<code>jetx.output.encoding</code> 应该和 html 页面的 <code>contentType</code> 中的编码，以及 <code>response</code> 的 <code>characterEncoding</code> 完全保持一致。</p> 

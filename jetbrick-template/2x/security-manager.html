@@ -179,7 +179,12 @@ jetx.template.loaders = $loader
 -java.lang.System.exit              // 禁止调用 System.exit() 方法
 +java.util.Collections.EMPTY_LIST   // 允许访问 Collections.EMPTY_LIST 字段
 </code></pre> 
-<h2><a class="anchor" name="598304405"></a>3 自定义安全管理器</h2> 
+<h2><a class="anchor" name="-jetengine-createtemplate-"></a>3 为 JetEngine.createTemplate() 创建的模板，设置安全管理器</h2> 
+<p>由于 <code>JetEngine.createTemplate()</code> 以源码方式创建的模板，并没有使用 <code>ResourceLoader</code> 来加载，所有必须使用其他的方式指定 <code>JetSecurityManager</code></p> 
+<p>配置如下：</p> 
+<pre><code class="highlight plaintext">jetx.template.source.securityManager = $securityManager
+</code></pre> 
+<h2><a class="anchor" name="598304405"></a>4 自定义安全管理器</h2> 
 <p>虽然 <code>jetbrick-template</code> 已经内置了一个默认的安全管理器实现，但是用户也可以实现自己的安全管理器。</p> 
 <p>需要实现接口： <code>jetbrick.template.JetSecurityManager</code></p>
     </article>
