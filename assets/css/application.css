@@ -132,6 +132,15 @@ body, p, div, table, td {
     border-color: #398439;
 }
 
+.jb-menulist a.blue {
+    background-color: #2B4EE3;
+    border-color: #5642CC;
+}
+.jb-menulist a.blue:hover {
+    background-color: #5642CC;
+    border-color: #133FFB;
+}
+
 .dropdown-submenu  { 
     position:relative;
 }
