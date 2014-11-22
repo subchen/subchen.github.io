@@ -126,14 +126,14 @@
     <article class="markdown">
         <h1><a class="anchor" name="spring-webmvc-"></a>Spring webmvc 集成</h1> 
 <p><code>jetbrick-template</code> 可以和 <code>Spring webmvc</code> 进行集成。</p> 
-<h2><a class="anchor" name="maven-"></a>1 Maven 依赖</h2> 
+<h2><a class="anchor" name="maven-"></a>1. Maven 依赖</h2> 
 <pre><code class="highlight xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>com.github.subchen<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>jetbrick-template-springmvc<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>2.0.3<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre> 
-<h2><a class="anchor" name="application-context-xml-"></a>2 application-context.xml 配置</h2> 
+<h2><a class="anchor" name="application-context-xml-"></a>2. application-context.xml 配置</h2> 
 <pre><code class="highlight xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"viewResolver"</span> <span class="na">class=</span><span class="s">"jetbrick.template.web.springmvc.JetTemplateViewResolver"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"order"</span> <span class="na">value=</span><span class="s">"1"</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"contentType"</span> <span class="na">value=</span><span class="s">"text/html; charset=utf-8"</span> <span class="nt">/&gt;</span>
@@ -154,7 +154,7 @@
 <blockquote class="warn">
  <p><strong>小心</strong>：如果你同时指定 <code>configLocation</code> 和 <code>configProperties</code> 属性，那么 <code>configLocation</code> 文件中的属性优先级高。</p> 
 </blockquote> 
-<h2><a class="anchor" name="1019637337"></a>3 范例源码</h2> 
+<h2><a class="anchor" name="1019637337"></a>3. 范例源码</h2> 
 <p>具体例子代码参考： <a href="https://github.com/subchen/jetbrick-template-2x-samples/">https://github.com/subchen/jetbrick-template-2x-samples/</a></p>
     </article>
 

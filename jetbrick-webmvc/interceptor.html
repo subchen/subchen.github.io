@@ -104,7 +104,7 @@
 <p>Interceptor 是 jetbrick webmvc 用来实现对 Action 的预处理和后处理功能（AOP）。</p> 
 <p>jetbrick 采用了类似于 HTTP Filter 的责任链模式实现 Interceptor chain。</p> 
 <p>所有 Interceptor 都是单例的，非线程安全的。</p> 
-<h2><a class="anchor" name="interceptor-"></a>1 Interceptor 例子</h2> 
+<h2><a class="anchor" name="interceptor-"></a>1. Interceptor 例子</h2> 
 <p>用户自定义的 Interceptor 需要实现 <code>jetbrick.web.mvc.intercept.Interceptor</code> 接口。</p> 
 <pre><code class="highlight java"><span class="kn">package</span> <span class="n">jetbrick</span><span class="o">.</span><span class="na">docs</span><span class="o">.</span><span class="na">samples</span><span class="o">;</span>
 
@@ -135,7 +135,7 @@
 <blockquote class="warn">
  <p><strong>注意</strong>: Interceptor 只能拦截 Action，不能拦截 View。</p> 
 </blockquote> 
-<h2><a class="anchor" name="interceptor-"></a>2 Interceptor 配置</h2> 
+<h2><a class="anchor" name="interceptor-"></a>2. Interceptor 配置</h2> 
 <p>jetbrick 总共下面支持 3 种级别的 Interceptor</p> 
 <ul> 
  <li>Global 级别 - 对所有的 Action 进行拦截</li> 

@@ -126,20 +126,20 @@
     <article class="markdown">
         <h1><a class="anchor" name="jfinal-"></a>JFinal 集成</h1> 
 <p><code>jetbrick-template</code> 可以和 <code>JFinal</code> 进行集成。</p> 
-<h2><a class="anchor" name="maven-"></a>1 Maven 依赖</h2> 
+<h2><a class="anchor" name="maven-"></a>1. Maven 依赖</h2> 
 <pre><code class="highlight xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>com.github.subchen<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>jetbrick-template-jfinal<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>2.0.3<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre> 
-<h2><a class="anchor" name="web-xml-"></a>2 web.xml 配置</h2> 
+<h2><a class="anchor" name="web-xml-"></a>2. web.xml 配置</h2> 
 <pre><code class="highlight xml"><span class="nt">&lt;context-param&gt;</span>
     <span class="nt">&lt;param-name&gt;</span>jetbrick-template-config-location<span class="nt">&lt;/param-name&gt;</span>
     <span class="nt">&lt;param-value&gt;</span>/WEB-INF/jetbrick-template.properties<span class="nt">&lt;/param-value&gt;</span>
 <span class="nt">&lt;/context-param&gt;</span>
 </code></pre> 
-<h2><a class="anchor" name="-jfinal-"></a>3 修改 JFinal 主配置文件</h2> 
+<h2><a class="anchor" name="-jfinal-"></a>3. 修改 JFinal 主配置文件</h2> 
 <pre><code class="highlight java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JetxConfig</span> <span class="kd">extends</span> <span class="n">JFinalConfig</span> <span class="o">{</span>
 
     <span class="nd">@Override</span>
@@ -150,7 +150,7 @@
 
 <span class="o">}</span>
 </code></pre> 
-<h2><a class="anchor" name="-controller-"></a>4 新建一个 Controller 测试</h2> 
+<h2><a class="anchor" name="-controller-"></a>4. 新建一个 Controller 测试</h2> 
 <pre><code class="highlight java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UsersController</span> <span class="kd">extends</span> <span class="n">Controller</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="n">index</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">setAttr</span><span class="o">(</span><span class="s">"userlist"</span><span class="o">,</span> <span class="n">DaoUtils</span><span class="o">.</span><span class="na">getUserList</span><span class="o">());</span>
@@ -161,7 +161,7 @@
 <blockquote class="info">
  <p><strong>好消息</strong>：JFinal 内置的 ActiveRecord 的 <code>Model</code> 和 <code>Record</code> 现在可以直接通过 <code>${model.name}</code> 方式访问拉!</p> 
 </blockquote> 
-<h2><a class="anchor" name="1019637337"></a>5 范例源码</h2> 
+<h2><a class="anchor" name="1019637337"></a>5. 范例源码</h2> 
 <p>具体例子代码参考： <a href="https://github.com/subchen/jetbrick-template-2x-samples/">https://github.com/subchen/jetbrick-template-2x-samples/</a></p>
     </article>
 

@@ -104,7 +104,7 @@
 <p>在 <code>web.xml</code> 中，我们通常将 URL 映射成 <code>/*</code>，也就是将所有请求的 URL 都交给 <code>DispatcherFilter</code> 来进行处理。</p> 
 <p>这其中包括了 js, css, jpg 等静态资源，也包括像 jsp 这样的等动态页面。而像这样的 URL 通常是由默认的 Servlet 来处理的，我们的 <code>DispatcherFilter</code> 是无法直接处理这样的 URL 资源的。如此就会造成这些 URL 将无法得到正确的处理。</p> 
 <p>所以，这里我们需要对这些静态/动态资源进行 URL 过滤，让这些 URL 交给其他的 Servlet 来处理。</p> 
-<h2><a class="anchor" name="url-"></a>1 URL 过滤匹配算法</h2> 
+<h2><a class="anchor" name="url-"></a>1. URL 过滤匹配算法</h2> 
 <p>jetbrick 提供了 2 种资源过滤器，使用的不同的匹配算法。用户也可以实现自己的资源过滤器。</p> 
 <ol> 
  <li>前缀/后缀匹配: <a href="#-prefixsuffixbypassrequesturls">PrefixSuffixBypassRequestUrls</a>（默认）</li> 
@@ -125,7 +125,7 @@ $bypassUrls.patterns = \
 
 web.urls.bypass = $bypassUrls
 </code></pre> 
-<h2><a class="anchor" name="1498584314"></a>2 自定义资源过滤器</h2> 
+<h2><a class="anchor" name="1498584314"></a>2. 自定义资源过滤器</h2> 
 <hr> 
 <p>如果用户想要自定义自己的过滤器，只要实现 <code>jetbrick.web.mvc.BypassRequestUrls</code> 接口即可。</p> 
 <pre><code class="highlight java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">BypassRequestUrls</span> <span class="o">{</span>

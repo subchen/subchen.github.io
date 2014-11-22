@@ -228,7 +228,7 @@ template.path = /
 </ol> 
 <h1><a class="anchor" name="1896411413"></a>各种集成方式介绍</h1> 
 <p><a name="HttpServlet"></a></p> 
-<h2><a class="anchor" name="-httpservlet"></a>1 直接使用 HttpServlet</h2> 
+<h2><a class="anchor" name="-httpservlet"></a>1. 直接使用 HttpServlet</h2> 
 <p>jetbrick-template 可以直接作为 HttpServlet 使用。需要在 web.xml 中作如下配置。</p> 
 <pre><code class="highlight xml"><span class="nt">&lt;servlet&gt;</span>
   <span class="nt">&lt;servlet-name&gt;</span>jetbrick-template<span class="nt">&lt;/servlet-name&gt;</span>
@@ -243,7 +243,7 @@ template.path = /
 <p>最简单，也是最直接的方式。打开浏览器访问 <a href="http://127.0.0.1:8080/index.jetx">http://127.0.0.1:8080/index.jetx</a> 看看效果吧。</p> 
 <p>具体例子代码参考： <a href="https://github.com/subchen/jetbrick-template-webmvc-samples/">https://github.com/subchen/jetbrick-template-webmvc-samples/</a></p> 
 <p><a name="Filter"></a></p> 
-<h2><a class="anchor" name="-filter-"></a>2 直接使用 Filter 模式</h2> 
+<h2><a class="anchor" name="-filter-"></a>2. 直接使用 Filter 模式</h2> 
 <p>jetbrick-template 可以直接作为 Filter 使用。需要在 web.xml 中作如下配置。</p> 
 <pre><code class="highlight xml"><span class="nt">&lt;filter&gt;</span>
   <span class="nt">&lt;filter-name&gt;</span>jetbrick-template<span class="nt">&lt;/filter-name&gt;</span>
@@ -255,7 +255,7 @@ template.path = /
 <span class="nt">&lt;/filter-mapping&gt;</span>
 </code></pre> 
 <p><a name="Struts"></a></p> 
-<h2><a class="anchor" name="struts-2-x"></a>3 Struts 2.x</h2> 
+<h2><a class="anchor" name="struts-2-x"></a>3. Struts 2.x</h2> 
 <p>jetbrick-template 可以和 Struts 2.x 进行集成。</p> 
 <p>首先需要对 Struts 进行如下配置（<code>struts.xml</code>），这个配置是告诉 Struts 使用 <code>jetbrick.template.web.struts.JetTemplateResult</code> 这个类来处理采用 jetbrick-template 格式的模板：</p> 
 <pre><code class="highlight xml"><span class="nt">&lt;result-types&gt;</span>
@@ -270,7 +270,7 @@ template.path = /
 <p>打开浏览器访问 <a href="http://127.0.0.1:8080/index.do">http://127.0.0.1:8080/index.do</a> 看看效果吧。</p> 
 <p>具体例子代码参考： <a href="https://github.com/subchen/jetbrick-template-webmvc-samples/">https://github.com/subchen/jetbrick-template-webmvc-samples/</a></p> 
 <p><a name="SpringMVC"></a></p> 
-<h2><a class="anchor" name="spring-mvc"></a>4 Spring MVC</h2> 
+<h2><a class="anchor" name="spring-mvc"></a>4. Spring MVC</h2> 
 <p>jetbrick-template 可以和 Spring MVC 进行集成。</p> 
 <p>配置方式如下：</p> 
 <pre><code class="highlight xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"viewResolver"</span> <span class="na">class=</span><span class="s">"jetbrick.template.web.springmvc.JetTemplateViewResolver"</span><span class="nt">&gt;</span>
@@ -281,7 +281,7 @@ template.path = /
 </code></pre> 
 <p>具体例子代码参考： <a href="https://github.com/subchen/jetbrick-template-webmvc-samples/">https://github.com/subchen/jetbrick-template-webmvc-samples/</a></p> 
 <p><a name="JFinal"></a></p> 
-<h2><a class="anchor" name="jfinal"></a>5 JFinal</h2> 
+<h2><a class="anchor" name="jfinal"></a>5. JFinal</h2> 
 <p>jetbrick-template 可以和 JFinal 进行集成。</p> 
 <ol> 
  <li><p>修改 JFinal 主配置文件</p> <pre><code class="highlight java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JetxConfig</span> <span class="kd">extends</span> <span class="n">JFinalConfig</span> <span class="o">{</span>
@@ -304,7 +304,7 @@ template.path = /
 <p>可以了，就这么简单!</p> 
 <p>具体例子代码参考： <a href="https://github.com/subchen/jetbrick-template-webmvc-samples/">https://github.com/subchen/jetbrick-template-webmvc-samples/</a></p> 
 <p><a name="Jodd"></a></p> 
-<h2><a class="anchor" name="jodd-3-5-1-"></a>6 Jodd 3.5.1+</h2> 
+<h2><a class="anchor" name="jodd-3-5-1-"></a>6. Jodd 3.5.1+</h2> 
 <p>注意，由于 Jodd 3.5 更改了 Result 的集成接口，所以 <code>jetbrick-template</code> 从 <code>1.2.5</code> 版本开始，只支持 <code>Jodd 3.5.1+</code>，如果需要 <code>Jodd 3.5</code> 之前的版本，请使用 <code>jetbrick-template 1.2.4</code>。 </p> 
 <ol> 
  <li><p>首先需要配置 Jodd 的配置文件：madvoc.props</p> <pre><code class="highlight plaintext">[jetbrick.template.web.jodd.JetTemplateResult]
@@ -345,7 +345,7 @@ public class UsersAction {
 </ol> 
 <p>具体例子代码参考： <a href="https://github.com/subchen/jetbrick-template-webmvc-samples/">https://github.com/subchen/jetbrick-template-webmvc-samples/</a></p> 
 <p><a name="Nutz"></a></p> 
-<h2><a class="anchor" name="nutz"></a>7 Nutz</h2> 
+<h2><a class="anchor" name="nutz"></a>7. Nutz</h2> 
 <p>感谢 wendal (<a href="mailto:wendal1985@gmail.com">wendal1985@gmail.com</a>) 提供相关代码。</p> 
 <p>View： <code>jetbrick.template.web.nutz.JetTemplateView</code><br> ViewMaker：<code>jetbrick.template.web.nutz.JetTemplateViewMaker</code></p> 
 <ol> 

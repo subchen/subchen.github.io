@@ -102,7 +102,7 @@
     <article class="markdown">
         <h1><a class="anchor" name="-plugin"></a>自定义插件 Plugin</h1> 
 <p>Plugin 是 jetbrick webmvc 用来进行扩展自身功能的。Plugin 会随着 jetbrick webmvc 的启动而启动。</p> 
-<h2><a class="anchor" name="plugin-"></a>1 Plugin 例子</h2> 
+<h2><a class="anchor" name="plugin-"></a>1. Plugin 例子</h2> 
 <p>用户自定义的 Plugin 需要实现 <code>jetbrick.web.mvc.plugin.Plugin</code> 接口。</p> 
 <pre><code class="highlight java"><span class="kn">package</span> <span class="n">jetbrick</span><span class="o">.</span><span class="na">docs</span><span class="o">.</span><span class="na">samples</span><span class="o">;</span>
 
@@ -133,7 +133,7 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre> 
-<h2><a class="anchor" name="plugin-"></a>2 Plugin 配置</h2> 
+<h2><a class="anchor" name="plugin-"></a>2. Plugin 配置</h2> 
 <pre><code class="highlight plaintext">$DbUpgradePlugin = jetbrick.docs.samples.DbUpgradePlugin
 
 web.plugins = $DbUpgradePlugin, ...

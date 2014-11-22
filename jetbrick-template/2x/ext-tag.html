@@ -132,7 +132,7 @@
 #end
 </code></pre> 
 <p>这个例子演示了一个自定义的 cache tag，允许将天气结果缓存上 30 分钟，而不是每次都重新获取天气信息。</p> 
-<h2><a class="anchor" name="-tag"></a>1 定义标签 Tag</h2> 
+<h2><a class="anchor" name="-tag"></a>1. 定义标签 Tag</h2> 
 <p>每一个 Tag 由 Java 中的一个静态方法实现。</p> 
 <p>语法：</p> 
 <pre><code class="highlight plaintext">public static void tag_name ( JetTagContext ctx, args ... )
@@ -161,7 +161,7 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre> 
-<h2><a class="anchor" name="-tag"></a>2 注册标签 Tag</h2> 
+<h2><a class="anchor" name="-tag"></a>2. 注册标签 Tag</h2> 
 <p>用户自定义的 Tag 必须注册到 <code>JetEngine</code> 中才能使用。注册 Tag 有 3 种途径：</p> 
 <ul> 
  <li><p>API 动态注册</p> <pre><code class="highlight java"><span class="n">JetEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="o">...</span>
@@ -179,7 +179,7 @@
 </code></pre></li> 
   </ul></li> 
 </ul> 
-<h2><a class="anchor" name="jettagcontext-"></a>3 JetTagContext 的使用</h2> 
+<h2><a class="anchor" name="jettagcontext-"></a>3. JetTagContext 的使用</h2> 
 <p>Tag 的实现第一个参数是 <code>JetTagContext</code>，它包含了 Tag 运行时的上下文。</p> 
 <p>主要 API：</p> 
 <ul> 
@@ -188,7 +188,7 @@
  <li><p><code>void invoke()</code></p> <p>在当前位置输出 <code>#tag ... #end</code> 之间的内容</p></li> 
  <li><p><code>String getBodyContent()</code></p> <p>执行并捕获 <code>#tag ... #end</code> 之间的内容 (不输出)</p></li> 
 </ul> 
-<h2><a class="anchor" name="-buildin-tags"></a>4 模板已经内置的标签 Buildin Tags</h2> 
+<h2><a class="anchor" name="-buildin-tags"></a>4. 模板已经内置的标签 Buildin Tags</h2> 
 <p>所有 Tags 都定义在下面的 2 个 Class 中</p> 
 <ul> 
  <li><code>jetbrick.template.runtime.buildin.JetTags</code></li> 

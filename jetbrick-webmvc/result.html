@@ -102,7 +102,7 @@
     <article class="markdown">
         <h1><a class="anchor" name="result-resulthandler"></a>Result/ResultHandler</h1> 
 <p>Result 是 action 方法的返回值。 action 方法返回值可以是任意类型，每一种 Result 类型将会有一个对应的 ResultHandler 来负责处理相应的 Result 对象。</p> 
-<h2><a class="anchor" name="-result-resulthandler"></a>1 内置的 Result/ResultHandler</h2> 
+<h2><a class="anchor" name="-result-resulthandler"></a>1. 内置的 Result/ResultHandler</h2> 
 <p>jetbrick 已经内置了多种 Result/ResultHandler 处理器：</p> 
 <ul> 
  <li><code>String</code>: 负责处理模板 View</li> 
@@ -222,7 +222,7 @@
     <span class="o">...</span>
 <span class="o">}</span>
 </code></pre> 
-<h2><a class="anchor" name="-result-resulthandler"></a>2 自定义 Result/ResultHandler</h2> 
+<h2><a class="anchor" name="-result-resulthandler"></a>2. 自定义 Result/ResultHandler</h2> 
 <p>jetbrick 允许用户定义自己的 Result 和 ResultHandler。</p> 
 <h3><a class="anchor" name="-result"></a>2.1 自定义 Result</h3> 
 <p>新建一个普通的 Java 对象: <code>MyResult</code></p> 
@@ -248,7 +248,7 @@
 <blockquote class="info">
  <p><strong>提示</strong>：<br> 1. 需要实现 <code>jetbrick.web.mvc.result.ResultHandler</code> 接口<br> 2. 需要使用 <code>@Managed(...)</code> 标注，参数是 Result 类。如果省略参数，那么将自动从 ResultHandler 接口的泛型参数中获取。</p> 
 </blockquote> 
-<h2><a class="anchor" name="-result-"></a>3 使用系统/第三方自带的 Result 类</h2> 
+<h2><a class="anchor" name="-result-"></a>3. 使用系统/第三方自带的 Result 类</h2> 
 <p>如果你的 <code>Result</code> 类是系统自带的，或者第三方提供的，无法增加 <code>@ManagedWith(...)</code> 注解，那么也没关系。</p> 
 <p>我们可以直接定义对应的 <code>ResultHandler</code>。然后将自定义的 <code>ResultHandler</code> 所在的 package 加入的 jetbrick 自动扫描路径下（由 <code>web.scan.packages</code> 配置），然后 jetbrick 就会在启动的时候，自动发现所有的 <code>ResultHandler</code>，并且将其和 <code>Result</code> 关联起来。</p> 
 <p>我们真心的希望大家扩展自己的 Result/ResultHandler，然后共享出来，让 jetbrick 可以为更多的用户服务。</p>

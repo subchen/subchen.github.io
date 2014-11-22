@@ -97,7 +97,7 @@
  <li><code>#tag layout(file, ...)</code> 标签</li> 
  <li><code>#tag block(name)</code> + <code>#inlcude(file, ...)</code> 组合</li> 
 </ol> 
-<h2><a class="anchor" name="753318042"></a>1 常规模式</h2> 
+<h2><a class="anchor" name="753318042"></a>1. 常规模式</h2> 
 <p>我们将页面公共部分放在 include 文件中，然后在每个页面中应用 include 文件来实现内容共享。</p> 
 <p>main.jetx</p> 
 <pre><code class="highlight html">#include("/include/header.jetx")
@@ -107,7 +107,7 @@
 #include("/include/footer.jetx")
 </code></pre> 
 <p>这个不算 layout?<br> 呵呵，继续放下看。</p> 
-<h2><a class="anchor" name="670265539"></a>2 变种模式</h2> 
+<h2><a class="anchor" name="670265539"></a>2. 变种模式</h2> 
 <p>常规模式中，只是共享了一些公共内容，但是并没有实现真正的 layout，因为 layout 一变，include 的方式可能就会发生变化，这样所有文件都要重新 include，不是很方便。</p> 
 <p>下面就是 #include 模式的变种（动态 include），来实现真正的 layout。</p> 
 <p>layout.jetx</p> 
@@ -136,7 +136,7 @@
 </code></pre> 
 <p>怎么样？通过一个 pageUrl 参数来达到动态 layout 的目的，这样我们以后只要修改layout.jetx 文件就能达到修改所有页面布局了。</p> 
 <p>URL 访问方法： <a href="http://127.0.0.1:8080/layout.jetx?pageUrl=main.jetx">http://127.0.0.1:8080/layout.jetx?pageUrl=main.jetx</a></p> 
-<h2><a class="anchor" name="-tag-layout-file-"></a>3 #tag layout(file, ...)</h2> 
+<h2><a class="anchor" name="-tag-layout-file-"></a>3. #tag layout(file, ...)</h2> 
 <p>这里再介绍一种采用 layout 自定义标签来实现。</p> 
 <p>layout.jetx</p> 
 <pre><code class="highlight html"><span class="nt">&lt;html&gt;</span>
@@ -161,7 +161,7 @@
 </code></pre> 
 <p>layout 标签允许指定一个 layout 模板文件，在渲染页面的时候，会将layout标签体的渲染内容作为一个 bodyContent 变量插入到 layout 指定模板文件里。</p> 
 <p>这样，我们就可以通过直接访问 <a href="http://127.0.0.1:8080/main.jetx">http://127.0.0.1:8080/main.jetx</a></p> 
-<h2><a class="anchor" name="-tag-block-inlcude"></a>4 组合 #tag block() + #inlcude</h2> 
+<h2><a class="anchor" name="-tag-block-inlcude"></a>4. 组合 #tag block() + #inlcude</h2> 
 <p>上面的 #tag layout() 标签只能嵌入一块自定义的内容 <code>${bodyContent}</code>，那么如果想要嵌入多个自定义的变量块呢？</p> 
 <p>main.jetx</p> 
 <pre><code class="highlight html">#tag block("bodyContent1")
@@ -193,7 +193,7 @@ This is a footer.
 This is a footer.
 </code></pre> 
 <p>怎么样？现在就可以随意的进行组合了。</p> 
-<h2><a class="anchor" name="block-"></a>5 block 的默认值和重载</h2> 
+<h2><a class="anchor" name="block-"></a>5. block 的默认值和重载</h2> 
 <p>在 layout.jetx 中，我们也可以定义默认内容，在 main.jetx 中对默认内容进行重载，如下：</p> 
 <p>layout.jetx</p> 
 <pre><code class="highlight html">This is a header.
@@ -225,7 +225,7 @@ This is a footer.
 <span class="nt">&lt;/div&gt;</span>
 This is a footer.
 </code></pre> 
-<h2><a class="anchor" name="796152"></a>6 总结</h2> 
+<h2><a class="anchor" name="796152"></a>6. 总结</h2> 
 <p>不管采用哪种方式，jetbrick-template 都提供很大的灵活性来实现页面布局功能。</p> 
 <p>其中自定义 #tag 标签机制提供了非常强大功能，很容易实现其他模板引擎难以实现的功能，比如像 JSP Taglib 一样实现自定义标签，如 Cache Tag 将内容缓存到 memecached/redis 的标签等等。</p>
     </article>

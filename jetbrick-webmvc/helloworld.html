@@ -102,7 +102,7 @@
     <article class="markdown">
         <h1><a class="anchor" name="-hello-world"></a>快速开始 Hello World</h1> 
 <p>本章节将快速的带领你领略一下 <code>jetbrick-webmvc</code> 的使用方法和具备的基本功能。</p> 
-<h2><a class="anchor" name="-web-xml"></a>1 配置 web.xml</h2> 
+<h2><a class="anchor" name="-web-xml"></a>1. 配置 web.xml</h2> 
 <pre><code class="highlight xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 
 <span class="nt">&lt;web-app</span> <span class="na">xmlns=</span><span class="s">"http://java.sun.com/xml/ns/javaee"</span>
@@ -126,7 +126,7 @@
 
 <span class="nt">&lt;/web-app&gt;</span>
 </code></pre> 
-<h2><a class="anchor" name="-web-inf-jetbrick-webmvc-properties"></a>2 配置 /WEB-INF/jetbrick-webmvc.properties</h2> 
+<h2><a class="anchor" name="-web-inf-jetbrick-webmvc-properties"></a>2. 配置 /WEB-INF/jetbrick-webmvc.properties</h2> 
 <pre><code class="highlight plaintext">web.development = true
 web.http.encoding = utf-8
 web.scan.packages = jetbrick.docs.samples
@@ -134,7 +134,7 @@ web.urls.bypass = jetbrick.web.mvc.router.PrefixSuffixBypassRequestUrls
 web.urls.router = jetbrick.web.mvc.router.RestfulRouter
 web.view.default = jsp
 </code></pre> 
-<h2><a class="anchor" name="-controller"></a>3 创建一个 Controller</h2> 
+<h2><a class="anchor" name="-controller"></a>3. 创建一个 Controller</h2> 
 <pre><code class="highlight java"><span class="kn">package</span> <span class="n">jetbrick</span><span class="o">.</span><span class="na">docs</span><span class="o">.</span><span class="na">demo</span><span class="o">.</span><span class="na">controllers</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">jetbrick.web.mvc.action.*</span><span class="o">;</span>
@@ -149,7 +149,7 @@ web.view.default = jsp
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre> 
-<h2><a class="anchor" name="-src-main-webapp-hello-jsp"></a>4 创建登录页面 /src/main/webapp/hello.jsp</h2> 
+<h2><a class="anchor" name="-src-main-webapp-hello-jsp"></a>4. 创建登录页面 /src/main/webapp/hello.jsp</h2> 
 <pre><code class="highlight html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;&lt;/head&gt;</span>
@@ -158,7 +158,7 @@ Hello ${name}!
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre> 
-<h2><a class="anchor" name="-tomcat-"></a>5 放在 Tomcat 里面运行</h2> 
+<h2><a class="anchor" name="-tomcat-"></a>5. 放在 Tomcat 里面运行</h2> 
 <p>好了，将你的项目部署到 Tomcat 中去，然后运行吧。</p> 
 <p>打开你的浏览器，输入：<a href="http://127.0.0.1:8080/demo/hello">http://127.0.0.1:8080/demo/hello</a></p> 
 <p><img src="/assets/images/snapshots/tomcat_hello_world.png" alt="运行结果截图"></p>

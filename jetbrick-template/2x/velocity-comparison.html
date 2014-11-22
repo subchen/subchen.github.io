@@ -126,7 +126,7 @@
     <article class="markdown">
         <h1><a class="anchor" name="-velocity-"></a>和 Velocity 的比较</h1> 
 <p><code>jetbrick-template</code> 的指令和老牌的模板引擎 <code>Velocity</code> 是非常相似的。</p> 
-<h2><a class="anchor" name="1094687580"></a>1 语法差异</h2> 
+<h2><a class="anchor" name="1094687580"></a>1. 语法差异</h2> 
 <ul> 
  <li>jetbrick-template 指令中的变量不加 <code>$</code> 符，只支持 <code>#if(x == y)</code>，不支持 <code>#if($x == $y)</code>，因为指令中没有加引号的字符串就是变量，和 Java 语法一样，没有加 <code>$</code> 的必要。</li> 
  <li>jetbrick-template 占位符必需加大括号，只支持 <code>${foo}</code>，不支持 <code>$foo</code>，因为 <code>$</code> 在 JavaScript 中也是合法变量名符号，而 <code>${}</code> 不是，避免混淆。</li> 
@@ -136,7 +136,7 @@
  <li>jetbrick-template 支持属性和方法的安全调用 (<code>safecall=true</code>)。如 <code>${user.name}</code>，<code>${user.hasRole("vip")}</code>。如果 <code>user</code> 对象为 <code>null</code>，那么返回结果就是 <code>null</code>，不会出现烦人的 <code>NullPointerException</code>。</li> 
  <li>jetbrick-template 还支持静态字段/方法调用，函数扩展，自定义标签等等。</li> 
 </ul> 
-<h2><a class="anchor" name="775409745"></a>2 指令差异</h2> 
+<h2><a class="anchor" name="775409745"></a>2. 指令差异</h2> 
 <table> 
  <tbody>
   <tr> 

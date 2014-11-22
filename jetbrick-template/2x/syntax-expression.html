@@ -126,7 +126,7 @@
     <article class="markdown">
         <h1><a class="anchor" name="-expression"></a>表达式 Expression</h1> 
 <p>支持几乎所有 Java 表达式 (based on Java 6.0)，并对其进行了一些有用的扩展。</p> 
-<h2><a class="anchor" name="-java-java-"></a>1 与 Java 相同的地方 (运算符优先级和 Java 保存一致)</h2> 
+<h2><a class="anchor" name="-java-java-"></a>1. 与 Java 相同的地方 (运算符优先级和 Java 保存一致)</h2> 
 <ul> 
  <li>数字常量： <code>123</code> <code>123L</code> <code>0.01D</code> <code>99.99E-10D</code></li> 
  <li>字符串常量： <code>"abc\r\n"</code> <code>'abc\u00A0\r\n'</code></li> 
@@ -148,7 +148,7 @@
 <blockquote class="info">
  <p><strong>提示</strong>： 方法调用支持可变参数方法(Varargs)和重载方法(Overload)</p> 
 </blockquote> 
-<h2><a class="anchor" name="-java-"></a>2 与 Java 不同的地方 (扩展语法/语义)</h2> 
+<h2><a class="anchor" name="-java-"></a>2. 与 Java 不同的地方 (扩展语法/语义)</h2> 
 <p><strong>扩展语法：</strong></p> 
 <ul> 
  <li>单引号字符串：<code>'abc\u00A0\r\n'</code></li> 
@@ -169,13 +169,13 @@
  <li><code>Map</code> 支持 <code>.</code> 访问内部的对象（属性调用），如： <code>map.key</code>。</li> 
  <li><code>List</code> 和 <code>Map</code> 支持方括号取值：<code>list[0]</code> 等价于 <code>list.get(0)</code>，<code>map["abc"]</code> 等价于 <code>map.get("abc")</code></li> 
 </ul> 
-<h2><a class="anchor" name="-java-"></a>3 不支持的 Java 语法</h2> 
+<h2><a class="anchor" name="-java-"></a>3. 不支持的 Java 语法</h2> 
 <ul> 
  <li>不支持 <code>++</code>, <code>--</code> 表达式</li> 
  <li>不支持泛型</li> 
  <li>不支持强制类型转换</li> 
 </ul> 
-<h2><a class="anchor" name="-variable"></a>4 变量名 Variable</h2> 
+<h2><a class="anchor" name="-variable"></a>4. 变量名 Variable</h2> 
 <p>可以是任意合法的 Java 变量名：</p> 
 <ul> 
  <li>其中 <code>$</code> 开头的变量为模板内部变量，不允许直接使用。</li> 
@@ -186,7 +186,7 @@
 <ul> 
  <li><code>for</code>： 用于 <code>#for</code> 指令内部状态对象。具体参考 <code>#for</code> 指令用法。</li> 
 </ul> 
-<h2><a class="anchor" name="list-"></a>5 List 常量</h2> 
+<h2><a class="anchor" name="list-"></a>5. List 常量</h2> 
 <p>语法：</p> 
 <ul> 
  <li><code>[item, ...]</code></li> 
@@ -200,7 +200,7 @@
 <pre><code class="highlight plaintext">${list[index]}
 ${list.get(index)}
 </code></pre> 
-<h2><a class="anchor" name="map-"></a>6 Map 常量</h2> 
+<h2><a class="anchor" name="map-"></a>6. Map 常量</h2> 
 <p>语法：</p> 
 <ul> 
  <li><code>{key: value, ...}</code></li> 
@@ -213,7 +213,7 @@ ${list.get(index)}
 ${map["key"]}
 ${map.get("key")}
 </code></pre> 
-<h2><a class="anchor" name="bean-bean-property"></a>7 Bean 属性调用 bean.property</h2> 
+<h2><a class="anchor" name="bean-bean-property"></a>7. Bean 属性调用 bean.property</h2> 
 <p>Bean 属性默认会被解析成 getter 方法调用。</p> 
 <p>属性查找顺序，以 <code>${obj.foo}</code> 为例：</p> 
 <ol> 
@@ -223,7 +223,7 @@ ${map.get("key")}
  <li>查找 map.get(name) 方法 (如果是 <code>Map</code>)</li> 
  <li>自定义的 Getter Resolver</li> 
 </ol> 
-<h2><a class="anchor" name="bean-bean-method-"></a>8 Bean 方法调用 bean.method(...)</h2> 
+<h2><a class="anchor" name="bean-bean-method-"></a>8. Bean 方法调用 bean.method(...)</h2> 
 <ul> 
  <li>支持普通方法调用</li> 
  <li>支持不定长参数方法调用 Varargs</li> 
@@ -234,10 +234,10 @@ ${map.get("key")}
 <pre><code class="highlight plaintext">${"Hello".substring(2)}
 ${"Hello".substring(2, 3)}
 </code></pre> 
-<h2><a class="anchor" name="-function"></a>9 函数调用 function</h2> 
+<h2><a class="anchor" name="-function"></a>9. 函数调用 function</h2> 
 <p><code>jetbrick-template</code> 还支持函数调用，如 <code>${now()}</code>, <code>${fileGet("/test.txt")}</code>。</p> 
 <p>具体参考：<a href="ext-function.html">扩展函数调用</a></p> 
-<h2><a class="anchor" name="-class-field"></a>10 静态字段调用 Class::Field</h2> 
+<h2><a class="anchor" name="-class-field"></a>10. 静态字段调用 Class::Field</h2> 
 <p>语法：</p> 
 <ul> 
  <li><code>Class::Field</code></li> 
@@ -246,7 +246,7 @@ ${"Hello".substring(2, 3)}
 <pre><code class="highlight plaintext">${Long::MAX_VALUE}
 ${java.lang.Long::MAX_VALUE}
 </code></pre> 
-<h2><a class="anchor" name="-class-method"></a>11 静态方法调用 Class::method</h2> 
+<h2><a class="anchor" name="-class-method"></a>11. 静态方法调用 Class::method</h2> 
 <p>语法：</p> 
 <ul> 
  <li><code>Class::method(...)</code></li> 
@@ -255,7 +255,7 @@ ${java.lang.Long::MAX_VALUE}
 <pre><code class="highlight plaintext">${Collections::emptyList()}
 ${java.lang.Long::valueOf("123")}
 </code></pre> 
-<h2><a class="anchor" name="null-"></a>12 NULL 默认值</h2> 
+<h2><a class="anchor" name="null-"></a>12. NULL 默认值</h2> 
 <p>语法：</p> 
 <ul> 
  <li><code>expression ?! defaultValue</code></li> 

@@ -92,7 +92,7 @@
         <h1><a class="anchor" name="-tag"></a>如何自定义 Tag</h1> 
 <p>jetbrick-template 支持自定义 Tag，类似于 JSP Taglib，但是要比 JSP Taglib 更简单更好用。</p> 
 <p>这里以建立一个支持 Cache 的 Tag 为例。</p> 
-<h2><a class="anchor" name="cache-tag-"></a>1 Cache Tag 代码范例：</h2> 
+<h2><a class="anchor" name="cache-tag-"></a>1. Cache Tag 代码范例：</h2> 
 <h3><a class="anchor" name="-tag-"></a>1.1 首先定义一个 Tag 实现方法</h3> 
 <p>每一个自定义的 Tag 对应一个 Java 的 <code>public</code> <code>static</code> 的方法。比如我们这里定义的 cache tag，如下:</p> 
 <p>Tag 方法定义：</p> 
@@ -116,7 +116,7 @@
     计算结果将被缓存10秒： ${1+2+3+4+5+6+7+8+9}
 #end
 </code></pre> 
-<h2><a class="anchor" name="cache-tag-"></a>2 Cache Tag 代码说明</h2> 
+<h2><a class="anchor" name="cache-tag-"></a>2. Cache Tag 代码说明</h2> 
 <p>对于每一个 Tag 的方法声明，有如下要求：</p> 
 <ul> 
  <li>方法签名必须是 <code>public</code> <code>static</code></li> 

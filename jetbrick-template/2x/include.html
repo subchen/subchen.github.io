@@ -128,7 +128,7 @@
 <p>在 <code>jetbrick-template</code> 中，我们经常需要在一个模板中嵌入另一个模板。这时候，我们可以使用下面的指令：</p> 
 <pre><code class="highlight plaintext">#include(file, [parameters], [returnName])
 </code></pre> 
-<h2><a class="anchor" name="1880981299"></a>1 常规的做法</h2> 
+<h2><a class="anchor" name="1880981299"></a>1. 常规的做法</h2> 
 <ul> 
  <li><p>include 静态文件名</p> <pre><code class="highlight plaintext">#include("/include/header.jetx")
 </code></pre></li> 
@@ -136,7 +136,7 @@
 #include(url)
 </code></pre></li> 
 </ul> 
-<h2><a class="anchor" name="1391787031"></a>2 父模板传递参数给子模板</h2> 
+<h2><a class="anchor" name="1391787031"></a>2. 父模板传递参数给子模板</h2> 
 <ul> 
  <li><p><strong>隐式传递</strong></p> <p>使用 <code>#include</code> 指令嵌入子模板，默认会把当前模板(父模板)的所有 context 数据传递给子模板。也就是说，子模板能获取所有父模板的变量。</p> <p>比如：</p> <p>父模板：/parent.jetx</p> <pre><code class="highlight plaintext">#set(String name = "JAVA")
 #include("/sub.jetx")
@@ -148,7 +148,7 @@
 </code></pre> <p>结果：</p> <pre><code class="highlight plaintext">JAVA
 </code></pre></li> 
 </ul> 
-<h2><a class="anchor" name="1115529957"></a>3 子模板返回对象给父模板</h2> 
+<h2><a class="anchor" name="1115529957"></a>3. 子模板返回对象给父模板</h2> 
 <p>除了父模板可以传递参数给子模板，子模板也能返回对象给父模板。</p> 
 <p>这里就需要使用 <code>#return</code> 指令。</p> 
 <p>看例子：</p> 

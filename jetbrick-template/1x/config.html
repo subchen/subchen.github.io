@@ -243,7 +243,7 @@
   <li>所有配置选项都支持变量啦，具体参考 <a href="#output-encoding"><code>template.path</code></a> 或者 <a href="#compile-path"><code>compile.path</code></a> 中的例子。</li> 
  </ol> 
 </blockquote> 
-<h2><a class="anchor" name="71556755"></a>1 全局定义(包/类/变量)</h2> 
+<h2><a class="anchor" name="71556755"></a>1. 全局定义(包/类/变量)</h2> 
 <p>在模板中，如果要用到一些其他的 Class, 那么可以先 import 进来，这样就可以在模板中使用短名字，比如 <code>Date</code> 而不是 <code>java.util.Date</code>。</p> 
 <h3><a class="anchor" name="import-packages"></a>1.1 import.packages</h3> 
 <p>用来配置包名，会自动导入包下面的所有类。允许配置多个包名，用逗号分隔。</p> 
@@ -298,7 +298,7 @@ import.variables = jetbrick.orm.Pagelist pagelist, List&lt;Entity&gt; entites
 ${today.format("yyyy-MM-dd")}
 ${contextPath}
 </code></pre> 
-<h2><a class="anchor" name="817993292"></a>2 扩展方法/函数/标签</h2> 
+<h2><a class="anchor" name="817993292"></a>2. 扩展方法/函数/标签</h2> 
 <h3><a class="anchor" name="import-methods"></a>2.1 import.methods</h3> 
 <p>我们知道一个 Java Class 的 所有 methods 都是定义在同一个 class 文件中的，不能在其他地方进行动态扩展。但是一些其他动态语言却支持在 Class 外部为这个 Class 增加一些方法。比如：</p> 
 <ul> 
@@ -340,7 +340,7 @@ import.autoscan.packages = app.methods, app.functions, app.tags
  </ol> 
 </blockquote> 
 <p>更多详细内容请参考： <a href="faq-autoscan.html">如何让自动扫描发现用户自定义的扩展方法/函数/标签 Class</a></p> 
-<h2><a class="anchor" name="1497214921"></a>3 模板路径和编码格式</h2> 
+<h2><a class="anchor" name="1497214921"></a>3. 模板路径和编码格式</h2> 
 <h3><a class="anchor" name="input-encoding"></a>3.1 input.encoding</h3> 
 <p>模板源文件的编码格式，默认为 <code>utf-8</code>。</p> 
 <h3><a class="anchor" name="output-encoding"></a>3.2 output.encoding</h3> 
@@ -348,7 +348,7 @@ import.autoscan.packages = app.methods, app.functions, app.tags
 <blockquote> 
  <p><strong>注意</strong>：一般在 web 中，<code>output.encoding</code> 应该和 html 页面的 <code>contentType</code> 中的编码，以及 <code>response</code> 的 <code>characterEncoding</code> 完全一致。</p> 
 </blockquote> 
-<h2><a class="anchor" name="1095099928"></a>4 语法选项</h2> 
+<h2><a class="anchor" name="1095099928"></a>4. 语法选项</h2> 
 <h3><a class="anchor" name="syntax-safecall"></a>4.1 syntax.safecall</h3> 
 <p>jetbrick-template 支持 4 种方法的安全调用（类似于 Groovy），以避免出现 <code>NullPointerException</code></p> 
 <ol> 
@@ -445,7 +445,7 @@ template.path = ${webapp.dir}/WEB-INF/templates
 <p>在开发模式下面，我们一般需要频繁的修改模板内容来进行调试。那么我们需要打开这个功能来支持模板的热部署。（类似于 <code>JSP</code>）</p> 
 <p>是否需要重新编译和加载模板，取决于模板源文件的最后修改时间。</p> 
 <p>默认为 <code>false</code>，建议只在开发模式中启用。</p> 
-<h2><a class="anchor" name="1004799563"></a>5 编译选项</h2> 
+<h2><a class="anchor" name="1004799563"></a>5. 编译选项</h2> 
 <p>jetbrick-template 采用编译成 Java ByteCode 来提高性能。</p> 
 <h3><a class="anchor" name="compile-tool"></a>5.1 compile.tool</h3> 
 <p>模板编译器的配置，默认使用 Eclipse Java Compiler, 如果不存在，那么将切换到 JDK 自带的编译器 （需要使用 JDK，而不是 JRE）。</p> 
@@ -504,7 +504,7 @@ compile.strategy = none
 compile.path = ${webapp.dir}/WEB-INF/jetx_classes
 </code></pre> 
 <p>那么我们支持哪些变量呢？其实这些变量都来自于 <code>System.getProperty(name)</code>，只要 <code>System</code> 里有的，都支持。<br> 其中 <code>webapp.dir</code> 是个特殊变量，由 Web 集成框架在系统启动的时候，通过 <code>System.setProperty("webapp.dir", servletContext.getRealPath("/"))</code> 设置的。</p> 
-<h2><a class="anchor" name="818233124"></a>6 安全管理器</h2> 
+<h2><a class="anchor" name="818233124"></a>6. 安全管理器</h2> 
 <p>从 1.2.0 开始，模块新增了安全管理器，特别适合于 CMS 软件，允许用户自定义模板的场景。</p> 
 <h3><a class="anchor" name="security-manager"></a>6.1 security.manager</h3> 
 <p>配置安全管理器的实现类，默认为空，表示禁用安全管理器。</p> 
@@ -550,7 +550,7 @@ compile.path = ${webapp.dir}/WEB-INF/jetx_classes
 -java.lang.System.exit              // 禁止调用 System.exit() 方法
 +java.util.Collections.EMPTY_LIST   // 允许访问 Collections.EMPTY_LIST 字段
 </code></pre> 
-<h2><a class="anchor" name="867245599"></a>7 注释指令</h2> 
+<h2><a class="anchor" name="867245599"></a>7. 注释指令</h2> 
 <p>由于目前的指令一般直接嵌入在 HTML，对于一些使用可视化编辑器的用户来说，可能会造成一些干扰。<br> 模板从 1.0.1 开始增加对指令注释支持，如：<code>&lt;!-- #if (...) --&gt;</code>; 增强对可视化编辑器的友好度。</p> 
 <h3><a class="anchor" name="trim-directive-comments"></a>7.1 trim.directive.comments</h3> 
 <p>是否开启对注释指令的支持，默认为 <code>false</code>，表示不启用。</p> 
@@ -571,7 +571,7 @@ compile.path = ${webapp.dir}/WEB-INF/jetx_classes
 <span class="c">&lt;!-- #end --&gt;</span>
 <span class="nt">&lt;/table&gt;</span>
 </code></pre> 
-<h2><a class="anchor" name="641838512"></a>8 其他选项</h2> 
+<h2><a class="anchor" name="641838512"></a>8. 其他选项</h2> 
 <h3><a class="anchor" name="trim-directive-line"></a>8.1 trim.directive.line</h3> 
 <p>由于指令之间存在很多的空白内容，而空白内容也会被作为原始文本原封不动的输出，这样会造成很多输出的内容参差不齐。这个就是用来优化输出格式的，对于用模板来进行代码生成时候特别有用。不建议关闭。</p> 
 <p>模板示例：</p> 
@@ -593,7 +593,7 @@ ${n}
 2
 3
 </code></pre> 
-<h2><a class="anchor" name="793518697"></a>9 推荐配置</h2> 
+<h2><a class="anchor" name="793518697"></a>9. 推荐配置</h2> 
 <h3><a class="anchor" name="746078021"></a>9.1 开发环境</h3> 
 <pre><code class="highlight plaintext">import.packages = pkg1, pkg2
 import.autoscan = true

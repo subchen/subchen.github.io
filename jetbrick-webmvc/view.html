@@ -118,7 +118,7 @@
 <blockquote class="info">
  <p><strong>提示</strong>：<br> * 如果 view_type 省略，那么将从 view_path_name 中的使用的扩展名中获取。<br> * 如果 view_path_name 扩展名也没有，那么将使用系统默认的 ViewHandler (由 <code>web.view.default</code> 配置)。</p> 
 </blockquote> 
-<h2><a class="anchor" name="-view-viewhandler"></a>1 内置的 View/ViewHandler</h2> 
+<h2><a class="anchor" name="-view-viewhandler"></a>1. 内置的 View/ViewHandler</h2> 
 <p>jetbrick 已经内置了多种 View/ViewHandler 处理器：</p> 
 <ul> 
  <li><code>forward</code>: Forward 到一个指定的 page</li> 
@@ -214,7 +214,7 @@
     <span class="k">return</span> <span class="s">"css: div.block { width: 100px; }"</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre> 
-<h2><a class="anchor" name="-viewhandler"></a>2 自定义 ViewHandler</h2> 
+<h2><a class="anchor" name="-viewhandler"></a>2. 自定义 ViewHandler</h2> 
 <p>jetbrick 允许用户定义自己的 ViewHandler。</p> 
 <p>比如说，我们要使用 Freemarker 来作为我们的模板引擎，那么就要如下定义：</p> 
 <pre><code class="highlight java"><span class="nd">@Managed</span>

@@ -126,14 +126,14 @@
     <article class="markdown">
         <h1><a class="anchor" name="jetbrick-webmvc"></a>Jetbrick webmvc</h1> 
 <p>作为 <code>jetbrick</code> 系列的一员，<code>jetbrick-template</code> 和 <code>jetbrick-webmvc</code> 可以非常好的集成在一起。</p> 
-<h2><a class="anchor" name="maven-"></a>1 Maven 依赖</h2> 
+<h2><a class="anchor" name="maven-"></a>1. Maven 依赖</h2> 
 <pre><code class="highlight xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>com.github.subchen<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>jetbrick-template-jetbrickmvc<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>2.0.3<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre> 
-<h2><a class="anchor" name="web-xml-"></a>2 web.xml 配置</h2> 
+<h2><a class="anchor" name="web-xml-"></a>2. web.xml 配置</h2> 
 <pre><code class="highlight xml"><span class="nt">&lt;context-param&gt;</span>
     <span class="nt">&lt;param-name&gt;</span>jetbrick-template-config-location<span class="nt">&lt;/param-name&gt;</span>
     <span class="nt">&lt;param-value&gt;</span>/WEB-INF/jetbrick-template.properties<span class="nt">&lt;/param-value&gt;</span>
@@ -152,7 +152,7 @@
     <span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
 <span class="nt">&lt;/filter-mapping&gt;</span>
 </code></pre> 
-<h2><a class="anchor" name="controller-"></a>3 Controller 例子</h2> 
+<h2><a class="anchor" name="controller-"></a>3. Controller 例子</h2> 
 <pre><code class="highlight java"><span class="nd">@Controller</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">UsersController</span> <span class="o">{</span>
 
@@ -163,7 +163,7 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre> 
-<h2><a class="anchor" name="-users-jetx"></a>4 模板例子 users.jetx</h2> 
+<h2><a class="anchor" name="-users-jetx"></a>4. 模板例子 users.jetx</h2> 
 <pre><code class="highlight html"><span class="nt">&lt;table</span> <span class="na">border=</span><span class="s">"1"</span> <span class="na">width=</span><span class="s">"600"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;tr&gt;</span>
     <span class="nt">&lt;td&gt;</span>ID<span class="nt">&lt;/td&gt;</span>
@@ -181,7 +181,7 @@
   #end
 <span class="nt">&lt;/table&gt;</span>
 </code></pre> 
-<h2><a class="anchor" name="1019637337"></a>5 范例源码</h2> 
+<h2><a class="anchor" name="1019637337"></a>5. 范例源码</h2> 
 <p>具体例子代码参考： <a href="https://github.com/subchen/jetbrick-webmvc-samples/">https://github.com/subchen/jetbrick-webmvc-samples/</a></p>
     </article>
 

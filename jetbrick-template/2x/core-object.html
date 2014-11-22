@@ -131,7 +131,7 @@
  <li><code>JetTemplate</code> - 代表一个模板文件</li> 
  <li><code>InterpretContext</code> - 模板运行期上下文对象</li> 
 </ul> 
-<h2><a class="anchor" name="jetengine"></a>1 JetEngine</h2> 
+<h2><a class="anchor" name="jetengine"></a>1. JetEngine</h2> 
 <p>整个模板引擎的由 <code>JetEngine</code> 驱动，不同的 <code>JetEngine</code> 对象可以使用不同的配置。</p> 
 <h3><a class="anchor" name="-jetengine-"></a>1.1 如何创建 JetEngine？</h3> 
 <ol> 
@@ -176,7 +176,7 @@
 <blockquote class="warn">
  <p><strong>注意</strong>： <code>createTemplate()</code> 每次都会创建新的 <code>JetTemplate</code> 对象，如果需要缓存，请自行维护。</p> 
 </blockquote> 
-<h2><a class="anchor" name="jettemplate"></a>2 JetTemplate</h2> 
+<h2><a class="anchor" name="jettemplate"></a>2. JetTemplate</h2> 
 <p>对应于一个模板文件，我们通过 <code>JetEngine.getTemplate(name)</code> 获取。</p> 
 <p>如果模板不存在，则抛出 <code>ResourceNotFoundException</code>。</p> 
 <p>在得到了模板对象之后，我们可以通过下面几个方法可以对模板进行渲染：</p> 
@@ -187,7 +187,7 @@
 <blockquote class="info">
  <p><strong>提示</strong>： <code>context</code> 对象在模板运行期间，并不会受到模板污染，即数据不会被改变（保证数据的无侵入性）。</p> 
 </blockquote> 
-<h2><a class="anchor" name="interpretcontext"></a>3 InterpretContext</h2> 
+<h2><a class="anchor" name="interpretcontext"></a>3. InterpretContext</h2> 
 <p>在模板运行期间，<code>InterpretContext</code> 保存了当前的运行时环境。</p> 
 <p><code>InterpretContext</code> 对象主要用于在扩展方法，扩展函数，Tag 的实现过程中，动态获取/设置上下文信息。</p> 
 <p>在模板的运行期间，<code>InterpretContext</code> 对象会绑定在当前线程的 <code>Thread Local context</code> 中，这样我们可以在任意的地方，通过下面的 API 来获取 <code>InterpretContext</code> 对象：</p> 

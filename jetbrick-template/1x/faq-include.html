@@ -96,7 +96,7 @@
  <li><code>include(file, ...)</code> 函数</li> 
  <li><code>read(file, ...)</code> 函数 - 用于嵌入纯文本文件</li> 
 </ul> 
-<h2><a class="anchor" name="896136284"></a>1 最常规的做法是</h2> 
+<h2><a class="anchor" name="896136284"></a>1. 最常规的做法是</h2> 
 <h3><a class="anchor" name="include-"></a>1.1 include 静态文件名</h3> 
 <pre><code class="highlight plaintext">#include("/include/header.jetx")
 ${include("/include/header.jetx")}
@@ -114,14 +114,14 @@ ${include(url)}
   <li><code>#include</code> 指令如果包含的是静态文件名，那么会检查文件是否存在。<code>include()</code> 函数不会做任何检查。</li> 
  </ul> 
 </blockquote> 
-<h2><a class="anchor" name="-include-"></a>2 对 include() 函数返回值处理的应用</h2> 
+<h2><a class="anchor" name="-include-"></a>2. 对 include() 函数返回值处理的应用</h2> 
 <pre><code class="highlight plaintext">下面内容全部转为大写字母
 ${include("ascii.jetx").toUpperCase()}
 </code></pre> 
 <p>输出内容</p> 
 <pre><code class="highlight plaintext">ABCDEFG...
 </code></pre> 
-<h2><a class="anchor" name="1786829436"></a>3 父子模板间传递参数</h2> 
+<h2><a class="anchor" name="1786829436"></a>3. 父子模板间传递参数</h2> 
 <p>我们有以下几种方式可以在父子模板间传递参数</p> 
 <ul> 
  <li>父模板的 <code>JetContext</code> 自动传递给子模板。</li> 

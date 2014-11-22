@@ -126,14 +126,14 @@
     <article class="markdown">
         <h1><a class="anchor" name="-httpservlet"></a>直接使用 HttpServlet</h1> 
 <p><code>jetbrick-template</code> 可以直接作为 <code>HttpServlet</code> 使用，就像 JSP 一样。</p> 
-<h2><a class="anchor" name="maven-"></a>1 Maven 依赖</h2> 
+<h2><a class="anchor" name="maven-"></a>1. Maven 依赖</h2> 
 <pre><code class="highlight xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>com.github.subchen<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>jetbrick-template-web<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>2.0.3<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre> 
-<h2><a class="anchor" name="web-xml-"></a>2 web.xml 配置</h2> 
+<h2><a class="anchor" name="web-xml-"></a>2. web.xml 配置</h2> 
 <pre><code class="highlight xml"><span class="nt">&lt;context-param&gt;</span>
     <span class="nt">&lt;param-name&gt;</span>jetbrick-template-config-location<span class="nt">&lt;/param-name&gt;</span>
     <span class="nt">&lt;param-value&gt;</span>/WEB-INF/jetbrick-template.properties<span class="nt">&lt;/param-value&gt;</span>
@@ -149,7 +149,7 @@
     <span class="nt">&lt;url-pattern&gt;</span>*.jetx<span class="nt">&lt;/url-pattern&gt;</span>
 <span class="nt">&lt;/servlet-mapping&gt;</span>
 </code></pre> 
-<h2><a class="anchor" name="1019637337"></a>3 范例源码</h2> 
+<h2><a class="anchor" name="1019637337"></a>3. 范例源码</h2> 
 <p>具体例子代码参考： <a href="https://github.com/subchen/jetbrick-template-2x-samples/">https://github.com/subchen/jetbrick-template-2x-samples/</a></p>
     </article>
 

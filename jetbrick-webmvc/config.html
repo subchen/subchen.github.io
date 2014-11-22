@@ -149,15 +149,15 @@
   </tr> 
  </tbody>
 </table> 
-<h2><a class="anchor" name="web-development"></a>1 web.development</h2> 
+<h2><a class="anchor" name="web-development"></a>1. web.development</h2> 
 <p>是否属于开发模式。默认为 <code>true</code></p> 
 <p>何为开发模式？即框架中专门为了开发、调试方便，提供了额外的调试日志，并且禁用了部分 cache，以便能及时发现部分 Resource 的变更，做到热加载。</p> 
-<h2><a class="anchor" name="web-http-encoding"></a>2 web.http.encoding</h2> 
+<h2><a class="anchor" name="web-http-encoding"></a>2. web.http.encoding</h2> 
 <p>HTTP Request/Response 的编码方式，默认为 <code>utf-8</code></p> 
 <pre><code class="highlight java"><span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="n">encoding</span><span class="o">);</span>
 <span class="n">response</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="n">encoding</span><span class="o">);</span>
 </code></pre> 
-<h2><a class="anchor" name="web-http-cache"></a>3 web.http.cache</h2> 
+<h2><a class="anchor" name="web-http-cache"></a>3. web.http.cache</h2> 
 <p>是否启用 HTTP Response 的 cache，默认为 <code>false</code>，表示禁用。</p> 
 <pre><code class="highlight java"><span class="c1">// Http 1.0 header</span>
 <span class="n">response</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">"Buffer"</span><span class="o">,</span> <span class="s">"false"</span><span class="o">);</span>
@@ -167,7 +167,7 @@
 <span class="c1">// Http 1.1 header</span>
 <span class="n">response</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">"Cache-Control"</span><span class="o">,</span> <span class="s">"no-cache, no-store, max-age=0"</span><span class="o">);</span>
 </code></pre> 
-<h2><a class="anchor" name="web-scan-packages"></a>4 web.scan.packages</h2> 
+<h2><a class="anchor" name="web-scan-packages"></a>4. web.scan.packages</h2> 
 <p>jetbrick-webmvc 通过 Annotation 的自动扫描，可以自动发现如下的配置：</p> 
 <ul> 
  <li>@IocBean</li> 
@@ -181,13 +181,13 @@
 <p>如下：</p> 
 <pre><code class="highlight plaintext">web.scan.packages = jetbrick.docs.demo.controllers, jetbrick.docs.demo.handlers
 </code></pre> 
-<h2><a class="anchor" name="web-urls-bypass"></a>5 web.urls.bypass</h2> 
+<h2><a class="anchor" name="web-urls-bypass"></a>5. web.urls.bypass</h2> 
 <p>具体可以参考：<a href="bypass-urls.html">资源过滤器 BypassRequestUrls</a></p> 
 <p>通常来讲，只有 web.xml 中将 URL 映射配置成 <code>/*</code> 的时候，才需要进行配置。</p> 
 <p>目前系统提供了 2 种过滤器，用户可以选择一个，或者实现自己的过滤器。</p> 
-<h2><a class="anchor" name="web-urls-router"></a>6 web.urls.router</h2> 
+<h2><a class="anchor" name="web-urls-router"></a>6. web.urls.router</h2> 
 <p>默认的路由实现：<code>jetbrick.web.mvc.router.RestfulRouter</code></p> 
-<h2><a class="anchor" name="web-view-default"></a>7 web.view.default</h2> 
+<h2><a class="anchor" name="web-view-default"></a>7. web.view.default</h2> 
 <p>默认的 view 处理器别名： <code>jsp</code></p> 
 <p>如果用户返回的 View Name 中，无法判断是有那个 View Handler 处理的话，那么将默认使用这里配置的 View Handler 来处理。</p> 
 <p>更多信息可以看：<a href="view.html">View/ViewHandler</a></p>

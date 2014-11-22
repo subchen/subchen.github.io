@@ -101,7 +101,7 @@
 
     <article class="markdown">
         <h1><a class="anchor" name="-web-xml"></a>配置 web.xml</h1> 
-<h2><a class="anchor" name="-restful-"></a>1 一个典型的 Restful 配置 "/*"</h2> 
+<h2><a class="anchor" name="-restful-"></a>1. 一个典型的 Restful 配置 "/*"</h2> 
 <pre><code class="highlight xml"><span class="nt">&lt;filter&gt;</span>
     <span class="nt">&lt;filter-name&gt;</span>jetbrick-webmvc<span class="nt">&lt;/filter-name&gt;</span>
     <span class="nt">&lt;filter-class&gt;</span>jetbrick.web.mvc.DispatcherFilter<span class="nt">&lt;/filter-class&gt;</span>
@@ -119,7 +119,7 @@
  <li>将 URL 映射成 <code>/*</code>，将会对所有的资源进行拦截，静态资源的过滤请看：<a href="bypass-urls.html">资源过滤器 BypassRequestUrls</a></li> 
  <li>设置配置文件路径为 <code>/WEB-INF/jetbrick-webmvc.properties</code> （默认值）</li> 
 </ol> 
-<h2><a class="anchor" name="-do-"></a>2 传统的后缀名映射 "*.do"</h2> 
+<h2><a class="anchor" name="-do-"></a>2. 传统的后缀名映射 "*.do"</h2> 
 <pre><code class="highlight xml"><span class="nt">&lt;filter&gt;</span>
     <span class="nt">&lt;filter-name&gt;</span>jetbrick-webmvc<span class="nt">&lt;/filter-name&gt;</span>
     <span class="nt">&lt;filter-class&gt;</span>jetbrick.web.mvc.DispatcherFilter<span class="nt">&lt;/filter-class&gt;</span>

@@ -90,14 +90,14 @@
 
     <article class="markdown">
         <h1><a class="anchor" name="jetbrick-template-"></a>jetbrick-template 常见错误分析</h1> 
-<h2><a class="anchor" name="the-method-getxxx-or-isxxx-is-undefined-for-the-type-object"></a>1 The method getXXX() or isXXX() is undefined for the type Object</h2> 
+<h2><a class="anchor" name="the-method-getxxx-or-isxxx-is-undefined-for-the-type-object"></a>1. The method getXXX() or isXXX() is undefined for the type Object</h2> 
 <pre><code class="highlight plaintext">${obj.foo}
 </code></pre> 
 <ol> 
  <li>确定 obj 存在 getFoo() or isFoo() 方法，并且是 <code>public</code> 的</li> 
  <li>obj 对象是否已经声明变量类型，否则请用 <code>#define(TYPE obj)</code> 声明变量类型。</li> 
 </ol> 
-<h2><a class="anchor" name="the-method-foo-xxx-is-undefined-for-the-type-object"></a>2 The method foo(xxx, ...) is undefined for the type Object</h2> 
+<h2><a class="anchor" name="the-method-foo-xxx-is-undefined-for-the-type-object"></a>2. The method foo(xxx, ...) is undefined for the type Object</h2> 
 <pre><code class="highlight plaintext">${obj.foo(...)}
 </code></pre> 
 <ol> 
@@ -105,25 +105,25 @@
  <li>obj 对象是否已经声明变量类型，否则请用 <code>#define(TYPE obj)</code> 声明变量类型。</li> 
  <li>如果 foo 是扩展方法，那么请确认扩展函数 XXX 是否已经注册到 <code>JetEngine</code> 中，或者参数类型是否匹配。</li> 
 </ol> 
-<h2><a class="anchor" name="operator-is-not-applicable-for-the-object-object-"></a>3 Operator [] is not applicable for the object (Object)</h2> 
+<h2><a class="anchor" name="operator-is-not-applicable-for-the-object-object-"></a>3. Operator [] is not applicable for the object (Object)</h2> 
 <pre><code class="highlight plaintext">${obj[foo]}
 </code></pre> 
 <ol> 
  <li>obj 对象是否已经声明变量类型，否则请用 <code>#define(TYPE obj)</code> 声明变量类型。</li> 
  <li>只有 <code>List</code>，<code>Map</code>，<code>JetContext</code> 对象支持 "[]" 操作</li> 
 </ol> 
-<h2><a class="anchor" name="duplicate-local-variable-xxx"></a>4 Duplicate local variable xxx</h2> 
+<h2><a class="anchor" name="duplicate-local-variable-xxx"></a>4. Duplicate local variable xxx</h2> 
 <p>变量 xxx 定义的两次（相同作用域只能定义一次），请查找 <code>#define</code> 和 <code>#set</code> 指令是否对 变量 xxx 进行多次定义 </p> 
-<h2><a class="anchor" name="type-mismatch-cannot-convert-from-xxx-to-yyy"></a>5 Type mismatch: cannot convert from XXX to YYY</h2> 
+<h2><a class="anchor" name="type-mismatch-cannot-convert-from-xxx-to-yyy"></a>5. Type mismatch: cannot convert from XXX to YYY</h2> 
 <pre><code class="highlight plaintext">#define(String str)
 #set(int a = str)
 </code></pre> 
 <p>变量类型部不兼容，比如 <code>String</code> 对象复制给 <code>int</code>。</p> 
-<h2><a class="anchor" name="undefined-function-xxx"></a>6 Undefined function XXX</h2> 
+<h2><a class="anchor" name="undefined-function-xxx"></a>6. Undefined function XXX</h2> 
 <p>扩展函数 XXX 没有找到，请确认扩展函数 XXX 是否已经注册到 <code>JetEngine</code> 中，或者参数类型是否匹配。</p> 
-<h2><a class="anchor" name="undefined-tag-definition-xxx-"></a>7 Undefined tag definition: XXX(...)</h2> 
+<h2><a class="anchor" name="undefined-tag-definition-xxx-"></a>7. Undefined tag definition: XXX(...)</h2> 
 <p>没有找到对应的 Tag 定义，请确认 Tag 是否已经注册到 <code>JetEngine</code> 中，或者参数类型是否匹配。</p> 
-<h2><a class="anchor" name="line-xxx-implicit-definition-for-context-variable-xxx"></a>8 line xxx: Implicit definition for context variable: XXX</h2> 
+<h2><a class="anchor" name="line-xxx-implicit-definition-for-context-variable-xxx"></a>8. line xxx: Implicit definition for context variable: XXX</h2> 
 <p>变量 XXX 没有声明变量类型，而直接使用。（这个仅仅是一个 Warning，不是 Error）</p>
     </article>
 

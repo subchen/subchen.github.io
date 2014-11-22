@@ -102,7 +102,7 @@
     <article class="markdown">
         <h1><a class="anchor" name="controller-action-"></a>Controller/Action 注入</h1> 
 <p>jetbrick 支持 IoC，所以，我们的 Controller 自然也可以注入依赖的 Bean 对象。</p> 
-<h2><a class="anchor" name="controller-"></a>1 Controller 字段注入</h2> 
+<h2><a class="anchor" name="controller-"></a>1. Controller 字段注入</h2> 
 <p>我们可以使用如下的 Annotation 来实现字段注入：</p> 
 <ul> 
  <li><code>@Inject</code> - IoC 容器对象</li> 
@@ -111,7 +111,7 @@
  <li><code>@XXX</code> - 用户自定义标注</li> 
 </ul> 
 <p>基本上，Controller 字段注入的大部分都是全局对象。不支持直接注入 Request/Session 上下文相关的对象。</p> 
-<h2><a class="anchor" name="action-"></a>2 Action 参数注入</h2> 
+<h2><a class="anchor" name="action-"></a>2. Action 参数注入</h2> 
 <p>在 Action 方法中，我们不仅可以注入 IoC 容器中的对象，我们也可以注入 Request/Session 上下文相关的对象。</p> 
 <p>对于 Action 方法参数的注入，我们支持 2 种方式：</p> 
 <h3><a class="anchor" name="-annotation-"></a>2.1 根据 Annotation 注入</h3> 
@@ -151,7 +151,7 @@
  <li><code>ServetContextInitParameterMap</code> - a map of servlet context init parameters.</li> 
  <li><code>XXX</code> - 用户自定义类型</li> 
 </ul> 
-<h2><a class="anchor" name="-annotation-"></a>3 下面我们将对每一个 Annotation 和参数类型来说明</h2> 
+<h2><a class="anchor" name="-annotation-"></a>3. 下面我们将对每一个 Annotation 和参数类型来说明</h2> 
 <h3><a class="anchor" name="-annotation-"></a>3.1 根据 Annotation 注入</h3> 
 <h4><a class="anchor" name="-inject-config-springbean"></a>@Inject/@Config/@SpringBean</h4> 
 <p>这几个 Annotation 是 IoC 容器本身提供的，具体说明可以参考 IoC 中的相关内容。</p> 
@@ -250,7 +250,7 @@
 <p>a map of servlet context attributes.</p> 
 <h4><a class="anchor" name="servetcontextinitparametermap"></a>ServetContextInitParameterMap</h4> 
 <p>a map of servlet context init parameters.</p> 
-<h2><a class="anchor" name="-annotation-"></a>4 进阶（自定义 Annotation 或者类型）</h2> 
+<h2><a class="anchor" name="-annotation-"></a>4. 进阶（自定义 Annotation 或者类型）</h2> 
 <p>jetbrick-webmvc 已经内置了大量的参数注入方式，怎么用都可以，并且我们也提供了扩展机制。</p> 
 <p>如果用户想自定义注入的对象或者 Annotation，请看下面的章节：<a href="custom_annotation.html">自定义注入 Annotation<br> </a></p>
     </article>

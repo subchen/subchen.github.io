@@ -104,7 +104,7 @@
 <p>Controller 是一个普通的 Java POJO 类。</p> 
 <p>每个 Controller 类包含一个或者多个 Action 方法。每一个 Action 方法对应一个 Action URL。</p> 
 <p>jetbrick 使用 <code>@Controller</code> 来标注 Controller 类，使用 <code>@Action</code> 来标注一个 Action 方法。</p> 
-<h2><a class="anchor" name="-controller-"></a>1 一个最简单的 Controller 类</h2> 
+<h2><a class="anchor" name="-controller-"></a>1. 一个最简单的 Controller 类</h2> 
 <pre><code class="highlight java"><span class="nd">@Controller</span><span class="o">(</span><span class="s">"/hello"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloController</span> <span class="o">{</span>
 
@@ -114,7 +114,7 @@
 <span class="o">}</span>
 </code></pre> 
 <p>这个 Action 方法将会被映射到 <code>/hello/world</code> 这样的 URL 上面。</p> 
-<h2><a class="anchor" name="action-url-"></a>2 Action URL 映射</h2> 
+<h2><a class="anchor" name="action-url-"></a>2. Action URL 映射</h2> 
 <p>一个 Action URL 由 <code>controller_path</code> 和 <code>action_path</code> 组合而成。 规则如下：</p> 
 <pre><code class="highlight plaintext">Action URL = /&lt;controller_path&gt;/&lt;action_path&gt;
 </code></pre> 
@@ -197,7 +197,7 @@
   </tr> 
  </tbody>
 </table> 
-<h2><a class="anchor" name="controller-"></a>3 Controller 单例？</h2> 
+<h2><a class="anchor" name="controller-"></a>3. Controller 单例？</h2> 
 <p>默认，我们的 Controller 是单例的，如果你的 Controller 是有状态的，那么你可以将 Controller 设为非单例的。如下：</p> 
 <pre><code class="highlight java"><span class="nd">@Controller</span><span class="o">(</span><span class="n">singleton</span><span class="o">=</span><span class="kc">false</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloController</span> <span class="o">{</span>
@@ -211,7 +211,7 @@
   <li>单例的 Controller 是线程不安全的，所以应该是无状态的，或者是无关 Request/Session 的。</li> 
  </ul> 
 </blockquote> 
-<h2><a class="anchor" name="http-request-methods"></a>4 HTTP request methods</h2> 
+<h2><a class="anchor" name="http-request-methods"></a>4. HTTP request methods</h2> 
 <p>默认的 Action 将会匹配 GET 和 POST 方法，用户可以使用 <code>@Action</code> 进行重载。</p> 
 <pre><code class="highlight java"><span class="nd">@Controller</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">FormController</span> <span class="o">{</span>

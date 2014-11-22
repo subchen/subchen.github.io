@@ -132,7 +132,7 @@
  <li><code>${range(1,100)}</code></li> 
  <li><code>${debug("name={}, status={}", name, status)}</code></li> 
 </ul> 
-<h2><a class="anchor" name="853942898"></a>1 定义扩展函数</h2> 
+<h2><a class="anchor" name="853942898"></a>1. 定义扩展函数</h2> 
 <p>语法：</p> 
 <pre><code class="highlight plaintext">public static Object function_name ( args ... )
 </code></pre> 
@@ -152,7 +152,7 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre> 
-<h2><a class="anchor" name="2104682813"></a>2 注册扩展函数</h2> 
+<h2><a class="anchor" name="2104682813"></a>2. 注册扩展函数</h2> 
 <p>用户自定义的扩展函数必须注册到 <code>JetEngine</code> 中才能使用。注册函数有 3 种途径：</p> 
 <ul> 
  <li><p>API 动态注册</p> <pre><code class="highlight java"><span class="n">JetEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="o">...</span>
@@ -170,14 +170,14 @@
 </code></pre></li> 
   </ul></li> 
 </ul> 
-<h2><a class="anchor" name="1889555247"></a>3 在模板中使用扩展函数</h2> 
+<h2><a class="anchor" name="1889555247"></a>3. 在模板中使用扩展函数</h2> 
 <p>模板：</p> 
 <pre><code class="highlight plaintext">${today("yyyy-MM-dd")}
 </code></pre> 
 <p>输出结果：</p> 
 <pre><code class="highlight plaintext">2014-10-02
 </code></pre> 
-<h2><a class="anchor" name="-interpretcontext-"></a>4 在扩展方法中获取 InterpretContext 上下文</h2> 
+<h2><a class="anchor" name="-interpretcontext-"></a>4. 在扩展方法中获取 InterpretContext 上下文</h2> 
 <p>要获取 <code>InterpretContext</code> 对象，可以通过 <code>InterpretContext.current()</code> 方法获取当前 Thread local context 关联的 <code>InterpretContext</code> 对象。</p> 
 <pre><code class="highlight java"><span class="nd">@JetAnnotations</span><span class="o">.</span><span class="na">Functions</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyFunctions</span> <span class="o">{</span>
@@ -195,7 +195,7 @@
 <p>模板输出：</p> 
 <pre><code class="highlight plaintext">Hello: jetbrick
 </code></pre> 
-<h2><a class="anchor" name="-buildin-functions"></a>5 模板已经内置的扩展函数 Buildin Functions</h2> 
+<h2><a class="anchor" name="-buildin-functions"></a>5. 模板已经内置的扩展函数 Buildin Functions</h2> 
 <p>所有扩展函数都定义在 <code>jetbrick.template.runtime.buildin.JetFunctions</code></p> 
 <h3><a class="anchor" name="748057859"></a>5.1 常用函数</h3> 
 <ul> 

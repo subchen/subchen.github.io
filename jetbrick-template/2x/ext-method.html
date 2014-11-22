@@ -139,7 +139,7 @@
 <blockquote class="warn">
  <p><strong>注意</strong>：如果 <code>Class</code> 已经定义了同名方法，则优先使用 <code>Class</code> 定义的方法。但是扩展方法支持方法重载 (Overrload)。</p> 
 </blockquote> 
-<h2><a class="anchor" name="853784393"></a>1 定义扩展方法</h2> 
+<h2><a class="anchor" name="853784393"></a>1. 定义扩展方法</h2> 
 <p>语法：</p> 
 <pre><code class="highlight plaintext">public static Object method_name ( Object object, args ... )
 </code></pre> 
@@ -159,7 +159,7 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre> 
-<h2><a class="anchor" name="2104524308"></a>2 注册扩展方法</h2> 
+<h2><a class="anchor" name="2104524308"></a>2. 注册扩展方法</h2> 
 <p>用户自定义的扩展方法必须注册到 <code>JetEngine</code> 中才能使用。注册方法有 3 种途径：</p> 
 <ul> 
  <li><p>API 动态注册</p> <pre><code class="highlight java"><span class="n">JetEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="o">...</span>
@@ -177,14 +177,14 @@
 </code></pre></li> 
   </ul></li> 
 </ul> 
-<h2><a class="anchor" name="1889713752"></a>3 在模板中使用扩展方法</h2> 
+<h2><a class="anchor" name="1889713752"></a>3. 在模板中使用扩展方法</h2> 
 <p>模板：</p> 
 <pre><code class="highlight plaintext">${"BAIDU".link("http://www.baidu.com/")}
 </code></pre> 
 <p>输出结果：</p> 
 <pre><code class="highlight plaintext">&lt;a href="http://www.baidu.com/"&gt;BAIDU&lt;/a&gt;
 </code></pre> 
-<h2><a class="anchor" name="-interpretcontext-"></a>4 在扩展方法中获取 InterpretContext 上下文</h2> 
+<h2><a class="anchor" name="-interpretcontext-"></a>4. 在扩展方法中获取 InterpretContext 上下文</h2> 
 <p>要获取 <code>InterpretContext</code> 对象，可以通过 <code>InterpretContext.current()</code> 方法获取当前 Thread local context 关联的 <code>InterpretContext</code> 对象。</p> 
 <pre><code class="highlight java"><span class="nd">@JetAnnotations</span><span class="o">.</span><span class="na">Methods</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserInfoMethods</span> <span class="o">{</span>
@@ -200,7 +200,7 @@
 <pre><code class="highlight plaintext">#define(UserInfo user)
 ${user.isOnline()}
 </code></pre> 
-<h2><a class="anchor" name="-buildin-methods"></a>5 模板已经内置的扩展方法 Buildin Methods</h2> 
+<h2><a class="anchor" name="-buildin-methods"></a>5. 模板已经内置的扩展方法 Buildin Methods</h2> 
 <p>所有内置的扩展方法都定义在 <code>jetbrick.template.runtime.buildin.JetMethods</code></p> 
 <h4><a class="anchor" name="-cast"></a>基本数据类型转换 Cast</h4> 
 <ul> 
