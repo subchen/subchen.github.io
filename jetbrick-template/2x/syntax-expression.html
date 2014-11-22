@@ -41,7 +41,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发 <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发 <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="../../jetbrick-template/2x/overview.html">概述 Overview</a></li>
                         <li><a href="../../jetbrick-template/2x/quickstart.html">快速开始 Quick Start</a></li>
@@ -53,7 +53,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">进阶 <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">进阶 <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="../../jetbrick-template/2x/ext-method.html">扩展方法 Method</a></li>
                         <li><a href="../../jetbrick-template/2x/ext-function.html">扩展函数 Function</a></li>
@@ -67,7 +67,7 @@
                 </li>
                 <li><a href="../../jetbrick-template/2x/config.html">配置</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">语法 <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">语法 <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="../../jetbrick-template/2x/syntax-text.html">文本 Text</a></li>
                         <li><a href="../../jetbrick-template/2x/syntax-comment.html">注释 Comment</a></li>
@@ -79,7 +79,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web集成 <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web集成 <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="../../jetbrick-template/2x/web-integration.html">Web 框架集成</a></li>
                         <li class="divider"></li>
@@ -98,11 +98,14 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="../../index.html">jetbrick 首页</a></li>
+                        <li class="divider"></li>
                         <li><a href="../../jetbrick-commons/overview.html">jetbrick-commons</a></li>
                         <li><a href="../../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
                         <li><a href="../../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
                         <li><a href="../../jetbrick-orm/overview.html">jetbrick-orm</a></li>
                         <li><a href="../../jetbrick-template/index.html">jetbrick-template</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-code-standards.html">jetbrick 代码规范</a></li>
                     </ul>
                 </li>
             </ul>
@@ -150,7 +153,8 @@
 <ul> 
  <li>单引号字符串：<code>'abc\u00A0\r\n'</code></li> 
  <li>内存地址比较：<code>===</code> <code>!==</code></li> 
- <li>简化的三元表达式：<code>a ?: b</code>，等价于： <code>(a==null) ? b : a</code></li> 
+ <li>简化的三元表达式：<code>a ?: b</code>，等价于： <code>(a) ? a : b</code></li> 
+ <li>NULL 默认值：<code>a ?! b</code>，等价于： <code>(a != null) ? a : b</code> (支持级联检查 NULL 错误，如 <code>a.b.c ?! defaultValue</code>)</li> 
  <li>静态字段调用：<code>Long::MAX_VALUE</code></li> 
  <li>静态方法调用：<code>Long::valueOf("123")</code></li> 
  <li>List 常量：<code>[1,2,3]</code></li> 
@@ -250,6 +254,19 @@ ${java.lang.Long::MAX_VALUE}
 <p>示例：</p> 
 <pre><code class="highlight plaintext">${Collections::emptyList()}
 ${java.lang.Long::valueOf("123")}
+</code></pre> 
+<h2><a class="anchor" name="null-"></a>12 NULL 默认值</h2> 
+<p>语法：</p> 
+<ul> 
+ <li><code>expression ?! defaultValue</code></li> 
+</ul> 
+<p>类似于 <code>Freemarker</code> 中的 <code>!</code> 操作符，如果 <code>expression</code> 为 <code>NULL</code>，则返回 <code>defaultValue</code>。</p> 
+<blockquote class="info">
+ <p><strong>提示</strong>：<code>?!</code> 支持级联操作，如果 <code>obj.name</code> 这样的表达式中 <code>obj</code> 为 <code>NULL</code>，即使 <code>safecall=false</code> 的情况下，同样不会抛出 <code>NullPointerException</code>。</p> 
+</blockquote> 
+<p>示例：</p> 
+<pre><code class="highlight plaintext">${status ?! 0}
+${user.status ?! 0}  #// 如果 user==null, 同样会返回 0 (无需开启 safecall)
 </code></pre>
     </article>
 

@@ -41,7 +41,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发 <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">开发 <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="../../jetbrick-template/2x/overview.html">概述 Overview</a></li>
                         <li><a href="../../jetbrick-template/2x/quickstart.html">快速开始 Quick Start</a></li>
@@ -53,7 +53,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">进阶 <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">进阶 <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="../../jetbrick-template/2x/ext-method.html">扩展方法 Method</a></li>
                         <li><a href="../../jetbrick-template/2x/ext-function.html">扩展函数 Function</a></li>
@@ -67,7 +67,7 @@
                 </li>
                 <li><a href="../../jetbrick-template/2x/config.html">配置</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">语法 <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">语法 <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="../../jetbrick-template/2x/syntax-text.html">文本 Text</a></li>
                         <li><a href="../../jetbrick-template/2x/syntax-comment.html">注释 Comment</a></li>
@@ -79,7 +79,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web集成 <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web集成 <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="../../jetbrick-template/2x/web-integration.html">Web 框架集成</a></li>
                         <li class="divider"></li>
@@ -98,11 +98,14 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="../../index.html">jetbrick 首页</a></li>
+                        <li class="divider"></li>
                         <li><a href="../../jetbrick-commons/overview.html">jetbrick-commons</a></li>
                         <li><a href="../../jetbrick-ioc/overview.html">jetbrick-ioc</a></li>
                         <li><a href="../../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
                         <li><a href="../../jetbrick-orm/overview.html">jetbrick-orm</a></li>
                         <li><a href="../../jetbrick-template/index.html">jetbrick-template</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-code-standards.html">jetbrick 代码规范</a></li>
                     </ul>
                 </li>
             </ul>
@@ -137,10 +140,12 @@
  <li><p>新建一个 Maven 工程，并加入下面的 <code>jetbrick-template</code> 依赖</p> <pre><code class="highlight xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>com.github.subchen<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>jetbrick-template<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>2.0.2<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.0.3<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre></li> 
- <li><p>新建一个 User.java 作为 Model</p> <pre><code class="highlight java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+ <li><p>新建一个 User.java 作为 Model</p> <pre><code class="highlight java"><span class="kn">package</span> <span class="n">demo</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">email</span><span class="o">;</span>
 
@@ -163,14 +168,13 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></li> 
- <li><p>新建一个 users.jetx 模板，并放在默认的 classpath 根目录 (<code>src/main/resources</code>)</p> <pre><code class="highlight html">#define(List users)
-<span class="nt">&lt;table&gt;</span>
+ <li><p>新建一个 users.jetx 模板，并放在默认的 classpath 根目录 (<code>src/main/resources</code>)</p> <pre><code class="highlight html"><span class="nt">&lt;table&gt;</span>
   <span class="nt">&lt;tr&gt;</span>
     <span class="nt">&lt;td&gt;</span>序号<span class="nt">&lt;/td&gt;</span>
     <span class="nt">&lt;td&gt;</span>姓名<span class="nt">&lt;/td&gt;</span>
     <span class="nt">&lt;td&gt;</span>邮箱<span class="nt">&lt;/td&gt;</span>
   <span class="nt">&lt;/tr&gt;</span>
-  #for (User user : users)
+  #for (user : users)
   <span class="nt">&lt;tr&gt;</span>
     <span class="nt">&lt;td&gt;</span>${for.index}<span class="nt">&lt;/td&gt;</span>
     <span class="nt">&lt;td&gt;</span>${user.name}<span class="nt">&lt;/td&gt;</span>
@@ -179,7 +183,15 @@
   #end
 <span class="nt">&lt;/table&gt;</span>
 </code></pre></li> 
- <li><p>新建一个 JUnit Test 测试类 JetxTest.java</p> <pre><code class="highlight java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JetxTest</span> <span class="o">{</span>
+ <li><p>新建一个 JUnit Test 测试类 JetxTest.java</p> <pre><code class="highlight java"><span class="kn">package</span> <span class="n">demo</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.StringWriter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">jetbrick.template.JetEngine</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">jetbrick.template.JetTemplate</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JetxTest</span> <span class="o">{</span>
 
     <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="n">test</span><span class="o">()</span> <span class="o">{</span>
@@ -187,7 +199,7 @@
         <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span>
             <span class="k">new</span> <span class="n">User</span><span class="o">(</span><span class="s">"张三"</span><span class="o">,</span> <span class="s">"zhangsan@qq.com"</span><span class="o">),</span>
             <span class="k">new</span> <span class="n">User</span><span class="o">(</span><span class="s">"李四"</span><span class="o">,</span> <span class="s">"lisi@qq.com"</span><span class="o">),</span>
-            <span class="k">new</span> <span class="n">User</span><span class="o">(</span><span class="s">"王五"</span><span class="o">,</span> <span class="s">"wangwu@qq.com"</span><span class="o">),</span>
+            <span class="k">new</span> <span class="n">User</span><span class="o">(</span><span class="s">"王五"</span><span class="o">,</span> <span class="s">"wangwu@qq.com"</span><span class="o">)</span>
         <span class="o">);</span>
 
         <span class="c1">// 1. 创建一个默认的 JetEngine</span>
@@ -239,7 +251,7 @@
  <li><p>新建一个 Maven Webapp 工程，并加入下面的 <code>jetbrick-template</code> 依赖</p> <pre><code class="highlight xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>com.github.subchen<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>jetbrick-template-web<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>2.0.2<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.0.3<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre></li> 
  <li><p>配置 web.xml</p> <pre><code class="highlight xml"><span class="nt">&lt;servlet&gt;</span>
