@@ -95,7 +95,7 @@
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <i class="fa fa-angle-down"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多... <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="../../index.html">jetbrick 首页</a></li>
                         <li class="divider"></li>
@@ -104,8 +104,14 @@
                         <li><a href="../../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
                         <li><a href="../../jetbrick-orm/overview.html">jetbrick-orm</a></li>
                         <li><a href="../../jetbrick-template/index.html">jetbrick-template</a></li>
+                        <!--
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-cases.html">jetbrick 真实案例</a></li>
+                        -->
                         <li class="divider"></li>
                         <li><a href="../../jetbrick-code-standards.html">jetbrick 代码规范</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../about.html">关于...</a></li>
                     </ul>
                 </li>
             </ul>
@@ -225,11 +231,16 @@
  <li><code>String includeGet(String relativeName)</code></li> 
  <li><code>String includeGet(String relativeName, Map&lt;String, Object&gt; parameters)</code></li> 
 </ul> 
-<h3><a class="anchor" name="-macro-"></a>5.5 调用一个 macro，并获取输出</h3> 
+<h3><a class="anchor" name="-servlet-action-"></a>5.5 调用一个 servlet/action，并获取输出</h3> 
+<p>嵌入一个子页面，这个页面直接对应一个 servlet 或者 action URL，需要引入 jetbrick-template-web。</p> 
+<ul> 
+ <li><code>String servletGet(String path)</code></li> 
+</ul> 
+<h3><a class="anchor" name="-macro-"></a>5.6 调用一个 macro，并获取输出</h3> 
 <ul> 
  <li><code>String macroGet(String name, Object... arguments)</code></li> 
 </ul> 
-<h3><a class="anchor" name="-debug-"></a>5.6 调试专用函数 debug(...)</h3> 
+<h3><a class="anchor" name="-debug-"></a>5.7 调试专用函数 debug(...)</h3> 
 <ul> 
  <li><code>void debug(String format, Object... args)</code></li> 
 </ul>

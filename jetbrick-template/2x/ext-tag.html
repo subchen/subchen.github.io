@@ -95,7 +95,7 @@
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多框架 <i class="fa fa-angle-down"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多... <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="../../index.html">jetbrick 首页</a></li>
                         <li class="divider"></li>
@@ -104,8 +104,14 @@
                         <li><a href="../../jetbrick-webmvc/overview.html">jetbrick-webmvc</a></li>
                         <li><a href="../../jetbrick-orm/overview.html">jetbrick-orm</a></li>
                         <li><a href="../../jetbrick-template/index.html">jetbrick-template</a></li>
+                        <!--
+                        <li class="divider"></li>
+                        <li><a href="../../jetbrick-cases.html">jetbrick 真实案例</a></li>
+                        -->
                         <li class="divider"></li>
                         <li><a href="../../jetbrick-code-standards.html">jetbrick 代码规范</a></li>
+                        <li class="divider"></li>
+                        <li><a href="../../about.html">关于...</a></li>
                     </ul>
                 </li>
             </ul>
@@ -199,7 +205,7 @@
  <li><p><code>#tag layout_block(String name)</code> ... <code>#end</code></p> <p>将块内容保存到变量名为 name 的 Context 中。</p></li> 
  <li><p><code>#tag layout_block_default(String name)</code> ... <code>#end</code></p> <p>如果不存在指定 name 的 context 变量，那么输出 body 内容，否则输出指定的 context 变量内容。</p></li> 
 </ul> 
-<h3><a class="anchor" name="web-"></a>4.2 Web 缓存相关</h3> 
+<h3><a class="anchor" name="web-jetbrick-template-web-"></a>4.2 Web 缓存相关 (需要 jetbrick-template-web)</h3> 
 <ul> 
  <li><p><code>#tag application_cache(String name, long timeout)</code> ... <code>#end</code></p> <p>将内存缓存到 ServletContext 中，在 timeout 秒之后自动超时。</p></li> 
  <li><p><code>#tag session_cache(String name, long timeout)</code> ... <code>#end</code></p> <p>将内存缓存到 HttpSession 中，在 timeout 秒之后自动超时。</p></li> 
