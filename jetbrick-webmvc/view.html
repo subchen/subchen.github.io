@@ -131,6 +131,7 @@
  <li><code>redirect</code>: Redirect 到一个指定的 page/URL</li> 
  <li><code>jsp</code>: 使用 JSP 作为 View</li> 
  <li><code>jetx</code>: 使用 jetbrick-template 作为 View</li> 
+ <li><code>ftl</code>: 使用 freemarker 作为 View</li> 
  <li><code>json</code>: 使用 JSON 文本输出作为 View</li> 
  <li><code>xml</code>: 使用 XML 文本输出作为 View</li> 
  <li><code>text</code>: 使用纯文本输出作为 View</li> 
@@ -174,7 +175,7 @@
 <span class="o">}</span>
 </code></pre> 
 <h3><a class="anchor" name="jetx"></a>1.4 jetx</h3> 
-<p>默认使用 jetbrick-template 页面作为 View</p> 
+<p>使用 jetbrick-template 页面作为 View</p> 
 <p>需要加入依赖：</p> 
 <pre><code class="highlight xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>com.github.subchen<span class="nt">&lt;/groupId&gt;</span>
@@ -193,7 +194,27 @@
     <span class="k">return</span> <span class="s">"form.jetx"</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre> 
-<h3><a class="anchor" name="json-xml-text-html-js-css"></a>1.5 json/xml/text/html/js/css</h3> 
+<h3><a class="anchor" name="ftl"></a>1.5 ftl</h3> 
+<p>使用 freemarker 页面作为 View</p> 
+<p>需要加入依赖：</p> 
+<pre><code class="highlight xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.github.subchen<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>jetbrick-webmvc-freemarker<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre> 
+<p>范例代码如下：</p> 
+<pre><code class="highlight java"><span class="nd">@Action</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">list</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"ftl:list"</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Action</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">form</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"form.ftl"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre> 
+<h3><a class="anchor" name="json-xml-text-html-js-css"></a>1.6 json/xml/text/html/js/css</h3> 
 <p>使用用户提供的文本进行输出</p> 
 <pre><code class="highlight java"><span class="nd">@Action</span>
 <span class="kd">public</span> <span class="n">String</span> <span class="nf">json</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>

@@ -128,6 +128,7 @@
  <li><code>@PathVariable</code> - Path URL 参数</li> 
  <li><code>@RequestParam</code> - Request.getParameter(...)，也支持文件上传对象 FilePart</li> 
  <li><code>@RequestForm</code> - 将多个 Request 参数，注入到一个 Form 对象中</li> 
+ <li><code>@RequestBody</code> - Request.getInputStream()</li> 
  <li><code>@RequestHeader</code> - Request.getHeader(...)</li> 
  <li><code>@RequestCookie</code> - Request.getCookies()</li> 
  <li><code>@RequestAttribute</code> - Request.getAttribute(...)</li> 
@@ -183,13 +184,20 @@
 </blockquote> 
 <h4><a class="anchor" name="-requestparam"></a>@RequestParam</h4> 
 <p>用于从 Request 中获取参数，等价于 <code>request.getParameter(...)</code>，支持自动类型转换。</p> 
-<p>我们既可以注入普通的 Parameter，也可以注入 FilePart 对象（文件上传对象）</p> 
 <pre><code class="highlight java"><span class="nd">@Action</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">action</span><span class="p">(</span>
         <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"id"</span><span class="o">)</span> <span class="n">String</span> <span class="n">id</span><span class="o">,</span> 
         <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"file"</span><span class="o">)</span> <span class="n">FilePart</span> <span class="n">file</span>
     <span class="o">)</span> <span class="o">{</span>
     <span class="o">...</span>
+<span class="o">}</span>
+</code></pre> 
+<p><code>@RequestParam</code> 目前支持注入常见的类型：<br> * JAVA 基本类型/包装类型<br> * 数组类型<br> * FilePart<br> * JSONAware/JSONObject/JSONArray<br> * org.w3c.dom.Document<br> * JAXBElement</p> 
+<p>也可以实现自定义类型的 <code>@RequestParam</code> 注入，只要实现下面的接口，并加入 <code>@Managed</code> annotation 即可：</p> 
+<pre><code class="highlight java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">RequestParamGetter</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="n">T</span> <span class="n">get</span><span class="o">(</span><span class="n">RequestContext</span> <span class="n">ctx</span><span class="o">,</span> <span class="n">ParameterInfo</span> <span class="n">parameter</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span><span class="o">;</span>
+
 <span class="o">}</span>
 </code></pre> 
 <h4><a class="anchor" name="-requestform"></a>@RequestForm</h4> 
@@ -207,6 +215,21 @@
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">form</span><span class="o">.</span><span class="na">getUsername</span><span class="o">());</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">form</span><span class="o">.</span><span class="na">getPassword</span><span class="o">());</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">form</span><span class="o">.</span><span class="na">isRememberMe</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre> 
+<h4><a class="anchor" name="-requestbody"></a>@RequestBody</h4> 
+<p>如果你的 Request 使用 Payload 方式传递内容，比如 JSON 或者 XML 格式，那么我们可以使用 <code>@RequestBody</code> 来获取。</p> 
+<pre><code class="highlight java"><span class="nd">@Action</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">action</span><span class="p">(</span><span class="nd">@RequestBody</span> <span class="n">Document</span> <span class="n">xmlDocument</span><span class="o">)</span> <span class="o">{</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre> 
+<p>目前，<code>RequestBody</code> 支持下面几种类型：<br> * JSONAware/JSONObject/JSONArray<br> * org.w3c.dom.Document<br> * JAXBElement</p> 
+<p>也可以实现自定义类型的 <code>@RequestBody</code> 注入，只要实现下面的接口，并加入 <code>@Managed</code> annotation 即可：</p> 
+<pre><code class="highlight java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">RequestBodyGetter</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="n">T</span> <span class="n">get</span><span class="o">(</span><span class="n">RequestContext</span> <span class="n">ctx</span><span class="o">,</span> <span class="n">ParameterInfo</span> <span class="n">parameter</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span><span class="o">;</span>
+
 <span class="o">}</span>
 </code></pre> 
 <h4><a class="anchor" name="-requestheader"></a>@RequestHeader</h4> 
