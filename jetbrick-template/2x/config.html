@@ -267,9 +267,9 @@
 <h3><a class="anchor" name="jetx-import-defines"></a>1.2 jetx.import.defines</h3> 
 <p>在大部分情况下，我们希望每个模板都能自动引入一些全局变量，那么我们在这里可以为这些全局变量声明变量类型，比如 <code>HttpServletRequest request</code></p> 
 <p>允许配置多个变量定义，用逗号分隔。示例如下：</p> 
-<pre><code class="highlight plaintext">jetx.import.variables = HttpServletRequest request, \
-                        jetbrick.dao.orm.Pagelist pagelist, \
-                        List entites
+<pre><code class="highlight plaintext">jetx.import.defines = HttpServletRequest request, \
+                      jetbrick.dao.orm.Pagelist pagelist, \
+                      List entites
 </code></pre> 
 <p>变量的类型如果没有使用包名，那么将会自动在 <code>jetx.import.classes</code> 里面查找 Class。</p> 
 <blockquote class="warn">
