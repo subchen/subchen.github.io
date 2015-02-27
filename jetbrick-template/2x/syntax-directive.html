@@ -130,8 +130,8 @@
     </div>
 
     <article class="markdown">
-        <h1><a class="anchor" name="-directive"></a>指令 Directive</h1> 
-<h2><a class="anchor" name="-options"></a>1. 模板选项 #options</h2> 
+        <h1 class=" header"><a class="anchor" name="-directive"></a><a class="header-anchor" href="#-directive">§</a>指令 Directive</h1> 
+<h2 class=" header"><a class="anchor" name="-options"></a><a class="header-anchor" href="#-options">§</a>1. 模板选项 #options</h2> 
 <pre><code class="highlight plaintext">#options (
     loadmacro = "/macors/commons.jetx",
     loadmacro = "/macors/users.jetx",
@@ -150,7 +150,7 @@
  <li><code>loadmacro</code> 引入外部文件中的 macro 定义</li> 
  <li><code>trimLeadingWhitespaces</code> 删除文件头上的空白内容</li> 
 </ul> 
-<h2><a class="anchor" name="-define"></a>2. 变量类型声明 #define</h2> 
+<h2 class=" header"><a class="anchor" name="-define"></a><a class="header-anchor" href="#-define">§</a>2. 变量类型声明 #define</h2> 
 <p>为了让模板的可读性更好，以及防止一些未知的错误发生，我们提倡为模板中用到的每个变量声明变量类型。</p> 
 <p>语法：</p> 
 <ul> 
@@ -168,7 +168,7 @@
   <li>在 <code>strict</code> 模式中，变量必须进行声明类型</li> 
  </ul> 
 </blockquote> 
-<h2><a class="anchor" name="-set"></a>3. 赋值语句 #set</h2> 
+<h2 class=" header"><a class="anchor" name="-set"></a><a class="header-anchor" href="#-set">§</a>3. 赋值语句 #set</h2> 
 <p>语法：</p> 
 <ul> 
  <li><code>#set([type] name = value, ...)</code></li> 
@@ -180,7 +180,7 @@
 <blockquote class="warn">
  <p><strong>注意</strong>：在同一个模板中，不允许重复声明变量类型。</p> 
 </blockquote> 
-<h2><a class="anchor" name="-if-elseif-else"></a>4. 条件语句 #if, #elseif, #else</h2> 
+<h2 class=" header"><a class="anchor" name="-if-elseif-else"></a><a class="header-anchor" href="#-if-elseif-else">§</a>4. 条件语句 #if, #elseif, #else</h2> 
 <p>如果 <code>#if</code> 条件表达式计算结果为 <code>true</code> 或非空，则输出指令所包含的块, 否则输出 <code>#else</code> 指令块。</p> 
 <p>语法：</p> 
 <ul> 
@@ -206,7 +206,7 @@
   <li>如果 <code>#else</code> 后面紧跟着其他文本，比如 <code>#elseABC</code>，那么可以通过添加一对空括号来分割，修改成 <code>#else()ABC</code>。这样可读性就能加强，模板解析也不会出现问题。所有的无参数指令，比如 <code>#end</code>，<code>#break</code>，<code>#stop</code> 都支持这样的语法。<code>()</code> 前面和之间请不要插入任何空格。</li> 
  </ul> 
 </blockquote> 
-<h2><a class="anchor" name="-for"></a>5. 循环语句 #for</h2> 
+<h2 class=" header"><a class="anchor" name="-for"></a><a class="header-anchor" href="#-for">§</a>5. 循环语句 #for</h2> 
 <p>循环重复输出指令所包含的块，如果是空的集合对象，那么输出 <code>#else</code> 块。</p> 
 <p>语法：</p> 
 <ul> 
@@ -230,7 +230,7 @@
     ...
 #end
 </code></pre> 
-<h3><a class="anchor" name="-for-for"></a>5.1 #for 内部对象 for</h3> 
+<h3 class=" header"><a class="anchor" name="-for-for"></a><a class="header-anchor" href="#-for-for">§</a>5.1 #for 内部对象 for</h3> 
 <ul> 
  <li><code>for.index</code> 可用于内部循环计数，从 <code>1</code> 开始计数。</li> 
  <li><code>for.size</code> 获取循环总数。</li> 
@@ -239,7 +239,7 @@
  <li><code>for.odd</code> 是否第奇数个元素。</li> 
  <li><code>for.even</code> 是否第偶数个元素。</li> 
 </ul> 
-<h3><a class="anchor" name="for-else"></a>5.2 for-else</h3> 
+<h3 class=" header"><a class="anchor" name="for-else"></a><a class="header-anchor" href="#for-else">§</a>5.2 for-else</h3> 
 <p>指令 <code>#else</code> 可用于循环为空时的内容输出。</p> 
 <pre><code class="highlight plaintext">#for (Book book : user.books)
     ...
@@ -247,13 +247,13 @@
     No books are found in here.
 #end
 </code></pre> 
-<h3><a class="anchor" name="count-loop"></a>5.3 count-loop</h3> 
+<h3 class=" header"><a class="anchor" name="count-loop"></a><a class="header-anchor" href="#count-loop">§</a>5.3 count-loop</h3> 
 <p>要使用 count-loop 循环, 我们可以借助于 <code>range()</code> 函数，比如：</p> 
 <pre><code class="highlight plaintext">#for (int i : range(1, 100))
     ...
 #end
 </code></pre> 
-<h2><a class="anchor" name="-break-continue"></a>6. 循环中断或继续语句 #break, #continue</h2> 
+<h2 class=" header"><a class="anchor" name="-break-continue"></a><a class="header-anchor" href="#-break-continue">§</a>6. 循环中断或继续语句 #break, #continue</h2> 
 <p>当 <code>expression</code> 为 <code>true</code>，<code>#break</code> 中断当前循环，而 <code>#continue</code> 跳过余下的内容，跳到下一个循环。</p> 
 <p>语法：</p> 
 <ul> 
@@ -274,7 +274,7 @@
 <blockquote class="info">
  <p><strong>提示</strong>：无参数格式代表 <code>expression</code> 永远为 <code>true</code>。</p> 
 </blockquote> 
-<h2><a class="anchor" name="-stop"></a>7. 停止解析语句 #stop</h2> 
+<h2 class=" header"><a class="anchor" name="-stop"></a><a class="header-anchor" href="#-stop">§</a>7. 停止解析语句 #stop</h2> 
 <p>当 <code>expression</code> 为真或非空时，停止模板运行，立刻返回。</p> 
 <p>语法：</p> 
 <ul> 
@@ -287,7 +287,7 @@
 <blockquote class="info">
  <p><strong>提示</strong>：无参数格式代表 <code>expression</code> 永远为 <code>true</code>。</p> 
 </blockquote> 
-<h2><a class="anchor" name="-include"></a>8. 嵌套模板语句 #include</h2> 
+<h2 class=" header"><a class="anchor" name="-include"></a><a class="header-anchor" href="#-include">§</a>8. 嵌套模板语句 #include</h2> 
 <p>嵌入一个子模板，将子模板内容输出到当前位置。</p> 
 <p>语法：</p> 
 <ul> 
@@ -309,7 +309,7 @@
  </ul> 
 </blockquote> 
 <p>具体用法请移步： <a href="include.html">嵌入子模板 #include</a></p> 
-<h2><a class="anchor" name="-macro-call"></a>9. 宏定义 #macro, #call</h2> 
+<h2 class=" header"><a class="anchor" name="-macro-call"></a><a class="header-anchor" href="#-macro-call">§</a>9. 宏定义 #macro, #call</h2> 
 <p>定义一个代码片段，然后可以重复使用。</p> 
 <p>宏定义语法：</p> 
 <ul> 
@@ -335,7 +335,7 @@
     Hello 李四!
 </code></pre> 
 <p>更多关于宏 Macro 的内容请查看：<a href="ext-macro.html">宏 Macro</a></p> 
-<h2><a class="anchor" name="-tag"></a>10. 自定义标签 #tag</h2> 
+<h2 class=" header"><a class="anchor" name="-tag"></a><a class="header-anchor" href="#-tag">§</a>10. 自定义标签 #tag</h2> 
 <p><code>jetbrick-template</code> 支持自定义 Tag，类似于 JSP Taglib，但是要比 JSP Taglib 更简单更好用。</p> 
 <p>语法：</p> 
 <ul> 

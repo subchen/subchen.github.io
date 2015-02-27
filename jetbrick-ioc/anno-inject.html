@@ -91,9 +91,9 @@
 <div class="container">
 
     <article class="markdown">
-        <h1><a class="anchor" name="-inject"></a>@Inject</h1> 
+        <h1 class=" header"><a class="anchor" name="-inject"></a><a class="header-anchor" href="#-inject">§</a>@Inject</h1> 
 <p>上一章节我们介绍了 <code>@IocBean</code> 可以将 Java 对象自动加入到 IoC 容器中进行管理。这一章我们将介绍 <code>@Inject</code> 注解，来实现对象的注入。</p> 
-<h2><a class="anchor" name="201388364"></a>1. 简单的例子</h2> 
+<h2 class=" header"><a class="anchor" name="201388364"></a><a class="header-anchor" href="#201388364">§</a>1. 简单的例子</h2> 
 <pre><code class="highlight java"><span class="kn">package</span> <span class="n">jetbrick</span><span class="o">.</span><span class="na">docs</span><span class="o">.</span><span class="na">demo</span><span class="o">;</span>
 
 <span class="nd">@IocBean</span>
@@ -120,7 +120,7 @@
 <span class="o">}</span>
 </code></pre> 
 <p>看清楚了吗？我们通过 <code>@Inject</code> 注解，我们已经将 User 对象成功的注入到了 Hello 对象中。</p> 
-<h2><a class="anchor" name="-inject-"></a>2. @Inject 可配置的属性</h2> 
+<h2 class=" header"><a class="anchor" name="-inject-"></a><a class="header-anchor" href="#-inject-">§</a>2. @Inject 可配置的属性</h2> 
 <ol> 
  <li><p><strong>value</strong></p> <p>要注入对象的名称 name，缺省情况下，将根据对应类型的完整类名作为 name。</p> <pre><code class="highlight java"><span class="nd">@Inject</span>
 <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">DataSource</span> <span class="n">dataSource</span>
@@ -130,15 +130,15 @@
 </code></pre> <p>第一个 dataSource 将获取 <code>ioc.getBean("java.sql.DataSource")</code> 这样的对象。</p></li> 
  <li><p><strong>required</strong></p> <p>表示如果注入的对象不存在，是否要抛出 NullPointerExpcetion。</p> <p>默认情况下，<code>required=true</code></p></li> 
 </ol> 
-<h2><a class="anchor" name="723985723"></a>3. 字段注入</h2> 
+<h2 class=" header"><a class="anchor" name="723985723"></a><a class="header-anchor" href="#723985723">§</a>3. 字段注入</h2> 
 <p>就像我们上面看到的例子一样，我们用 <code>@Inject</code> 注入的是字段。</p> 
 <p>只要不是被声明成 <code>final</code> 的字段，IoC 都可以实现注入。不管是 <code>public</code> 的还是 <code>private</code> 的，亦或者是 <code>static</code> 的字段都没问题。</p> 
 <pre><code class="highlight java"><span class="nd">@Inject</span><span class="o">(</span><span class="s">"log4j"</span><span class="o">)</span>
 <span class="kd">private</span> <span class="n">Logger</span> <span class="n">logger</span><span class="o">;</span>
 </code></pre> 
-<h2><a class="anchor" name="1171093780"></a>4. 构造函数注入</h2> 
+<h2 class=" header"><a class="anchor" name="1171093780"></a><a class="header-anchor" href="#1171093780">§</a>4. 构造函数注入</h2> 
 <p>除了最常见的字段注入之外，我们还提供了构造函数注入方式。</p> 
-<h3><a class="anchor" name="935460130"></a>4.1 指定构造函数</h3> 
+<h3 class=" header"><a class="anchor" name="935460130"></a><a class="header-anchor" href="#935460130">§</a>4.1 指定构造函数</h3> 
 <pre><code class="highlight java"><span class="nd">@IocBean</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="n">User</span> <span class="n">user</span><span class="o">;</span>
@@ -154,9 +154,9 @@
 <span class="o">}</span>
 </code></pre> 
 <p>通过将 <code>@Inject</code> 声明在构造函数上面，我们就可以使用指定的构造函数来初始化对象。</p> 
-<h3><a class="anchor" name="280455429"></a>4.2 默认构造函数</h3> 
+<h3 class=" header"><a class="anchor" name="280455429"></a><a class="header-anchor" href="#280455429">§</a>4.2 默认构造函数</h3> 
 <p>如果没有 <code>@Inject</code> 声明的构造函数，那么必须存在一个空的构造函数，并且是 public 的。</p> 
-<h3><a class="anchor" name="325669478"></a>4.3 构造函数参数注入</h3> 
+<h3 class=" header"><a class="anchor" name="325669478"></a><a class="header-anchor" href="#325669478">§</a>4.3 构造函数参数注入</h3> 
 <p>默认情况下，每个参数都缺省使用了 <code>@Inject</code>，如果我们需要自定义，那么我们可以给每个参数手动指定 <code>@Inject</code>。如下：</p> 
 <pre><code class="highlight java"><span class="nd">@IocBean</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>

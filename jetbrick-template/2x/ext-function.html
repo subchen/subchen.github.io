@@ -130,7 +130,7 @@
     </div>
 
     <article class="markdown">
-        <h1><a class="anchor" name="-functions"></a>扩展函数 Functions</h1> 
+        <h1 class=" header"><a class="anchor" name="-functions"></a><a class="header-anchor" href="#-functions">§</a>扩展函数 Functions</h1> 
 <p><code>jetbrick-template</code> 允许将 <code>java</code> 中 <code>public static</code> 的方法变成一个全局函数来使用，我们称之为<code>扩展函数 Functions</code>。</p> 
 <p>比如：</p> 
 <ul> 
@@ -138,7 +138,7 @@
  <li><code>${range(1,100)}</code></li> 
  <li><code>${debug("name={}, status={}", name, status)}</code></li> 
 </ul> 
-<h2><a class="anchor" name="853942898"></a>1. 定义扩展函数</h2> 
+<h2 class=" header"><a class="anchor" name="853942898"></a><a class="header-anchor" href="#853942898">§</a>1. 定义扩展函数</h2> 
 <p>语法：</p> 
 <pre><code class="highlight plaintext">public static Object function_name ( args ... )
 </code></pre> 
@@ -158,7 +158,7 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre> 
-<h2><a class="anchor" name="2104682813"></a>2. 注册扩展函数</h2> 
+<h2 class=" header"><a class="anchor" name="2104682813"></a><a class="header-anchor" href="#2104682813">§</a>2. 注册扩展函数</h2> 
 <p>用户自定义的扩展函数必须注册到 <code>JetEngine</code> 中才能使用。注册函数有 3 种途径：</p> 
 <ul> 
  <li><p>API 动态注册</p> <pre><code class="highlight java"><span class="n">JetEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="o">...</span>
@@ -176,14 +176,14 @@
 </code></pre></li> 
   </ul></li> 
 </ul> 
-<h2><a class="anchor" name="1889555247"></a>3. 在模板中使用扩展函数</h2> 
+<h2 class=" header"><a class="anchor" name="1889555247"></a><a class="header-anchor" href="#1889555247">§</a>3. 在模板中使用扩展函数</h2> 
 <p>模板：</p> 
 <pre><code class="highlight plaintext">${today("yyyy-MM-dd")}
 </code></pre> 
 <p>输出结果：</p> 
 <pre><code class="highlight plaintext">2014-10-02
 </code></pre> 
-<h2><a class="anchor" name="-interpretcontext-"></a>4. 在扩展方法中获取 InterpretContext 上下文</h2> 
+<h2 class=" header"><a class="anchor" name="-interpretcontext-"></a><a class="header-anchor" href="#-interpretcontext-">§</a>4. 在扩展方法中获取 InterpretContext 上下文</h2> 
 <p>要获取 <code>InterpretContext</code> 对象，可以通过 <code>InterpretContext.current()</code> 方法获取当前 Thread local context 关联的 <code>InterpretContext</code> 对象。</p> 
 <pre><code class="highlight java"><span class="nd">@JetAnnotations</span><span class="o">.</span><span class="na">Functions</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyFunctions</span> <span class="o">{</span>
@@ -201,15 +201,15 @@
 <p>模板输出：</p> 
 <pre><code class="highlight plaintext">Hello: jetbrick
 </code></pre> 
-<h2><a class="anchor" name="-buildin-functions"></a>5. 模板已经内置的扩展函数 Buildin Functions</h2> 
+<h2 class=" header"><a class="anchor" name="-buildin-functions"></a><a class="header-anchor" href="#-buildin-functions">§</a>5. 模板已经内置的扩展函数 Buildin Functions</h2> 
 <p>所有扩展函数都定义在 <code>jetbrick.template.runtime.buildin.JetFunctions</code></p> 
-<h3><a class="anchor" name="748057859"></a>5.1 常用函数</h3> 
+<h3 class=" header"><a class="anchor" name="748057859"></a><a class="header-anchor" href="#748057859">§</a>5.1 常用函数</h3> 
 <ul> 
  <li><p><code>Date now()</code><br> 获取当前时间</p></li> 
  <li><p><code>int random()</code><br> 获取一个随机数</p></li> 
  <li><p><code>UUID uuid()</code><br> 获取一个 UUID</p></li> 
 </ul> 
-<h3><a class="anchor" name="665841341"></a>5.2 循环计数生成器</h3> 
+<h3 class=" header"><a class="anchor" name="665841341"></a><a class="header-anchor" href="#665841341">§</a>5.2 循环计数生成器</h3> 
 <p>生成一个用于循环的数组，主要用于 <code>#for</code> 的循环迭代。</p> 
 <ul> 
  <li><code>Iterator&lt;Integer&gt; range(int start, int stop)</code></li> 
@@ -220,27 +220,27 @@
     ${i}
 #end
 </code></pre> 
-<h3><a class="anchor" name="155052740"></a>5.3 读取纯文本文件内容</h3> 
+<h3 class=" header"><a class="anchor" name="155052740"></a><a class="header-anchor" href="#155052740">§</a>5.3 读取纯文本文件内容</h3> 
 <ul> 
  <li><code>String fileGet(String relativeName)</code></li> 
  <li><code>String fileGet(String relativeName, String encoding)</code></li> 
 </ul> 
-<h3><a class="anchor" name="6968675"></a>5.4 读取子模板，并获取输出</h3> 
+<h3 class=" header"><a class="anchor" name="6968675"></a><a class="header-anchor" href="#6968675">§</a>5.4 读取子模板，并获取输出</h3> 
 <p>嵌入一个子模板。和 <code>#include</code> 指令的区别，此函数对子模板的输出进行了缓存，可以处理返回的内容，但是效率没有 <code>#include</code> 指令高。</p> 
 <ul> 
  <li><code>String includeGet(String relativeName)</code></li> 
  <li><code>String includeGet(String relativeName, Map&lt;String, Object&gt; parameters)</code></li> 
 </ul> 
-<h3><a class="anchor" name="-servlet-action-"></a>5.5 调用一个 servlet/action，并获取输出</h3> 
+<h3 class=" header"><a class="anchor" name="-servlet-action-"></a><a class="header-anchor" href="#-servlet-action-">§</a>5.5 调用一个 servlet/action，并获取输出</h3> 
 <p>嵌入一个子页面，这个页面直接对应一个 servlet 或者 action URL，需要引入 jetbrick-template-web。</p> 
 <ul> 
  <li><code>String servletGet(String path)</code></li> 
 </ul> 
-<h3><a class="anchor" name="-macro-"></a>5.6 调用一个 macro，并获取输出</h3> 
+<h3 class=" header"><a class="anchor" name="-macro-"></a><a class="header-anchor" href="#-macro-">§</a>5.6 调用一个 macro，并获取输出</h3> 
 <ul> 
  <li><code>String macroGet(String name, Object... arguments)</code></li> 
 </ul> 
-<h3><a class="anchor" name="-debug-"></a>5.7 调试专用函数 debug(...)</h3> 
+<h3 class=" header"><a class="anchor" name="-debug-"></a><a class="header-anchor" href="#-debug-">§</a>5.7 调试专用函数 debug(...)</h3> 
 <ul> 
  <li><code>void debug(String format, Object... args)</code></li> 
 </ul>

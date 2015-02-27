@@ -485,3 +485,31 @@ article.markdown {
     color: #999;
     background-color: #EAF2F5;
 }
+
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+    position: relative;
+}
+
+.markdown h1:hover .header-anchor,
+.markdown h2:hover .header-anchor,
+.markdown h3:hover .header-anchor,
+.markdown h4:hover .header-anchor,
+.markdown h5:hover .header-anchor,
+.markdown h6:hover .header-anchor {
+    display: inline-block;
+}
+
+.markdown .header-anchor {
+    position: absolute;
+    display: none;
+    left: -1.1em;
+    color: #00acee;
+    padding-right: 1.0em;
+}
+

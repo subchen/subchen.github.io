@@ -130,29 +130,29 @@
     </div>
 
     <article class="markdown">
-        <h1><a class="anchor" name="nutz-"></a>Nutz 集成</h1> 
+        <h1 class=" header"><a class="anchor" name="nutz-"></a><a class="header-anchor" href="#nutz-">§</a>Nutz 集成</h1> 
 <p><code>jetbrick-template</code> 可以和 <code>Nutz</code> 进行集成。</p> 
-<h2><a class="anchor" name="maven-"></a>1. Maven 依赖</h2> 
+<h2 class=" header"><a class="anchor" name="maven-"></a><a class="header-anchor" href="#maven-">§</a>1. Maven 依赖</h2> 
 <pre><code class="highlight xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>com.github.subchen<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>jetbrick-template-nutz<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>2.0.7<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.0.8<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre> 
-<h2><a class="anchor" name="web-xml-"></a>2. web.xml 配置</h2> 
+<h2 class=" header"><a class="anchor" name="web-xml-"></a><a class="header-anchor" href="#web-xml-">§</a>2. web.xml 配置</h2> 
 <pre><code class="highlight xml"><span class="nt">&lt;context-param&gt;</span>
     <span class="nt">&lt;param-name&gt;</span>jetbrick-template-config-location<span class="nt">&lt;/param-name&gt;</span>
     <span class="nt">&lt;param-value&gt;</span>/WEB-INF/jetbrick-template.properties<span class="nt">&lt;/param-value&gt;</span>
 <span class="nt">&lt;/context-param&gt;</span>
 </code></pre> 
-<h2><a class="anchor" name="1130464237"></a>3. 将视图工厂整合进应用中</h2> 
+<h2 class=" header"><a class="anchor" name="1130464237"></a><a class="header-anchor" href="#1130464237">§</a>3. 将视图工厂整合进应用中</h2> 
 <p>在主模块上，加：<code>@Views({JetTemplateViewMaker.class})</code> 注解</p> 
 <pre><code class="highlight java"><span class="nd">@Views</span><span class="o">({</span><span class="n">JetTemplateViewMaker</span><span class="o">.</span><span class="na">class</span><span class="o">})</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainModule</span> <span class="o">{</span>
 
 <span class="o">}</span>
 </code></pre> 
-<h2><a class="anchor" name="action-jetx-"></a>4. Action 中使用 jetx 视图</h2> 
+<h2 class=" header"><a class="anchor" name="action-jetx-"></a><a class="header-anchor" href="#action-jetx-">§</a>4. Action 中使用 jetx 视图</h2> 
 <pre><code class="highlight java"><span class="nd">@At</span>
 <span class="nd">@Ok</span><span class="o">(</span><span class="s">"jetx:/WEB-INF/html/user_info.jetx"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="n">String</span> <span class="nf">list</span><span class="p">(</span><span class="nd">@Param</span><span class="o">(</span><span class="s">"name"</span><span class="o">)</span> <span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">){</span>
@@ -162,14 +162,14 @@
     <span class="k">return</span> <span class="s">"测试"</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre> 
-<h2><a class="anchor" name="835913446"></a>5. 模板范例</h2> 
+<h2 class=" header"><a class="anchor" name="835913446"></a><a class="header-anchor" href="#835913446">§</a>5. 模板范例</h2> 
 <pre><code class="highlight plaintext">#define(String obj)
 ${obj}
 </code></pre> 
-<h2><a class="anchor" name="1029199751"></a>6. 获得输出</h2> 
+<h2 class=" header"><a class="anchor" name="1029199751"></a><a class="header-anchor" href="#1029199751">§</a>6. 获得输出</h2> 
 <pre><code class="highlight plaintext">测试
 </code></pre> 
-<h2><a class="anchor" name="1019637337"></a>7. 范例源码</h2> 
+<h2 class=" header"><a class="anchor" name="1019637337"></a><a class="header-anchor" href="#1019637337">§</a>7. 范例源码</h2> 
 <p>具体例子代码参考： <a href="https://github.com/subchen/jetbrick-template-2x-samples/">https://github.com/subchen/jetbrick-template-2x-samples/</a></p>
     </article>
 

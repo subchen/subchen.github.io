@@ -106,13 +106,13 @@
 <div class="container">
 
     <article class="markdown">
-        <h1><a class="anchor" name="requestcontext-"></a>RequestContext 对象</h1> 
+        <h1 class=" header"><a class="anchor" name="requestcontext-"></a><a class="header-anchor" href="#requestcontext-">§</a>RequestContext 对象</h1> 
 <p><code>RequestContext</code> 是 jetbrick webmvc 核心类之一。RequestContext 封装 HTTP Request 相关常用操作。</p> 
-<h2><a class="anchor" name="getcurrent-"></a>1. getCurrent()</h2> 
+<h2 class=" header"><a class="anchor" name="getcurrent-"></a><a class="header-anchor" href="#getcurrent-">§</a>1. getCurrent()</h2> 
 <p>对于每一个 HTTP Request 请求，jetbrick 都封装了一个 RequestContext 对象。并且将该对象放置在 ThreadLocal 中，方便让 RequestContext 对象能够在任意地方可以直接访问到。</p> 
 <pre><code class="highlight java"><span class="n">RequestContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">RequestContext</span><span class="o">.</span><span class="na">getCurrent</span><span class="o">();</span>
 </code></pre> 
-<h2><a class="anchor" name="httpservletrequest-httpsession-servletcontext"></a>2. HttpServletRequest/HttpSession/ServletContext</h2> 
+<h2 class=" header"><a class="anchor" name="httpservletrequest-httpsession-servletcontext"></a><a class="header-anchor" href="#httpservletrequest-httpsession-servletcontext">§</a>2. HttpServletRequest/HttpSession/ServletContext</h2> 
 <p>通过 RequestContext 对象，可以获取 HTTP 相关的对象，如下：</p> 
 <ul> 
  <li><code>ServletContext getServletContext()</code></li> 
@@ -120,7 +120,7 @@
  <li><code>HttpServletRequest getRequest()</code></li> 
  <li><code>HttpServletResponse getResponse()</code></li> 
 </ul> 
-<h2><a class="anchor" name="getparameter-"></a>3. getParameter() 系列方法</h2> 
+<h2 class=" header"><a class="anchor" name="getparameter-"></a><a class="header-anchor" href="#getparameter-">§</a>3. getParameter() 系列方法</h2> 
 <p>RequestContext 对象提供了 getParameter() 系列方法，用于从 Request 中获取参数。</p> 
 <ul> 
  <li><code>String getParameter(String key)</code></li> 
@@ -131,25 +131,25 @@
  <li><code>Long getParameterAsLong(String key)</code></li> 
  <li><code>Long getParameterAsLong(String key, Long defaultValue)</code></li> 
 </ul> 
-<h2><a class="anchor" name="getfilepart-"></a>4. getFilePart() 系列方法</h2> 
+<h2 class=" header"><a class="anchor" name="getfilepart-"></a><a class="header-anchor" href="#getfilepart-">§</a>4. getFilePart() 系列方法</h2> 
 <p>RequestContext 提供了 getFilePart() 系列方法来支持文件上传。支持 <code>multipart/form-data</code> 方式的表单上传，也支持 HTML5 方式的文件上传。</p> 
 <ul> 
  <li><code>FilePart getFilePart()</code> - 获取第一个上传的文件</li> 
  <li><code>FilePart getFilePart(String)</code> - 按 form 名称获取对应的文件</li> 
  <li><code>List&lt;FilePart&gt; getFileParts()</code> - 获取所有上传的文件</li> 
 </ul> 
-<h2><a class="anchor" name="model-"></a>5. Model 相关</h2> 
+<h2 class=" header"><a class="anchor" name="model-"></a><a class="header-anchor" href="#model-">§</a>5. Model 相关</h2> 
 <p>jetbrick 将 Model 封装在了 RequestContext 中。</p> 
 <ul> 
  <li><code>Model getModel()</code> - 获取关联的 Model 对象</li> 
 </ul> 
-<h2><a class="anchor" name="url-"></a>6. URL 相关</h2> 
+<h2 class=" header"><a class="anchor" name="url-"></a><a class="header-anchor" href="#url-">§</a>6. URL 相关</h2> 
 <ul> 
  <li><code>File getWebroot()</code> - 获取 Web 根目录对应的文件路径</li> 
  <li><code>String getPathInfo()</code> - 获取相对于 webapp 的 URL 路径</li> 
  <li><code>String getContextPath()</code> - 获取 webapp 的 context path 路径</li> 
 </ul> 
-<h2><a class="anchor" name="routeinfo-"></a>7. RouteInfo 相关</h2> 
+<h2 class=" header"><a class="anchor" name="routeinfo-"></a><a class="header-anchor" href="#routeinfo-">§</a>7. RouteInfo 相关</h2> 
 <ul> 
  <li><code>RouteInfo getRouteInfo()</code> - 获取路由信息</li> 
  <li><code>String getPathVariable(String)</code> - 获取 URL 中对应的指定参数</li> 

@@ -130,7 +130,7 @@
     </div>
 
     <article class="markdown">
-        <h1><a class="anchor" name="-tag"></a>标签 Tag</h1> 
+        <h1 class=" header"><a class="anchor" name="-tag"></a><a class="header-anchor" href="#-tag">§</a>标签 Tag</h1> 
 <p><code>jetbrick-template</code> 支持用户自定义模板标签 Tag，功能类似于 JSP Taglib，但是要比 JSP Taglib 更简单更好用。</p> 
 <p>比如下面的代码范例：</p> 
 <pre><code class="highlight plaintext">#tag cache("CACHE-ME-30-MIN", 30*60)
@@ -138,7 +138,7 @@
 #end
 </code></pre> 
 <p>这个例子演示了一个自定义的 cache tag，允许将天气结果缓存上 30 分钟，而不是每次都重新获取天气信息。</p> 
-<h2><a class="anchor" name="-tag"></a>1. 定义标签 Tag</h2> 
+<h2 class=" header"><a class="anchor" name="-tag"></a><a class="header-anchor" href="#-tag">§</a>1. 定义标签 Tag</h2> 
 <p>每一个 Tag 由 Java 中的一个静态方法实现。</p> 
 <p>语法：</p> 
 <pre><code class="highlight plaintext">public static void tag_name ( JetTagContext ctx, args ... )
@@ -167,7 +167,7 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre> 
-<h2><a class="anchor" name="-tag"></a>2. 注册标签 Tag</h2> 
+<h2 class=" header"><a class="anchor" name="-tag"></a><a class="header-anchor" href="#-tag">§</a>2. 注册标签 Tag</h2> 
 <p>用户自定义的 Tag 必须注册到 <code>JetEngine</code> 中才能使用。注册 Tag 有 3 种途径：</p> 
 <ul> 
  <li><p>API 动态注册</p> <pre><code class="highlight java"><span class="n">JetEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="o">...</span>
@@ -185,7 +185,7 @@
 </code></pre></li> 
   </ul></li> 
 </ul> 
-<h2><a class="anchor" name="jettagcontext-"></a>3. JetTagContext 的使用</h2> 
+<h2 class=" header"><a class="anchor" name="jettagcontext-"></a><a class="header-anchor" href="#jettagcontext-">§</a>3. JetTagContext 的使用</h2> 
 <p>Tag 的实现第一个参数是 <code>JetTagContext</code>，它包含了 Tag 运行时的上下文。</p> 
 <p>主要 API：</p> 
 <ul> 
@@ -194,18 +194,18 @@
  <li><p><code>void invoke()</code></p> <p>在当前位置输出 <code>#tag ... #end</code> 之间的内容</p></li> 
  <li><p><code>String getBodyContent()</code></p> <p>执行并捕获 <code>#tag ... #end</code> 之间的内容 (不输出)</p></li> 
 </ul> 
-<h2><a class="anchor" name="-buildin-tags"></a>4. 模板已经内置的标签 Buildin Tags</h2> 
+<h2 class=" header"><a class="anchor" name="-buildin-tags"></a><a class="header-anchor" href="#-buildin-tags">§</a>4. 模板已经内置的标签 Buildin Tags</h2> 
 <p>所有 Tags 都定义在下面的 2 个 Class 中</p> 
 <ul> 
  <li><code>jetbrick.template.runtime.buildin.JetTags</code></li> 
  <li><code>jetbrick.template.web.buildin.JetTags</code></li> 
 </ul> 
-<h3><a class="anchor" name="layout-"></a>4.1 Layout 布局相关</h3> 
+<h3 class=" header"><a class="anchor" name="layout-"></a><a class="header-anchor" href="#layout-">§</a>4.1 Layout 布局相关</h3> 
 <ul> 
  <li><p><code>#tag layout_block(String name)</code> ... <code>#end</code></p> <p>将块内容保存到变量名为 name 的 Context 中。</p></li> 
  <li><p><code>#tag layout_block_default(String name)</code> ... <code>#end</code></p> <p>如果不存在指定 name 的 context 变量，那么输出 body 内容，否则输出指定的 context 变量内容。</p></li> 
 </ul> 
-<h3><a class="anchor" name="web-jetbrick-template-web-"></a>4.2 Web 缓存相关 (需要 jetbrick-template-web)</h3> 
+<h3 class=" header"><a class="anchor" name="web-jetbrick-template-web-"></a><a class="header-anchor" href="#web-jetbrick-template-web-">§</a>4.2 Web 缓存相关 (需要 jetbrick-template-web)</h3> 
 <ul> 
  <li><p><code>#tag application_cache(String name, long timeout)</code> ... <code>#end</code></p> <p>将内存缓存到 ServletContext 中，在 timeout 秒之后自动超时。</p></li> 
  <li><p><code>#tag session_cache(String name, long timeout)</code> ... <code>#end</code></p> <p>将内存缓存到 HttpSession 中，在 timeout 秒之后自动超时。</p></li> 

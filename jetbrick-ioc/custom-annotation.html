@@ -91,10 +91,10 @@
 <div class="container">
 
     <article class="markdown">
-        <h1><a class="anchor" name="-annotation"></a>自定义注入 Annotation</h1> 
+        <h1 class=" header"><a class="anchor" name="-annotation"></a><a class="header-anchor" href="#-annotation">§</a>自定义注入 Annotation</h1> 
 <p>学习了前面的 <code>@Inject</code>, <code>@Config</code> 和 <code>@SpringBean</code> 注入 Annotation，这回 jetbrick 带来了更加强大的自定义 Annotation 注入功能。</p> 
 <p>啥意思？ 看看下面的代码就明白了。</p> 
-<h2><a class="anchor" name="1288571069"></a>1. 看代码学习</h2> 
+<h2 class=" header"><a class="anchor" name="1288571069"></a><a class="header-anchor" href="#1288571069">§</a>1. 看代码学习</h2> 
 <pre><code class="highlight java"><span class="nd">@IocBean</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="o">{</span>
 
@@ -134,7 +134,7 @@
 </code></pre> 
 <p>怎么样，学会了吗？</p> 
 <p>介绍完了自定义注入字段 Annotation，采用类似的方法，我们还可以定义注入参数 Annotation。</p> 
-<h2><a class="anchor" name="678290964"></a>2. 自定义字段注入</h2> 
+<h2 class=" header"><a class="anchor" name="678290964"></a><a class="header-anchor" href="#678290964">§</a>2. 自定义字段注入</h2> 
 <pre><code class="highlight java"><span class="nd">@Target</span><span class="o">({</span><span class="n">ElementType</span><span class="o">.</span><span class="na">FIELD</span><span class="o">})</span>
 <span class="nd">@Retention</span><span class="o">(</span><span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
 <span class="nd">@InjectFieldWith</span><span class="o">(</span><span class="n">XXXFieldInjector</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
@@ -146,7 +146,7 @@
     <span class="o">...</span>
 <span class="o">}</span>
 </code></pre> 
-<h2><a class="anchor" name="1092693216"></a>3. 自定义参数注入 (构造函数参数)</h2> 
+<h2 class=" header"><a class="anchor" name="1092693216"></a><a class="header-anchor" href="#1092693216">§</a>3. 自定义参数注入 (构造函数参数)</h2> 
 <pre><code class="highlight java"><span class="nd">@Target</span><span class="o">({</span><span class="n">ElementType</span><span class="o">.</span><span class="na">PARAMETER</span><span class="o">})</span>
 <span class="nd">@Retention</span><span class="o">(</span><span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
 <span class="nd">@InjectParameterWith</span><span class="o">(</span><span class="n">XXXParameterInjector</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>

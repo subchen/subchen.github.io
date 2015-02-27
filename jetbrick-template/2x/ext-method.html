@@ -130,7 +130,7 @@
     </div>
 
     <article class="markdown">
-        <h1><a class="anchor" name="-methods"></a>扩展方法 Methods</h1> 
+        <h1 class=" header"><a class="anchor" name="-methods"></a><a class="header-anchor" href="#-methods">§</a>扩展方法 Methods</h1> 
 <p>我们知道一个 Java Class 的 所有 methods 都是定义在同一个 class 文件中的，不能在其他地方进行动态扩展。但是一些其他动态语言却支持在 Class 外部为这个 Class 增加一些方法。比如：</p> 
 <ul> 
  <li>JavaScript 的 prototype 机制</li> 
@@ -145,7 +145,7 @@
 <blockquote class="warn">
  <p><strong>注意</strong>：如果 <code>Class</code> 已经定义了同名方法，则优先使用 <code>Class</code> 定义的方法。但是扩展方法支持方法重载 (Overrload)。</p> 
 </blockquote> 
-<h2><a class="anchor" name="853784393"></a>1. 定义扩展方法</h2> 
+<h2 class=" header"><a class="anchor" name="853784393"></a><a class="header-anchor" href="#853784393">§</a>1. 定义扩展方法</h2> 
 <p>语法：</p> 
 <pre><code class="highlight plaintext">public static Object method_name ( Object object, args ... )
 </code></pre> 
@@ -165,7 +165,7 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre> 
-<h2><a class="anchor" name="2104524308"></a>2. 注册扩展方法</h2> 
+<h2 class=" header"><a class="anchor" name="2104524308"></a><a class="header-anchor" href="#2104524308">§</a>2. 注册扩展方法</h2> 
 <p>用户自定义的扩展方法必须注册到 <code>JetEngine</code> 中才能使用。注册方法有 3 种途径：</p> 
 <ul> 
  <li><p>API 动态注册</p> <pre><code class="highlight java"><span class="n">JetEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="o">...</span>
@@ -183,14 +183,14 @@
 </code></pre></li> 
   </ul></li> 
 </ul> 
-<h2><a class="anchor" name="1889713752"></a>3. 在模板中使用扩展方法</h2> 
+<h2 class=" header"><a class="anchor" name="1889713752"></a><a class="header-anchor" href="#1889713752">§</a>3. 在模板中使用扩展方法</h2> 
 <p>模板：</p> 
 <pre><code class="highlight plaintext">${"BAIDU".link("http://www.baidu.com/")}
 </code></pre> 
 <p>输出结果：</p> 
 <pre><code class="highlight plaintext">&lt;a href="http://www.baidu.com/"&gt;BAIDU&lt;/a&gt;
 </code></pre> 
-<h2><a class="anchor" name="-interpretcontext-"></a>4. 在扩展方法中获取 InterpretContext 上下文</h2> 
+<h2 class=" header"><a class="anchor" name="-interpretcontext-"></a><a class="header-anchor" href="#-interpretcontext-">§</a>4. 在扩展方法中获取 InterpretContext 上下文</h2> 
 <p>要获取 <code>InterpretContext</code> 对象，可以通过 <code>InterpretContext.current()</code> 方法获取当前 Thread local context 关联的 <code>InterpretContext</code> 对象。</p> 
 <pre><code class="highlight java"><span class="nd">@JetAnnotations</span><span class="o">.</span><span class="na">Methods</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserInfoMethods</span> <span class="o">{</span>
@@ -206,9 +206,9 @@
 <pre><code class="highlight plaintext">#define(UserInfo user)
 ${user.isOnline()}
 </code></pre> 
-<h2><a class="anchor" name="-buildin-methods"></a>5. 模板已经内置的扩展方法 Buildin Methods</h2> 
+<h2 class=" header"><a class="anchor" name="-buildin-methods"></a><a class="header-anchor" href="#-buildin-methods">§</a>5. 模板已经内置的扩展方法 Buildin Methods</h2> 
 <p>所有内置的扩展方法都定义在 <code>jetbrick.template.runtime.buildin.JetMethods</code></p> 
-<h4><a class="anchor" name="-cast"></a>基本数据类型转换 Cast</h4> 
+<h4 class=" header"><a class="anchor" name="-cast"></a><a class="header-anchor" href="#-cast">§</a>基本数据类型转换 Cast</h4> 
 <ul> 
  <li>String.asBoolean()</li> 
  <li>String.asInt()</li> 
@@ -221,14 +221,14 @@ ${user.isOnline()}
  <li>Object[].asList()</li> 
  <li>Object.asString()</li> 
 </ul> 
-<h4><a class="anchor" name="-format"></a>数据格式化 Format</h4> 
+<h4 class=" header"><a class="anchor" name="-format"></a><a class="header-anchor" href="#-format">§</a>数据格式化 Format</h4> 
 <ul> 
  <li>Number.format()</li> 
  <li>Number.format(String format)</li> 
  <li>Date.format()</li> 
  <li>Date.format(String format)</li> 
 </ul> 
-<h4><a class="anchor" name="-escape-unescape"></a>数据 Escape/Unescape</h4> 
+<h4 class=" header"><a class="anchor" name="-escape-unescape"></a><a class="header-anchor" href="#-escape-unescape">§</a>数据 Escape/Unescape</h4> 
 <ul> 
  <li>String.escapeJava()</li> 
  <li>String.unescapeJava()</li> 
@@ -241,11 +241,11 @@ ${user.isOnline()}
  <li>String.unescapeUrl()</li> 
  <li>String.unescapeUrl(String encoding)</li> 
 </ul> 
-<h4><a class="anchor" name="json-"></a>JSON 输出</h4> 
+<h4 class=" header"><a class="anchor" name="json-"></a><a class="header-anchor" href="#json-">§</a>JSON 输出</h4> 
 <ul> 
  <li>Object.asJson()</li> 
 </ul> 
-<h4><a class="anchor" name="1079447065"></a>字符串转换</h4> 
+<h4 class=" header"><a class="anchor" name="1079447065"></a><a class="header-anchor" href="#1079447065">§</a>字符串转换</h4> 
 <ul> 
  <li>String.capitalize()</li> 
  <li>String.toUnderlineName()</li> 

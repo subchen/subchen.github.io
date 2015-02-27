@@ -95,7 +95,7 @@
     </div>
 
     <article class="markdown">
-        <h1><a class="anchor" name="-overview"></a>概述 Overview</h1> 
+        <h1 class=" header"><a class="anchor" name="-overview"></a><a class="header-anchor" href="#-overview">§</a>概述 Overview</h1> 
 <p>jetbrick-template 是一个新一代 Java 模板引擎，具有高性能和高扩展性。 适合于动态 HTML 页面输出或者代码生成，可替代 JSP 页面或者 Velocity 等模板。 指令和 Velocity 相似，表达式和 Java 保持一致，易学易用。</p> 
 <ul> 
  <li>支持类似于 Velocity 的多种指令</li> 
@@ -112,7 +112,7 @@
  <li>支持宏定义 #macro</li> 
  <li>支持布局 Layout</li> 
 </ul> 
-<h1><a class="anchor" name="441533943"></a>简单易用的指令</h1> 
+<h1 class=" header"><a class="anchor" name="441533943"></a><a class="header-anchor" href="#441533943">§</a>简单易用的指令</h1> 
 <p>jetbrick-template 指令集和老牌的模板引擎 Velocity 非常相似，易学易用。</p> 
 <pre><code class="highlight html">#define(List<span class="nt">&lt;UserInfo&gt;</span> userlist)
 <span class="nt">&lt;table&gt;</span>
@@ -131,12 +131,12 @@
 <span class="nt">&lt;/table&gt;</span>
 </code></pre> 
 <p>详细指令语法，请参考：<a href="syntax.html">语法指南</a>。或者<a href="syntax.html#velocity">和 Velocity 的比较</a>。</p> 
-<h1><a class="anchor" name="-performance"></a>卓越性能 Performance</h1> 
+<h1 class=" header"><a class="anchor" name="-performance"></a><a class="header-anchor" href="#-performance">§</a>卓越性能 Performance</h1> 
 <p>jetbrick-template 将模板编译成 Java ByteCode 运行，并采用强类型推导，无需反射和减少类型转换。渲染速度等价于 Java 硬编码。比 Velocity 等模板快一个数量级。 比 JSP 也快，因为 JSP 只有 Scriptlet 是编译的，Tag 和 EL 都是解释执行的。 而 jetbrick-template 是全编译的。</p> 
 <p><img src="/assets/images/snapshots/performance.png" alt="performance"></p> 
 <p>在 Stream 模式中(Webapp 采用 OutputStream 将文本输出到浏览器)，由于 Java 硬编码输出字符串需要进行一次编码的转换。 而 jetbrick-template 却在第一次运行期间就缓存了编码转换结果，使得 jetbrick-template 的性能甚至优于 Java 硬编码。</p> 
 <p>具体测试用例，请参考：<a href="https://github.com/subchen/ebm">Template Engine Benchmark Test</a> (platform: Window 7 x64, Intel i5, 16GB RAM, JDK 1.6.0_41 x64)</p> 
-<h1><a class="anchor" name="-integrate"></a>易于集成 Integrate</h1> 
+<h1 class=" header"><a class="anchor" name="-integrate"></a><a class="header-anchor" href="#-integrate">§</a>易于集成 Integrate</h1> 
 <p>可以和市面上常见的 Web MVC framework 进行集成。</p> 
 <ul> 
  <li><a href="integration.html#HttpServlet">HttpServlet</a></li> 
@@ -149,7 +149,7 @@
 </ul> 
 <p>具体集成方法，请参考： <a href="integration.html">Web 框架集成</a></p> 
 <p>也可以和 Spring Ioc 进行集成，请参考：<a href="faq-spring.html">如何在 Spring 中使用 JetEngine</a></p> 
-<h1><a class="anchor" name="408827026"></a>友好的错误提示</h1> 
+<h1 class=" header"><a class="anchor" name="408827026"></a><a class="header-anchor" href="#408827026">§</a>友好的错误提示</h1> 
 <p>具有详细的模板解析和编译错误提示，出错提示可以定位到原始模板所在的行号。</p> 
 <pre><code class="highlight plaintext">22:14:51.271 [main] INFO  (JetTemplate.java:68) - Loading template source file: D:\workspace\github\jetbrick-schema-app\bin\config\report\schema.html.jetx
 22:14:51.406 [main] ERROR (JetTemplateErrorListener.java:27) - Template parse failed:

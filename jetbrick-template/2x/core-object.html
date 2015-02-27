@@ -130,16 +130,16 @@
     </div>
 
     <article class="markdown">
-        <h1><a class="anchor" name="-core"></a>核心对象 Core</h1> 
+        <h1 class=" header"><a class="anchor" name="-core"></a><a class="header-anchor" href="#-core">§</a>核心对象 Core</h1> 
 <p>在 <code>jetbrick-template</code> 中，有几个核心对象：</p> 
 <ul> 
  <li><code>JetEngine</code> - 代表一个模板引擎</li> 
  <li><code>JetTemplate</code> - 代表一个模板文件</li> 
  <li><code>InterpretContext</code> - 模板运行期上下文对象</li> 
 </ul> 
-<h2><a class="anchor" name="jetengine"></a>1. JetEngine</h2> 
+<h2 class=" header"><a class="anchor" name="jetengine"></a><a class="header-anchor" href="#jetengine">§</a>1. JetEngine</h2> 
 <p>整个模板引擎的由 <code>JetEngine</code> 驱动，不同的 <code>JetEngine</code> 对象可以使用不同的配置。</p> 
-<h3><a class="anchor" name="-jetengine-"></a>1.1 如何创建 JetEngine？</h3> 
+<h3 class=" header"><a class="anchor" name="-jetengine-"></a><a class="header-anchor" href="#-jetengine-">§</a>1.1 如何创建 JetEngine？</h3> 
 <ol> 
  <li><p><code>JetEngine.create()</code></p> <p>在 classpath 根目录下面自动查找 <code>jetbrick-template.properties</code> 文件。如果文件不存在，则使用默认配置。</p></li> 
  <li><p><code>JetEngine.create(File)</code></p> <p>从用户指定的 <code>File</code> 文件中加载系统配置，该文件必须是一个 <code>.properties</code> 文件。</p></li> 
@@ -150,9 +150,9 @@
 <blockquote class="info">
  <p><strong>最佳实践</strong>：一般在一个 Application 或者 Webapp 中，我们只需要一个 <code>JetEngine</code> 对象就可以了，我们推荐使用单例模式创建 <code>JetEngine</code>。</p> 
 </blockquote> 
-<h3><a class="anchor" name="1535383634"></a>1.2 获取配置信息</h3> 
+<h3 class=" header"><a class="anchor" name="1535383634"></a><a class="header-anchor" href="#1535383634">§</a>1.2 获取配置信息</h3> 
 <p>可以通过 <code>JetEngine.getConfig()</code> 来获取配置文件中的配置信息。</p> 
-<h3><a class="anchor" name="-jettemplate-"></a>1.3 获取 JetTemplate 对象</h3> 
+<h3 class=" header"><a class="anchor" name="-jettemplate-"></a><a class="header-anchor" href="#-jettemplate-">§</a>1.3 获取 JetTemplate 对象</h3> 
 <ul> 
  <li><p>获取 <code>JetTemplate</code> 对象：</p> <pre><code class="highlight java"><span class="kd">public</span> <span class="n">JetTemplate</span> <span class="nf">getTemplate</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ResourceNotFoundException</span><span class="o">;</span>
 </code></pre> 
@@ -170,7 +170,7 @@
    </ul> 
   </blockquote></li> 
 </ul> 
-<h3><a class="anchor" name="552140043"></a>1.4 以源代码方式直接创建模板对象</h3> 
+<h3 class=" header"><a class="anchor" name="552140043"></a><a class="header-anchor" href="#552140043">§</a>1.4 以源代码方式直接创建模板对象</h3> 
 <pre><code class="highlight java"><span class="kd">public</span> <span class="n">JetTemplate</span> <span class="nf">createTemplate</span><span class="p">(</span><span class="n">String</span> <span class="n">source</span><span class="o">);</span>
 </code></pre> 
 <p>范例：</p> 
@@ -182,7 +182,7 @@
 <blockquote class="warn">
  <p><strong>注意</strong>： <code>createTemplate()</code> 每次都会创建新的 <code>JetTemplate</code> 对象，如果需要缓存，请自行维护。</p> 
 </blockquote> 
-<h2><a class="anchor" name="jettemplate"></a>2. JetTemplate</h2> 
+<h2 class=" header"><a class="anchor" name="jettemplate"></a><a class="header-anchor" href="#jettemplate">§</a>2. JetTemplate</h2> 
 <p>对应于一个模板文件，我们通过 <code>JetEngine.getTemplate(name)</code> 获取。</p> 
 <p>如果模板不存在，则抛出 <code>ResourceNotFoundException</code>。</p> 
 <p>在得到了模板对象之后，我们可以通过下面几个方法可以对模板进行渲染：</p> 
@@ -193,7 +193,7 @@
 <blockquote class="info">
  <p><strong>提示</strong>： <code>context</code> 对象在模板运行期间，并不会受到模板污染，即数据不会被改变（保证数据的无侵入性）。</p> 
 </blockquote> 
-<h2><a class="anchor" name="interpretcontext"></a>3. InterpretContext</h2> 
+<h2 class=" header"><a class="anchor" name="interpretcontext"></a><a class="header-anchor" href="#interpretcontext">§</a>3. InterpretContext</h2> 
 <p>在模板运行期间，<code>InterpretContext</code> 保存了当前的运行时环境。</p> 
 <p><code>InterpretContext</code> 对象主要用于在扩展方法，扩展函数，Tag 的实现过程中，动态获取/设置上下文信息。</p> 
 <p>在模板的运行期间，<code>InterpretContext</code> 对象会绑定在当前线程的 <code>Thread Local context</code> 中，这样我们可以在任意的地方，通过下面的 API 来获取 <code>InterpretContext</code> 对象：</p> 

@@ -130,7 +130,7 @@
     </div>
 
     <article class="markdown">
-        <h1><a class="anchor" name="-start"></a>从这里开始 Start</h1> 
+        <h1 class=" header"><a class="anchor" name="-start"></a><a class="header-anchor" href="#-start">§</a>从这里开始 Start</h1> 
 <p>本章节将快速的带领你领略一下 <code>jetbrick-template</code> 的工作方式。</p> 
 <blockquote class="info">
  <p><strong>推荐</strong>：模板文件扩展名为 <code>.jetx</code>。</p> 
@@ -141,12 +141,12 @@
  <li><a href="#-webapp-">Webapp 应用</a></li> 
 </ul> 
 <p>2 种模式的区别在于：在 webapp 模式中，我们针对 web 应用，提供的大量的 Web 专用的内置变量(如 request 对象)，以及一些常用的 web 扩展。</p> 
-<h2><a class="anchor" name="-application-"></a>1. 普通的 Application 环境</h2> 
+<h2 class=" header"><a class="anchor" name="-application-"></a><a class="header-anchor" href="#-application-">§</a>1. 普通的 Application 环境</h2> 
 <ol> 
  <li><p>新建一个 Maven 工程，并加入下面的 <code>jetbrick-template</code> 依赖</p> <pre><code class="highlight xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>com.github.subchen<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>jetbrick-template<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>2.0.7<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.0.8<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre></li> 
  <li><p>新建一个 User.java 作为 Model</p> <pre><code class="highlight java"><span class="kn">package</span> <span class="n">demo</span><span class="o">;</span>
@@ -252,12 +252,12 @@
 </code></pre></li> 
 </ol> 
 <p>完整的 demo 请参考： <a href="https://github.com/subchen/jetbrick-template-samples/blob/master/quickstart-app/">https://github.com/subchen/jetbrick-template-samples/blob/master/quickstart-app/</a></p> 
-<h2><a class="anchor" name="webapp-"></a>2. Webapp 环境</h2> 
+<h2 class=" header"><a class="anchor" name="webapp-"></a><a class="header-anchor" href="#webapp-">§</a>2. Webapp 环境</h2> 
 <ol> 
  <li><p>新建一个 Maven Webapp 工程，并加入下面的 <code>jetbrick-template</code> 依赖</p> <pre><code class="highlight xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>com.github.subchen<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>jetbrick-template-web<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>2.0.7<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.0.8<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre></li> 
  <li><p>配置 web.xml</p> <pre><code class="highlight xml"><span class="nt">&lt;servlet&gt;</span>

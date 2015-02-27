@@ -106,9 +106,9 @@
 <div class="container">
 
     <article class="markdown">
-        <h1><a class="anchor" name="controller-action-"></a>Controller/Action 注入</h1> 
+        <h1 class=" header"><a class="anchor" name="controller-action-"></a><a class="header-anchor" href="#controller-action-">§</a>Controller/Action 注入</h1> 
 <p>jetbrick 支持 IoC，所以，我们的 Controller 自然也可以注入依赖的 Bean 对象。</p> 
-<h2><a class="anchor" name="controller-"></a>1. Controller 字段注入</h2> 
+<h2 class=" header"><a class="anchor" name="controller-"></a><a class="header-anchor" href="#controller-">§</a>1. Controller 字段注入</h2> 
 <p>我们可以使用如下的 Annotation 来实现字段注入：</p> 
 <ul> 
  <li><code>@Inject</code> - IoC 容器对象</li> 
@@ -117,10 +117,10 @@
  <li><code>@XXX</code> - 用户自定义标注</li> 
 </ul> 
 <p>基本上，Controller 字段注入的大部分都是全局对象。不支持直接注入 Request/Session 上下文相关的对象。</p> 
-<h2><a class="anchor" name="action-"></a>2. Action 参数注入</h2> 
+<h2 class=" header"><a class="anchor" name="action-"></a><a class="header-anchor" href="#action-">§</a>2. Action 参数注入</h2> 
 <p>在 Action 方法中，我们不仅可以注入 IoC 容器中的对象，我们也可以注入 Request/Session 上下文相关的对象。</p> 
 <p>对于 Action 方法参数的注入，我们支持 2 种方式：</p> 
-<h3><a class="anchor" name="-annotation-"></a>2.1 根据 Annotation 注入</h3> 
+<h3 class=" header"><a class="anchor" name="-annotation-"></a><a class="header-anchor" href="#-annotation-">§</a>2.1 根据 Annotation 注入</h3> 
 <ul> 
  <li><code>@Inject</code> - IoC 容器中的对象</li> 
  <li><code>@Config</code> - 配置文件中的配置项</li> 
@@ -137,7 +137,7 @@
  <li><code>@InitParameter</code> - ServletContext.getInitParameter(...)</li> 
  <li><code>@XXX</code> - 用户自定义标注</li> 
 </ul> 
-<h3><a class="anchor" name="1537123724"></a>2.2 根据参数的类型注入：</h3> 
+<h3 class=" header"><a class="anchor" name="1537123724"></a><a class="header-anchor" href="#1537123724">§</a>2.2 根据参数的类型注入：</h3> 
 <ul> 
  <li><code>RequestContext</code> - Request 上下文对象</li> 
  <li><code>Model</code> - Action 要返回的 Model 对象</li> 
@@ -158,15 +158,15 @@
  <li><code>ServetContextInitParameterMap</code> - a map of servlet context init parameters.</li> 
  <li><code>XXX</code> - 用户自定义类型</li> 
 </ul> 
-<h2><a class="anchor" name="-annotation-"></a>3. 下面我们将对每一个 Annotation 和参数类型来说明</h2> 
-<h3><a class="anchor" name="-annotation-"></a>3.1 根据 Annotation 注入</h3> 
-<h4><a class="anchor" name="-inject-config-springbean"></a>@Inject/@Config/@SpringBean</h4> 
+<h2 class=" header"><a class="anchor" name="-annotation-"></a><a class="header-anchor" href="#-annotation-">§</a>3. 下面我们将对每一个 Annotation 和参数类型来说明</h2> 
+<h3 class=" header"><a class="anchor" name="-annotation-"></a><a class="header-anchor" href="#-annotation-">§</a>3.1 根据 Annotation 注入</h3> 
+<h4 class=" header"><a class="anchor" name="-inject-config-springbean"></a><a class="header-anchor" href="#-inject-config-springbean">§</a>@Inject/@Config/@SpringBean</h4> 
 <p>这几个 Annotation 是 IoC 容器本身提供的，具体说明可以参考 IoC 中的相关内容。</p> 
 <ul> 
  <li><a href="../jetbrick-ioc/anno-inject.html">@Inject</a></li> 
  <li><a href="../jetbrick-ioc/anno-config.html">@Config</a></li> 
 </ul> 
-<h4><a class="anchor" name="-pathvariable"></a>@PathVariable</h4> 
+<h4 class=" header"><a class="anchor" name="-pathvariable"></a><a class="header-anchor" href="#-pathvariable">§</a>@PathVariable</h4> 
 <p>专门用于获取 Request URL 中 <code>{}</code> 参数变量。支持变量类型的自动转换。</p> 
 <p>例如，我们的 Action URL 定义如下 <code>/users/{id}</code>，而我们的 Request URL 如下 <code>/users/123</code>。</p> 
 <p>这样你就可以用 <code>@PathVariable("id")</code> 来获取 URL 中参数 <code>{id}</code> 对应的变量 <code>123</code>.</p> 
@@ -182,7 +182,7 @@
 </code></pre> 
  <p>是不是这样的代码更优雅！记住其他的类似的 Annotation 都可以这么干哦！</p> 
 </blockquote> 
-<h4><a class="anchor" name="-requestparam"></a>@RequestParam</h4> 
+<h4 class=" header"><a class="anchor" name="-requestparam"></a><a class="header-anchor" href="#-requestparam">§</a>@RequestParam</h4> 
 <p>用于从 Request 中获取参数，等价于 <code>request.getParameter(...)</code>，支持自动类型转换。</p> 
 <pre><code class="highlight java"><span class="nd">@Action</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">action</span><span class="p">(</span>
@@ -200,7 +200,7 @@
 
 <span class="o">}</span>
 </code></pre> 
-<h4><a class="anchor" name="-requestform"></a>@RequestForm</h4> 
+<h4 class=" header"><a class="anchor" name="-requestform"></a><a class="header-anchor" href="#-requestform">§</a>@RequestForm</h4> 
 <p>将多个 Request 参数，注入到一个 Form 对象中</p> 
 <pre><code class="highlight java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginInfo</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">username</span><span class="o">;</span>
@@ -217,7 +217,7 @@
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">form</span><span class="o">.</span><span class="na">isRememberMe</span><span class="o">());</span>
 <span class="o">}</span>
 </code></pre> 
-<h4><a class="anchor" name="-requestbody"></a>@RequestBody</h4> 
+<h4 class=" header"><a class="anchor" name="-requestbody"></a><a class="header-anchor" href="#-requestbody">§</a>@RequestBody</h4> 
 <p>如果你的 Request 使用 Payload 方式传递内容，比如 JSON 或者 XML 格式，那么我们可以使用 <code>@RequestBody</code> 来获取。</p> 
 <pre><code class="highlight java"><span class="nd">@Action</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">action</span><span class="p">(</span><span class="nd">@RequestBody</span> <span class="n">Document</span> <span class="n">xmlDocument</span><span class="o">)</span> <span class="o">{</span>
@@ -232,54 +232,54 @@
 
 <span class="o">}</span>
 </code></pre> 
-<h4><a class="anchor" name="-requestheader"></a>@RequestHeader</h4> 
+<h4 class=" header"><a class="anchor" name="-requestheader"></a><a class="header-anchor" href="#-requestheader">§</a>@RequestHeader</h4> 
 <p>等价于 <code>Request.getHeader(...)</code>，支持自动类型转换。</p> 
-<h4><a class="anchor" name="-requestcookie"></a>@RequestCookie</h4> 
+<h4 class=" header"><a class="anchor" name="-requestcookie"></a><a class="header-anchor" href="#-requestcookie">§</a>@RequestCookie</h4> 
 <p>获取 Cookie 信息，支持自动类型转换。</p> 
-<h4><a class="anchor" name="-requestattribute"></a>@RequestAttribute</h4> 
+<h4 class=" header"><a class="anchor" name="-requestattribute"></a><a class="header-anchor" href="#-requestattribute">§</a>@RequestAttribute</h4> 
 <p>等价于 <code>Request.getAttribute(...)</code></p> 
-<h4><a class="anchor" name="-sessionattribute"></a>@SessionAttribute</h4> 
+<h4 class=" header"><a class="anchor" name="-sessionattribute"></a><a class="header-anchor" href="#-sessionattribute">§</a>@SessionAttribute</h4> 
 <p>等价于 <code>Session.getAttribute(...)</code></p> 
-<h4><a class="anchor" name="-servletcontextattribute"></a>@ServletContextAttribute</h4> 
+<h4 class=" header"><a class="anchor" name="-servletcontextattribute"></a><a class="header-anchor" href="#-servletcontextattribute">§</a>@ServletContextAttribute</h4> 
 <p>等价于 <code>ServletContext.getAttribute(...)</code></p> 
-<h4><a class="anchor" name="-initparameter"></a>@InitParameter</h4> 
+<h4 class=" header"><a class="anchor" name="-initparameter"></a><a class="header-anchor" href="#-initparameter">§</a>@InitParameter</h4> 
 <p>等价于 <code>ServletContext.getInitParameter(...)</code>，支持自动类型转换。</p> 
-<h4><a class="anchor" name="465224526"></a>根据参数的类型注入</h4> 
-<h4><a class="anchor" name="requestcontext"></a>RequestContext</h4> 
+<h4 class=" header"><a class="anchor" name="465224526"></a><a class="header-anchor" href="#465224526">§</a>根据参数的类型注入</h4> 
+<h4 class=" header"><a class="anchor" name="requestcontext"></a><a class="header-anchor" href="#requestcontext">§</a>RequestContext</h4> 
 <p>Request 上下文对象</p> 
-<h4><a class="anchor" name="model"></a>Model</h4> 
+<h4 class=" header"><a class="anchor" name="model"></a><a class="header-anchor" href="#model">§</a>Model</h4> 
 <p>Action 要返回的 Model 对象</p> 
-<h4><a class="anchor" name="httpservletrequest"></a>HttpServletRequest</h4> 
+<h4 class=" header"><a class="anchor" name="httpservletrequest"></a><a class="header-anchor" href="#httpservletrequest">§</a>HttpServletRequest</h4> 
 <p>Request 对象</p> 
-<h4><a class="anchor" name="httpservletresponse"></a>HttpServletResponse</h4> 
+<h4 class=" header"><a class="anchor" name="httpservletresponse"></a><a class="header-anchor" href="#httpservletresponse">§</a>HttpServletResponse</h4> 
 <p>Response 对象</p> 
-<h4><a class="anchor" name="httpsession"></a>HttpSession</h4> 
+<h4 class=" header"><a class="anchor" name="httpsession"></a><a class="header-anchor" href="#httpsession">§</a>HttpSession</h4> 
 <p>Session 对象</p> 
-<h4><a class="anchor" name="servletcontext"></a>ServletContext</h4> 
+<h4 class=" header"><a class="anchor" name="servletcontext"></a><a class="header-anchor" href="#servletcontext">§</a>ServletContext</h4> 
 <p>ServletContext 对象</p> 
-<h4><a class="anchor" name="filepart"></a>FilePart</h4> 
+<h4 class=" header"><a class="anchor" name="filepart"></a><a class="header-anchor" href="#filepart">§</a>FilePart</h4> 
 <p>单个上传文件对象</p> 
-<h4><a class="anchor" name="filepart-"></a>FilePart[]</h4> 
+<h4 class=" header"><a class="anchor" name="filepart-"></a><a class="header-anchor" href="#filepart-">§</a>FilePart[]</h4> 
 <p>所有上传文件对象</p> 
-<h4><a class="anchor" name="requestparametermap"></a>RequestParameterMap</h4> 
+<h4 class=" header"><a class="anchor" name="requestparametermap"></a><a class="header-anchor" href="#requestparametermap">§</a>RequestParameterMap</h4> 
 <p>a map of request parameter.</p> 
-<h4><a class="anchor" name="requestparametervaluesmap"></a>RequestParameterValuesMap</h4> 
+<h4 class=" header"><a class="anchor" name="requestparametervaluesmap"></a><a class="header-anchor" href="#requestparametervaluesmap">§</a>RequestParameterValuesMap</h4> 
 <p>a map of request parameter values.</p> 
-<h4><a class="anchor" name="requestheadermap"></a>RequestHeaderMap</h4> 
+<h4 class=" header"><a class="anchor" name="requestheadermap"></a><a class="header-anchor" href="#requestheadermap">§</a>RequestHeaderMap</h4> 
 <p>a map of request header.</p> 
-<h4><a class="anchor" name="requestheadervaluesmap"></a>RequestHeaderValuesMap</h4> 
+<h4 class=" header"><a class="anchor" name="requestheadervaluesmap"></a><a class="header-anchor" href="#requestheadervaluesmap">§</a>RequestHeaderValuesMap</h4> 
 <p>a map of request header values.</p> 
-<h4><a class="anchor" name="requestcookiemap"></a>RequestCookieMap</h4> 
+<h4 class=" header"><a class="anchor" name="requestcookiemap"></a><a class="header-anchor" href="#requestcookiemap">§</a>RequestCookieMap</h4> 
 <p>a map of request cookie.</p> 
-<h4><a class="anchor" name="requestattributemap"></a>RequestAttributeMap</h4> 
+<h4 class=" header"><a class="anchor" name="requestattributemap"></a><a class="header-anchor" href="#requestattributemap">§</a>RequestAttributeMap</h4> 
 <p>a map of request attributes.</p> 
-<h4><a class="anchor" name="sessionattributemap"></a>SessionAttributeMap</h4> 
+<h4 class=" header"><a class="anchor" name="sessionattributemap"></a><a class="header-anchor" href="#sessionattributemap">§</a>SessionAttributeMap</h4> 
 <p>a map of session attributes.</p> 
-<h4><a class="anchor" name="servetcontextattributemap"></a>ServetContextAttributeMap</h4> 
+<h4 class=" header"><a class="anchor" name="servetcontextattributemap"></a><a class="header-anchor" href="#servetcontextattributemap">§</a>ServetContextAttributeMap</h4> 
 <p>a map of servlet context attributes.</p> 
-<h4><a class="anchor" name="servetcontextinitparametermap"></a>ServetContextInitParameterMap</h4> 
+<h4 class=" header"><a class="anchor" name="servetcontextinitparametermap"></a><a class="header-anchor" href="#servetcontextinitparametermap">§</a>ServetContextInitParameterMap</h4> 
 <p>a map of servlet context init parameters.</p> 
-<h2><a class="anchor" name="-annotation-"></a>4. 进阶（自定义 Annotation 或者类型）</h2> 
+<h2 class=" header"><a class="anchor" name="-annotation-"></a><a class="header-anchor" href="#-annotation-">§</a>4. 进阶（自定义 Annotation 或者类型）</h2> 
 <p>jetbrick-webmvc 已经内置了大量的参数注入方式，怎么用都可以，并且我们也提供了扩展机制。</p> 
 <p>如果用户想自定义注入的对象或者 Annotation，请看下面的章节：<a href="custom-annotation.html">自定义注入 Annotation<br> </a></p>
     </article>

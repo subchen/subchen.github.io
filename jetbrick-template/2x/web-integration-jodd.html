@@ -130,30 +130,30 @@
     </div>
 
     <article class="markdown">
-        <h1><a class="anchor" name="jodd-3-5-1-"></a>Jodd 3.5.1+ 集成</h1> 
+        <h1 class=" header"><a class="anchor" name="jodd-3-5-1-"></a><a class="header-anchor" href="#jodd-3-5-1-">§</a>Jodd 3.5.1+ 集成</h1> 
 <p>注意，由于 Jodd 3.5 更改了 Result 的集成接口，所以 <code>jetbrick-template</code> 从 <code>1.2.5</code> 版本开始，只支持 <code>Jodd 3.5.1+</code>。</p> 
 <p>如果需要 <code>Jodd 3.5</code> 之前的版本，请使用 <code>jetbrick-template 1.2.4</code>。 </p> 
-<h2><a class="anchor" name="maven-"></a>1. Maven 依赖</h2> 
+<h2 class=" header"><a class="anchor" name="maven-"></a><a class="header-anchor" href="#maven-">§</a>1. Maven 依赖</h2> 
 <pre><code class="highlight xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>com.github.subchen<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>jetbrick-template-jodd<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>2.0.7<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.0.8<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre> 
-<h2><a class="anchor" name="web-xml-"></a>2. web.xml 配置</h2> 
+<h2 class=" header"><a class="anchor" name="web-xml-"></a><a class="header-anchor" href="#web-xml-">§</a>2. web.xml 配置</h2> 
 <pre><code class="highlight xml"><span class="nt">&lt;context-param&gt;</span>
     <span class="nt">&lt;param-name&gt;</span>jetbrick-template-config-location<span class="nt">&lt;/param-name&gt;</span>
     <span class="nt">&lt;param-value&gt;</span>/WEB-INF/jetbrick-template.properties<span class="nt">&lt;/param-value&gt;</span>
 <span class="nt">&lt;/context-param&gt;</span>
 </code></pre> 
-<h2><a class="anchor" name="-jodd-madvoc-props"></a>3. 修改 Jodd 的配置文件：madvoc.props</h2> 
+<h2 class=" header"><a class="anchor" name="-jodd-madvoc-props"></a><a class="header-anchor" href="#-jodd-madvoc-props">§</a>3. 修改 Jodd 的配置文件：madvoc.props</h2> 
 <pre><code class="highlight plaintext">[jetbrick.template.web.jodd.JetTemplateResult]
 contentType=text/html; charset=UTF-8
 
 [automagicMadvocConfigurator]
 includedEntries=jetbrick.template.web.jodd.*
 </code></pre> 
-<h2><a class="anchor" name="action-"></a>4. Action 例子</h2> 
+<h2 class=" header"><a class="anchor" name="action-"></a><a class="header-anchor" href="#action-">§</a>4. Action 例子</h2> 
 <pre><code class="highlight java"><span class="nd">@MadvocAction</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">UsersAction</span> <span class="o">{</span>
     <span class="nd">@Out</span>
@@ -166,7 +166,7 @@ includedEntries=jetbrick.template.web.jodd.*
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre> 
-<h2><a class="anchor" name="-users-jetx"></a>5. 模板例子 users.jetx</h2> 
+<h2 class=" header"><a class="anchor" name="-users-jetx"></a><a class="header-anchor" href="#-users-jetx">§</a>5. 模板例子 users.jetx</h2> 
 <pre><code class="highlight html"><span class="nt">&lt;table</span> <span class="na">border=</span><span class="s">"1"</span> <span class="na">width=</span><span class="s">"600"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;tr&gt;</span>
     <span class="nt">&lt;td&gt;</span>ID<span class="nt">&lt;/td&gt;</span>
@@ -184,7 +184,7 @@ includedEntries=jetbrick.template.web.jodd.*
   #end
 <span class="nt">&lt;/table&gt;</span>
 </code></pre> 
-<h2><a class="anchor" name="1019637337"></a>6. 范例源码</h2> 
+<h2 class=" header"><a class="anchor" name="1019637337"></a><a class="header-anchor" href="#1019637337">§</a>6. 范例源码</h2> 
 <p>具体例子代码参考： <a href="https://github.com/subchen/jetbrick-template-2x-samples/">https://github.com/subchen/jetbrick-template-2x-samples/</a></p>
     </article>
 

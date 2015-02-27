@@ -91,10 +91,10 @@
 <div class="container">
 
     <article class="markdown">
-        <h1><a class="anchor" name="-iocbean"></a>@IocBean</h1> 
+        <h1 class=" header"><a class="anchor" name="-iocbean"></a><a class="header-anchor" href="#-iocbean">§</a>@IocBean</h1> 
 <p>此章节中，我们会详细讲解一下如何通过 Java Annotation 来配置你的 IoC 容器对象。</p> 
 <p>通常，在 IoC 容器启动的时候，会在用户配置的 classpath 路径下面扫描所有的 Class，然后将所有声明了 <code>@IocBean</code> 这个 Annotation 的 Class，自动加入到 IoC 容器中进行管理。</p> 
-<h2><a class="anchor" name="480765676"></a>1. 指定对象的名称</h2> 
+<h2 class=" header"><a class="anchor" name="480765676"></a><a class="header-anchor" href="#480765676">§</a>1. 指定对象的名称</h2> 
 <p>任何一个 Ioc 容器管理的对象，都必须有一个名字，以便通过 <code>ioc.getBean(name)</code> 来获取对象。因此，你可以这样定义你的对象:</p> 
 <pre><code class="highlight java"><span class="kn">package</span> <span class="n">jetbrick</span><span class="o">.</span><span class="na">docs</span><span class="o">.</span><span class="na">demo</span><span class="o">;</span>
 
@@ -106,7 +106,7 @@
 <p>我们看到，我们的 Foo 的名字叫 <code>foo</code>，然后我们可以通过下面的代码来获取该对象：</p> 
 <pre><code class="highlight java"><span class="n">Foo</span> <span class="n">foo</span> <span class="o">=</span> <span class="o">(</span><span class="n">Foo</span><span class="o">)</span> <span class="n">ioc</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">"foo"</span><span class="o">);</span>
 </code></pre> 
-<h2><a class="anchor" name="134768920"></a>2. 缺省的对象名称</h2> 
+<h2 class=" header"><a class="anchor" name="134768920"></a><a class="header-anchor" href="#134768920">§</a>2. 缺省的对象名称</h2> 
 <p>如果你的注解 <code>@IocBean</code> 省略了名字，那么默认名字为定义类的完整的类名，如下：</p> 
 <pre><code class="highlight java"><span class="kn">package</span> <span class="n">jetbrick</span><span class="o">.</span><span class="na">docs</span><span class="o">.</span><span class="na">demo</span><span class="o">;</span>
 
@@ -126,7 +126,7 @@
 <blockquote class="info">
  <p><strong>最佳实践</strong>：我们推荐对象都优先使用这种缺省名称，不容易产生命名冲突，并且代码更优雅。</p> 
 </blockquote> 
-<h2><a class="anchor" name="-iocfactory"></a>3. 工厂类 IocFactory</h2> 
+<h2 class=" header"><a class="anchor" name="-iocfactory"></a><a class="header-anchor" href="#-iocfactory">§</a>3. 工厂类 IocFactory</h2> 
 <p>像 Spring 的 BeanFactory 一样，我们的 IoC 也支持工厂类。看范例代码：</p> 
 <pre><code class="highlight java"><span class="kn">package</span> <span class="n">jetbrick</span><span class="o">.</span><span class="na">docs</span><span class="o">.</span><span class="na">demo</span><span class="o">;</span>
 
@@ -144,7 +144,7 @@
 <span class="o">}</span>
 </code></pre> 
 <p>通过代码我们可以看到，我的工厂类实现了 <code>IocFactory</code> 接口。<br> 这样，我们通过 <code>ioc.getBean("product")</code> 获得对象将是 <code>Product</code>，而不是 <code>ProductFactory</code>。</p> 
-<h2><a class="anchor" name="21197577"></a>4. 单例？</h2> 
+<h2 class=" header"><a class="anchor" name="21197577"></a><a class="header-anchor" href="#21197577">§</a>4. 单例？</h2> 
 <p>默认情况下，所有 <code>@IocBean</code> 的对象都被认为是单例对象，在 IoC 容器中只会存在一份实例。</p> 
 <p>如果要将对象设置为非单例模式，那么只需要配置 <code>@IocBean(singleton=false)</code> 既可。</p> 
 <pre><code class="highlight java"><span class="kn">package</span> <span class="n">jetbrick</span><span class="o">.</span><span class="na">docs</span><span class="o">.</span><span class="na">demo</span><span class="o">;</span>
