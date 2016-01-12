@@ -238,6 +238,7 @@
  <li><code>for.last</code> 是否最后一个元素。</li> 
  <li><code>for.odd</code> 是否第奇数个元素。</li> 
  <li><code>for.even</code> 是否第偶数个元素。</li> 
+ <li><code>for.outer</code> 获取外部 <code>#for</code> 指令的 <code>for</code> 对象</li> 
 </ul> 
 <h3 class=" header"><a class="anchor" name="for-else"></a><a class="header-anchor" href="#for-else">§</a>5.2 for-else</h3> 
 <p>指令 <code>#else</code> 可用于循环为空时的内容输出。</p> 
@@ -251,6 +252,13 @@
 <p>要使用 count-loop 循环, 我们可以借助于 <code>range()</code> 函数，比如：</p> 
 <pre><code class="highlight plaintext">#for (int i : range(1, 100))
     ...
+#end
+</code></pre> 
+<h3 class=" header"><a class="anchor" name="for-in-map"></a><a class="header-anchor" href="#for-in-map">§</a>5.4 for in map</h3> 
+<p>对一个 Map 进行 for 循环，那么返回的是一个 <code>Map.Entry</code> 对象。</p> 
+<pre><code class="highlight plaintext">#for (Map.Entry entry : map)
+    KEY: ${entry.key}
+    VALUE: ${entry.value}
 #end
 </code></pre> 
 <h2 class=" header"><a class="anchor" name="-break-continue"></a><a class="header-anchor" href="#-break-continue">§</a>6. 循环中断或继续语句 #break, #continue</h2> 
