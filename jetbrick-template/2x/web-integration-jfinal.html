@@ -152,6 +152,8 @@
     <span class="kd">public</span> <span class="kt">void</span> <span class="n">configConstant</span><span class="o">(</span><span class="n">Constants</span> <span class="n">me</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">me</span><span class="o">.</span><span class="na">setMainRenderFactory</span><span class="o">(</span><span class="k">new</span> <span class="n">JetTemplateRenderFactory</span><span class="o">());</span>
         <span class="o">...</span>
+        <span class="c1">// 注意, 这里请不要使用 me.setBaseViewPath("...") 更改 prefix path</span>
+        <span class="c1">// 需要的话，请使用模板的 `$loader.root` 代替</span>
     <span class="o">}</span>
 
 <span class="o">}</span>

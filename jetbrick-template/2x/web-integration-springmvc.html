@@ -158,7 +158,7 @@
 <span class="nt">&lt;/bean&gt;</span>
 </code></pre> 
 <blockquote class="warn">
- <p><strong>小心</strong>：如果你同时指定 <code>configLocation</code> 和 <code>configProperties</code> 属性，那么 <code>configLocation</code> 文件中的属性优先级高。</p> 
+ <p><strong>小心</strong>：<br> * 如果你同时指定 <code>configLocation</code> 和 <code>configProperties</code> 属性，那么 <code>configLocation</code> 文件中的属性优先级高。<br> * 请不应该在使用 <code>viewResolver</code> 的 <code>prefix</code> 属性，用模板的 <code>$loader.root</code> 代替</p> 
 </blockquote> 
 <h2 class=" header"><a class="anchor" name="spring-boot-"></a><a class="header-anchor" href="#spring-boot-">§</a>3. Spring-boot 集成</h2> 
 <p>范例请参考： <a href="https://github.com/yingzhuo/springboot-jetx2-examples">https://github.com/yingzhuo/springboot-jetx2-examples</a></p> 
