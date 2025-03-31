@@ -1,1 +1,347 @@
-223.166.61.96
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>IP Address Lookup / IPv4 / IPv6 - IP.SB</title>
+    <meta name="description" content="IPv4 Address Lookup, IPv6 Address Lookup" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://ip.sb/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://ip.sb/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://ip.sb/favicon-16x16.png">
+    <link rel="manifest" href="https://ip.sb/site.webmanifest">
+    <link href="https://ip.sb/assets/bootswatch-4.5.2/pulse/bootstrap.min.css" rel="stylesheet">
+    <link href="https://ip.sb/assets/font-awesome-5.14.0/css/all.min.css" rel="stylesheet">
+    <link href="https://ip.sb/assets/css/bootstrap_fix.css?ver=20210930" rel="stylesheet">
+    
+    <style>
+        @media (max-width:768px) {
+            .card-body {
+                padding: 5px;
+            }
+            #v4_conn tr:first-child th:first-child {
+                width: 35%;
+            }
+            .table th, .table td {
+                padding: 0.7rem 0.2rem 0.7rem 0.2rem;
+            }
+        }
+    </style>
+
+    <link href="https://ip.sb/assets/css/style.css?ver=20210930" rel="stylesheet">
+    <link href="https://ip.sb/assets/css/custom_dark.css?ver=20210930" rel="stylesheet">
+    <script type="text/javascript" src="https://ip.sb/assets/jquery-3.5.1/jquery.min.js?ver=20210930"></script>
+    <script type="text/javascript" src="https://cdn.wwads.cn/js/makemoney.js" async></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8974391898835059"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+    <div class="container">
+        <a class="navbar-brand" href="https://ip.sb">IP.SB</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item  active"><a href="https://ip.sb" class="nav-link">Home</a></li>
+                <li class="nav-item "><a href="https://ip.sb/about/" class="nav-link">About</a></li>
+                <li class="nav-item "><a href="https://ip.sb/api/" class="nav-link">API</a></li>
+                <li role="presentation" class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="dropdown_Domain" aria-haspopup="true" aria-expanded="false">Domain</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown_Domain">
+                        <a class="dropdown-item " href="https://ip.sb/cctlds/">ccTLDs</a>
+                        <a class="dropdown-item " href="https://ip.sb/iana/">IANA</a>
+                    </div>
+                </li>
+                <li class="nav-item "><a href="https://ip.sb/whois/" class="nav-link">Whois</a></li>
+                <li role="presentation" class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="dropdown_tools" aria-haspopup="true" aria-expanded="false">Tools</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown_tools">
+                        <a class="dropdown-item" href="https://ip.sb/cidr/">IP CIDR</a>
+                        <a class="dropdown-item" href="https://ip.sb/iana-ip/">IANA IP Assignments</a>
+                        <a class="dropdown-item" href="https://ip.sb/iana-asn/">IANA ASN Assignments</a>
+                        <a class="dropdown-item" href="https://ip.sb/azenv/">AZ Environment Variables</a>
+                        <a class="dropdown-item" href="https://ip.sb/ip2ptr/">IP to PTR Record</a>
+                        <a class="dropdown-item" href="https://ip.sb/password/">Random Password Generator</a>
+                        <a class="dropdown-item" href="https://ip.sb/emoji/">Emoji List</a>
+                        <a class="dropdown-item" href="https://ip.sb/ipcalc/">IP Subnet Calculator</a>
+                    </div>
+                </li>
+                <li class="nav-item "><a href="https://ip.sb/contact/" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<main class="container" style="min-height: 400px">
+    <div class="col-lg-6 rivencloud_ads">
+        <div class="advert_title">
+            <h3>Riven Cloud</h3>
+        </div>
+        <div class="advert_text">
+            <p>极云网络九折优惠码<span>IPSB</span></p>
+            <a target="_blank" href="https://sa.net/r/18">点击传送</a>
+        </div>
+    </div>
+    
+    <div class="card card-default">
+        <div class="card-header">
+            IPv4 connectivity
+        </div>
+        <div class="card-body">
+            <table id="v4_conn" class="table">
+                <tbody><tr>
+                    <th width="30%">IPv4</th>
+                    <td class="proto_supported"><span class="label label-success" style="font-size:1em">Unknown</span></td>
+                    <td width="8%"><span class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-content="This test determines whether your connection supports the IPv4 protocol" data-title="IPv4" data-original-title="" title=""></span></td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td class="proto_address"></td>
+                    <td>
+                        <span class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-content="Your IPv4 address is the address your ISP has assigned to you on the IPv4 Internet" data-title="Address" data-original-title="" title=""></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Hostname</th>
+                    <td class="proto_hostname"></td>
+                    <td>
+                        <span class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-content="Your hostname is the name by which your computer is known on the IPv4 Internet" data-title="Hostname" data-original-title="" title=""></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>ISP</th>
+                    <td class="proto_isp"></td>
+                    <td>
+                        <span class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-content="This is the Internet Service Provider that connects you to the IPv4 Internet" data-title="ISP" data-original-title="" title=""></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>IP Organization</th>
+                    <td class="proto_organization"></td>
+                    <td>
+                        <span class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-content="IP Owner" data-title="IP Organization" data-original-title="" title=""></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>ASN</th>
+                    <td class="proto_asn"></td>
+                    <td>
+                        <span class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-content="This is the Autonomous System Number of your Internet Service Provider" data-title="ASN" data-original-title="" title=""></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>ASN Organization</th>
+                    <td class="proto_aso"></td>
+                    <td>
+                        <span class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-content="ASN Organization" data-title="ASN Organization" data-original-title="" title=""></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Location</th>
+                    <td class="proto_location"></td>
+                    <td>
+                        <span class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-content="This is location of your the IPv4 Internet" data-title="Location" data-original-title="" title=""></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div style="text-align: center;margin: 20px 0;width: 100%;">
+        <a href="https://sa.net/r/19" target="_blank"><img src="https://ip.sb/assets/images/rivencloud_ads.gif" style="border-radius: 3px;width: 100%;max-width: 728px;"></a>
+    </div>
+    <div class="card card-default">
+        <div class="card-header">IPv6 connectivity</div>
+        <div class="card-body">
+            <table id="v6_conn" class="table">
+                <tbody><tr>
+                    <th width="30%">IPv6</th>
+                    <td class="proto_supported"><span class="label label-success" style="font-size:1em">Unknown</span></td>
+                    <td width="8%"><span class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-content="This test determines whether your connection supports the IPv6 protocol" data-title="IPv6" data-original-title="" title=""></span></td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td class="proto_address"></td>
+                    <td><span class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-content="This test determines whether your connection supports the IPv6 protocol" data-title="Address"></span></td>
+                </tr>
+                <tr>
+                    <th>Hostname</th>
+                    <td class="proto_hostname"></td>
+                    <td><span class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-content="Your hostname is the name by which your computer is known on the IPv6 Internet" data-title="Hostname"></span></td>
+                </tr>
+                <tr>
+                    <th>Country</th>
+                    <td class="proto_country"></td>
+                    <td><span class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-content="" data-title="Country"></span></td>
+                </tr>
+                <tr>
+                    <th>IPv6 Organization</th>
+                    <td class="proto_organization"></td>
+                    <td>
+                        <span class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-content="IPv6 Owner" data-title="IPv6 Organization" data-original-title="" title=""></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>ASN</th>
+                    <td class="proto_asn"></td>
+                    <td>
+                        <span class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-content="This is the Autonomous System Number of your Internet Service Provider" data-title="ASN" data-original-title="" title=""></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>ASN Organization</th>
+                    <td class="proto_aso"></td>
+                    <td>
+                        <span class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-content="ASN Organization" data-title="ASN Organization" data-original-title="" title=""></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</main>
+<div style="padding: 15px !important;">
+    <div class="wwads-cn wwads-horizontal" data-id="54" style="max-width: 500px;margin:10px auto 15px auto;"></div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="col-xs-12">
+            <p class="text-muted">Copyright &#9400; 2025
+                <a href="https://www.sb/" title="SB Professional Services">SB Professional Services, LLC</a>. All rights reserved.
+                <a href="https://dns.sb" title="Free Public DNS Resolver">DNS.SB</a> -
+                <a href="https://sm.ms/" title="Free Image Hosting">SM.MS</a> -
+                <a href="https://u.nu/" title="Free URL Shortener">U.NU</a> -
+                <a href="https://t.me/sbfans" title="Telegram Group">Telegram</a> -
+                <a href="https://ip.sb/terms-of-use/" title="TOS">Terms of Use</a> -
+                <a href="https://ip.sb/privacy-policy/" title="Privacy Policy">Privacy Policy</a>
+            </p>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript" src="https://ip.sb/assets/js/lib/bootstrap/js/popper.min.js?ver=20210930"></script>
+<script type="text/javascript" src="https://ip.sb/assets/twitter-bootstrap-4.5.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://ip.sb/assets/js/lib/tablesorter/jquery.tablesorter.min.js?ver=20210930"></script>
+<script type="text/javascript" src="https://ip.sb/assets/js/scripts/app.min.js?ver=20210930" async defer></script>
+<script type="text/javascript" src="https://ip.sb/assets/js/lib/layer/layer.js?ver=20210930"></script>
+<script type="text/javascript" src="https://ip.sb/assets/js/wwads_blocked.js?var=20210930"></script>
+<script async defer data-domain="ip.sb" src="https://stat.xtom.com/js/plausible.js"></script>
+
+    <script>
+        $( document ).ready(function() {
+            $('[data-toggle="popover"]').popover({
+                placement: 'left',
+                delay: { "hide": 100 }
+            });
+            var u = navigator.userAgent;
+            var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //iOS
+            if(isiOS) {
+                $('html').click(function(e) {
+                    $('[data-toggle="popover"]').popover('hide');
+                });
+            }
+            
+            setTimeout(function() {
+                test_v4_conn();
+                test_v6_conn();
+            }, 500);
+        });
+
+        function addSpan(type, message, style) {
+            style = style || "";
+            return "<span class='label label-"+type+"' style='"+style+"'>"+ message +"</span>";
+        }
+
+        function formatIPv4Data(resp) {
+            var $p = $("#v4_conn");
+            $p.find(".proto_address, .proto_hostname, .proto_isp").empty();
+
+            $p.find(".proto_supported").html(addSpan('success', "Supported", "font-size:1em;"));
+
+            let link = "<a href='https://ip.sb/whois/"+resp.address+"'>"+resp.address+"</a>";
+            let pop = '<span id="ip2long" data-toggle="popover" data-trigger="hover" data-content="'+ resp.address + ' => ' + resp.ip2long +'" data-title="IP2Long">'+ link +'</span>';
+
+            $p.find(".proto_address").html(link);
+            //$('#ip2long').popover({
+            //    delay: { "hide": 3000 }
+            //});
+
+            $p.find(".proto_hostname").html(resp.hostname ? resp.hostname : "<span class='label label-warning'>None</span>");
+            $p.find(".proto_location").html((resp.city ? resp.city : "") + ' ' + (resp.province ? resp.province + ', ' : "") + resp.country);
+            $p.find(".proto_isp").html(resp.isp.name ? resp.isp.name : addSpan('warning', "Unknown"));
+            $p.find(".proto_organization").html(resp.isp.organization ? resp.isp.organization : addSpan('warning', "Unknown"));
+            $p.find(".proto_asn").html(resp.isp.ASN ? "<a href='https://ip.sb/whois/AS"+ resp.isp.ASN +"'>AS"+ resp.isp.ASN +"</a>" : addSpan('warning', "Unknown"));
+            $p.find(".proto_aso").html(resp.isp.ASO ? resp.isp.ASO : addSpan('warning', "Unknown"));
+        }
+        function formatIPv6Data(resp) {
+            var $p = $("#v6_conn");
+            $p.find(".proto_address, .proto_hostname, .proto_isp, .proto_country").empty();
+
+            $p.find(".proto_supported").html(addSpan('success', "Supported", "font-size:1em;"));
+            $p.find(".proto_address").html("<a href='/whois/"+resp.address+"'>"+resp.address+"</a>");
+            $p.find(".proto_hostname").html(resp.hostname ? resp.hostname : addSpan('warning', "None"));
+            $p.find(".proto_country").html(resp.country ? resp.country : addSpan('warning', "Unknown"));
+            $p.find(".proto_organization").html(resp.isp.organization ? resp.isp.organization : addSpan('warning', "Unknown"));
+            $p.find(".proto_asn").html(resp.isp.ASN ? "<a href='https://ip.sb/whois/AS"+ resp.isp.ASN +"'>AS"+ resp.isp.ASN +"</a>" : addSpan('warning', "Unknown"));
+            $p.find(".proto_aso").html(resp.isp.ASO ? resp.isp.ASO : addSpan('warning', "Unknown"));
+        }
+
+        function hideIPv6Area() {
+            var $p = $("#v6_conn");
+            $p.find(".proto_address, .proto_hostname, .proto_isp, .proto_country").empty();
+
+            $p.find(".proto_address").parent().hide();
+            $p.find(".proto_hostname").parent().hide();
+            $p.find(".proto_country").parent().hide();
+            $p.find(".proto_organization").parent().hide();
+            $p.find(".proto_asn").parent().hide();
+            $p.find(".proto_aso").parent().hide();
+        }
+
+        function test_v4_conn() {
+            var $p = $("#v4_conn");
+            $p.find(".proto_address, .proto_hostname, .proto_isp").empty();
+            $.ajax({
+                url: "https://ipv4.ip.sb/addrinfo",
+                dataType: "jsonp",
+                timeout: 15000,
+                success: function(resp) {
+                    formatIPv4Data(resp);
+                },
+                beforeSend: function() {
+                    $p.find(".proto_supported").html(addSpan('info', "Checking", "font-size:1em;"));
+                },
+                error: function(xopt, err) {
+                    $p.find(".proto_supported").html(addSpan('danger', "Not Supported", "font-size:1em;"));
+                },
+                complete: function(){
+                },
+            });
+        }
+
+        function test_v6_conn() {
+            var $p = $("#v6_conn");
+            $p.find(".proto_address, .proto_hostname, .proto_isp, .proto_country").empty();
+            $.ajax({
+                url: "https://ipv6.ip.sb/addrinfo",
+                dataType: "jsonp",
+                timeout: 5000,
+                beforeSend: function() {
+                    $p.find(".proto_supported").html(addSpan('info', "Checking", "font-size:1em;"));
+                },
+                success: function(resp) {
+                    formatIPv6Data(resp);
+                },
+                error: function(xopt, err) {
+                    hideIPv6Area();
+                    $p.find(".proto_supported").html(addSpan('danger', "Not Supported", "font-size:1em;"));
+                },
+                complete: function(){
+                },
+            });
+        }
+    </script>
+
+</body>
+</html>
